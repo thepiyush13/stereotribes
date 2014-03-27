@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="img/favicon.png">
         
-        <title>ReadFiend- An Online Article Stack</title>
+        <title>Stereotribes</title>
         
         <!-- Bootstrap core CSS -->
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet">
