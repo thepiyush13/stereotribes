@@ -1,0 +1,13 @@
+RewriteEngine on
+
+# prevent httpd from serving dotfiles (.htaccess, .svn, .git, etc.)
+RedirectMatch 403 /\..*$
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.gif|\.jpeg|\.bmp|\.css|\.js)$
+#RewriteRule ^theme/anther/?  sthemes/anther/index.html 
+RewriteRule !html|\.(pdf|php|js|ico|txt|gif|swf|jpg|png|css|rss|zip|tar\.gz)$ index.php
+# otherwise forward it to index.php
+#RewriteRule . index.php
+

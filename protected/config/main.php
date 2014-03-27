@@ -11,8 +11,8 @@ if(APPLICATION_ENV == 'jump-dev') {
        $dbPassword = 'stereotribes';
 
 
-       $fbAppId = '267461746762374';
-       $fbSecret = '5c5b126af917b8eddd8aa3a55d6dc7aa';
+       $fbAppId = '231266650409136';
+       $fbSecret = 'f6aefdeb97323090980fc2f4e98bcf1a';
 }
 // uncomment the following to define a path alias
 
