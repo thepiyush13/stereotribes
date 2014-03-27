@@ -2,13 +2,13 @@
 // Define application environment
 
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'default'));
-$dbName = 'readfiend';
+$dbName = 'stereotribes';
 $dbUser = 'root';
 $dbPassword = 'mysql';
-if(APPLICATION_ENV == 'dev-rf') {
-       $dbName = 'readfiend';
-       $dbUser = 'readfiend';
-       $dbPassword = '!readfiend!';
+if(APPLICATION_ENV == 'jump-dev') {
+       $dbName = 'stereotribes';
+       $dbUser = 'stereotribes';
+       $dbPassword = '!stereotribes!';
 
 
        $fbAppId = '267461746762374';
