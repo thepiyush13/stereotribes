@@ -1,0 +1,236 @@
+.add-package{
+    border: 1px solid #ccc;
+    background: #ffffff;
+    margin: 0 auto;
+    width: 80%;
+    border-radius: 8px;
+    padding: 20px 30px;
+    overflow: hidden;
+}
+.add-package h1{
+    margin: 15px 0 30px;
+    font-size: 25px;
+}
+.group-p{
+    margin-bottom: 30px;
+}
+.group-semi{
+    margin-bottom: 30px;
+    width: 50%;
+}
+.group-semi label{
+    display:block;
+    font-size: 16px;
+    font-weight: normal!important;
+}
+
+.group-p label{
+    display:block;
+    font-size: 16px;
+    font-weight: normal;
+}
+.group-p input[type="text"]{
+    width: 100%;
+    color: #333;
+}
+.group-p select{
+    width: 45%;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.inr input[type="text"]{
+    width: 90%;
+    color: #333;
+}
+.group-p textarea{
+    width: 100%;
+    color: #333;
+    resize :none;
+}
+.required{
+    color: red;
+}
+#list{
+    display: block;
+    border: 1px dotted #CCC9C9;
+    width: 100%;
+    padding: 10px 0px 5px 10px;
+    margin-bottom: 30px;
+    background: #F8F8F8;
+}
+ul#list li{
+    display: inline-block;
+    width: 48%;
+    margin-right: 1%;
+    margin-bottom: 8px;
+}
+#addons{
+    width: 100%;
+    float: left;
+    border: 1px dotted #CCC9C9;
+    padding: 10px 0px 3px 10px;
+    margin-bottom: 30px;
+    min-height: 50px;
+    background: #F8F8F8;
+}
+ul#addons li{
+    width: 96%;
+    display: block;
+    margin: 0 0 8px 0;
+}
+#upsales{
+    width: 100%;
+    float: right;
+    border: 1px dotted #CCC9C9;
+    padding: 10px 0px 3px 10px;
+    margin-bottom: 20px;
+    min-height: 50px;
+    background: #F8F8F8;
+}
+ul#upsales li{
+    width: 96%;
+    display: block;
+    margin: 0 0 8px 0;
+}
+.adons-block{
+    width: 45%;
+    float: left;
+    margin-right: 20px;
+}
+.upsales-block{
+    width: 50%;
+    float: right;
+}
+#connected h2{
+    font-weight: normal;
+    font-size: 16px;
+    margin: 2px 0 15px 2px;
+}
+.helper-text{
+    font-size: 14px;
+    color: #858484;
+    padding-left: 8px;
+}
+.connected, .sortable, .exclude, .handles {
+    margin: auto;
+    padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.sortable.grid {
+    overflow: hidden;
+}
+.connected li, .sortable li, .exclude li, .handles li {
+    list-style: none;
+    border: 1px solid #ffffff;
+    background: #00A8B3;
+    color: #ffffff;
+    padding:8px;
+    cursor: move;
+}
+
+.handles span {
+    cursor: move;
+}
+li.disabled {
+    opacity: 0.5;
+}
+.sortable.grid li {
+    line-height: 80px;
+    float: left;
+    text-align: center;
+}
+li.highlight {
+    background: #FEE25F;
+}
+#connected {
+    overflow: hidden;
+    margin: auto;
+}
+.connected {
+    float: left;
+
+}
+
+li.sortable-placeholder {
+    border: 1px dashed #CCC;
+    background: none;
+    padding: 10px;
+}
+
+.adn-type{
+    display: block;
+    font-size: 17px;
+    font-weight: normal;
+    margin: 0px 0 10px 0;  
+}
+.addon-type{
+    margin: 10px 0 25px 0;
+}
+.addon-type label{
+    font-size: 16px;
+}
+.grp-item{
+    width: 29%;
+    float: left;
+    margin-right: 2%;
+}
+.group-item{
+    overflow: hidden;
+    width: 100%;
+    background: #fafafa;
+    border: 1px solid #E9E7E7;
+    padding: 10px 0 10px 20px;
+    margin-bottom: 20px;
+}
+.item-list{
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.group-item label{
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px 0 10px 2px;
+}
+.btn-dynm{
+    background: #53bee6;
+    padding: 8px 14px;
+    border-radius: 5px;
+    color: #ffffff;
+    position: relative;
+    top: 48px;
+}
+
+.btn-add{
+    background: #53bee6;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: #ffffff;
+    position: relative;
+    top: 5px;
+    right: 15px;
+    cursor: pointer;
+}
+
+/*CSS for Pagination*/
+
+
+
+div.custom-pager-ul ul li a {
+    border-radius: 3px;
+    border: 1px solid #ddd !important;
+    padding: 5px 10px !important;
+    color: #797979 !important;
+}
+
+div.custom-pager-ul ul li.selected a, div.custom-pager-ul ul li a:hover{
+    background: #fff !important;
+}
+/*End of CSS for pagination*/

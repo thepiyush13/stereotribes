@@ -1,102 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="img/favicon.png">
-        
-        <title>Stereotribes</title>
-        
-        <!-- Bootstrap core CSS -->
-        <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap-reset.css" rel="stylesheet">
-        <!--external css-->
-        <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/font-awesome.min.css" rel="stylesheet" />
+  <head>
 
-        <!-- Custom styles for this template -->
-        <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet">
-        <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style-responsive.css" rel="stylesheet" />
-        <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap-multiselect.css" rel="stylesheet" />
-        
-        <!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="Pefios Case Study">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <title>Stereo Tribes - Home</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+    <!-- Custom CSS for this Template -->
+    <link rel="stylesheet" href="/css/animate.css">
+
+    <!-- Custom CSS for this Template -->
+    <link rel="stylesheet" href="/css/stereotribes.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+		<script>
+		document.createElement('video');
+		</script>
 	<![endif]-->
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/my.css" />
-	<link href="/swassets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        
-    
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-        <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-          <script src="js/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    
-    <body>
-        <section id="container" class="">
-            <!--header start-->
-            <header class="header white-bg"> <div class="sidebar-toggle-box">
-                    <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
-                </div>
-                <!--logo start-->
-                <a href="/" class="logo" >READFIEND</a>
-                <!--logo end-->
-                <div class="top-nav ">
-                    <ul class="nav pull-right top-menu">
-                        <li>
-                            <input type="text" class="form-control search" placeholder="Search">
-                        </li>
-                        
-                        <!-- user login dropdown start-->
-                        <?php $this->widget('application.components.LoginBar');?>
-                        <!-- user login dropdown end -->
-                    </ul>
-                </div>
-            </header>
-            <!--header end-->
-            <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js"></script>
-            <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.dcjqaccordion.2.7.js"></script>
+  </head>
+
+  <body class="home">
+	
+  	<!-- ==================== Main Navigation ====================== -->
+
+  	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	  <!-- Brand and toggle get grouped for better mobile display -->
+	  <div class="navbar-header">
+
+	    <a class="navbar-brand stereologo" href="index.html">Stereotribes</a>
+
+	    <a class="navbar-brand stereologo-mob" href="index.html">Stereotribes</a>		  
+
+	    <ul class="nav navbar-nav navbar-left nav-center">
+
+	      <li class="dropdown">
+	      	<a href="#">
+		      	<span class="play">Play</span>
+		      	<span class="belowtext">Create Campaigns</span>
+	      	</a>
+	      </li>
+
+	      <li class="dropdown">
+	      	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	      		<span class="find">Find</span>
+			<span class="belowtext">Music Campaigns</span>
+	      	</a>
+	      	<ul class="dropdown-menu">
+	          <li><a href="#">About</a></li>
+	          <li><a href="#">Another action</a></li>
+	          <li><a href="#">Something else here</a></li>
+	        </ul>
+	      </li>
+
+	      <li class="dropdown">
+	      	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="love">Love</span>
+                        <span class="belowtext">Tribal World</span>
+	      	</a>
+	      	<ul class="dropdown-menu">
+	          <li><a href="#">Tribes</a></li>
+	          <li><a href="#">Another action</a></li>
+	          <li><a href="#">Something else here</a></li>
+	        </ul>
+	      </li>
+
+	    </ul>
+
+	    <ul class="nav navbar-nav navbar-right">
+	      <li class="mobilehide"><a href="#"><i class="icon-share"></i></a></li>
+	      <li class="mobilehide"><a href="#"><i class="icon-search"></i></a></li>
+	      <li class="mobilehide"><a href="#"><i class="icon-user"></i></a></li>
+	      <li class="dropdown usericon">
+	        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i></a>
+	        <div class="dropdown-menu menuanimate">
+	        <div class="row">
+	        <div class="container menublk">
+	          	
+                        <div class="menublock signin-block col-sm-4 col-md-3">
+                                <ul>
+                                        <li>
+                                                <a href="#"><i class="icon-search"></i> Search</a>
+                                        </li>
+                                        <li>
+                                                <a href="#"><i class="icon-user"></i> sign in</a>
+                                        </li>
+                                </ul>
+                        </div>
+
+                        <div class="menublock col-sm-4 col-md-3">
+                                <ul>
+                                        <li>
+                                                <span class="menuh">Play</span>
+                                                <a href="#">Create Campaigns</a>
+                                        </li>
+                                        <li>
+                                                <span class="menuh">Find</span>
+                                                <a href="#">Music Campaigns</a>
+                                        </li>
+                                        <li>
+                                                <span class="menuh">Love</span>
+                                                <a href="#">Tribe World</a>
+                                        </li>
+                                </ul>
+                        </div>
+
+                        <div class="menublock col-sm-4 col-md-2">
+                                        <ul>
+                                        <li>
+                                                <h4 class="menuheading">Getting Started</h4>
+                                        </li>
+                                        <li>
+                                                <a href="#">Pricing</a>	          					
+                                        </li>
+                                        <li>
+                                                <a href="#">Non-Profits</a>
+                                        </li>
+                                        <li>
+                                                <a href="#">FAQ</a>
+                                        </li>
+                                        <li>
+                                                <a href="#">Tribe Play Quiz</a>
+                                        </li>
+                                </ul>
+                        </div>
+
+                        <div class="menublock col-sm-4 col-md-2">
+                                <ul>
+                                        <li>
+                                                <h4 class="menuheading">Passion Amplifier</h4>
+                                        </li>
+                                        <li>
+                                                <a href="#">Benefits of Stereotribes</a>
+                                        </li>
+                                        <li>
+                                                <a href="#">Stereotribes Press</a>
+                                        </li>
+                                </ul>
+                        </div>
+
+                        <div class="menublock col-sm-4 col-md-2">
+                                        <ul>
+                                        <li>
+                                                <h4 class="menuheading">Explore</h4>
+                                        </li>
+                                        <li>
+                                                <a href="#">Backstage Access</a>
+                                        </li>
+                                        <li>
+                                                <a href="#">Staff Mixed Tape</a>
+                                        </li>
+                                        <li>
+                                                <a href="#">Careers</a>
+                                        </li>
+                                </ul>
+                        </div>
+
+                        <div class="menublocklast col-sm-4 col-md-2">
+                                        <ul>
+                                        <li>
+                                                <h4 class="menuheading">Connect</h4>
+                                        </li>
+                                        <li>
+                                                <a href="#">Contact Us</a>
+                                        </li>
+                                        <li>
+                                                <ul class="socialmenu">
+                                                        <li><a href="#" class="icon-soundcloud"></a></li>
+                                                        <li><a href="#" class="icon-youtube"></a></li>
+                                                        <li><a href="#" class="icon-facebook3"></a></li>
+                                                        <li><a href="#" class="icon-twitter3"></a></li>
+                                                </ul>
+                                        </li>
+                                </ul>
+                        </div>
+	          	</div>
+	          </div>
+	        </div>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+
+
+	<!-- ==================== Video Section ====================== -->
+
+	
+    <video id="bgvid" autoplay loop preload="none" poster="/img/video-poster.jpg" data-setup="{}">
+	  <source src="/videos/st.webm" type="video/webm">
+	  <source src="/videos/st.mp4" type="video/mp4">
+      <source src="/videos/st.ogv" type="video/ogg">
+      <source src="/videos/st.ogg" type="video/ogg">
+      <source src="/videos/st.mov" type="video/mov">
+	</video>
+	<div class="video-poster"></div>
+
+	<div class="main-wrapper">
+
+		<!-- ==================== Secondary Navigation ====================== -->
+
+	    <nav id="secondary-nav" class="secondary-nav" role="navigation">
+
+	    	<div class="container">
+
+	    		<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 text-center secnav">
+
+				    <ul id="sec-navigation" class="navigate">
+					    <li id="all" class="active" data-filter=".all">All</li>
+					    <li id="new" data-filter=".new">New</li>
+					    <li id="featured" class="mobhide" data-filter=".featured">Featured</li>
+					    <li id="popular" data-filter=".popular">Popular</li>
+					    <li id="endingSoon" data-filter=".endingSoon">Ending Soon</li>
+					    <li id="staffPicks" class="mobhide" data-filter=".staffPicks">Staff Picks</li>
+				    </ul>
+
+				</div>   
+
+			</div>
+
+		</nav>
             
-            
+                     
             <?php echo $content ?>
-        </section>  
+         
             
          
-        <!-- js placed at the end of the document so the pages load faster -->
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js"></script>
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-datetime.js"></script>
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-datepicker.js"></script>
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-timepicker.js"></script>
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-multiselect.js"></script>
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/common-scripts.js"></script>
-        <!--<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.tagsinput.js"></script>-->
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/scheduler.js"></script>
-<!--        
-        <script src="/js/jquery-1.8.3.min.js"></script>
-        
-        <script class="include" type="text/javascript" src="/js/jquery.dcjqaccordion.2.7.js"></script>
-        <script src="/js/jquery.scrollTo.min.js"></script>
-        <script src="/js/jquery.nicescroll.js" type="text/javascript"></script>
-        <script src="/js/respond.min.js" ></script>
-        <script type="text/javascript" src="/swassets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-        <script src="/js/jquery.isotope.js"></script>
-        <script src="/js/bootbox.js"></script>
-        <script src="/js/common-scripts.js"></script>
-        
-       
- packages       
-        <script type="text/javascript" src="/js/jquery.form.js" > </script>
-        <script type="text/javascript" src="/js/jquery.form.fields.js" > </script>
-        <script type="text/javascript" src="/js/jquery.sortable.js" > </script>
-         <script type="text/javascript" src="/js/jquery.dataTables.js" > </script>
-         <script src="/js/MyJs.js"></script>
-         <link href="/css/crm/table.css" rel="stylesheet" />-->
-<!--        -->
-        
-    </body>
-</html>
+       <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/video.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/waypoints-sticky.min.js"></script>
+    <script src="/js/freewall.js"></script>
+    <script src="/js/stereotribes.js"></script>
+
+  </body>
+  </html>
