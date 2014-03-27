@@ -1,0 +1,19 @@
+{
+    "name": "inkoniq/readfiend",
+    "description": "Online Magazine and Article Stack Management",
+    "license": "Inkoniq IT Solutions Pvt. Ltd.",
+    "authors": [
+        {
+            "name": "abhishek kumar",
+            "email": "abhishek@inkoniq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+		"yiisoft/yii" : "1.1.14",
+		"facebook/php-sdk": "@stable",
+		"twitter/bootstrap": "3.0.*@dev",
+		"google/apiclient": "dev-master"
+
+    }
+}
