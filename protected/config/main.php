@@ -8,7 +8,7 @@ $dbPassword = 'mysql';
 if(APPLICATION_ENV == 'jump-dev') {
        $dbName = 'stereotribes';
        $dbUser = 'stereotribes';
-       $dbPassword = '!stereotribes!';
+       $dbPassword = 'stereotribes';
 
 
        $fbAppId = '267461746762374';
