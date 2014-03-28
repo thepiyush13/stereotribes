@@ -227,7 +227,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'kanchan karjee','kanchan@inkoniq.com','21232f297a57a5a743894a0e4a801fc3','','','',''),(2,'admin','admin@st.com','21232f297a57a5a743894a0e4a801fc3','','','',''),(11,'Kanchan Karjee','kanchan_karjee@rediff.com','','100001314220473','a:2:{s:2:\"id\";s:15:\"106377336067638\";s:4:\"name\";s:16:\"Bangalore,','male','en_US'),(10,'Abhishek Kumar','abhi_ekdost@rediffmail.com','','100001454874120','a:2:{s:2:\"id\";s:15:\"106377336067638\";s:4:\"name\";s:16:\"Bangalore,','male','en_US');
+INSERT INTO `user`  (id, name, email, password) VALUES (1,'kanchan karjee','kanchan@inkoniq.com','21232f297a57a5a743894a0e4a801fc3'),(2,'admin','admin@st.com','21232f297a57a5a743894a0e4a801fc3');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
