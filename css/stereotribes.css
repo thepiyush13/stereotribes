@@ -1228,11 +1228,6 @@ video {
 }
 
 .brickhover:hover .mask {
-   /*-webkit-transform: translateX(0px);
-   -moz-transform: translateX(0px);
-   -o-transform: translateX(0px);
-   -ms-transform: translateX(0px);
-   transform: translateX(0px);*/
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
    filter: alpha(opacity=100);
    opacity: 1;
@@ -1240,11 +1235,6 @@ video {
    border-right: 0;
 }
 .brickhover:hover .brickinner {
-  /* -webkit-transform: translateY(-534px);
-   -moz-transform: translateY(-534px);
-   -o-transform: translateY(-534px);
-   -ms-transform: translateY(-534px);
-   transform: translateY(-534px);*/
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
    filter: alpha(opacity=0);
    opacity: 0;
@@ -1403,8 +1393,6 @@ body.pages {
 .pagecontainer {
 	position: relative;
 	margin-bottom: 40px;
-	/*background: #fff;
-	box-shadow: 0 0 15px #161616;*/
 }
 
 body.pages:before {
@@ -1671,6 +1659,7 @@ body.pages:before {
 .fund-main-title {
 	font-size: 28px;
 	font-weight: 600;
+	text-transform: uppercase;
 }
 
 .top-title-wrap:before,
@@ -1900,24 +1889,24 @@ body.pages:before {
 }
 
 .amplifybutton {
-	border:1px solid #df0909; font-weight:bold; color: #FFFFFF;
+	border:1px solid #df0909; 
+	font-weight:bold; 
+	color: #FFFFFF;
 	border-radius: 0;
-	background-color: #f62b2b; background-image: -webkit-gradient(linear, left top, left bottom, from(#f62b2b), to(#d20202));
-	background-image: -webkit-linear-gradient(top, #f62b2b, #d20202);
-	background-image: -moz-linear-gradient(top, #f62b2b, #d20202);
-	background-image: -ms-linear-gradient(top, #f62b2b, #d20202);
-	background-image: -o-linear-gradient(top, #f62b2b, #d20202);
-	background-image: linear-gradient(to bottom, #f62b2b, #d20202);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f62b2b, endColorstr=#d20202);
+	background: #f62b2b;
+	padding: 5px 10px;
+}
+
+.amplifybutton:hover,
+.amplifybutton:active,
+.amplifybutton:focus {
+	border: 1px solid #f62b2b;
+	background-color: #f62b2b;	
 }
 
 .amplifybutton:hover {
 	border:1px solid #b30808;
-	background-color: #e40a0a; background-image: -webkit-gradient(linear, left top, left bottom, from(#e40a0a), to(#9f0202));
-	background-image: -webkit-linear-gradient(top, #e40a0a, #9f0202);
-	background-image: -moz-linear-gradient(top, #e40a0a, #9f0202);
-	background-image: -ms-linear-gradient(top, #e40a0a, #9f0202);
-	background-image: -o-linear-gradient(top, #e40a0a, #9f0202);
-	background-image: linear-gradient(to bottom, #e40a0a, #9f0202);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e40a0a, endColorstr=#9f0202);
+	background-color: #e40a0a;
 }
 
 .quotewrap {
@@ -2220,7 +2209,7 @@ body.pages:before {
 
 /*
  *
- *  Play Page One
+ *  Play Page Step One
  *
  */
 
@@ -2272,11 +2261,11 @@ body.playpage {
 }
 
 .breadcrumb-wrapper .breadcrumb > li.active {
-    border-bottom: 6px solid #d6201f;
+    border-bottom: 6px solid #eb2033;
 }
 
 .breadcrumb-wrapper .breadcrumb > li.active > a {
-    color: #d6201f;
+    color: #eb2033;
 }
 
 .breadcrumb-wrapper .breadcrumb > li > a:hover {
@@ -2320,7 +2309,8 @@ a.play-categories:hover {
 }
 
 .red-highlight {
-    color: #d6201f;
+    color: #eb2033;
+    font-weight: 800;
 }
 
 .musicplus-red {
@@ -2328,58 +2318,58 @@ a.play-categories:hover {
 	background: #eb2033;
 }
 
-.arts-green {
+.color-arts {
 	background: #b4d339;
 }
 
-.technology-purple {
+.color-technology {
 	background: #b2499b;
 }
 
-.research-yellow {
+.color-research {
 	background: #febd11;
 }
 
-.commercial-brown {
+.color-commercial {
 	background: #b19e40;
 }
 
-.imaginative-blue {
+.color-imaginative {
 	background: #82cfc8;
 }
 
-.performance-violet {
+.color-performance {
 	background: #7959a6;
 }
 
-.film-blue {
+.color-film {
 	background: #3d61ad;
 }
 
-.games-green {
+.color-games {
 	background: #39b54a;
 }
-.publishing-pink {
+.color-publishing {
 	background: #ef8dac;
 }
 
-.production-purple {
+.color-production {
 	background: #801a62;
 }
 
-.community-blue {
+.color-community {
 	background: #00aeef;
 }
 
-.education-blue {
+.color-education {
 	background: #1e9e9b;
 }
 
-.therapy-orange {
+.color-therapy {
 	background: #f17124;
 }
 
-.fashion-pink {
+.color-fashion {
 	background: #ed0677;
 }
 
@@ -2407,7 +2397,7 @@ a.play-categories:hover {
 	width: 20%;
 	padding: 5px;
 	font-size: 18px;
-	border: 2px solid #000;
+	border: 1px solid #000;
 	border-right: 0;
 	outline: 0;
 }
@@ -2419,13 +2409,13 @@ a.play-categories:hover {
 }
 
 .price-text .form-control {
-	height: 37px;
+	height: 35px;
 	border-radius: 0;
 	font-size: 16px;
 	color: #000;
 	margin-left: -6px;
 	box-shadow: 0 0 0 transparent;
-	border: 2px solid #000;
+	border: 1px solid #000;
 }
 
 .price-text ::-webkit-input-placeholder {
@@ -2451,7 +2441,7 @@ a.play-categories:hover {
 	font-size: 16px;
 	color: #000;
 	box-shadow: 0 0 0 transparent;
-	border: 2px solid #000;
+	border: 1px solid #000;
 }
 
 .sterio-link {
@@ -2459,25 +2449,527 @@ a.play-categories:hover {
 }
 
 
+/*
+ *
+ *  Play Page Step Two
+ *
+ */
 
 
+.article-head-collapse {
+	background: #dfdfdf;
+	border: 1px solid #C5C4C4;
+	font-size: 18px;
+	padding: 5px 15px;
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.collapse-sign {
+	float: right;
+}
+
+.collapse-sign:after {
+	font-size: 40px;
+	line-height: 14px;
+}
+
+.col-close:after {
+	content: "-";
+}
+
+.col-open:after {
+	content: "+";
+}
+
+.article-inner-title {
+	font-weight: 600;
+	display: table-cell;
+    vertical-align: middle;
+    padding: 10px 10px 10px 0;
+}
+
+.global-textbox {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	position: relative;
+	margin-bottom: 0;
+}
+
+.global-textbox .form-control {
+	height: 37px;
+	border-radius: 0;
+	font-size: 16px;
+	color: #000;
+	box-shadow: 0 0 0 transparent;
+	border: 1px solid #000;
+}
+
+.global-textbox ::-webkit-input-placeholder {
+   color: #000;
+}
+
+.global-textbox :-moz-placeholder { /* Firefox 18- */
+   color: #000;  
+}
+
+.global-textbox ::-moz-placeholder {  /* Firefox 19+ */
+   color: #000;  
+}
+
+.global-textbox :-ms-input-placeholder {  
+   color: #000;  
+}
+
+.global-textarea {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	margin-bottom: 0;
+}
+
+.global-textarea .form-control {
+	height: 80px;
+	border-radius: 0;
+	font-size: 16px;
+	color: #000;
+	resize: none;
+	box-shadow: 0 0 0 transparent;
+	border: 1px solid #000;
+}
+
+.inputchar-countwrap {
+	text-align: right;
+}
+
+.twitter-typeahead {
+	width: 49%;
+}
+
+.global-textbox > span.twitter-typeahead:first-child {
+	margin-right: 8px;
+}
+
+.tt-dropdown-menu {
+	background: rgb(255, 255, 255);
+	border: 1px solid #ccc9c9;
+	padding: 10px;
+	width: 100%;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    font-size: 16px;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: 600;
+    border-radius: 0;
+	border: 1px solid #000;
+	padding: 5px;
+	background: #ccc;
+
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    outline: none;
+    cursor: inherit;
+    display: block;
+}
+
+.file-info {
+	font-weight: 500;
+	display: table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+.location-wrapper {
+	margin-bottom: 20px;
+}
+
+.savewrapper {
+	padding: 0;
+	margin-top: 20px;
+}
+
+.fund-normal-fix {
+	padding: 15px;
+}
+
+.mediumpreview {
+	position: relative;
+}
+
+.fund-block-normal-fix {
+	height: 101px;
+}
+
+.fixedflexwrapper {
+	padding: 0;
+	margin-right: 60px;
+}
+
+.fixedflexwrapper p {
+	margin: 20px 0;
+}
+
+.fixedflexactivebutton {
+	border: 1px solid #df0909;
+	width: 60%;
+	display: inline-block;
+	font-weight: bold;
+	color: #FFFFFF;
+	border-radius: 0;
+	background: #f62b2b;
+}
+
+.fixedflexactivebutton:hover,
+.fixedflexactivebutton:active,
+.fixedflexactivebutton:focus {
+	border: 1px solid #3A3A3A;
+	background-color: #3c3c3c;	
+}
+
+.fixedflexbutton {
+	border: 1px solid #3A3A3A;
+	width: 60%;
+	display: inline-block;
+	font-weight: bold;
+	color: #FFFFFF;
+	border-radius: 0;
+	background: #3c3c3c;
+}
+
+.fixedflexbutton:hover, 
+.fixedflexbutton:active, 
+.fixedflexbutton:focus {
+	border:1px solid #b30808;
+	background-color: #e40a0a;
+}
+
+.orseparator {
+	font-size: 18px;
+	font-weight: 600;
+	padding: 7px 20px 7px 70px;
+}
+
+.fixedflexinfolist {
+	padding: 0;
+}
+
+.fixedflexinfolist li {
+	list-style: none;
+}
+
+.fixedflexinfolist li:before {
+	content: "\2023";
+	font-size: 28px;
+	line-height: 15px;
+	color: #e91e31;
+	position: relative;
+	top: 4px;
+	padding-right: 5px;
+}
+
+.checkbox {
+	padding-left: 0;
+}
+
+a.dp-choose-date {
+	position: absolute;
+	right: 7px;
+	top: 5px;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 5px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url('../img/calendar.png') no-repeat; 
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 100%;
+	float: left;
+}
+
+/* Date Picker */
+
+.date-pick {
+  padding: 5px 30px 5px 10px;
+  color: #333;
+  width: 65px;
+  outline: none;
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  border: 1px solid #E2E2E2;
+}
+
+.dp-choose-date {
+  display: none;
+}
+
+table.jCalendar {
+  width: 201px;
+  background: rgba(122, 122, 122, 0.77);
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+table.jCalendar th {
+  background: #333;
+  color: #fff;
+  font-weight: bold;
+  padding: 3px 5px;
+}
+
+table.jCalendar td {
+  background: #ccc;
+  color: #000;
+  padding: 3px 5px;
+  text-align: center;
+}
+table.jCalendar td.other-month {
+  background: #ddd;
+  color: #aaa;
+}
+table.jCalendar td.today {
+  background: #666;
+  color: #fff;
+}
+table.jCalendar td.selected {
+  background: #f66;
+  color: #fff;
+}
+table.jCalendar td.selected.dp-hover {
+  background: #f33;
+  color: #fff;
+}
+table.jCalendar td.dp-hover,
+table.jCalendar tr.activeWeekHover td {
+  background: #fff;
+  color: #000;
+}
+table.jCalendar tr.selectedWeek td {
+  background: #f66;
+  color: #fff;
+}
+table.jCalendar td.disabled, table.jCalendar td.disabled.dp-hover {
+  background: #bbb;
+  color: #888;
+}
+table.jCalendar td.unselectable,
+table.jCalendar td.unselectable:hover,
+table.jCalendar td.unselectable.dp-hover {
+  background: #bbb;
+  color: #888;
+}
+
+/* For the popup */
+
+/* NOTE - you will probably want to style a.dp-choose-date - see how I did it in demo.css */
+
+div.dp-popup {
+  position: relative;
+  background: rgba(236, 237, 238, 1);
+  border: 1px solid #D8D7D7;
+  font-size: 10px;
+  width: 201px;
+  line-height: 1.2em;
+}
+div#dp-popup {
+  position: absolute;
+  z-index: 199;
+}
+div.dp-popup h2 {
+  font-size: 12px;
+  text-align: center;
+  margin: 5px 0;
+  padding: 0;
+}
+a#dp-close {
+  font-size: 11px;
+  padding: 4px 0;
+  text-align: center;
+  display: block;
+}
+a#dp-close:hover {
+  text-decoration: underline;
+}
+div.dp-popup a {
+  color: #000;
+  text-decoration: none;
+  padding: 3px 2px 0;
+}
+div.dp-popup div.dp-nav-prev {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 100px;
+}
+div.dp-popup div.dp-nav-prev a {
+  float: left;
+}
+/* Opera needs the rules to be this specific otherwise it doesn't change the cursor back to pointer after you have disabled and re-enabled a link */
+div.dp-popup div.dp-nav-prev a, div.dp-popup div.dp-nav-next a {
+  cursor: pointer;
+}
+div.dp-popup div.dp-nav-prev a.disabled, div.dp-popup div.dp-nav-next a.disabled {
+  cursor: default;
+}
+div.dp-popup div.dp-nav-next {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  width: 100px;
+}
+div.dp-popup div.dp-nav-next a {
+  float: right;
+}
+div.dp-popup a.disabled {
+  cursor: default;
+  color: #aaa;
+}
+div.dp-popup td {
+  cursor: pointer;
+}
+div.dp-popup td.disabled {
+  cursor: default;
+}
+
+.pitchvideo {
+	width: 100%;
+	height: 230px;
+}
+
+.pitchstorytextarea {
+	resize: none;
+}
+
+.pitchtips {
+	margin: 25px 0;
+}
+
+.savemagin {
+	margin-right: 10px;
+}
+
+.radiolabel-inline {
+	padding-left: 0;
+	font-weight: 500;
+	vertical-align: top;
+}
+
+.pitchrewards-container .radio-inline {
+	padding-left: 30px;
+	vertical-align: top;
+}
+
+.pitchreward-info {
+	margin-top: 10px;
+}
+
+.rewardisclaimer-message {
+	border: 1px solid #000;
+	padding: 10px;
+}
+
+.rewardbuilder-wrapper {
+	background: #515151;
+	color: #fff;
+	padding: 15px;
+}
+
+.rewardbuilder-wrapper .form-control {
+	background: transparent;
+	box-shadow: 0 0 0 transparent;
+	border: 1px solid #fff;
+	color: #fff;
+}
+
+.rewardbuilder-wrapper textarea.form-control {
+	resize: none;
+	min-height: 150px;
+}
+
+.rewardbuilder-wrapper label {
+	font-weight: 400;
+	display: inline;
+	cursor: pointer;
+}
+
+.rewardbuilder-countheader {
+	margin: 0 0 20px 0;
+	font-weight: 800;
+}
+
+.form-horizontal {
+	border-right: 1px solid #fff;
+}
+
+.form-horizontal .control-label {
+	text-align: left;
+}
 
 
+.checkfix {
+	padding: 7px 15px;
+}
 
+.checkfix input[type=checkbox] {
+	float: left;
+	margin-right: 10px;
+}
 
+.reward-title {
+	margin: 0;
+}
 
+.rewardtype-catlist {
+	padding: 0;
+	list-style: none;
+}
 
+.rewardtype-catlist li {
+	margin: 5px 0;
+}
 
+.rewardtype-catlist li > a {
+	color: #fff;
+	display: block;
+	padding: 5px 8px;
+	background: #434343;
 
+}
 
+.rewardtype-catlist li > a:hover {
+	text-decoration: none;
+	color: #000;
+	background: #bcbcbc;
+}
 
-
-
-
-
-
-
-
+.remove-button {
+	float: right;
+	padding: 7px 0;
+	cursor: pointer;
+}
 
 
 
@@ -2525,9 +3017,9 @@ a.play-categories:hover {
 		z-index: -1;
 		
 	}
-        .nav-center{
-                margin-left: 5%;
-        }
+    .nav-center{
+            margin-left: 5%;
+    }
 	.brick .brickinner {
 	   -webkit-transition: none;
 	   -moz-transition: none;
@@ -2535,9 +3027,8 @@ a.play-categories:hover {
 	   -ms-transition: none;
 	   transition: none;
 	}
-        .brick .mask {
-	   background-color: #000;
-	   
+    .brick .mask {
+	   background-color: #000;	   
 	   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	   filter: alpha(opacity=0);
 	   opacity: 0;
@@ -2546,16 +3037,15 @@ a.play-categories:hover {
 	   -o-transition: none;
 	   -ms-transition: none;
 	   transition: none;
-
 	   -webkit-backface-visibility: hidden;
 	   -webkit-transform-style: preserve-3d;
 	}
 	.brickhover:hover .brickinner {
-		  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
-		   filter: alpha(opacity=100);
-		   opacity: 1;
-		   width: 100%;
-		}
+	  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	   filter: alpha(opacity=100);
+	   opacity: 1;
+	   width: 100%;
+	}
 	.brickhover:hover .mask {
    	   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	   filter: alpha(opacity=0);
@@ -2640,9 +3130,9 @@ a.play-categories:hover {
 		display: inline-block;
 		float: left;
 	}
-        .nav-center{
-                margin-left: 3%;
-        }
+    .nav-center{
+            margin-left: 3%;
+    }
 }
 
 @media (max-width: 976px ) { 

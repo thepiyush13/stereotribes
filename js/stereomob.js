@@ -88,19 +88,5 @@
          $(this).find('.maskheaderwrap').css('background-color', $(this).data('color'));
          $(this).find('.bordercut').css('border-left-color', $(this).data('color'));
      });
-     
-var width = $(window).width();
-  if (width < 1025){
-
-     $('.brickhover').on('click',function(){
-      $(this).toggleClass('brickclick');
-    });
-
-     $('.navbar-right').on('click',function(){
-      $('.home').toggleClass('fixed-body');
-    });
-
-  }
-
 
  });

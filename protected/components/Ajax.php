@@ -11,7 +11,7 @@ class Ajax {
     
     public static function success($data = true) {
         $res = array(
-            'error' => '',
+            'error' => 0,
             'data' => $data
         );
         self::send($res);
@@ -20,6 +20,7 @@ class Ajax {
     
     public static function send($response) {
          echo json_encode($response);
+         Yii::app()->end();
     }
 }
 

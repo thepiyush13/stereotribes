@@ -45,9 +45,10 @@ CREATE  TABLE IF NOT EXISTS `stereotribes`.`project` (
   `city` VARCHAR(100) NULL ,
   `flip_image_url` VARCHAR(100) NULL ,
   `short_url` VARCHAR(55) NULL ,
-  `category` INT NULL ,
+  `category` VARCHAR(55) NULL ,
   `goal` DECIMAL(10,0) NULL ,
   `currency` VARCHAR(45) NULL ,
+  `project_for` VARCHAR(15) NULL ,
   `funding_type` VARCHAR(45) NULL ,
   `days_run` INT NULL ,
   `end_date` DATE NULL ,
@@ -66,11 +67,11 @@ CREATE  TABLE IF NOT EXISTS `stereotribes`.`project` (
   INDEX `p_category` (`category` ASC) ,
   PRIMARY KEY (`id`) ,
   INDEX `up_ser_id` (`user_id` ASC) ,
-  CONSTRAINT `p_category`
-    FOREIGN KEY (`category` )
-    REFERENCES `stereotribes`.`category` (`category_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+--   CONSTRAINT `p_category`
+--     FOREIGN KEY (`category` )
+--     REFERENCES `stereotribes`.`category` (`category_id` )
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
   CONSTRAINT `up_ser_id`
     FOREIGN KEY (`user_id` )
     REFERENCES `stereotribes`.`user` (`id` )

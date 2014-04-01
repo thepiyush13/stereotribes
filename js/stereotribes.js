@@ -99,7 +99,7 @@
          $(this).find('.bordercut').css('border-left-color', $(this).data('color'));
      });
 
-// click event for touch devices
+	// click event for touch devices
   var width = $(window).width();
   if (width < 1025){
 
