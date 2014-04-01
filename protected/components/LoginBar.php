@@ -9,7 +9,7 @@ class LoginBar extends CWidget {
             $loginBar = <<< EOD
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img height="20"  src="$profilePic">
+                        <img height="20"  src=/adassets$profilePic>
                         <span class="username">{$user->name}</span>
                         <b class="caret"></b>
                     </a>

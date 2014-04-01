@@ -19,7 +19,8 @@ class UserIdentity extends CUserIdentity {
 
     //private $roles;
     public function authenticate() {
-        $user = User::model()->findByAttributes(array('email' => $this->username));
+        $user = AppUser::model()->findByAttributes(array('email' => $this->username));
+        
         //$user->roles = array('sales', 'admin');
         //echo '<pre>'.print_r($user, 1);exit;
         if ($user === null)
@@ -27,11 +28,10 @@ class UserIdentity extends CUserIdentity {
         else if ($user->password !== md5($this->password))
             $this->errorCode = self::ERROR_PASSWORD_INVALID;
         else {
-            $u = new User();
-            $this->_id = $user->userid;
+            $this->_id = $user->id;
             $this->setState('name', $user->email);
             $this->setState('roles', array(
-                'admin' => $u->getRoleInModule($user->userid, 'admin')
+                'normal' => "normal"
             ));
 
 //                $this->setState('rolestest', array(

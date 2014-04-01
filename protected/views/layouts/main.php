@@ -35,7 +35,7 @@
 
   </head>
 
-  <body class="home">
+  <body>
 	
   	<!-- ==================== Main Navigation ====================== -->
 
@@ -198,7 +198,7 @@
 	</nav>
 
 
-	<!-- ==================== Video Section ====================== -->
+<!--	 ==================== Video Section ====================== 
 
 	
     <video id="bgvid" autoplay loop preload="none" poster="/img/video-poster.jpg" data-setup="{}">
@@ -212,7 +212,7 @@
 
 	<div class="main-wrapper">
 
-		<!-- ==================== Secondary Navigation ====================== -->
+		 ==================== Secondary Navigation ====================== 
 
 	    <nav id="secondary-nav" class="secondary-nav" role="navigation">
 
@@ -231,9 +231,9 @@
 
 				</div>   
 
-			</div>
+			</div>-->
 
-		</nav>
+		<!--</nav>-->
             
                      
             <?php echo $content ?>

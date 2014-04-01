@@ -44,11 +44,12 @@ class User extends CActiveRecord {
     }
 
     public function getRoleInModule($userId, $module = 'admin') {
-        $user = Yii::app()->db->createCommand()->select('role')
-                ->from($module . '_users')
-                ->where('userid = ' . $userId . ' AND has_access=1')
-                ->queryRow();
-        return $user;
+//        $user = Yii::app()->db->createCommand()->select('role')
+//                ->from($module . '_users')
+//                ->where('userid = ' . $userId . ' AND has_access=1')
+//                ->queryRow();
+//        die(print_r($user)); 
+        return $user=1;
     }
 
     public function addUserInModules($userId, $moduleUsersTablePrefix, $role, $hasAccess = 0) {

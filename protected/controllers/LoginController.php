@@ -18,8 +18,11 @@ class LoginController extends Controller {
             $model->attributes = $_POST;
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login()) {
-
+                
                 $roles = Yii::app()->user->getState('roles');
+                if($roles['normal'] == "normal"){
+                    $this->redirect('/');
+                }
                 $modules = array('admin');
                 foreach ($modules as $module) {
                     if ($roles[$module]['role']) {
@@ -78,7 +81,7 @@ class LoginController extends Controller {
      */
     public function actionLogin() {
         $model = new LoginForm;
-
+        
         // collect user input data
         if (Yii::app()->request->isPostRequest) {
 
@@ -95,13 +98,13 @@ class LoginController extends Controller {
      * Login using facebook account
      */
     public function actionFacebook() {
-        $userModel = new User();
+        $userModel = new AppUser();
         $facebook = new Facebook(
                 array(
                     'appId' => Yii::app()->params->FB['APPID'],
                     'secret' => Yii::app()->params->FB['SECRET'],//"44aa19757944ba566e1f01c7d8bbca71",
                 ));
-
+        
         // Get User ID
         $user = $facebook->getUser();
         if ($user) {

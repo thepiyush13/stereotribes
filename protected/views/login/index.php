@@ -2,7 +2,7 @@
 <div class="container">
 
     <form class="form-signin" action="/login" method="POST">
-        <h2 class="form-signin-heading">READFIEND<!--img src="/img/site/logo.png"--></h2>
+        <h2 class="form-signin-heading">STEREOSTRIBES<!--img src="/img/site/logo.png"--></h2>
         <div class="login-wrap">
             <span class="login-error"><?php if (isset($error['password'])) echo $error['password'][0]; ?></span>
             <input type="text" class="form-control" placeholder="User ID" autofocus name="username">
@@ -18,7 +18,7 @@
 
             <div class="registration">
                 Don't have an account yet?
-                <a class="" href="#">
+                <a class="" href="appUser/create">
                     Create an account
                 </a>
             </div>
