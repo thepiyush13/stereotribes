@@ -19,7 +19,7 @@ class Ajax {
     
     
     public static function send($response) {
-         echo json_encode($response);
+         echo json_encode($response, 1);
          Yii::app()->end();
     }
 }

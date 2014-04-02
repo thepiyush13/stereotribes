@@ -2,6 +2,7 @@ Campaign = {
     
     flipImageIframeLoad : function () {
         var response = jQuery('#flipImageUploadIframe').contents().find("body").text();
+        if (!response) return;
     
         try {
             var json = jQuery.parseJSON(response);
@@ -16,5 +17,9 @@ Campaign = {
     
         jQuery('#flipImage').attr('src', json.data.picUrl);
     
-    }
+    },
+    
+    awsomeCampaignIframeLoad : function() {
+        
+    } 
 }

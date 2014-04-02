@@ -1,48 +1,21 @@
-/*
-angular.module('angular-client-side-auth')
-.factory('Auth', function($http, $rootScope, $cookieStore){
+var app = angular.module('app');
 
-    // ...
-
-    $rootScope.accessLevels = accessLevels;
-    $rootScope.userRoles = userRoles;
-
+app.factory('Utils', function($q) {
     return {
-        authorize: function(accessLevel, role) {
-            if(role === undefined)
-                role = $rootScope.user.role;
-            return accessLevel &amp; role;
-        },
-
-        isLoggedIn: function(user) {
-            if(user === undefined)
-                user = $rootScope.user;
-            return user.role === userRoles.user || user.role === userRoles.admin;
-        },
-
-        register: function(user, success, error) {
-            $http.post('/register', user).success(success).error(error);
-        },
-
-        login: function(user, success, error) {
-            $http.post('/login', user).success(function(user){
-                $rootScope.user = user;
-                success(user);
-            }).error(error);
-        },
-
-        logout: function(success, error) {
-            $http.post('/logout').success(function(){
-                $rootScope.user = {
-                    username : '',
-                    role : userRoles.public
-                };
-                success();
-            }).error(error);
-        },
-
-        accessLevels: accessLevels,
-        userRoles: userRoles
+        isImage: function(src) {
+        
+            var deferred = $q.defer();
+        
+            var image = new Image();
+            image.onerror = function() {
+                deferred.resolve(false);
+            };
+            image.onload = function() {
+                deferred.resolve(true);
+            };
+            image.src = src;
+        
+            return deferred.promise;
+        }
     };
 });
-*/

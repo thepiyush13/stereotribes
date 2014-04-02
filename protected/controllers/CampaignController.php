@@ -36,6 +36,7 @@ class CampaignController extends Controller {
         //valid end points to call
         $methodList = array(
             'campaign.getStep1',
+            'campaign.getStep2',
             'campaign.create',
             'campaign.designFlip',
             'campaign.fundTarget',
@@ -65,7 +66,8 @@ class CampaignController extends Controller {
 
     public function actionUpload() {
         $methodList = array(
-            'campaign.uploadFlipImage'
+            'campaign.uploadFlipImage',
+            'campaign.uploadAwesomeCampaignImage',
         );
 
         $result = '';

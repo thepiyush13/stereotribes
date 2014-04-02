@@ -5,5 +5,4 @@ class Link {
     private $url;
     private $type;
     private $campaign_id;
-    
 }

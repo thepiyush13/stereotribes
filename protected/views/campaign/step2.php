@@ -3,7 +3,7 @@
     <div class="row" ng-controller="step2Ctrl"> <!-- Do not modify this div -->
 
         <!-- steps come here -->
-        <?php $this->widget('application.components.CampaignSteps');?>
+        <?php $this->widget('application.components.CampaignSteps'); ?>
 
         <section class="block-wrapper  col-md-12">
 
@@ -89,7 +89,8 @@
                                     <input type="submit">
                                     <div class="ajax-loader"></div>
                                 </form>
-                                <iframe  class="flipImageUploadIframe" name="flipImageUploadIframe" id="flipImageUploadIframe" scrolling="yes" style="display: none;"></iframe>
+                                <iframe  onload ="Campaign.flipImageIframeLoad()" class="flipImageUploadIframe" name="flipImageUploadIframe" id="flipImageUploadIframe" scrolling="yes" style="display: none;"></iframe>
+<!--                                <iframe  class="flipImageUploadIframe" name="flipImageUploadIframe" id="flipImageUploadIframe" scrolling="yes" style="display: none;"></iframe>-->
                                 <!-- flip image upload ends -->
                                 <span class="btn btn-default btn-file">
                                     + Add Image <input type="file">
@@ -214,7 +215,6 @@
                     </div>	                       
 
                 </div>
-                {{ designFlipBox }}
 
             </div>
 
@@ -222,7 +222,7 @@
 
         </section>
 
-        <section class="block-wrapper col-md-12" ng-controller="goalSettingsCtrl"> <!-- THE MONEY STUFF -->
+        <section class="block-wrapper col-md-12"> <!-- THE MONEY STUFF -->
 
             <!-- Form for The money stuff form Starts here -->
 
@@ -245,8 +245,8 @@
                                     <p>One of the most important decision about your campaign is what to set your target at. The min is $500. The most successfull campaigns are between $5000 - $10000.</p>
                                     <pre>
                                     </pre>
-                                    <select class="price-dropdown" ng-model="currency">
-                                        <option ng-repeat="c in currencies" value="0">{{c.symbol}} {{c.code}}</option>
+                                    <select class="price-dropdown" ng-model="goalSetting.currency">
+                                        <option ng-repeat="c in config.currencies" value="0">{{c.symbol}} {{c.code}}</option>
                                     </select> 
 
                                     <div class="form-group price-text">
@@ -381,7 +381,7 @@
 
         <section class="block-wrapper  col-md-12"> 
 
-            <form class="form-buildcampaign" action="action"> 
+            
 
                 <h3 class="article-head-collapse">Let's build your awesome campaign <span class="collapse-sign col-close"></span></h3>
 
@@ -400,32 +400,21 @@
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>
                                         <a href="#"><b><span class="red-highlight">TIP:</span> Top ten tips to make a pitch video</b></a></p>
 
-                                    <select class="price-dropdown">
-                                        <option value="0">Select</option>
-                                        <option value="1">$600</option>
-                                        <option value="2">$600</option>
-                                        <option value="3">$600</option>
-                                        <option value="4">$600</option>
-                                        <option value="5">$600</option>
-                                    </select> 
-
-                                    <div class="form-group price-text">
-                                        <input type="text" class="form-control" id="price" placeholder="Price">
-                                    </div>
 
                                 </div><!-- /.target-wrapper -->
 
                                 <div class="pitchvideo-wrapper row">
+                                    {{aweSomeCampaign}}
 
                                     <div class="col-md-6">
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="radio" name="optionsRadios" id="radio_campaign_payment_date" value=""> Add a video link (Youtube or Vimeo)
+                                                <input type="radio" ng-model="aweSomeCampaign.videoOrImage" name="optionsVideoOrImage" id="radio_campaign_payment_date" value="video"> Add a video link (Youtube or Vimeo)
                                             </label>
                                         </div>
                                         <div class="form-group global-textbox">
-                                            <input type="text" class="form-control" id="video-url" placeholder="Video URL">
+                                            <input type="text" class="form-control" id="video-url" placeholder="Video URL" ng-model="aweSomeCampaign.videoUrl" ng-disabled="aweSomeCampaign.videoOrImage =='image'" ng-focus="aweSomeCampaign.hasFocus=true" ng-blur="getYoutubeVideoId(aweSomeCampaign.videoUrl)">
                                         </div>
 
                                     </div>
@@ -434,13 +423,22 @@
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="radio" name="optionsRadios" id="radio_campaign_payment_date" value=""> Add image
+                                                <input type="radio" ng-model="aweSomeCampaign.videoOrImage" name="optionsVideoOrImage" id="radio_campaign_payment_date" value="image"> Add image
                                             </label>
                                         </div>
-                                        <div class="form-group global-textbox">
-                                            <span class="btn btn-default btn-file">
-                                                + Add Image <input type="file">
-                                            </span>
+                                        <div class="form-group global-textbox" >
+
+                                            <form method="POST" action="/campaign/upload" name="awesomeImageUploadForm" target="awesomeImageUploadIframe" enctype="multipart/form-data">
+                                                <span class="btn btn-default btn-file" ng-disabled="aweSomeCampaign.videoOrImage =='video'">
+                                                    + Add Image <input type="file" name="awesomeCampaignImage" multiple="multiple" /><input type="submit">
+                                                </span>
+                                                <input type="hidden" name="canpaignId" value="<?php echo $_GET['id']?>" />
+                                                <input type="hidden" name="method" value ="campaign.uploadAwesomeCampaignImage" />
+                                                
+                                                <div class="ajax-loader"></div>
+                                            </form>
+                                            <iframe  onload ="Campaign.awsomeCampaignIframeLoad()" name="awesomeImageUploadIframe" id="awesomeImageUploadIframe" scrolling="yes" style="display: none;"></iframe>
+
 
                                             <span class="file-info">PNG, JPG or GIF 960x640 pixels</span>
                                         </div>
@@ -453,7 +451,7 @@
 
                             <div class="col-md-4"><!-- Right side pitchvideo wrapper enstartsds -->
 
-                                <iframe class="pitchvideo" src="//www.youtube.com/embed/8SbUC-UaAxE?rel=0" frameborder="0" allowfullscreen=""></iframe>
+                                <iframe class="pitchvideo" src="{{aweSomeCampaign.newVideoUrl}}" frameborder="0" allowfullscreen=""></iframe>
 
                             </div><!-- Right side pitchvideo wrapper ends -->
 
@@ -496,7 +494,6 @@
 
                 </div>
 
-            </form>
 
         </section>
 
@@ -571,99 +568,94 @@
                         </div>
 
                     </div><!-- Whole Pitch Reward Builder Info Wrapper Ends -->
-                    <ul ng-controller="rewardCtrl">
-                        {{list}}
-                        <li ng-repeat="(index, reward) in list">
 
-                            <div class="col-md-12 rewarbuilder-container"><!-- Whole Pitch Reward Builder Wrapper Starts -->		                 
+                    <div class="col-md-12 rewarbuilder-container" ng-repeat="(index, reward) in reward.list"><!-- Whole Pitch Reward Builder Wrapper Starts -->		                 
 
-                                <div class="col-md-8 rewardbuilder-wrapper">
+                        <div class="col-md-8 rewardbuilder-wrapper">
 
-                                    <h3 class="rewardbuilder-countheader">Reward One</h3>
+                            <h3 class="rewardbuilder-countheader">Reward One</h3>
 
-                                    <div class="row">
+                            <div class="row">
 
-                                        <div class="col-md-8 form-horizontal">
+                                <div class="col-md-8 form-horizontal">
 
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-4 control-label">Fund Amount GBP</label>
-                                                <div class="col-sm-8">
-                                                    <input name="fundAmount" ng-model="reward.fundAmount" type="text" class="form-control" id="inputEmail3">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-4 control-label">Reward Name</label>
-                                                <div class="col-sm-8">
-                                                    <input name="rewardName" ng-model="reward.rewardName" type="text" class="form-control" id="inputEmail3">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-4 control-label">Number Available</label>
-                                                <div class="col-sm-8">
-                                                    <input name="numberAvailable" ng-model="reward.numberAvailable" type="text" class="form-control" id="inputEmail3">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-4 control-label">Estimated Delivery</label>
-                                                <div class="col-sm-8">
-                                                    <div class="global-textbox">
-                                                        <input name="date1" ng-model="reward.estimatedDeliveryDate"  id="date-picker" class="date-pick form-control" placeholder="Date" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-12 control-label">Description focus on value</label>
-                                                <div class="col-sm-12">
-                                                    <textarea name="description" ng-model="reward.description" class="form-control" id="inputPassword3"></textarea>
-                                                    <div class="inputchar-countwrap"><span class="inputcount">0</span>/180</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-sm-12 checkfix">
-                                                    <label>
-                                                        <input name="addressRequired" ng-model="reward.addressRequired" type="checkbox">Funders shipping address are required 
-                                                    </label>
-                                                </div>
-                                            </div>									
-
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-4 control-label">Fund Amount GBP</label>
+                                        <div class="col-sm-8">
+                                            <input name="fundAmount" ng-model="reward.fundAmount" type="text" class="form-control" id="inputEmail3">
                                         </div>
-
-                                        <div class="col-md-4">
-
-                                            <h4 class="reward-title">Your reward builder</h4>
-                                            <span>(Click one or more)</span>
-
-                                            <ul class="rewardtype-catlist">
-                                                <li ng-repeat="type in rewardTypes"><a ng-click="getSelectedCategory(index, type.id)">{{type.name}}</a></li>
-                                            </ul>
-
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-default">Save</button>
-                                            <span class="remove-button" ng-click="removeReward(index)">Remove reward</span>
-                                        </div>
-
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-4 control-label">Reward Name</label>
+                                        <div class="col-sm-8">
+                                            <input name="rewardName" ng-model="reward.rewardName" type="text" class="form-control" id="inputEmail3">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-4 control-label">Number Available</label>
+                                        <div class="col-sm-8">
+                                            <input name="numberAvailable" ng-model="reward.numberAvailable" type="text" class="form-control" id="inputEmail3">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-4 control-label">Estimated Delivery</label>
+                                        <div class="col-sm-8">
+                                            <div class="global-textbox">
+                                                <input name="date1" ng-model="reward.estimatedDeliveryDate"  id="date-picker" class="form-control" placeholder="Date" datepicker/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-12 control-label">Description focus on value</label>
+                                        <div class="col-sm-12">
+                                            <textarea name="description" ng-model="reward.description" class="form-control" id="inputPassword3"></textarea>
+                                            <div class="inputchar-countwrap"><span class="inputcount">{{charCount(reward.description)}}</span>/180</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12 checkfix">
+                                            <label>
+                                                <input name="addressRequired" ng-model="reward.addressRequired" type="checkbox">Funders shipping address are required 
+                                            </label>
+                                        </div>
+                                    </div>									
 
                                 </div>
 
                                 <div class="col-md-4">
 
+                                    <h4 class="reward-title">Your reward builder</h4>
+                                    <span>(Click one or more)</span>
 
+                                    <ul class="rewardtype-catlist">
+                                        <li ng-repeat="type in config.rewardTypes"><a ng-click="getSelectedRewardCategory(index, type.id)">{{type.name}}</a></li>
+                                    </ul>
 
                                 </div>
 
-                            </div><!-- Whole Pitch Reward Builder Wrapper Ends -->
-                        </li>
-                        <input type="button" ng-click="addReward()" value="Add">
-                    </ul>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-default">Save</button>
+                                    <span class="remove-button" ng-click="removeReward(index)">Remove reward</span>
+                                </div>
 
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+
+
+                        </div>
+
+                    </div><!-- Whole Pitch Reward Builder Wrapper Ends -->
+                    <input type="button" ng-click="addReward()" value="Add">
+                    {{reward}}
 
 
                 </div>

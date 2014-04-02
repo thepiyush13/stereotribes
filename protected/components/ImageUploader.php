@@ -5,7 +5,7 @@
  */
 class ImageUploader {
 
-    const MAX_IMAGE_SIZE = 2048576 ;
+    const MAX_IMAGE_SIZE = 2048576;
     const MIN_IMAGE_SIZE = 1;
     const DEFAULT_TARGET_PATH = 'campaign/';
     const DEFAULT_RELATIVE_PATH = '/uploads/';
@@ -36,7 +36,6 @@ class ImageUploader {
                 }
             }
         }
-        
     }
 
     public function setTargetPath($path) {
@@ -44,7 +43,7 @@ class ImageUploader {
     }
 
     public function init() {
-        $this->baseUploadPath = yii::app()->basePath .'/../uploads/';
+        $this->baseUploadPath = yii::app()->basePath . '/../uploads/';
         $this->maxSize = self::MAX_IMAGE_SIZE;
         $this->minSize = self::MIN_IMAGE_SIZE;
         $this->targetPath = self::DEFAULT_TARGET_PATH;
@@ -96,23 +95,24 @@ class ImageUploader {
         } else {
             $this->error = "Error";
         }
-        if($this->error) {
+        if ($this->error) {
             return false;
         }
         return true;
     }
-    
-    /** 
+
+    /**
      * return image path
      * 
      */
-    
     public function getImagePath() {
-        return  self::DEFAULT_RELATIVE_PATH . $this->targetPath . $this->name;
+        return self::DEFAULT_RELATIVE_PATH . $this->targetPath . $this->name;
     }
-    
+
     public function getError() {
         return $this->error;
     }
+
+    
 
 }

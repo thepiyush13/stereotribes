@@ -2,50 +2,56 @@
 
 class Campaign extends CFormModel {
 
-    private $id;
-    private $title;
-    private $shortSummary;
-    private $country;
-    private $city;
-    private $flipImageUrl;
-    private $shortUrl;
-    private $category;
-    private $goal;
-    private $currency;
-    private $projectFor;
-    private $fundingType;
-    private $daysRun;
-    private $endDate;
-    private $paymentDate;
-    private $mediaType;
-    private $videoUrl;
-    private $imageUrl;
-    private $pitchStory;
-    private $mainLink;
-    private $thankyouMediaType;
-    private $thankyouMediaUrl;
-    private $campaignUrl;
-    private $status;
-    private $socialAmplifierStatus;
+    public $id;
+    public $title;
+    public $shortSummary;
+    public $country;
+    public $city;
+    public $flipImageUrl;
+    public $shortUrl;
+    public $category;
+    public $goal;
+    public $currency;
+    public $projectFor;
+    public $fundingType;
+    public $daysRun;
+    public $endDate;
+    public $paymentDate;
+    public $mediaType;
+    public $videoUrl;
+    public $imageUrl;
+    public $pitchStory;
+    public $mainLink;
+    public $thankyouMediaType;
+    public $thankyouMediaUrl;
+    public $campaignUrl;
+    public $status;
+    public $socialAmplifierStatus;
+    public $userId;
+
+    /**
+     * instace 
+     */
+    public static $_instance;
 
     /**
      * User object (campaign owner)
      */
-    private $user;
+    public $user;
 
     /**
      * Stores rewards
      * 
      * @var array of Reward objects 
      */
-    private $rewards;
+    public $rewards;
 
     /**
      * External Links 
      * 
      * @var array of Links object
      */
-    private $links;
+    public $links;
 
     /**
      * Tribes associated with the campaigns
@@ -53,7 +59,15 @@ class Campaign extends CFormModel {
      * @var array of Tribe object
      *  
      */
-    private $tribes;
+    public $mediaLinks;
+
+    /**
+     * Media links associated with the campaigns
+     * 
+     * @var array of MediaLink object
+     *  
+     */
+    public $tribes;
 
     /**
      * Social amplifiers based on target
@@ -61,10 +75,84 @@ class Campaign extends CFormModel {
      * @var array of SocialAmplifier object
      *  
      */
-    private $socialAmplifers;
+    public $socialAmplifers;
 
-    public function __construct() {
-        ;
+    public function __construct($id = null) {
+        if (!$id)
+            return null;
+        $this->id = $id;
+        $this->fetchCampaignAttributes();
+        $this->fetchRewards();
+//        $this->fetchUser();
+//        $this->feetchLinkds();
+//        $this->fetchTribes();
+//        $this->SocialAmplifers();
+    }
+
+    /**
+     * fetch Campaign
+     */
+    public function fetchCampaignAttributes() {
+        $attributes = array('title', 'shortSummary', 'country', 'city', 'flipImageUrl', 'shortUrl', 'category', 'goal', 'currency', 'projectFor', 'fundingType', 'daysRun', 'endDate', 'paymentDate', 'mediaType', 'videoUrl', 'imageUrl', 'pitchStory', 'mainLink', 'thankyouMediaType', 'thankyouMediaUrl', 'campaignUrl', 'status', 'socialAmplifierStatus', 'userId');
+        $sql = "SELECT * FROM project where id = :CAMPAIGN_ID";
+        $bindValues = array(':CAMPAIGN_ID' => $this->id);
+        $result = $this->fetch($sql, $bindValues, 'queryRow');
+        $map = $this->mapAttrsKey($attributes);
+        $this->exchangeData($result, $map);
+    }
+
+    public function fetchRewards() {
+        $attributesRewards = array('id', 'serial', 'name', 'fundAmount', 'available', 'estimatedDelivery', 'description', 'fundersShippingAddressRequired', 'hasDisclaimer', 'projectId');
+        
+        $sql = "SELECT * FROM reward where project_id = :CAMPAIGN_ID";
+        $bindValues = array(':CAMPAIGN_ID' => $this->id);
+        $result = $this->fetch($sql, $bindValues);
+        
+        $map = $this->mapAttrsKey($attributesRewards);
+        $this->exchangeDataArray($result, $map, 'rewards', 'Reward');
+    }
+
+    public function fetchUser() {
+        $sql = "SELECT * user where id = :USER_ID";
+        $bindValues = array(':USER_ID' => $this->userId);
+        $result = $this->fetch($sql, $bindValues, 'queryOne');
+    }
+
+    public function feetchLinkds() {
+        $q = "SELECT * FROM links where project_id = :CAMPAIGN_ID";
+        $bindValues = array(':CAMPAIGN_ID' => $this->id);
+        $result = $this->fetch($sql, $bindValues);
+    }
+
+    public function fetchTribes() {
+        $sql = "SELECT * FROM tribes where project_id = :CAMPAIGN_ID";
+        $bindValues = array(':CAMPAIGN_ID' => $this->id);
+        $result = $this->fetch($sql, $bindValues);
+    }
+
+    public function SocialAmplifers() {
+        
+    }
+
+    public function fetch($sql = '', $bindValues, $method = 'queryAll') {
+        if (!$sql)
+            return null;
+        return Yii::app()->db
+                        ->createCommand($sql)
+                        ->bindValues($bindValues)
+                        ->{$method}();
+    }
+
+    /**
+     * Returns Singleton instance
+     * @return Camaign
+     */
+    public static function instance($id) {
+        if (!isset(self::$_instance)) {
+            self::$_instance = new self($id);
+        }
+
+        return self::$_instance;
     }
 
     private function getConfig() {
@@ -77,15 +165,62 @@ class Campaign extends CFormModel {
     }
 
     /**
+     * function to map attributes and keys
+     * @param type $attributes 
+     */
+    public function mapAttrsKey($attributes) {
+        $_map = array();
+        foreach ($attributes as $attrib) {
+            $_map[$attrib] = Utils::fromCamelCase($attrib);
+        }
+        return $_map;
+    }
+
+    /**
+     * map data with class attribute
+     * @param type $data
+     * @param type $map 
+     */
+    public function exchangeData($dataRow, $map) {
+        if (!is_array($dataRow))
+            return;
+        
+        foreach ($map as $attr => $key) {
+            $this->$attr = isset($dataRow[$key]) ? $dataRow[$key] : '';
+        }
+    }
+
+    /**
+     * very specific to campaing
+     * @param type $data
+     * @param type $map
+     * @param type $property
+     * @param type $class
+     * @return type 
+     */
+    public function exchangeDataArray($data, $map, $property, $class) {
+        if (!is_array($data))
+            return;
+        foreach ($data as $row) {
+            $o = new $class;
+            foreach ($map as $attr => $key) {
+                $o->$attr = isset($row[$key]) ? $row[$key] : '';
+            }
+            $this->{$property}[] = $o;
+        }
+        
+    }
+
+    /**
      * Step 1 
      */
     public function getStep1() {
         //if requested with id fetch from database
-        if(isset($_GET['id']) && $_GET['id']) {
-            
+        if (isset($_GET['id']) && $_GET['id']) {
+            $campaign = self::instance();
         }
-        
-        
+
+
         $result = array(
             'config' => $this->getConfig(),
             'user' => '',
@@ -98,11 +233,18 @@ class Campaign extends CFormModel {
      * Step 2 
      */
     public function getStep2() {
+        //if requested with id fetch from database
+        if (isset($_POST['data']['campaignId']) && $_POST['data']['campaignId']) {
+            $campaign = self::instance($_POST['data']['campaignId']);
+        }
+
+
         $result = array(
             'config' => $this->getConfig(),
             'user' => '',
-            'data' => ''
+            'data' => $campaign
         );
+        
         Ajax::success($result);
     }
 
@@ -169,6 +311,18 @@ class Campaign extends CFormModel {
             'name' => 'flip_' . $_POST['campaignId'] . md5(rand(1, 1000))
         );
         $uploadedImage = CUploadedFile::getInstanceByName('flipImage');
+        $this->uploadImage($uploadedImage, $options);
+    }
+
+    public function uploadAwesomeCampaignImage() {
+        $options = array(
+            'name' => 'campaign_' . $_POST['campaignId'] . md5(rand(1, 1000))
+        );
+        $uploadedImage = CUploadedFile::getInstanceByName('awesomeCampaignImage');
+        $this->uploadImage($uploadedImage, $options);
+    }
+
+    public function uploadImage($uploadedImage, $options) {
         $uploader = new ImageUploader($uploadedImage, $options);
         if ($uploader->process()) {
             $uploader->getImagePath();
