@@ -4,7 +4,7 @@
  * @author Kalpit Pandit <kalpit@inkoniq.com>
  */
 
-class AppUserController extends Controller
+class AppuserController extends Controller
 {
 	public $layout='//layouts/column2';
 
