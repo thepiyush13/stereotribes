@@ -117,9 +117,7 @@ class LoginController extends Controller {
 
                 $model = new LoginForm();
                 $model->username = $user_profile['email'];
-
                 if ($model->loginByFacebook()) {
-
 //                    $roles = Yii::app()->user->getState('roles');
 //                    $modules = array('admin');
 //                    foreach ($modules as $module) {
@@ -183,7 +181,7 @@ class LoginController extends Controller {
         if($facebook->getUser()) {
             //$facebook->destroySession();
             //echo $facebook->getLogoutUrl();
-            $this->redirect($facebook->getLogoutUrl(array('next' => 'http://rf.jumpcatch.com/login/systemLogout/')));
+            $this->redirect($facebook->getLogoutUrl(array('next' => 'http://stereotribes.jumpcatch.com/login/systemLogout/')));
         }
     }
 

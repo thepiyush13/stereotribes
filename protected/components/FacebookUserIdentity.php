@@ -23,14 +23,15 @@ class FacebookUserIdentity extends CBaseUserIdentity {
     public function authenticate() {
         
         $u = new User();
-        $user = User::model()->findByAttributes(array('email' => $this->username));
+        $user = AppUser::model()->findByAttributes(array('email' => $this->username));
         if ($user == null) {
             $this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
         } else {
-            $this->_id = $user->userid;
+            $this->_id = $user->id;
             $this->setState('name', $user->email);
             $this->setState('roles', array(
-                'admin' => $u->getRoleInModule($user->userid, 'admin')
+//                'admin' => $u->getRoleInModule($user->userid, 'admin')
+                'normal' => 'normal'
             ));
             $this->setState('details', $user);
             $this->errorCode = self::ERROR_NONE;

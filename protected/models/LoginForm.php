@@ -70,7 +70,7 @@ class LoginForm extends CFormModel
 		{
 			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
                         $timestamp= new CDbExpression('NOW()');
-                        AppUser::model()->updateByPk($this->_identity->id, array('last_login' =>$timestamp));
+                        AppUser::model()->updateByPk($this->_identity->id, array('last_login' =>$timestamp, 'login_type' => 'System'));
 			Yii::app()->user->login($this->_identity,$duration);
 			return true;
 		}
@@ -89,6 +89,8 @@ class LoginForm extends CFormModel
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
 			Yii::app()->user->login($this->_identity);
+                        $timestamp= new CDbExpression('NOW()');
+                        AppUser::model()->updateByPk($this->_identity->id, array('last_login' =>$timestamp, 'login_type' => 'Facebook'));
 			return true;
 		}
 		else

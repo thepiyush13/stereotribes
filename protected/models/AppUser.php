@@ -16,22 +16,12 @@ class AppUser extends CActiveRecord
         
         public function add($params = array()) 
         {
-            $transaction = $this->dbConnection->beginTransaction();
-            try 
-            {
-                $this->fbId = $params['id'];
-                $this->location = serialize($params['location']);
-                $this->email = $params['email'];
-                $this->name = $params['name'];
-                $this->save();
-                $transaction->commit();
+            $data['fbid'] = $params['id'];
+            $data['email'] = $params['email'];
+            $data['name'] = $params['name'];
+            $this->attributes = $data;
+            $this->save(false);
             } 
-            catch (Exception $e) 
-            {
-                $transaction->rollback();
-                throw $e;
-            }
-        }
 
     protected function afterValidate()
         {
