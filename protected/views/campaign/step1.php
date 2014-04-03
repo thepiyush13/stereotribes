@@ -24,12 +24,12 @@
         <form class="form-one" action="action" ng-controller="CampaignCreateCtrl">  
 
             <section class="block-wrapper  col-md-12">
-
                 <h3 class="article-head">CHOOSE YOUR MUSIC+ CATEGORY</h3>
 
                 <div class="row">
 
                     <div class="col-md-9">
+                        <div class="cat-wrap col-md-12"><span class="play-categories musicplus-red">Music+</span></div>
                         <div class="cat-wrap col-md-6" ng-repeat="c in config.categories"><span ng-click="selectCategory(c.id)" class="play-categories {{c.class}}">{{c.name}}</span></div>
 <!--                    <div class="cat-wrap col-md-12"><span class="play-categories musicplus-red">Music+</span></div>
                         <div class="cat-wrap col-md-6"><a class="play-categories color-arts" href="#">Arts</a></div>
@@ -71,11 +71,11 @@
                     <div class="col-md-9">
 
                         <select class="price-dropdown" ng-model="createCampaign.currency">
-                            <option ng-repeat="c in config.currencies">{{c.symbol}} {{c.code}}</option>
+                            <option ng-repeat="c in config.currencies" value="{{c.id}}">{{c.symbol}} {{c.code}}</option>
                         </select>  
 
                         <div class="form-group price-text">
-                            <input ng-model="createCampaign.goal" type="number" class="form-control" id="price" placeholder="Price">
+                            <input ng-model="createCampaign.goal" type="text" class="form-control" id="price" placeholder="Price">
                         </div>
 
                     </div>

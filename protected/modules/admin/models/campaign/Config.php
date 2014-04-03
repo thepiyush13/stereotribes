@@ -5,7 +5,7 @@ class Config {
     
     public static function getCategories() {
         return array(
-            array('id' => 'musicplus', 'name' => 'Music+', 'iconUrl' => '', 'class' => 'musicplus-red', 'colorCode' => ''),
+            //array('id' => 'musicplus', 'name' => 'Music+', 'iconUrl' => '', 'class' => 'musicplus-red', 'colorCode' => ''),
             array('id' => 'arts', 'name' => 'Arts', 'iconUrl' => '', 'class' => 'color-arts', 'colorCode' => ''),
             array('id' => 'technology', 'name' => 'Technology', 'iconUrl' => '', 'class' => 'color-technology', 'colorCode' => ''),
             array('id' => 'research', 'name' => 'Research', 'iconUrl' => '', 'class' => 'color-research', 'colorCode' => ''),

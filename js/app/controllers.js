@@ -2,13 +2,16 @@ angular.module('app')
 
     .controller('step2Ctrl', function($scope, $http, Utils){
         
+        $scope.campaignId = 11; //most important
+        
         $scope.config = {}
         
         $scope.designFlipBox = {
             title: '',
             shortSummary: '',
             country: '',
-            city: ''
+            city: '',
+            flipImageUrl: ''
         }
         
         $scope.goalSetting = {
@@ -17,44 +20,95 @@ angular.module('app')
             fundingType: 'flexible',
             campaignLengthType: 'paymentDate',
             campaignLength: {
-                'run': '10', 
+                'daysRun': '10', 
                 'endDate': '', 
                 'paymentDate': ''
             },
-            daysRun: '',
-            endDate: '',
-            paymentDate: '05/04/2014'
+            
         };
         
-        $scope.aweSomeCampaign = {
-            videoOrImage: 'image',
+        $scope.awesomeCampaign = {
+            mediaType: 'image',
             videoUrl: '',
-            picUrl: '',
+            imageUrl: '',
             newVideoUrl:'',
             hasFocus: false,
+            pitchStory: '',
             showVideo: function() {
                 alert(this.videoUrl);
             }
         }
+        
+        //reward
+        $scope.reward={}
+        $scope.reward.rewardDisclaimer='no';
+        $scope.reward.list = [{
+            "id": null, //not in database
+            "serial":"",
+            "fundAmount":'', 
+            "name":"", 
+            "rewardTypes": [],
+            "available": "", 
+            "estimatedDelivery": "", 
+            "description": "", 
+            "fundersShippingAddressRequired": "" 
+            
+        }];
         
         $http({
             method: 'POST',
             url: '/campaign/api',
             data: {
                 method: 'campaign.getStep2',
-                data: {'campaignId': 11}
+                data: {
+                    'campaignId': 11
+                }
             }
         }).success(function(response) {
             console.log(response.error);
             if(response.error == 0) {
                 $scope.config = response.data.config;
-                console.log($scope.config);
+                var d = response.data.data;
+                console.log(response.data.data)
+                var f = {}
                 
-            //design flip box
-            //$scope.designFlipBox = response.data.designFlipBox;
+                //design flip box
+                $scope.designFlipBox.title = d.title;
+                $scope.designFlipBox.shortSummary = d.shortSummary;
+                $scope.designFlipBox.country = d.country;
+                $scope.designFlipBox.city = d.city;
+                $scope.designFlipBox.flipImageUrl = d.flipImageUrl;
                 
-            //goal settings
-            //$scope.goalSetting = response.data.goalSetting;
+                //goal settings
+                $scope.goalSetting = {
+                    currency: d.currency,
+                    goal: d.goal,
+                    fundingType: (d.fundingType) ? d.fundingType : 'fixed',
+                    campaignLengthType: (d.fundingType =='fixed' || d.fundingType =='') ? '' : ((d.daysRun) ? 'run' : (d.endDate) ? 'endDate' : 'paymentDate'),
+                    campaignLength: {
+                        'daysRun': d.daysRun, 
+                        'endDate': d.endDate, 
+                        'paymentDate': d.paymentDate
+                    }
+                };
+                
+                //awesome campaign
+                $scope.awesomeCampaign = {
+                    mediaType: (d.mediaType) ? d.mediaType : 'video',
+                    videoUrl: d.videoUrl,
+                    imageUrl: d.imageUrl,
+                    newVideoUrl: d.videoUrl, //??
+                    hasFocus: false,
+                    pitchStory: d.pitchStory ,
+                }
+                jQuery('.jqte_editor', $('#awesomePitchStory').parent().parent()).html(d.pitchStory);//copy to editor
+                
+                //reward
+                $scope.reward.rewardDisclaimer=(d.rewardDisclaimer) ? d.rewardDisclaimer : 'no';
+                if(d.rewards) {
+                    $scope.reward.list = d.rewards;
+                } 
+                
                 
             //reward
             //$scope.reward = response.data.reward;
@@ -64,83 +118,58 @@ angular.module('app')
             } 
         });
         
+        $scope.$watch('goalSetting.fundingType', function(){
+            if($scope.goalSetting.fundingType == 'flexible' && $scope.goalSetting.campaignLengthType == '' ) {
+                $scope.goalSetting.campaignLengthType = 'run';
+            }
+        })
         
+        $scope.$watch('awesomeCampaign.pitchStory', function(){
+            console.log('wat'+$scope.awesomeCampaign.pitchStory);
+        //            if($scope.awesomeCampaign.pitchStory == 'test' ) {
+        //            //$scope.goalSetting.campaignLengthType = 'run';
+        //            }
+        })
         
-        $scope.campaignId = 121;
-        
+        $scope.$watch('goalSetting.fundingType', function(){
+            if($scope.goalSetting.fundingType == 'flexible' && $scope.goalSetting.campaignLengthType == '' ) {
+                $scope.goalSetting.campaignLengthType = 'run';
+            }
+        })
         
         $scope.charCount = function(s) {
             if(s) return s.length;
             return 0;
         }
         
-        //check if valid image url
-        $scope.isValidImage = function(src) {
-            //        Utils.isImage(src).then(function(result) {
-            //            console.log(result);
-            //            //$scope.result = result;
-            //        });
-            if(src.indexOf('//player.vimeo.com') >=0 || src.indexOf('//www.player.vimeo.com') >=0 || src.indexOf('//youtube.') >=0 || src.indexOf('//www.youtube.') >=0) {
-                $scope.aweSomeCampaign.newVideoUrl = src;
-            } else {
-            
-            }
-
-        };
     
         $scope.getYoutubeVideoId = function(url){
             var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
             var match = url.match(regExp);
             if (match&&match[7].length==11){
-                $scope.aweSomeCampaign.newVideoUrl = '//www.youtube.com/embed/'+match[7]
-                //alert(match[7]);
-                //return match[7];
-                
+                $scope.awesomeCampaign.newVideoUrl = '//www.youtube.com/embed/'+match[7]
             }else{
-                $scope.aweSomeCampaign.newVideoUrl = ''
+                $scope.awesomeCampaign.newVideoUrl = ''
             }
         }
         
-        $scope.isValidUrl = function(src) {
-            console.log(src)
-            $http.get(src,
-                //success
-                function(data, status){
-                    console.log('Valid url');
-                }, function(data, status){
-                    console.log('error')
-                    });
-        };
-        
-        
-        
-        
-        
         
         //reward
-        $scope.reward={}
-        $scope.reward.list = [
-        {
-            "fundAmount":'99', 
-            "rewardName":"", 
-            "numberAvailable": "", 
-            "estimatedDeliveryDate": "", 
-            "description": "", 
-            "addressRequired": "", 
-            "rewardTypes": ['educational']
-        }
-        ];
+        
     
         $scope.addReward = function() {
             console.log('add')
             $scope.reward.list.push({
-                fundAmount:'', 
-                "rewardName":"", 
-                numberAvailable: "", 
-                estimatedDeliveryDate: "", 
-                description: "", 
-                addressRequired: "", 
-                rewardTypes: []
+                "id": null, //not in database
+                "serial":"",
+                "fundAmount":'', 
+                "name":"", 
+                "rewardTypes": [],
+                "available": "", 
+                "estimatedDelivery": "", 
+                "description": "", 
+                "fundersShippingAddressRequired": "",
+                "projectId": $scope.campaignId 
             });
         }
     
@@ -152,9 +181,87 @@ angular.module('app')
                 $scope.reward.list[i].rewardTypes.splice(foundIndex, 1);
             }
         }
+        
+        //save reward: index
     
+        $scope.saveReward = function(index) {
+            var extra = {
+                index: index
+            }
+            $scope.reward.list[index];
+            $scope.save('campaign.saveReward', '', $scope.reward.list[index], extra);
+        }
+        
         $scope.removeReward = function(index) {
+            if($scope.reward.list[index].id) {
+                //delete from database as well
+                $scope.save('campaign.deleteReward', '', {id: $scope.reward.list[index].id});
+            }
             $scope.reward.list.splice(index,1);
+        }
+        
+        //save design flipbox
+        $scope.saveDesignFlipBox = function() {
+            $scope.save('campaign.saveFlipbox', 'designFlipBox');
+        }
+        
+        //save goalsetting
+        $scope.saveGoalSetting = function() {
+            if($scope.fundingType == 'fixed') {
+                $scope.campaignLengthType = $scope.campaignLength.run = $scope.campaignLength.endDate = $scope.campaignLength.paymentDate = ''
+            } else {
+                if($scope.campaignLengthType == 'run') {
+                    $scope.campaignLength.endDate = $scope.campaignLength.paymentDate = '';
+                }
+                if($scope.campaignLengthType == 'endDate') {
+                    $scope.campaignLength.daysRun = $scope.campaignLength.paymentDate = '';
+                }
+                if($scope.campaignLengthType == 'paymentDate') {
+                    $scope.campaignLength.daysRun = $scope.campaignLength.endDate = '';
+                }
+            }
+            
+            $scope.save('campaign.saveGoalSetting', 'goalSetting');
+        }
+        
+        //save awesome campaign
+        $scope.saveAwesomeCampaign = function() {
+            //copy videoUrl
+            if($scope.awesomeCampaign.videoUrl) {
+                $scope.awesomeCampaign.videoUrl = $scope.awesomeCampaign.newVideoUrl
+            }
+            
+            //get pitchStory
+            $scope.awesomeCampaign.pitchStory = jQuery('.jqte_editor', $('#awesomePitchStory').parent().parent()).html()
+            $scope.save('campaign.saveAwesomeCampaign', 'awesomeCampaign');
+        }
+        
+        
+        $scope.save = function(method, section, data, extra) {
+            var data = {
+                campaignId: $scope.campaignId,
+                method: method,
+                data: ($scope[section]) ? $scope[section] : data
+            }
+            
+            $http({
+                method: 'POST',
+                url: '/campaign/api',
+                data: data
+            }).success(function(response) {
+                console.log(response.error);
+                if(response.error == 0) {
+                    if(response.data.section == 'reward') {
+                        var idx = extra.index;
+                        $scope.reward.list[idx].id=response.data.id;
+                    }
+                    
+                } else {
+                    console.log('handle error response');
+                } 
+            });
+            
+            
         }
     })
     
@@ -203,61 +310,7 @@ angular.module('app')
         
     })
     
-    //    .controller('rewardCtrl', function($scope){
-    //        $scope.rewardTypes = [
-    //        {
-    //            id: "educational", 
-    //            name: "Educational"
-    //        },
-    //
-    //        {
-    //            id: "under18", 
-    //            name: "Under 18"
-    //        },
-    //
-    //        {
-    //            id: "swag", 
-    //            name: "Swag"
-    //        }
-    //        ]
-    //        $scope.list = [
-    //        {
-    //            "fundAmount":'99', 
-    //            "rewardName":"", 
-    //            "numberAvailable": "", 
-    //            "estimatedDeliveryDate": "", 
-    //            "description": "", 
-    //            "addressRequired": "", 
-    //            "rewaredTypes": ['educational']
-    //        }
-    //        ];
-    //    
-    //        $scope.addReward = function() {
-    //            $scope.list.push({
-    //                fundAmount:'', 
-    //                "rewardName":"", 
-    //                numberAvailable: "", 
-    //                estimatedDeliveryDate: "", 
-    //                description: "", 
-    //                addressRequired: "", 
-    //                rewaredTypes: []
-    //            });
-    //        }
-    //    
-    //        $scope.getSelectedCategory = function(i, category) {
-    //        
-    //            var foundIndex = jQuery.inArray( category, this.list[i].rewaredTypes);
-    //            if(foundIndex == -1) {
-    //                this.list[i].rewaredTypes.push(category);
-    //            } else {
-    //                this.list[i].rewaredTypes.splice(foundIndex, 1);
-    //            }
-    //        }
-    //    
-    //        $scope.removeReward = function(index) {
-    //            this.list.splice(index,1);
-    //        }
-    //    })
+    
 
     .controller('CampaignCreateCtrl', function($scope, $http, $window){
         //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -266,9 +319,9 @@ angular.module('app')
         
         $scope.createCampaign = {
             category: '',
-            currency: '',
+            currency: 'GBP',
             goal: '',
-            projectFor: ''
+            projectFor: 'team'
         }
         
         $http({

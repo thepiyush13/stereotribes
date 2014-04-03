@@ -17,10 +17,20 @@ class Campaign extends CFormModel {
     public $daysRun;
     public $endDate;
     public $paymentDate;
+
+    /**
+     * awesome campaign
+     * @var type 
+     */
     public $mediaType;
     public $videoUrl;
     public $imageUrl;
     public $pitchStory;
+
+    /**
+     *
+     * @var type 
+     */
     public $mainLink;
     public $thankyouMediaType;
     public $thankyouMediaUrl;
@@ -44,6 +54,7 @@ class Campaign extends CFormModel {
      * 
      * @var array of Reward objects 
      */
+    public $rewardsDisclaimer; //campaign specific and not reward specific
     public $rewards;
 
     /**
@@ -102,12 +113,14 @@ class Campaign extends CFormModel {
     }
 
     public function fetchRewards() {
-        $attributesRewards = array('id', 'serial', 'name', 'fundAmount', 'available', 'estimatedDelivery', 'description', 'fundersShippingAddressRequired', 'hasDisclaimer', 'projectId');
-        
+        $attributesRewards = array('id', 'serial', 'name', 'rewardTypes', 'fundAmount', 'available', 'estimatedDelivery', 'description', 'fundersShippingAddressRequired', 'projectId');
+
         $sql = "SELECT * FROM reward where project_id = :CAMPAIGN_ID";
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues);
-        
+
+        for ($i = 0; $i < count($result); $i++)
+            $result[$i]['reward_types'] = (trim($result[$i]['reward_types'])) ? explode(',', $result[$i]['reward_types']) : array();
         $map = $this->mapAttrsKey($attributesRewards);
         $this->exchangeDataArray($result, $map, 'rewards', 'Reward');
     }
@@ -151,7 +164,6 @@ class Campaign extends CFormModel {
         if (!isset(self::$_instance)) {
             self::$_instance = new self($id);
         }
-
         return self::$_instance;
     }
 
@@ -184,7 +196,7 @@ class Campaign extends CFormModel {
     public function exchangeData($dataRow, $map) {
         if (!is_array($dataRow))
             return;
-        
+
         foreach ($map as $attr => $key) {
             $this->$attr = isset($dataRow[$key]) ? $dataRow[$key] : '';
         }
@@ -208,7 +220,6 @@ class Campaign extends CFormModel {
             }
             $this->{$property}[] = $o;
         }
-        
     }
 
     /**
@@ -244,7 +255,7 @@ class Campaign extends CFormModel {
             'user' => '',
             'data' => $campaign
         );
-        
+
         Ajax::success($result);
     }
 
@@ -316,7 +327,7 @@ class Campaign extends CFormModel {
 
     public function uploadAwesomeCampaignImage() {
         $options = array(
-            'name' => 'campaign_' . $_POST['campaignId'] . md5(rand(1, 1000))
+            'name' => 'awesome_campaign_' . $_POST['campaignId'] . md5(rand(1, 1000))
         );
         $uploadedImage = CUploadedFile::getInstanceByName('awesomeCampaignImage');
         $this->uploadImage($uploadedImage, $options);
@@ -336,6 +347,127 @@ class Campaign extends CFormModel {
 
     private function getUrl($url) {
         return 'http://' . $_SERVER['HTTP_HOST'] . $url;
+    }
+
+    public function validRequest() {
+        if (isset($_POST['campaignId']) && $_POST['campaignId']) {
+            //if authenticate user 
+            return true;
+        }
+    }
+
+    public function saveFlipbox() {
+        if ($this->validRequest()) {
+            $data = $_POST['data'];
+            $columns = array(
+                'title' => $data['title'],
+                'short_summary' => $data['shortSummary'],
+                'country' => $data['country'],
+                'city' => $data['city'],
+                'flip_image_url' => $data['flipImageUrl'],
+            );
+
+            $command = Yii::app()->db->createCommand();
+            $command->update(
+                    'project', $columns, 'id=:ID', array(':ID' => $_POST['campaignId']));
+        }
+    }
+
+    public function saveGoalSetting() {
+        if ($this->validRequest()) {
+            $data = $_POST['data'];
+
+            $columns = array(
+                'currency' => $data['currency'],
+                'goal' => $data['goal'],
+                'funding_type' => $data['fundingType'],
+                'days_run' => $data['campaignLength']['daysRun'],
+                'end_date' => ($data['campaignLength']['endDate']) ? $data['campaignLength']['endDate'] : null,
+                'payment_date' => ($data['campaignLength']['paymentDate']) ? $data['campaignLength']['paymentDate'] : null,
+            );
+
+            $command = Yii::app()->db->createCommand();
+            $command->update(
+                    'project', $columns, 'id=:ID', array(':ID' => $_POST['campaignId']));
+        }
+    }
+
+    public function saveAwesomeCampaign() {
+        if ($this->validRequest()) {
+            $data = $_POST['data'];
+
+
+            $columns = array(
+                'media_type' => $data['mediaType'],
+                'image_url' => $data['imageUrl'],
+                'video_url' => $data['videoUrl'],
+                'pitch_story' => $data['pitchStory'],
+            );
+
+            $command = Yii::app()->db->createCommand();
+            $command->update(
+                    'project', $columns, 'id=:ID', array(':ID' => $_POST['campaignId']));
+        }
+    }
+
+    public function saveReward() {
+        if ($this->validRequest()) {
+            $data = $_POST['data'];
+            $data['rewardTypes'] = ($data['rewardTypes']) ? implode(',', $data['rewardTypes']) : '';
+
+            $columns = array(
+                'serial' => $data['serial'],
+                'name' => $data['name'],
+                'reward_types' => $data['rewardTypes'],
+                'fund_amount' => $data['fundAmount'],
+                'available' => $data['available'],
+                'estimated_delivery' => $data['estimatedDelivery'],
+                'description' => $data['description'],
+                'funders_shipping_address_required' => $data['fundersShippingAddressRequired'],
+                'project_id' => $data['projectId'],
+            );
+
+            $command = Yii::app()->db->createCommand();
+
+            //update if id is  set
+            if ($data['id']) {
+                $command->update(
+                        'reward', $columns, 'id=:ID', array(':ID' => $data['id']));
+            } else { //insert
+                $command->insert(
+                        'reward', $columns);
+
+                $result['id'] = Yii::app()->db->getLastInsertId();
+                $result['section'] = 'reward';
+                Ajax::success($result);
+            }
+
+
+
+//            $columns = array(
+//                'media_type' => $data['mediaType'],
+//                'image_url' => $data['imageUrl'],
+//                'video_url' => $data['videoUrl'],
+//                'pitch_story' => $data['pitchStory'],
+//            );
+//            
+//            $command = Yii::app()->db->createCommand();
+//            $command->update(
+//                    'reward', 
+//                    $columns,
+//                    'id=:ID',
+//                    array(':ID' => $_POST['campaignId']));
+        }
+    }
+
+    public function deleteReward() {
+        if ($this->validRequest()) {
+            $data = $_POST['data'];
+            if ($data['id']) {
+                $command = Yii::app()->db->createCommand();
+                $command->delete('reward', 'id=:ID', array(':ID' => $data['id']));
+            }
+        }
     }
 
 }

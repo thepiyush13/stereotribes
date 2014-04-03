@@ -1,10 +1,9 @@
 <div class="container playcontainer" ng-app="app">
 
-    <div class="row" ng-controller="step2Ctrl"> <!-- Do not modify this div -->
+    <div id="step2" class="row" ng-controller="step2Ctrl"> <!-- Do not modify this div -->
 
         <!-- steps come here -->
         <?php $this->widget('application.components.CampaignSteps'); ?>
-
         <section class="block-wrapper  col-md-12">
 
             <div class="top-title-wrap">
@@ -83,7 +82,9 @@
                                 <h4 class="article-inner-title">Flip box image</h4>
                                 <!-- flip image upload -->
                                 <form method="POST" action="/campaign/upload" name="flipImageUploadForm" target="flipImageUploadIframe" enctype="multipart/form-data">
-                                    <input type="file" name="flipImage" multiple="multiple" />
+                                    <span class="btn btn-default btn-file">
+                                        + Add Image <input type="file" name="flipImage" multiple="multiple" />
+                                    </span>
                                     <input type="hidden" name="canpaignId" ng-model="campaignId" />
                                     <input type="hidden" name="method" value ="campaign.uploadFlipImage" />
                                     <input type="submit">
@@ -92,16 +93,16 @@
                                 <iframe  onload ="Campaign.flipImageIframeLoad()" class="flipImageUploadIframe" name="flipImageUploadIframe" id="flipImageUploadIframe" scrolling="yes" style="display: none;"></iframe>
 <!--                                <iframe  class="flipImageUploadIframe" name="flipImageUploadIframe" id="flipImageUploadIframe" scrolling="yes" style="display: none;"></iframe>-->
                                 <!-- flip image upload ends -->
-                                <span class="btn btn-default btn-file">
+<!--                                <span class="btn btn-default btn-file">
                                     + Add Image <input type="file">
-                                </span>
+                                </span>-->
 
                                 <span class="file-info">PNG, JPG or GIF 960x640 pixels</span>
 
                             </div>
 
                             <div class="col-md-2 savewrapper">
-                                <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
+                                <button ng-click="saveDesignFlipBox()" type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
                             </div>
 
                         </div>
@@ -116,7 +117,7 @@
 
                                     <div class="brickinner">
 
-                                        <img id="flipImage" src="/img/b.jpg" alt="" class="img-responsive" />
+                                        <img id="flipImage" src="{{designFlipBox.flipImageUrl}}" alt="" class="img-responsive" />
 
                                         <div class="fund-block-normal fund-block-normal-fix">
 
@@ -243,8 +244,7 @@
                                     <h4 class="article-inner-title">What's your target</h4>
 
                                     <p>One of the most important decision about your campaign is what to set your target at. The min is $500. The most successfull campaigns are between $5000 - $10000.</p>
-                                    <pre>
-                                    </pre>
+
                                     <select class="price-dropdown" ng-model="goalSetting.currency">
                                         <option ng-repeat="c in config.currencies" value="0">{{c.symbol}} {{c.code}}</option>
                                     </select> 
@@ -259,38 +259,14 @@
                                 <div class="funding-method-wrapper">
 
                                     <h4 class="article-inner-title">Choose your funding method</h4>
-                                    <!-- added by kanchan start -->
-                                    <style>
-                                        .st-btn-radio {
-                                            height: 60px; overflow: hidden;
-                                        }
-                                        .st-radio-hdn {
-                                            position: absolute;
-                                            top: -40px;
-                                        }
-                                    </style>
-                                    <div class="row">
-                                        <div class="col-md-3 fixedflexwrapper st-btn-radio st-btn-radio">
-                                            <label class="blue btn btn-primary btn-lg btn-block fixedflexbutton">
-                                                <input ng-model="goalSetting.fundingType" class="st-radio-hdn" type="radio" name="fundingType" value="fixed"><span>Fixed</span>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-1 fixedflexwrapper"><label class="orseparator">OR</label></div>
-                                        <div class="col-md-4 fixedflexwrapper st-btn-radio">
-                                            <label class="blue btn btn-primary btn-lg btn-block fixedflexbutton">
-                                                <input ng-model="goalSetting.fundingType" class="st-radio-hdn" type="radio" name="fundingType" value="flexible"><span>Flexible</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <!-- added by kanchan end -->
-
 
                                     <div class="col-md-5 fixedflexwrapper">
 
-
+                                        <label class="blue btn btn-primary btn-lg btn-block fixedflexbutton">
+                                            <input ng-model="goalSetting.fundingType" class="st-radio-hdn" type="radio" name="fundingType" value="fixed"><span>Fixed</span>
+                                        </label>
                                         <!--                                        <button type="button" class="btn btn-primary btn-lg btn-block fixedflexbutton">Fixed</button>-->
-
-                                        <!--                                        <label class="orseparator">OR</label>-->
+                                        <label class="orseparator">OR</label>
 
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
 
@@ -303,7 +279,9 @@
                                     </div>
 
                                     <div class="col-md-5 fixedflexwrapper">
-
+                                        <label class="blue btn btn-primary btn-lg btn-block fixedflexbutton">
+                                            <input ng-model="goalSetting.fundingType" class="st-radio-hdn" type="radio" name="fundingType" value="flexible"><span>Flexible</span>
+                                        </label>
                                         <!--                                        <button type="button" class="btn btn-primary btn-lg btn-block fixedflexactivebutton">Flexible</button>-->
 
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
@@ -327,11 +305,11 @@
                                         <div class="col-md-4">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input ng-model="goalSetting.campaignLengthType" type="radio" name="campaignLengthType" id="radio_campaign_days" value="runs"> Days campaign runs
+                                                    <input ng-model="goalSetting.campaignLengthType" type="radio" name="campaignLengthType" id="radio_campaign_days" value="run"> Days campaign runs
                                                 </label>
                                             </div>
                                             <div class="form-group global-textbox">
-                                                <input ng-model="goalSetting.campaignLength.run" name="campaignLengthRun" type="text" class="form-control" id="campaign_days" placeholder="Days">
+                                                <input ng-model="goalSetting.campaignLength.daysRun" ng-disabled ="goalSetting.campaignLengthType!='run'" name="campaignLengthRun" type="text" class="form-control" id="campaign_days" placeholder="Days">
                                             </div>
                                         </div>
 
@@ -342,7 +320,7 @@
                                                 </label>
                                             </div>
                                             <div class="form-group global-textbox">
-                                                <input ng-model="goalSetting.campaignLength.endDate" name="CampaignLengthEndDate"  class="form-control" placeholder="Date" datepicker/>
+                                                <input ng-model="goalSetting.campaignLength.endDate" ng-disabled ="goalSetting.campaignLengthType!='endDate'" name="CampaignLengthEndDate"  class="form-control" placeholder="Date" datepicker/>
                                             </div>
                                         </div>
 
@@ -354,14 +332,18 @@
                                             </div>
                                             <div class="form-group global-textbox">
 <!--                                                <input ng-model="goalSetting.campaignLength.paymentDate" name="CampaignLengtPaymentDate" id="date-picker" value="200" class="date-pick form-control" placeholder="Date" />-->
-                                                <input  type="text" ng-model="goalSetting.campaignLength.paymentDate" class="form-control" datepicker/>
+                                                <input  type="text" ng-model="goalSetting.campaignLength.paymentDate" ng-disabled ="goalSetting.campaignLengthType!='paymentDate'" class="form-control" datepicker/>
                                             </div>
                                         </div>
 
                                     </div>
 
+
                                 </div><!-- /.camplength-wrapper-->
 
+                                <div class="col-md-3">
+                                    <button ng-click="saveGoalSetting()" type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
+                                </div>
                             </div><!-- Left Side wrapper ends -->
 
                             <div class="col-md-4"><!-- Right side wrapper starts-->
@@ -381,124 +363,123 @@
 
         <section class="block-wrapper  col-md-12"> 
 
-            
-
-                <h3 class="article-head-collapse">Let's build your awesome campaign <span class="collapse-sign col-close"></span></h3>
-
-                <div class="row collapse-container">
-
-                    <div class="col-md-12 pitchvideo-container"><!-- Whole Pitch Video Wrapper Starts -->
-
-                        <div class="row">
-
-                            <div class="col-md-8"><!-- Left side pitchvideo wrapper starts -->
-
-                                <div class="pitchvideoupload-wrapper">
-
-                                    <h4 class="article-inner-title">Upload your pitch video</h4>
-
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>
-                                        <a href="#"><b><span class="red-highlight">TIP:</span> Top ten tips to make a pitch video</b></a></p>
 
 
-                                </div><!-- /.target-wrapper -->
+            <h3 class="article-head-collapse">Let's build your awesome campaign <span class="collapse-sign col-close"></span></h3>
 
-                                <div class="pitchvideo-wrapper row">
-                                    {{aweSomeCampaign}}
+            <div class="row collapse-container">
 
-                                    <div class="col-md-6">
+                <div class="col-md-12 pitchvideo-container"><!-- Whole Pitch Video Wrapper Starts -->
 
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="radio" ng-model="aweSomeCampaign.videoOrImage" name="optionsVideoOrImage" id="radio_campaign_payment_date" value="video"> Add a video link (Youtube or Vimeo)
-                                            </label>
-                                        </div>
-                                        <div class="form-group global-textbox">
-                                            <input type="text" class="form-control" id="video-url" placeholder="Video URL" ng-model="aweSomeCampaign.videoUrl" ng-disabled="aweSomeCampaign.videoOrImage =='image'" ng-focus="aweSomeCampaign.hasFocus=true" ng-blur="getYoutubeVideoId(aweSomeCampaign.videoUrl)">
-                                        </div>
+                    <div class="row">
 
+                        <div class="col-md-8"><!-- Left side pitchvideo wrapper starts -->
+
+                            <div class="pitchvideoupload-wrapper">
+
+                                <h4 class="article-inner-title">Upload your pitch video</h4>
+
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>
+                                    <a href="#"><b><span class="red-highlight">TIP:</span> Top ten tips to make a pitch video</b></a></p>
+
+
+                            </div><!-- /.target-wrapper -->
+
+                            <div class="pitchvideo-wrapper row">
+
+                                <div class="col-md-6">
+
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="radio" ng-model="awesomeCampaign.mediaType" name="mediaType" id="radio_campaign_payment_date" value="video"> Add a video link (Youtube or Vimeo)
+                                        </label>
                                     </div>
-
-                                    <div class="col-md-6">
-
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="radio" ng-model="aweSomeCampaign.videoOrImage" name="optionsVideoOrImage" id="radio_campaign_payment_date" value="image"> Add image
-                                            </label>
-                                        </div>
-                                        <div class="form-group global-textbox" >
-
-                                            <form method="POST" action="/campaign/upload" name="awesomeImageUploadForm" target="awesomeImageUploadIframe" enctype="multipart/form-data">
-                                                <span class="btn btn-default btn-file" ng-disabled="aweSomeCampaign.videoOrImage =='video'">
-                                                    + Add Image <input type="file" name="awesomeCampaignImage" multiple="multiple" /><input type="submit">
-                                                </span>
-                                                <input type="hidden" name="canpaignId" value="<?php echo $_GET['id']?>" />
-                                                <input type="hidden" name="method" value ="campaign.uploadAwesomeCampaignImage" />
-                                                
-                                                <div class="ajax-loader"></div>
-                                            </form>
-                                            <iframe  onload ="Campaign.awsomeCampaignIframeLoad()" name="awesomeImageUploadIframe" id="awesomeImageUploadIframe" scrolling="yes" style="display: none;"></iframe>
-
-
-                                            <span class="file-info">PNG, JPG or GIF 960x640 pixels</span>
-                                        </div>
-
+                                    <div class="form-group global-textbox">
+                                        <input type="text" class="form-control" id="video-url" placeholder="Video URL" ng-model="awesomeCampaign.videoUrl" ng-disabled="awesomeCampaign.videoOrImage =='image'" ng-focus="awesomeCampaign.hasFocus=true" ng-blur="getYoutubeVideoId(awesomeCampaign.videoUrl)">
                                     </div>
 
                                 </div>
 
-                            </div><!-- Left side pitchvideo wrapper ends -->
+                                <div class="col-md-6">
 
-                            <div class="col-md-4"><!-- Right side pitchvideo wrapper enstartsds -->
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="radio" ng-model="awesomeCampaign.mediaType" name="mediaType" id="radio_campaign_payment_date" value="image"> Add image
+                                        </label>
+                                    </div>
+                                    <div class="form-group global-textbox" >
 
-                                <iframe class="pitchvideo" src="{{aweSomeCampaign.newVideoUrl}}" frameborder="0" allowfullscreen=""></iframe>
+                                        <form method="POST" action="/campaign/upload" name="awesomeImageUploadForm" target="awesomeImageUploadIframe" enctype="multipart/form-data">
+                                            <span class="btn btn-default btn-file" ng-disabled="awesomeCampaign.videoOrImage =='video'">
+                                                + Add Image <input type="file" name="awesomeCampaignImage" multiple="multiple" />
+                                            </span><input type="submit">
+                                            <input type="hidden" name="canpaignId" value="<?php echo $_GET['id'] ?>" />
+                                            <input type="hidden" name="method" value ="campaign.uploadAwesomeCampaignImage" />
 
-                            </div><!-- Right side pitchvideo wrapper ends -->
-
-                        </div>	  
-
-                    </div>
+                                            <div class="ajax-loader"></div>
+                                        </form>
+                                        <iframe  onload ="Campaign.awesomeCampaignIframeLoad()" name="awesomeImageUploadIframe" id="awesomeImageUploadIframe" scrolling="yes" style="display: none;"></iframe>
 
 
-                    <!-- Whole text editor wrapper starts here -->
+                                        <span class="file-info">PNG, JPG or GIF 960x640 pixels</span>
+                                    </div>
 
-                    <div class="col-md-12 pitchstory-container"><!-- Whole Pitch Story Wrapper Starts -->
-
-                        <div class="row">
-
-                            <div class="col-md-8"><!-- Left side Pitch Story wrapper starts -->
-
-                                <textarea name="textarea" class="pitchstorytextarea"></textarea>
-
-                                <div class="col-md-2 savewrapper savemagin">
-                                    <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
-                                </div>	
-
-                                <div class="col-md-2 savewrapper">
-                                    <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Preview</button>
                                 </div>
 
-                            </div><!-- Left side Pitch Story wrapper ends -->
+                            </div>
 
-                            <div class="col-md-4"><!-- Right side Pitch Story wrapper enstartsds -->
+                        </div><!-- Left side pitchvideo wrapper ends -->
 
-                                <div class="pitchtips">
-                                    <a href="#"><b><span class="red-highlight">TIP:</span> Visit 'Soundcheck' for campaign building support</b></a>
-                                </div>
+                        <div class="col-md-4"><!-- Right side pitchvideo wrapper enstartsds -->
 
-                            </div><!-- Right side Pitch Story wrapper ends -->
+                            <iframe ng-hide="awesomeCampaign.mediaType=='image'" class="pitchvideo" src="{{awesomeCampaign.newVideoUrl}}" frameborder="0" allowfullscreen=""></iframe>
+                            <img ng-hide="awesomeCampaign.mediaType=='video'" id="awesomePicUrl" src="{{awesomeCampaign.imageUrl}}" class="img-responsive">
 
-                        </div>	  
+                        </div><!-- Right side pitchvideo wrapper ends -->
 
-                    </div>
+                    </div>	  
 
                 </div>
+
+
+                <!-- Whole text editor wrapper starts here -->
+
+                <div class="col-md-12 pitchstory-container"><!-- Whole Pitch Story Wrapper Starts -->
+
+                    <div class="row">
+
+                        <div class="col-md-8"><!-- Left side Pitch Story wrapper starts -->
+
+                            <textarea id="awesomePitchStory" ng-model="awesomeCampaign.pitchStory" name="pitchStory" class="pitchstorytextarea"></textarea>
+
+                            <div class="col-md-2 savewrapper savemagin">
+                                <button ng-click="saveAwesomeCampaign()" type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
+                            </div>	
+
+                            <div class="col-md-2 savewrapper">
+                                <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Preview</button>
+                            </div>
+
+                        </div><!-- Left side Pitch Story wrapper ends -->
+
+                        <div class="col-md-4"><!-- Right side Pitch Story wrapper enstartsds -->
+
+                            <div class="pitchtips">
+                                <a href="#"><b><span class="red-highlight">TIP:</span> Visit 'Soundcheck' for campaign building support</b></a>
+                            </div>
+
+                        </div><!-- Right side Pitch Story wrapper ends -->
+
+                    </div>	  
+
+                </div>
+
+            </div>
 
 
         </section>
 
         <section class="block-wrapper  col-md-12">
-
             <form class="form-rewardscampaign" action="action"> 
 
                 <h3 class="article-head-collapse">The rewards your funders will love! <span class="collapse-sign col-close"></span></h3>
@@ -517,11 +498,11 @@
                                     </label>
 
                                     <label class="radio-inline">
-                                        <input type="radio" name="optionsRadios" id="radio_reward_yes" value="Yes" checked=""> Yes
+                                        <input ng-model="reward.rewardDisclaimer" type="radio" name="rewardDisclaimer" id="radio_reward_yes" value="yes" checked=""> Yes
                                     </label>
 
                                     <label class="radio-inline">
-                                        <input type="radio" name="optionsRadios" id="radio_reward_no" value="No" checked=""> No
+                                        <input ng-model="reward.rewardDisclaimer" type="radio" name="rewardDisclaimer" id="radio_reward_no" value="no" checked=""> No
                                     </label>
 
                                 </div>
@@ -589,14 +570,14 @@
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-4 control-label">Reward Name</label>
                                         <div class="col-sm-8">
-                                            <input name="rewardName" ng-model="reward.rewardName" type="text" class="form-control" id="inputEmail3">
+                                            <input name="name" ng-model="reward.name" type="text" class="form-control" id="inputEmail3">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-4 control-label">Number Available</label>
                                         <div class="col-sm-8">
-                                            <input name="numberAvailable" ng-model="reward.numberAvailable" type="text" class="form-control" id="inputEmail3">
+                                            <input name="available" ng-model="reward.available" type="text" class="form-control" id="inputEmail3">
                                         </div>
                                     </div>
 
@@ -604,7 +585,7 @@
                                         <label for="inputPassword3" class="col-sm-4 control-label">Estimated Delivery</label>
                                         <div class="col-sm-8">
                                             <div class="global-textbox">
-                                                <input name="date1" ng-model="reward.estimatedDeliveryDate"  id="date-picker" class="form-control" placeholder="Date" datepicker/>
+                                                <input name="date1" ng-model="reward.estimatedDelivery"  id="date-picker" class="form-control" placeholder="Date" datepicker/>
                                             </div>
                                         </div>
                                     </div>
@@ -620,7 +601,7 @@
                                     <div class="form-group">
                                         <div class="col-sm-12 checkfix">
                                             <label>
-                                                <input name="addressRequired" ng-model="reward.addressRequired" type="checkbox">Funders shipping address are required 
+                                                <input name="fundersShippingAddressRequired" ng-model="reward.fundersShippingAddressRequired" type="checkbox">Funders shipping address are required 
                                             </label>
                                         </div>
                                     </div>									
@@ -633,13 +614,13 @@
                                     <span>(Click one or more)</span>
 
                                     <ul class="rewardtype-catlist">
-                                        <li ng-repeat="type in config.rewardTypes"><a ng-click="getSelectedRewardCategory(index, type.id)">{{type.name}}</a></li>
+                                        <li ng-repeat="type in config.rewardTypes" class="{{}}"><a ng-click="getSelectedRewardCategory(index, type.id)">{{type.name}}</a></li>
                                     </ul>
 
                                 </div>
 
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-default">Save</button>
+                                    <button ng-click="saveReward(index)" type="button" class="btn btn-default">Save</button>
                                     <span class="remove-button" ng-click="removeReward(index)">Remove reward</span>
                                 </div>
 
@@ -654,11 +635,12 @@
                         </div>
 
                     </div><!-- Whole Pitch Reward Builder Wrapper Ends -->
-                    <input type="button" ng-click="addReward()" value="Add">
-                    {{reward}}
+
 
 
                 </div>
+                <p></p>
+                <input type="button" ng-click="addReward()" value="Add Reward">
 
             </form>
 

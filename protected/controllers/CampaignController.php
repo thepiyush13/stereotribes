@@ -41,6 +41,11 @@ class CampaignController extends Controller {
             'campaign.designFlip',
             'campaign.fundTarget',
             'campaign.mediaLinks',
+            'campaign.saveFlipbox',
+            'campaign.saveGoalSetting',
+            'campaign.saveAwesomeCampaign',
+            'campaign.saveReward',
+            'campaign.deleteReward',
         );
 
         $result = '';
