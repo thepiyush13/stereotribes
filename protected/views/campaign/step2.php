@@ -175,7 +175,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
 
                                         </div>			
 
-                                        <p>{{designFlipBox.shortSummary}}</p>  
+                                        <p class="flipara">{{designFlipBox.shortSummary}}</p>  
 
                                         <div class="fund-normal-count-block">
 
