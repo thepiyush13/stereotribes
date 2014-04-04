@@ -2798,11 +2798,7 @@ input[type="radio"]:checked:after {
     background-color: #f66;
     outline: none;
 }​
-.removeicon {
-	background: #fff;
-	color: #000;
-	padding: 2px 5px;
-}
+
 
 /* Date Picker */
 
@@ -3664,7 +3660,11 @@ body.userdashboard {
 	margin-bottom: 30px;
 }
 
-
+.removeicon {
+	background: #fff;
+	color: #000;
+	padding: 2px 5px;
+}
 
 
 
