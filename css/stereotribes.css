@@ -2792,6 +2792,7 @@ input[type="radio"]:after {
     position: relative;
     top: 4px;
     width: 7px;
+    border-radius: 100%;
     outline: none;
 }
 input[type="radio"]:checked:after {
