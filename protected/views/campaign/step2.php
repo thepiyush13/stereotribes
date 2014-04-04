@@ -1,6 +1,10 @@
+<script>
+var $campaignId = <?php echo (int)$_GET['id'] ?>
+</script>
+
 <div class="container playcontainer" ng-app="app">
 
-    <div id="step2" class="row" ng-controller="step2Ctrl"> <!-- Do not modify this div -->
+    <div id="step2" class="row" ng-controller="step2Ctrl" > <!-- Do not modify this div -->
 
         <!-- steps come here -->
         <?php $this->widget('application.components.CampaignSteps'); ?>
@@ -81,13 +85,12 @@
 
                                 <h4 class="article-inner-title">Flip box image</h4>
                                 <!-- flip image upload -->
-                                <form method="POST" action="/campaign/upload" name="flipImageUploadForm" target="flipImageUploadIframe" enctype="multipart/form-data">
+                                <form method="POST" action="/campaign/upload" id="flipImageUploadForm" name="flipImageUploadForm" target="flipImageUploadIframe" enctype="multipart/form-data">
                                     <span class="btn btn-default btn-file">
-                                        + Add Image <input type="file" name="flipImage" multiple="multiple" />
+                                        + Add Image <input type="file" id="flipImage" name="flipImage" multiple="multiple" />
                                     </span>
                                     <input type="hidden" name="canpaignId" ng-model="campaignId" />
                                     <input type="hidden" name="method" value ="campaign.uploadFlipImage" />
-                                    <input type="submit">
                                     <div class="ajax-loader"></div>
                                 </form>
                                 <iframe  onload ="Campaign.flipImageIframeLoad()" class="flipImageUploadIframe" name="flipImageUploadIframe" id="flipImageUploadIframe" scrolling="yes" style="display: none;"></iframe>
@@ -409,10 +412,10 @@
                                     </div>
                                     <div class="form-group global-textbox" >
 
-                                        <form method="POST" action="/campaign/upload" name="awesomeImageUploadForm" target="awesomeImageUploadIframe" enctype="multipart/form-data">
+                                        <form method="POST" action="/campaign/upload" id="awesomeImageUploadForm" name="awesomeImageUploadForm" target="awesomeImageUploadIframe" enctype="multipart/form-data">
                                             <span class="btn btn-default btn-file" ng-disabled="awesomeCampaign.videoOrImage =='video'">
-                                                + Add Image <input type="file" name="awesomeCampaignImage" multiple="multiple" />
-                                            </span><input type="submit">
+                                                + Add Image <input type="file" id="awesomeCampaignImage" name="awesomeCampaignImage" multiple="multiple" />
+                                            </span>
                                             <input type="hidden" name="canpaignId" value="<?php echo $_GET['id'] ?>" />
                                             <input type="hidden" name="method" value ="campaign.uploadAwesomeCampaignImage" />
 

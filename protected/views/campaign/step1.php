@@ -1,3 +1,4 @@
+
 <div class="container playcontainer" ng-app="app">
 
     <div class="row">
@@ -21,7 +22,7 @@
 
         <!-- HOOSE YOUR MUSIC+ CATEGORY form starts here -->
 
-        <form class="form-one" action="action" ng-controller="CampaignCreateCtrl">  
+        <form class="form-one" action="action" ng-controller="Step1Ctrl">  
 
             <section class="block-wrapper  col-md-12">
                 <h3 class="article-head">CHOOSE YOUR MUSIC+ CATEGORY</h3>

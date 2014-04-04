@@ -51,5 +51,23 @@ class Config {
     }
     
     
+    /**
+     * Links 
+     */
+    public static function staticLinks() {
+        return array(
+            array('type' => 'facebook', 'title'=> 'Facebook page'),
+            array('type' => 'soundcloud', 'title'=> 'Soundcloud page'),
+            array('type' => 'twitter', 'title'=> 'Twitter page'),
+            array('type' => 'bandcamp', 'title'=> 'Bandcamp page'),
+            array('type' => 'youtube', 'title'=> 'Youtube page'),
+            array('type' => 'myspace', 'title'=> 'Myspace page'),
+            array('type' => 'vimeo', 'title'=> 'Vimeo page'),
+            array('type' => 'linkedin', 'title'=> 'Linkedin page'),
+        );
+    }
+    
+    
+    
 }
 

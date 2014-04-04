@@ -60,7 +60,7 @@ class Campaign extends CFormModel {
     /**
      * External Links 
      * 
-     * @var array of Links object
+     * @var array of Link object
      */
     public $links;
 
@@ -95,7 +95,8 @@ class Campaign extends CFormModel {
         $this->fetchCampaignAttributes();
         $this->fetchRewards();
 //        $this->fetchUser();
-//        $this->feetchLinkds();
+        $this->fetchLinks();
+        $this->fetchMediaLinks();
 //        $this->fetchTribes();
 //        $this->SocialAmplifers();
     }
@@ -126,15 +127,30 @@ class Campaign extends CFormModel {
     }
 
     public function fetchUser() {
+        $attributesLink = arry('id', 'title', 'url', 'type', 'projectId');
         $sql = "SELECT * user where id = :USER_ID";
         $bindValues = array(':USER_ID' => $this->userId);
         $result = $this->fetch($sql, $bindValues, 'queryOne');
+        $map = $this->mapAttrsKey($attributesLink);
+        $this->exchangeDataArray($result, $map);
     }
 
-    public function feetchLinkds() {
-        $q = "SELECT * FROM links where project_id = :CAMPAIGN_ID";
+    public function fetchLinks() {
+        $attributesLinks = array('id', 'title', 'url', 'type', 'projectId');
+        $sql = "SELECT * FROM links where project_id = :CAMPAIGN_ID";
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues);
+        $map = $this->mapAttrsKey($attributesLinks);
+        $this->exchangeDataArray($result, $map, 'links', 'Link');//data, property-field mapping, attribute, class
+    }
+    
+    public function fetchMediaLinks() {
+        $attributesLinks = array('id', 'title', 'description', 'type', 'code_url', 'projectId');
+        $sql = "SELECT * FROM media_links where project_id = :CAMPAIGN_ID";
+        $bindValues = array(':CAMPAIGN_ID' => $this->id);
+        $result = $this->fetch($sql, $bindValues);
+        $map = $this->mapAttrsKey($attributesLinks);
+        $this->exchangeDataArray($result, $map, 'mediaLinks', 'MediaLink');//data, property-field mapping, attribute, class
     }
 
     public function fetchTribes() {
@@ -173,6 +189,7 @@ class Campaign extends CFormModel {
             'projectsFor' => Config::getCategories(),
             'currencies' => Config::getCurrencies(),
             'rewardTypes' => Config::rewardTypes(),
+            'staticLinks' => Config::staticLinks(),
         );
     }
 
@@ -221,6 +238,23 @@ class Campaign extends CFormModel {
             $this->{$property}[] = $o;
         }
     }
+    
+    
+    /**
+     * very specific to campaing
+     * @param type $data
+     * @param type $map
+     * @param type $property
+     * @param type $class
+     * @return type 
+     */
+    public function exchangeMediaLink($data, $map, $property, $class) {
+        if (!is_array($data))
+            return;
+        foreach ($data as $row) {
+            $row['type'] =    '';
+        }
+    }
 
     /**
      * Step 1 
@@ -260,6 +294,28 @@ class Campaign extends CFormModel {
     }
 
     /**
+     * Step 3
+     */
+    public function getStep3() {
+        //if requested with id fetch from database
+        if (isset($_POST['data']['campaignId']) && $_POST['data']['campaignId']) {
+            $campaign = self::instance($_POST['data']['campaignId']);
+        }
+        
+        
+
+
+        $result = array(
+            'config' => $this->getConfig(),
+            'user' => '',
+            'data' => $campaign
+        );
+
+        //print_r($result);
+        Ajax::success($result);
+    }
+
+    /**
      *  Create campaign step2, should be an update
      */
     public function createCampaign($data) {
@@ -285,6 +341,8 @@ class Campaign extends CFormModel {
             if ($command->insert('project', $this->toUnderScore($data))) {
                 $result = array();
                 $result['campaignId'] = Yii::app()->db->getLastInsertId();
+                $this->insertStaticLink($result['campaignId']); //insert into links table
+                //add static links with empty url
                 Ajax::success($result);
             } else {
                 
@@ -466,6 +524,21 @@ class Campaign extends CFormModel {
             if ($data['id']) {
                 $command = Yii::app()->db->createCommand();
                 $command->delete('reward', 'id=:ID', array(':ID' => $data['id']));
+            }
+        }
+    }
+
+    /**
+     * A new project created, add static links without other attributes into database
+     * @param type $projectId 
+     */
+    public function insertStaticLink($projectId) {
+        $links = Config::staticLinks();
+        $command = Yii::app()->db->createCommand();
+        if (is_array($links)) {
+            foreach ($links as $link) {
+                $link['project_id'] = $projectId;
+                $command->insert('links', $link);
             }
         }
     }

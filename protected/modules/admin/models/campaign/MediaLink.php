@@ -1,10 +1,11 @@
 <?php
 
 class MediaLink {
-    private $title;
-    private $description;
-    private $type;
-    private $extra_code;
-    private $campaign_id;
+    public $id;
+    public $title;
+    public $description;
+    public $type;
+    public $extra_code;
+    public $project_id;
     
 }

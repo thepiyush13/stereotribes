@@ -39,4 +39,6 @@ Campaign = {
         }
         return json;
     }
+    
+    
 }

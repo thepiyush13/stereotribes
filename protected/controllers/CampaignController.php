@@ -16,6 +16,14 @@ class CampaignController extends Controller {
         $this->render('step2');
     }
 
+    public function actionStep3() {
+        $this->render('step3');
+    }
+    
+    public function actionStep4() {
+        $this->render('step4');
+    }
+
     public function actionWelcome() {
         $this->render('index');
     }
@@ -28,15 +36,17 @@ class CampaignController extends Controller {
      * Handles ajax request  
      */
     public function actionApi() {
-        
+
         //angular js post fix
         $_POST = $this->getPost();
         //print_r($_POST);
-
         //valid end points to call
         $methodList = array(
             'campaign.getStep1',
             'campaign.getStep2',
+            'campaign.getStep3',
+            'campaign.getStep4',
+            'campaign.getStep5',
             'campaign.create',
             'campaign.designFlip',
             'campaign.fundTarget',

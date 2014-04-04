@@ -44,12 +44,12 @@ $(document).ready(function() {
                         name: country
                     };                
                 });
+            }
         }
-    }
     });
 	 
-// kicks off the loading/processing of `local` and `prefetch`
-countries.initialize();
+    // kicks off the loading/processing of `local` and `prefetch`
+    countries.initialize();
 	 
     // passing in `null` for the `options` arguments will result in the default
     // options being used
@@ -80,12 +80,12 @@ countries.initialize();
                         name: cities
                     };                
                 });
+            }
         }
-    }
     });
 	 
-// kicks off the loading/processing of `local` and `prefetch`
-cities.initialize();
+    // kicks off the loading/processing of `local` and `prefetch`
+    cities.initialize();
 	 
     // passing in `null` for the `options` arguments will result in the default
     // options being used
@@ -102,22 +102,38 @@ cities.initialize();
 
     $('.date-pick').datePicker().val(new Date().asString()).trigger('change');
     
-     /** 
+    /** 
      * datepicker binding with angular Kanchan
      */   
-//    $.datePicker.setDefaults({
-//        // When a date is selected from the picker
-//        onSelect: function(newValue) {
-//            if (window.angular && angular.element)
-//                // Update the angular model
-//                angular.element(this).controller("ngModel").$setViewValue(newValue);
-//        }
-//    });
+    //    $.datePicker.setDefaults({
+    //        // When a date is selected from the picker
+    //        onSelect: function(newValue) {
+    //            if (window.angular && angular.element)
+    //                // Update the angular model
+    //                angular.element(this).controller("ngModel").$setViewValue(newValue);
+    //        }
+    //    });
     
     /**
      * 
      */
 
     $('.pitchstorytextarea').jqte();
+    
+    
+    /** 
+     * Trigger flip image upload
+     */
+    $('#flipImageUploadForm').on('change', function() {
+        $('#flipImageUploadForm').submit();
+    });
+    
+    
+    /** 
+     * Trigger campaign image upload
+     */
+    $('#awesomeCampaignImage').on('change', function() {
+        $('#awesomeImageUploadForm').submit();
+    });
 
 });

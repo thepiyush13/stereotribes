@@ -1,8 +1,9 @@
 angular.module('app')
 
-    .controller('step2Ctrl', function($scope, $http, Utils){
+    .controller('step2Ctrl',  function($scope, $http, $window, Utils){
         
-        $scope.campaignId = 11; //most important
+        
+        $scope.campaignId = $window.$campaignId; //most important
         
         $scope.config = {}
         
@@ -61,7 +62,7 @@ angular.module('app')
             data: {
                 method: 'campaign.getStep2',
                 data: {
-                    'campaignId': 11
+                    'campaignId': $scope.campaignId
                 }
             }
         }).success(function(response) {
@@ -99,7 +100,7 @@ angular.module('app')
                     imageUrl: d.imageUrl,
                     newVideoUrl: d.videoUrl, //??
                     hasFocus: false,
-                    pitchStory: d.pitchStory ,
+                    pitchStory: d.pitchStory 
                 }
                 jQuery('.jqte_editor', $('#awesomePitchStory').parent().parent()).html(d.pitchStory);//copy to editor
                 
@@ -195,7 +196,9 @@ angular.module('app')
         $scope.removeReward = function(index) {
             if($scope.reward.list[index].id) {
                 //delete from database as well
-                $scope.save('campaign.deleteReward', '', {id: $scope.reward.list[index].id});
+                $scope.save('campaign.deleteReward', '', {
+                    id: $scope.reward.list[index].id
+                });
             }
             $scope.reward.list.splice(index,1);
         }
@@ -267,52 +270,129 @@ angular.module('app')
     
     
     
-    .controller('designFlipCtrl', function($scope){
-        var designFlipBox = {
-            title: '',
-            shortSummary: '',
-            country: '',
-            city: ''
-        }
+    
+    /**
+     * 
+     * STEP 3 controller
+     * 
+     */
+    
+    .controller('step3Ctrl', function($scope, $http, $window){
+        $scope.campaignId = $window.$campaignId; //most important
         
-        $scope.designFlipBox = designFlipBox;
-        $scope.campaignId = 121;
-        $scope.charCount = function(s) {
-            if(s) return s.length;
-            return 0;
-        }
+        //reward
+        $scope.links={}
         
-    })
-
-    .controller('goalSettingsCtrl', function($scope){
-        $scope.currencies = [{
-            code: 'GBP', 
-            symbol: 'GBP'
-        },{
-            code: 'Dollar', 
-            symbol: '$'
+        $scope.links.list = [{
+            "id": null, //not in database
+            "title":"Add title...",
+            "url":'', 
+            "type":"", 
+            "project_id": null
         }];
-        $scope.goalSetting = {
-            currency: 'adsfa',
-            goal: 'asdf',
-            fundingType: 'flexible',
-            campaignLengthType: 'paymentDate',
-            campaignLength: {
-                'run': '10', 
-                'endDate': '', 
-                'paymentDate': ''
-            },
-            daysRun: '',
-            endDate: '',
-            paymentDate: '05/04/2014'
-        };
         
+        $http({
+            method: 'POST',
+            url: '/campaign/api',
+            data: {
+                method: 'campaign.getStep3',
+                data: {
+                    'campaignId': $scope.campaignId
+                }
+            }
+        }).success(function(response) {
+            console.log(response);
+            if(response.error == 0) {
+                var d = response.data.data;
+                if(d.links) {
+                    $scope.links.list = d.links;
+                } 
+            } else {
+                console.log('--');
+            //$scope.error = response.error;
+            } 
+        });
+        
+        //add link
+        $scope.addLink = function() {
+            $scope.links.list.push({
+                "id": null, //not in database
+                "title":"Add title...",
+                "url":'', 
+                "type":"custom",
+                "editing": false,
+                "project_id": null
+            });
+        }
+        
+        $scope.editLink = function(link){
+            if(link.type != 'custom') return;
+            link.editing=true;
+            $scope.editedLinkItem = link;
+        }
+        
+        $scope.doneLinkEditing = function(link){
+            link.editing=false;
+            $scope.editedLinkItem = null;
+        }
+        
+        $scope.media = {};
+        $scope.media.selectedType = 'video';
+        $scope.selectedMedia = function(type) {
+            $scope.media.selectedType = type;
+            console.log($scope.media.selectedType);
+        }
+        
+        
+    })
+
+    
+    
+    
+    /**
+     * 
+     * STEP 4 controller
+     * 
+     */
+    
+    .controller('step4Ctrl', function($scope, $http){
+        $http({
+            method: 'POST',
+            url: '/campaign/api',
+            data: {
+                method: 'campaign.getStep4',
+                data: {
+                    'campaignId': $scope.campaignId
+                }
+            }
+        }).success(function(response) {
+            if(response.error == 0) {
+            //STEP2 Links
+                
+            } else {
+                console.log('--');
+            //$scope.error = response.error;
+            } 
+        });
         
     })
     
     
+    
+    /**
+     * 
+     * STEP 5 controller
+     * 
+     */
+    
+    .controller('step5Ctrl', function($scope, $http){
+        
+        
+        })
+    
+    
 
-    .controller('CampaignCreateCtrl', function($scope, $http, $window){
+    .controller('Step1Ctrl', function($scope, $http, $window){
         //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
         $scope.config = {
         }

@@ -59,6 +59,8 @@ return array(
                 '' => '/site/index',
                 '/campaign/create' => '/campaign/create',
                 '/campaign/<id:\d+>/step2' => '/campaign/step2',
+                '/campaign/<id:\d+>/step3' => '/campaign/step3',
+                '/campaign/<id:\d+>/step4' => '/campaign/step4',
                 
                 '/admin/feeds/profile/<provider_id:[a-zA-Z+_0-9.-]+>/<provider_name:[a-zA-Z+_0-9.-]+>/' => array('/admin/feeds/profile/'),
                 

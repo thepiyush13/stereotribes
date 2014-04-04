@@ -1,8 +1,14 @@
 <?php
 
 class Link {
-    private $title;
-    private $url;
-    private $type;
-    private $campaign_id;
+    public $id;
+    public $title;
+    public $url;
+    
+    /**
+     * type can be spefic (facebook, twitter, soundcloud, youtube etc.)or dynamic 
+     * @var type 
+     */
+    public $type;
+    public $projectId;
 }
