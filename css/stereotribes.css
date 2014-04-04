@@ -2779,6 +2779,8 @@ input[type="radio"] {
     position: relative;
     width: 17px;
     -webkit-appearance: none;
+    top: -2px;
+    vertical-align: top;
 }
 input[type="radio"]:after {
     background-color: #444;
