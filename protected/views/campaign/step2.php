@@ -119,7 +119,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                     <div class="brickinner">
                                         
                                         <div class="brickimgwrap">
-                                            <img id="flipImage" data-src="holder.js/360x250" src="{{designFlipBox.flipImageUrl}}" alt="" class="img-responsive" />
+                                            <img id="flipImage" data-src="holder.js/100%x100%/text: /#eb2033:#fff" src="{{designFlipBox.flipImageUrl}}" alt="" class="img-responsive" />
                                         </div>
                                         <div class="fund-block-normal fund-block-normal-fix">
 
