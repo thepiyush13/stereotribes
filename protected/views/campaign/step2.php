@@ -498,11 +498,11 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                         Reward Disclaimer Option
                                     </label>
 
-                                    <label class="radio-inline">
+                                    <label>
                                         <input ng-model="reward.rewardDisclaimer" type="radio" name="rewardDisclaimer" id="radio_reward_yes" value="yes" checked=""> Yes
                                     </label>
 
-                                    <label class="radio-inline">
+                                    <label>
                                         <input ng-model="reward.rewardDisclaimer" type="radio" name="rewardDisclaimer" id="radio_reward_no" value="no" checked=""> No
                                     </label>
 
