@@ -493,19 +493,19 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                             <div class="col-md-8">
 
                                 <div class="radiowrapper">
-                                    <div clas="col-md-3">
+                                    <div class="col-md-3">
                                         <label class="radiolabel-inline">
                                             Reward Disclaimer Option
                                         </label>
                                     </div>
-                                    <div clas="col-md-3">
+                                    <div class="col-md-3">
                                         <div class="checkbox">
                                             <label>
                                                 <input ng-model="reward.rewardDisclaimer" type="radio" name="rewardDisclaimer" id="radio_reward_yes" value="yes" checked=""> Yes
                                             </label>
                                         </div>
                                     </div>
-                                    <div clas="col-md-3">
+                                    <div class="col-md-3">
                                         <div class="checkbox">
                                             <label>
                                                 <input ng-model="reward.rewardDisclaimer" type="radio" name="rewardDisclaimer" id="radio_reward_no" value="no" checked=""> No
