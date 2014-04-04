@@ -2802,6 +2802,11 @@ input[type="radio"]:checked:after {
                 0 1px 1px hsla(0,0%,100%,.8),
                 0 0 2px 2px hsla(0,70%,70%,.4);
 }​
+.removeicon {
+	background: #fff;
+	color: #000;
+	padding: 2px 5px;
+}
 
 /* Date Picker */
 

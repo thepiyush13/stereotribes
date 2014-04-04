@@ -621,7 +621,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
 
                                 <div class="col-md-12">
                                     <button ng-click="saveReward(index)" type="button" class="btn btn-default">Save</button>
-                                    <span class="remove-button" ng-click="removeReward(index)">Remove reward</span>
+                                    <span class="remove-button" ng-click="removeReward(index)"><i class="removeicon icon-remove"></i>Remove reward</span>
                                 </div>
 
                             </div>
