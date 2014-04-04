@@ -89,6 +89,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                     <span class="btn btn-default btn-file">
                                         + Add Image <input type="file" id="flipImage" name="flipImage" multiple="multiple" />
                                     </span>
+                                    <span class="file-info">PNG, JPG or GIF 960x640 pixels</span>
                                     <input type="hidden" name="canpaignId" ng-model="campaignId" />
                                     <input type="hidden" name="method" value ="campaign.uploadFlipImage" />
                                     <div class="ajax-loader"></div>
@@ -99,8 +100,6 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
 <!--                                <span class="btn btn-default btn-file">
                                     + Add Image <input type="file">
                                 </span>-->
-
-                                <span class="file-info">PNG, JPG or GIF 960x640 pixels</span>
 
                             </div>
 
