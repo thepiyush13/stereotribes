@@ -2949,6 +2949,11 @@ div.dp-popup td.disabled {
 	height: 230px;
 }
 
+.pitchimage {
+    width: 100%;
+    height: 230px;
+}
+
 .pitchstorytextarea {
 	resize: none;
 }

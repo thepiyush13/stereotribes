@@ -433,8 +433,9 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                         <div class="col-md-4"><!-- Right side pitchvideo wrapper enstartsds -->
 
                             <iframe ng-hide="awesomeCampaign.mediaType=='image'" class="pitchvideo" src="{{awesomeCampaign.newVideoUrl}}" frameborder="0" allowfullscreen=""></iframe>
-                            <img ng-hide="awesomeCampaign.mediaType=='video'" id="awesomePicUrl" src="{{awesomeCampaign.imageUrl}}" class="img-responsive">
-
+                            <div class="pitchimage" ng-hide="awesomeCampaign.mediaType=='video'">
+                                <img id="awesomePicUrl" src="{{awesomeCampaign.imageUrl}}" class="img-responsive">
+                            </div>
                         </div><!-- Right side pitchvideo wrapper ends -->
 
                     </div>	  
