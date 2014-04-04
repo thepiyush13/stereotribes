@@ -195,6 +195,7 @@
         
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/typeahead.bundle.js"></script>
+        <script src="js/holder.js"></script>
         <script type="text/javascript" src="/js/date.js"></script>
         <script type="text/javascript" src="/js/jquery.datePicker.js"></script>
         <script type="text/javascript" src="/js/jquery-te-1.4.0.min.js" charset="utf-8"></script>

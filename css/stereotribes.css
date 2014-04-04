@@ -865,7 +865,15 @@ video {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	
+}
+
+.brickimgwrap {
+    width: 100%;
+    height: 250px;
+}
+
+.fund-height {
+    height: 72px;
 }
 
 .fund-block-featured {
@@ -2940,6 +2948,7 @@ div.dp-popup td.disabled {
 	background: #515151;
 	color: #fff;
 	padding: 15px;
+        margin-bottom: 15px;
 }
 
 .rewardbuilder-wrapper .form-control {

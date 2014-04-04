@@ -119,9 +119,10 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                 <div class="brick brickhover medium mediumpreview">
 
                                     <div class="brickinner">
-
-                                        <img id="flipImage" src="{{designFlipBox.flipImageUrl}}" alt="" class="img-responsive" />
-
+                                        
+                                        <div class="brickimgwrap">
+                                            <img id="flipImage" data-src="holder.js/360x250" src="{{designFlipBox.flipImageUrl}}" alt="" class="img-responsive" />
+                                        </div>
                                         <div class="fund-block-normal fund-block-normal-fix">
 
                                             <div class="fund-normal-count-block">
@@ -344,7 +345,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
 
                                 </div><!-- /.camplength-wrapper-->
 
-                                <div class="col-md-3">
+                                <div class="col-md-3 savewrapper">
                                     <button ng-click="saveGoalSetting()" type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
                                 </div>
                             </div><!-- Left Side wrapper ends -->
@@ -416,15 +417,13 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                             <span class="btn btn-default btn-file" ng-disabled="awesomeCampaign.videoOrImage =='video'">
                                                 + Add Image <input type="file" id="awesomeCampaignImage" name="awesomeCampaignImage" multiple="multiple" />
                                             </span>
+                                            <span class="file-info">PNG, JPG or GIF 960x640 pixels</span>
                                             <input type="hidden" name="canpaignId" value="<?php echo $_GET['id'] ?>" />
                                             <input type="hidden" name="method" value ="campaign.uploadAwesomeCampaignImage" />
 
                                             <div class="ajax-loader"></div>
                                         </form>
                                         <iframe  onload ="Campaign.awesomeCampaignIframeLoad()" name="awesomeImageUploadIframe" id="awesomeImageUploadIframe" scrolling="yes" style="display: none;"></iframe>
-
-
-                                        <span class="file-info">PNG, JPG or GIF 960x640 pixels</span>
                                     </div>
 
                                 </div>
