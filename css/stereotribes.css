@@ -2768,17 +2768,16 @@ input.dp-applied {
 
 input[type="radio"] {
     background-color: #fff;
-    outline: none;
     border: 1px solid #000;
+    outline: none;
     background-image: -webkit-linear-gradient(0deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%),
                       -webkit-linear-gradient(90deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%);
-    border-radius: 10px;
     cursor: pointer;
     display: inline-block;
-    height: 15px;
+    height: 17px;
     margin-right: 15px;
     position: relative;
-    width: 15px;
+    width: 17px;
     -webkit-appearance: none;
 }
 input[type="radio"]:after {
