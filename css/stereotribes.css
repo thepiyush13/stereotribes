@@ -2956,6 +2956,10 @@ div.dp-popup td.disabled {
     font-size: 13px!important;
 }
 
+.st-radio-hdn {
+    opacity: 0;
+}
+
 .rewardbuilder-wrapper .form-control {
 	background: transparent;
 	box-shadow: 0 0 0 transparent;
