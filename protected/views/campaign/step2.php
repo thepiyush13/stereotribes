@@ -81,11 +81,10 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                 </div>
                             </form>
 
-                            <div class="upload-wrapper">
-
-                                <h4 class="article-inner-title">Flip box image</h4>
+                            <div class="upload-wrapper">                                
                                 <!-- flip image upload -->
                                 <form method="POST" action="/campaign/upload" id="flipImageUploadForm" name="flipImageUploadForm" target="flipImageUploadIframe" enctype="multipart/form-data">
+                                    <h4 class="article-inner-title">Flip box image</h4>
                                     <span class="btn btn-default btn-file">
                                         + Add Image <input type="file" id="flipImage" name="flipImage" multiple="multiple" />
                                     </span>
