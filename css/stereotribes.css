@@ -3663,7 +3663,9 @@ body.userdashboard {
 .removeicon {
 	background: #fff;
 	color: #000;
-	padding: 2px 5px;
+	padding: 3px 4px;
+	border-radius: 100%;
+	margin-right: 8px;
 }
 
 
