@@ -135,7 +135,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                                 <div class="fund-notation notationfix"></div>							
                                             </div>
 
-                                            <div class="fund-normal-title-block fund-normal-fix">
+                                            <div class="fund-normal-title-block fund-normal-fix fund-height">
 
                                                 <a href="#" id="fundlive-title" class="fund-normal-title normaltitle">{{designFlipBox.title}}</a>
 
