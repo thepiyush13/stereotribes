@@ -2953,6 +2953,7 @@ div.dp-popup td.disabled {
 
 .flipara {
     height: 80px;
+    font-size: 13px!important;
 }
 
 .rewardbuilder-wrapper .form-control {
