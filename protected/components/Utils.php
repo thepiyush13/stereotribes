@@ -29,8 +29,8 @@ class Utils {
     static function fromCamelCase($string) {
         $string[0] = strtolower($string[0]);
         return preg_replace_callback('/([A-Z])/', function ($c) {
-                    return '_' . strtolower($c[1]);
-                }, $string);
+                            return '_' . strtolower($c[1]);
+                        }, $string);
     }
 
     /**
@@ -307,6 +307,20 @@ class Utils {
         }
 
         return $new_array;
+    }
+    
+    /**
+     * generate unique string
+     * @param type $length
+     * @return string 
+     */
+    public static function generateRandomString($length = 54) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~-_.';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
     }
 
     /**

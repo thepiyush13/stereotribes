@@ -24,7 +24,25 @@ Campaign = {
         jQuery('#awesomePicUrl').attr('src', json.data.picUrl);
         var scope = angular.element($("#step2")).scope();
         scope.$apply(function(){
-            $scope.aweSomeCampaign.picUrl = json.data.picUrl;
+            scope.aweSomeCampaign.picUrl = json.data.picUrl;
+        })
+    },
+    
+    mediaLinkIframeUpload: function(e) {
+        var json = this.getFrameContent('#mediaLinkIFrame_'+e);
+        if(!json) return;
+    
+        jQuery('#mediaLinkIFrame_'+e).attr('src', json.data.picUrl);
+        var scope = angular.element($("#step3")).scope();
+        scope.$apply(function(){
+            $(scope.mediaLinks.image).each(function(key, o) {
+               console.log(e)
+               if('image_'+o.id == e ) {
+                   scope.mediaLinks.image[key].code_url = json.data.picUrl;
+                   console.log(o);
+               } 
+            });
+            scope.mediaLinks.image[0].picUrl = json.data.picUrl;
         })
     },
     

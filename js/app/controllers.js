@@ -277,8 +277,9 @@ angular.module('app')
      * 
      */
     
-    .controller('step3Ctrl', function($scope, $http, $window){
+    .controller('step3Ctrl', function($scope, $http, $window, Utils){
         $scope.campaignId = $window.$campaignId; //most important
+        
         
         //reward
         $scope.links={}
@@ -288,8 +289,17 @@ angular.module('app')
             "title":"Add title...",
             "url":'', 
             "type":"", 
-            "project_id": null
+            "projectId": $scope.campaignId
         }];
+    
+        $scope.mediaLinks={}
+        $scope.mediaLinks.video=[];
+        $scope.mediaLinks.audio=[];
+        $scope.mediaLinks.image=[];
+        $scope.mediaLinks.pdf=[];
+        
+        //$scope.masterMediaLinks = $scope.mediaLinks; //copy
+//        $scope.mediaLinks =
         
         $http({
             method: 'POST',
@@ -304,9 +314,46 @@ angular.module('app')
             console.log(response);
             if(response.error == 0) {
                 var d = response.data.data;
+                
+                //Links
                 if(d.links) {
                     $scope.links.list = d.links;
-                } 
+                }
+                
+                
+                //Media Links
+                if(d.mediaLinks.video.length) {
+                    $scope.mediaLinks.video = d.mediaLinks.video;
+                } else {
+                    $scope.mediaLinks.video.push({id:null, title:"", description:"", type : "video", code_url: "", projectId: $scope.campaignId, editing: false})
+                }
+                
+                
+                if(d.mediaLinks.image.length) {
+                    $scope.mediaLinks.image = d.mediaLinks.image;
+                } else {
+                     $scope.mediaLinks.image.push({id:null, title:"", description:"", type : "image", code_url: "", projectId: $scope.campaignId, editing: false})
+                }
+                
+                if(d.mediaLinks.audio.length) {
+                    
+                    $scope.mediaLinks.audio = d.mediaLinks.audio;
+                }else {
+                     $scope.mediaLinks.audio.push({id:null, title:"", description:"", type : "audio", code_url: "", projectId: $scope.campaignId, editing: false})
+                }
+                
+                
+                if(d.mediaLinks.pdf.length) {
+                    $scope.mediaLinks.pdf = d.mediaLinks.pdf;
+                }else {
+                     $scope.mediaLinks.pdf.push({id:null, title:"", description:"", type : "pdf", code_url: "", projectId: $scope.campaignId, editing: false})
+                }
+                
+                //get a master copy
+                $scope.masterMediaLinks = $scope.mediaLinks;
+                
+                
+                console.log($scope.mediaLinks);
             } else {
                 console.log('--');
             //$scope.error = response.error;
@@ -321,7 +368,7 @@ angular.module('app')
                 "url":'', 
                 "type":"custom",
                 "editing": false,
-                "project_id": null
+                "projectId": $scope.campaignId
             });
         }
         
@@ -342,6 +389,27 @@ angular.module('app')
             $scope.media.selectedType = type;
             console.log($scope.media.selectedType);
         }
+        
+        
+        $scope.addMediaLink = function(type) {
+            var _id = new Date().getTime();
+            $scope.mediaLinks[type].push({id:_id, title:"", description:"", type : type, code_url: "", projectId: $scope.campaignId, editing: true});
+        }
+        
+        $scope.removeMediaLink = function(type, index) {
+            $scope.mediaLinks[type].splice(index,1);
+        }
+        
+        //medialink video editing
+        $scope.editMedia = function(type, index) {
+            $scope.mediaLinks[type][index].editing = true;
+        }
+        
+        //editing is over
+        $scope.doneEditMedia = function(type, index) {
+            $scope.mediaLinks[type][index].editing = false;
+        }
+        
         
         
     })
@@ -394,6 +462,7 @@ angular.module('app')
 
     .controller('Step1Ctrl', function($scope, $http, $window){
         //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+        $scope.campaignId = $window.$campaignId;
         $scope.config = {
         }
         
@@ -407,13 +476,19 @@ angular.module('app')
         $http({
             method: 'POST',
             url: '/campaign/api',
+            
             data: {
+                campaignId: $scope.campaignId,
                 method: 'campaign.getStep1'
             }
         }).success(function(response) {
             console.log(response.error);
             if(response.error == 0) {
                 $scope.config = response.data.config;
+                $scope.createCampaign.category = response.data.data.category;
+                $scope.createCampaign.currency = response.data.data.currency;
+                $scope.createCampaign.goal = response.data.data.goal;
+                $scope.createCampaign.projectFor = response.data.data.projectFor;
             } else {
                 console.log('--');
             //$scope.error = response.error;
@@ -437,6 +512,7 @@ angular.module('app')
                 url: '/campaign/api',
                 data: {
                     method: 'campaign.create',
+                    campaignId: $scope.campaignId,
                     data: $scope.createCampaign
                 }
             }).success(function(response) {

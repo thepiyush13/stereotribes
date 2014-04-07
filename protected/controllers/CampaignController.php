@@ -11,6 +11,10 @@ class CampaignController extends Controller {
     public function actionCreate() {
         $this->render('step1');
     }
+    
+    public function actionStep1() {
+        $this->render('step1');
+    }
 
     public function actionStep2() {
         $this->render('step2');
@@ -56,6 +60,9 @@ class CampaignController extends Controller {
             'campaign.saveAwesomeCampaign',
             'campaign.saveReward',
             'campaign.deleteReward',
+            'campaign.processMails',
+            'campaign.inviteTribes',
+            'campaign.saveAmplifers',
         );
 
         $result = '';
@@ -83,6 +90,7 @@ class CampaignController extends Controller {
         $methodList = array(
             'campaign.uploadFlipImage',
             'campaign.uploadAwesomeCampaignImage',
+            'campaign.uploadMediaLinkImage',
         );
 
         $result = '';

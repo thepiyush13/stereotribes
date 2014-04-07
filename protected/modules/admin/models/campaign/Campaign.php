@@ -34,7 +34,7 @@ class Campaign extends CFormModel {
     public $mainLink;
     public $thankyouMediaType;
     public $thankyouMediaUrl;
-    public $campaignUrl;
+    public $shareUrl;
     public $status;
     public $socialAmplifierStatus;
     public $userId;
@@ -97,20 +97,23 @@ class Campaign extends CFormModel {
 //        $this->fetchUser();
         $this->fetchLinks();
         $this->fetchMediaLinks();
-//        $this->fetchTribes();
-//        $this->SocialAmplifers();
+        $this->fetchTribes();
+        $this->fetchSocialAmplifers();
     }
 
     /**
      * fetch Campaign
      */
     public function fetchCampaignAttributes() {
-        $attributes = array('title', 'shortSummary', 'country', 'city', 'flipImageUrl', 'shortUrl', 'category', 'goal', 'currency', 'projectFor', 'fundingType', 'daysRun', 'endDate', 'paymentDate', 'mediaType', 'videoUrl', 'imageUrl', 'pitchStory', 'mainLink', 'thankyouMediaType', 'thankyouMediaUrl', 'campaignUrl', 'status', 'socialAmplifierStatus', 'userId');
+        $attributes = array('title', 'shortSummary', 'country', 'city', 'flipImageUrl', 'shortUrl', 'category', 'goal', 'currency', 'projectFor', 'fundingType', 'daysRun', 'endDate', 'paymentDate', 'mediaType', 'videoUrl', 'imageUrl', 'pitchStory', 'mainLink', 'thankyouMediaType', 'thankyouMediaUrl', 'shareUrl', 'status', 'socialAmplifierStatus', 'userId');
         $sql = "SELECT * FROM project where id = :CAMPAIGN_ID";
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues, 'queryRow');
         $map = $this->mapAttrsKey($attributes);
         $this->exchangeData($result, $map);
+
+        //reset values;
+        $this->shareUrl = $_SERVER['HTTP_HOST'] . '/tcampaign/' . $this->id . '/?share=' . $this->shareUrl;
     }
 
     public function fetchRewards() {
@@ -141,26 +144,34 @@ class Campaign extends CFormModel {
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues);
         $map = $this->mapAttrsKey($attributesLinks);
-        $this->exchangeDataArray($result, $map, 'links', 'Link');//data, property-field mapping, attribute, class
+        $this->exchangeDataArray($result, $map, 'links', 'Link'); //data, property-field mapping, attribute, class
     }
-    
+
     public function fetchMediaLinks() {
         $attributesLinks = array('id', 'title', 'description', 'type', 'code_url', 'projectId');
         $sql = "SELECT * FROM media_links where project_id = :CAMPAIGN_ID";
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues);
         $map = $this->mapAttrsKey($attributesLinks);
-        $this->exchangeDataArray($result, $map, 'mediaLinks', 'MediaLink');//data, property-field mapping, attribute, class
+        $this->exchangeMediaLink($result, $map, 'mediaLinks', 'MediaLink'); //data, property-field mapping, attribute, class
     }
 
     public function fetchTribes() {
+        $attributesTribe = array('id', 'email', 'name', 'canEdit', 'status', 'projectId');
         $sql = "SELECT * FROM tribes where project_id = :CAMPAIGN_ID";
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues);
+        $map = $this->mapAttrsKey($attributesTribe);
+        $this->exchangeDataArray($result, $map, 'tribes', 'Tribe');
     }
 
-    public function SocialAmplifers() {
-        
+    public function fetchSocialAmplifers() {
+        $attributesLinks = array('percent', 'title', 'message', 'postStatus', 'projectId');
+        $sql = "SELECT * FROM social_amplifier where project_id = :CAMPAIGN_ID";
+        $bindValues = array(':CAMPAIGN_ID' => $this->id);
+        $result = $this->fetch($sql, $bindValues);
+        $map = $this->mapAttrsKey($attributesLinks);
+        $this->exchangeDataArray($result, $map, 'socialAmplifers', 'SocialAmplifier'); //data, property-field mapping, attribute, class
     }
 
     public function fetch($sql = '', $bindValues, $method = 'queryAll') {
@@ -190,6 +201,7 @@ class Campaign extends CFormModel {
             'currencies' => Config::getCurrencies(),
             'rewardTypes' => Config::rewardTypes(),
             'staticLinks' => Config::staticLinks(),
+            'socialAmplifiers' => Config::getSocialAmplifiers(),
         );
     }
 
@@ -238,8 +250,7 @@ class Campaign extends CFormModel {
             $this->{$property}[] = $o;
         }
     }
-    
-    
+
     /**
      * very specific to campaing
      * @param type $data
@@ -251,8 +262,29 @@ class Campaign extends CFormModel {
     public function exchangeMediaLink($data, $map, $property, $class) {
         if (!is_array($data))
             return;
+        $this->{$property}['video'] = array();
+        $this->{$property}['image'] = array();
+        $this->{$property}['audio'] = array();
+        $this->{$property}['pdf'] = array();
         foreach ($data as $row) {
-            $row['type'] =    '';
+            $mo = new MediaLink();
+            foreach ($map as $attr => $key) {
+                $mo->$attr = isset($row[$key]) ? $row[$key] : '';
+            }
+            switch ($row['type']) {
+                case 'video':
+                    $this->{$property}['video'][] = $mo;
+                    break;
+                case 'image':
+                    $this->{$property}['image'][] = $mo;
+                    break;
+                case 'audio':
+                    $this->{$property}['audio'][] = $mo;
+                    break;
+                case 'pdf':
+                    $this->{$property}['pdf'][] = $mo;
+                    break;
+            }
         }
     }
 
@@ -261,15 +293,15 @@ class Campaign extends CFormModel {
      */
     public function getStep1() {
         //if requested with id fetch from database
-        if (isset($_GET['id']) && $_GET['id']) {
-            $campaign = self::instance();
+        if (isset($_POST['campaignId']) && $_POST['campaignId']) {
+            $campaign = self::instance($_POST['campaignId']);
         }
 
 
         $result = array(
             'config' => $this->getConfig(),
             'user' => '',
-            'data' => ''
+            'data' => $campaign
         );
         Ajax::success($result);
     }
@@ -301,9 +333,28 @@ class Campaign extends CFormModel {
         if (isset($_POST['data']['campaignId']) && $_POST['data']['campaignId']) {
             $campaign = self::instance($_POST['data']['campaignId']);
         }
-        
-        
 
+
+
+
+        $result = array(
+            'config' => $this->getConfig(),
+            'user' => '',
+            'data' => $campaign
+        );
+
+        //print_r($result);
+        Ajax::success($result);
+    }
+
+    /**
+     * Step 3
+     */
+    public function getStep4() {
+        //if requested with id fetch from database
+        if (isset($_POST['data']['campaignId']) && $_POST['data']['campaignId']) {
+            $campaign = self::instance($_POST['data']['campaignId']);
+        }
 
         $result = array(
             'config' => $this->getConfig(),
@@ -337,15 +388,29 @@ class Campaign extends CFormModel {
         $validator = new CreateValidator();
         $validator->setAttributes($data);
         if ($validator->validate()) {
+            //if campaign id then update else insert
             $command = Yii::app()->db->createCommand();
-            if ($command->insert('project', $this->toUnderScore($data))) {
-                $result = array();
-                $result['campaignId'] = Yii::app()->db->getLastInsertId();
-                $this->insertStaticLink($result['campaignId']); //insert into links table
-                //add static links with empty url
-                Ajax::success($result);
+            $columns = $data; //data from step 1
+            if (isset($_POST['campaignId']) && $_POST['campaignId']) {
+                $columns = $this->toUnderScore($columns);
+                $command->update(
+                        'project', $columns, 'id = :ID', array(':ID' => $_POST['campaignId'])
+                );
             } else {
-                
+                $columns['shareUrl'] = Utils::generateRandomString(); //share with tribes  
+                $columns['status'] = 'draft';
+                $columns = $this->toUnderScore($columns);
+
+                if ($command->insert('project', $columns)) {
+                    $result = array();
+                    $result['campaignId'] = Yii::app()->db->getLastInsertId();
+                    $this->insertStaticLink($result['campaignId']); //insert into links table
+                    $this->insertSocialAmplifier($result['campaignId']); //insert social amplifier stuff
+                    //add static links with empty url
+                    Ajax::success($result);
+                } else {
+                    
+                }
             }
         } else {
             Ajax::error($validator->getErrors());
@@ -389,6 +454,23 @@ class Campaign extends CFormModel {
         );
         $uploadedImage = CUploadedFile::getInstanceByName('awesomeCampaignImage');
         $this->uploadImage($uploadedImage, $options);
+    }
+
+    public function uploadMediaLinkImage($data) {
+        $options = array(
+            'name' => 'mediaLink_image_' . $_POST['campaignId'] . '_' . md5(rand(1, 1000))
+        );
+        $uploadedImage = CUploadedFile::getInstanceByName('mediaLinkFile_image_' . $_POST['id']);
+        $uploader = new ImageUploader($uploadedImage, $options);
+        if ($uploader->process()) {
+            $uploader->getImagePath();
+            Ajax::success(array(
+                'picUrl' => $this->getUrl($uploader->getImagePath()),
+                'id' => $_POST['id']
+            ));
+        } else {
+            Ajax::error($uploader->getError());
+        }
     }
 
     public function uploadImage($uploadedImage, $options) {
@@ -543,6 +625,113 @@ class Campaign extends CFormModel {
         }
     }
 
+    /**
+     * A new project created, add static links without other attributes into database
+     * @param type $projectId 
+     */
+    public function insertSocialAmplifier($projectId) {
+        $socialAmplifiers = Config::getSocialAmplifiers();
+        $command = Yii::app()->db->createCommand();
+        if (is_array($socialAmplifiers)) {
+            foreach ($socialAmplifiers as $amplifier) {
+                $amplifier['project_id'] = $projectId;
+                $command->insert('social_amplifier', $amplifier);
+            }
+        }
+    }
+
+    /**
+     * check tribe mails
+     * for each valid emails add to tribe.  If already exists then overwrite 
+     * 
+     */
+    public function processMails($data, $ajax = true) {
+        $emails = explode(',', $data['emails']);
+        $_tribes = array('tribes' => array());
+        if (is_array($emails)) {
+            if (is_array($data['tribes']))
+                foreach ($data['tribes'] as $t) {
+                    $_email = strtolower($t['email']);
+                    if ($_email) {
+                        $_tribes['tribes'][$_email] = $t;
+                    }
+                }
+
+            $canEdit = $data['canEdit'];
+            foreach ($emails as $email) {
+                if (filter_var(trim($email), FILTER_VALIDATE_EMAIL)) {
+                    $_emailNew = trim(strtolower($email));
+                    if (!array_key_exists($_emailNew, $_tribes['tribes'])) {
+                        $_tribes['tribes'][$_emailNew] = array('id' => '', 'email' => $_emailNew, 'name' => '', 'canEdit' => $canEdit, 'profilePic' => '', 'projectId' => '');
+                    } else {
+                        $_tribes['tribes'][$_emailNew]['canEdit'] = $canEdit;
+                    }
+                }
+            }
+
+
+
+            if ($ajax === true) {
+                Ajax::success(array('tribes' => array_values($_tribes['tribes'])));
+            } else {
+                return $_tribes['tribes'];
+            }
+        }
+    }
+
+    public function inviteTribes($data) {
+        if ($this->validRequest()) {
+            //update database
+            $tribes = (trim($data['emails'])) ? $this->processMails($data, false) : $data['tribes'];
+
+            if ($tribes && is_array($tribes)) {
+                $command = Yii::app()->db->createCommand();
+                $command->delete('tribes', 'project_id=:ID', array(':ID' => $_POST['campaignId']));
+                foreach ($tribes as $tribe) {
+
+                    $columns = array(
+                        'email' => $tribe['email'],
+                        //'name' => $tribe['name'],
+                        'can_edit' => $tribe['canEdit'],
+                        'status' => $tribe['status'],
+                        'user_id' => '', //query user by email
+                        'project_id' => $_POST['campaignId'] //query user by email
+                    );
+
+                    $command->insert('tribes', $columns);
+                }
+            }
+
+            Ajax::success(array('tribes' => array_values($tribes)));
+        }
+    }
+
+    public function saveAmplifers($data) {
+        print_r($data);
+        if ($this->validRequest()) {
+            //update database
+            $socialAmplifers = $data['socialAmplifers'];
+
+            if ($socialAmplifers && is_array($socialAmplifers)) {
+                $command = Yii::app()->db->createCommand();
+                foreach ($socialAmplifers as $amplifer) {
+
+                    $columns = array(
+                        'title' => $amplifer['title'],
+                        'message' => $amplifer['message'],
+                        'post_status' => ($amplifer['postStatus']) ? 1 : 0,
+                    );
+
+                    $command->update(
+                            'social_amplifier', $columns, 'project_id = :ID AND percent = :PERCENT', array(':ID' => $_POST['campaignId'], ':PERCENT' => $amplifer['percent'])
+                    );
+                }
+            }
+
+            Ajax::success(array());
+        }
+    }
+
 }
 
 class AppUser {
@@ -557,3 +746,4 @@ class AppUser {
 /*
 (id, name, dob, age, email, password, location, fbid=kalpit)
 */
+

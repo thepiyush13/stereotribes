@@ -7,6 +7,7 @@ class CampaignSteps extends CWidget
         if(!isset($_GET['id']) && $action !='create') {
             echo "Redirect ...";
         }
+        $id = $_GET['id'];
         
         $step1Active = ($action == 'step1') ? ' active' : '';
         $step2Active = ($action == 'step2') ? ' active' : '';

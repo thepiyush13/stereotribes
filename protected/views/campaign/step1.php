@@ -1,4 +1,6 @@
-
+<script>
+    var $campaignId = <?php echo (int) $_GET['id'] ?>
+</script>
 <div class="container playcontainer" ng-app="app">
 
     <div class="row">

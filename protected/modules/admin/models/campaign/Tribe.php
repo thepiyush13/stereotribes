@@ -1,10 +1,11 @@
 <?php
 class Tribe {
-    private $email;
-    private $token;
-    private $canEdit;
-    private $extra_code;
-    private $campaign_id;
+    public $id;
+    public $email;
+    public $name;
+    public $token;
+    public $canEdit;
+    public $campaign_id;
     
 }
 

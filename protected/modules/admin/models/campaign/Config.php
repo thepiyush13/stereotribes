@@ -67,6 +67,21 @@ class Config {
         );
     }
     
+    /**
+     *  Social amplifiers
+     */
+    
+    public static function getSocialAmplifiers() {
+        $message = 'I will create default text for this box, however it will be editable for the user.';
+        $title = 'this post will go out to your social media accounts';
+        return array(
+            array('percent' => '5',  'title' => $title, 'message' => $message),
+            array('percent' => '10', 'title' => $title, 'message' => $message),
+            array('percent' => '20', 'title' => $title, 'message' => $message),
+            array('percent' => '40', 'title' => $title, 'message' => $message),
+        );
+    }
+    
     
     
 }

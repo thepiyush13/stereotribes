@@ -1,8 +1,9 @@
 <?php
 class SocialAmplifier {
-    private $target;
-    private $message;
-    private $post_status;
-    private $campaign_id;
+    public $percent;
+    public $title;
+    public $message;
+    public $postStatus;
+    public $projectId;
     
 }
