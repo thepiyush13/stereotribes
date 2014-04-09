@@ -6,9 +6,9 @@
 class AppUser extends CActiveRecord
 {
     public $confirm_password;
-	/**
-	 * @return string the associated database table name
-	 */
+    public $oldpassword;
+    public $newpassword;
+
 	public function tableName()
 	{
 		return 'app_user';
@@ -19,9 +19,10 @@ class AppUser extends CActiveRecord
             $data['fbid'] = $params['id'];
             $data['email'] = $params['email'];
             $data['name'] = $params['name'];
+            $data['location'] = $params['work'][0]['location']['name'];
             $this->attributes = $data;
             $this->save(false);
-            } 
+        }
 
     protected function afterValidate()
         {
@@ -41,22 +42,32 @@ class AppUser extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
-			array('name, email, password, location, confirm_password', 'required'),
-                        array('email','unique'),
-                        array('confirm_password', 'compare', 'compareAttribute' => 'password'),
-			array('fbid', 'numerical', 'integerOnly'=>true),
-			array('name, location', 'length', 'max'=>150),
-			array('email', 'length', 'max'=>250),
-			array('password', 'length', 'max'=>100),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, name, email, password, location, fbid', 'safe', 'on'=>'search'),
+			array('name, email, password, location, confirm_password', 'required','on'=>'create'),
+                        array('email','unique','on'=>'create'),
+                        array('email','email','on'=>'create'),
+                        array('newpassword,confirm_password,oldpassword','required','on'=>'changePassword'),
+                        array('confirm_password,newpassword','compare','compareAttribute' => 'newpassword','on'=>'changePassword'),
+                        array('oldpassword', 'verifyOldPassword','on'=>'changePassword'),
+                        array('confirm_password', 'compare', 'compareAttribute' => 'password','on'=>'create'),
 		);
 	}
 
+        /*
+         * It will check old password 
+         */
+        public function verifyOldPassword($attribute,$params)
+        {
+                if(!$this->hasErrors())
+                {
+                        $user = AppUser::model()->findByAttributes(array('email' => Yii::app()->user->name));
+                        if($user->password !== md5($this->oldpassword))
+                                $this->addError('oldpassword','old password is wrong.');
+                        else
+                            $this->password = $this->newpassword;
+                }
+        }
+        
 	public function ifUserExists($userEmail = "") {
             $result = $this->find('email=:email', array(':email' => $userEmail));
             
@@ -65,66 +76,25 @@ class AppUser extends CActiveRecord
             }
         }
     
+        /*
+         * It will check given email is registered with Facebook or not?
+         */
+	public function isFbUser($userEmail = "") {
+            $result = $this->find('email=:email', array(':email' => $userEmail));
+            
+            if ($result && $result->fbid && !$result->password) {
+                return true;
+            }
+            else
+                return false;
+        }
+        
 	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-		);
-	}
+            {
+		return array();
+            }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'email' => 'Email',
-			'password' => 'Password',
-			'location' => 'Location',
-                        'last_login' => 'Last_login',
-			'fbid' => 'Fbid',
-		);
-	}
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
-
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('location',$this->location,true);
-		$criteria->compare('fbid',$this->fbid);
-
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return AppUser the static model class
-	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);

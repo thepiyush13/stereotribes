@@ -3,7 +3,7 @@
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'default'));
 $dbName = 'stereotribes';
 $dbUser = 'root';
-$dbPassword = '';
+$dbPassword = 'mysql';
 if(APPLICATION_ENV == 'jump-dev') {
        $dbName = 'stereotribes';
        $dbUser = 'stereotribes';
@@ -28,8 +28,6 @@ return array(
         'application.models.*',
         'application.components.*',
         'application.modules.admin.models.*',
-        'application.modules.admin.models.campaign.*',
-        'application.modules.admin.models.campaign.forms.*',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
@@ -63,13 +61,10 @@ return array(
                 '/campaign/<id:\d+>/step4' => '/campaign/step4',
                 '/campaign/<id:\d+>/step5' => '/campaign/step5',
                 '/login/fbconnect' => '/login/facebook/p/1',
-                
-                '/admin/feeds/profile/<provider_id:[a-zA-Z+_0-9.-]+>/<provider_name:[a-zA-Z+_0-9.-]+>/' => array('/admin/feeds/profile/'),
-                
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                '/register' => '/Appuser/create',
+                '/register' => '/AppUser/create',
             ),
         ),
         'db' => array(
