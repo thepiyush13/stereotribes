@@ -121,19 +121,5 @@ $(document).ready(function() {
     $('.pitchstorytextarea').jqte();
     
     
-    /** 
-     * Trigger flip image upload
-     */
-    $('#flipImageUploadForm').on('change', function() {
-        $('#flipImageUploadForm').submit();
-    });
     
-    
-    /** 
-     * Trigger campaign image upload
-     */
-    $('#awesomeCampaignImage').on('change', function() {
-        $('#awesomeImageUploadForm').submit();
-    });
-
 });

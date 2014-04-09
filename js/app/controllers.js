@@ -105,9 +105,14 @@ angular.module('app')
                 jQuery('.jqte_editor', $('#awesomePitchStory').parent().parent()).html(d.pitchStory);//copy to editor
                 
                 //reward
-                $scope.reward.rewardDisclaimer=(d.rewardDisclaimer) ? d.rewardDisclaimer : 'no';
+                $scope.reward.rewardDisclaimer=(d.rewardsDisclaimer) ? true : false;
                 if(d.rewards) {
                     $scope.reward.list = d.rewards;
+                    for(var i=0; i < d.rewards.length; i++) {
+                        $scope.reward.list[i].fundersShippingAddressRequired = (d.rewards[i].fundersShippingAddressRequired == 1) ? true : false;
+                    }
+                    
+                    
                 } 
                 
                 
@@ -182,6 +187,18 @@ angular.module('app')
                 $scope.reward.list[i].rewardTypes.splice(foundIndex, 1);
             }
         }
+        
+        $scope.chkReward = function(i, type) {
+            // console.log(i, type);
+            var foundIndex = jQuery.inArray( type, $scope.reward.list[i].rewardTypes);
+            if(foundIndex == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+        
         
         //save reward: index
     
@@ -272,10 +289,10 @@ angular.module('app')
     
     
     /**
-     * 
-     * STEP 3 controller
-     * 
-     */
+ * 
+ * STEP 3 controller
+ * 
+ */
     
     .controller('step3Ctrl', function($scope, $http, $window, Utils){
         $scope.campaignId = $window.$campaignId; //most important
@@ -298,8 +315,20 @@ angular.module('app')
         $scope.mediaLinks.image=[];
         $scope.mediaLinks.pdf=[];
         
+        
+        $scope.fundThankyou = {
+            mediaType: 'image',
+            thankyouVideoUrl: '',
+            thankyouImageUrl: '',
+            newThankyouVideoUrl:'',
+            hasFocus: false,
+            showVideo: function() {
+                alert(this.videoUrl);
+            }
+        }
+        
         //$scope.masterMediaLinks = $scope.mediaLinks; //copy
-//        $scope.mediaLinks =
+        //        $scope.mediaLinks =
         
         $http({
             method: 'POST',
@@ -324,29 +353,69 @@ angular.module('app')
                 //Media Links
                 if(d.mediaLinks.video.length) {
                     $scope.mediaLinks.video = d.mediaLinks.video;
-                } else {
-                    $scope.mediaLinks.video.push({id:null, title:"", description:"", type : "video", code_url: "", projectId: $scope.campaignId, editing: false})
+                } else { //add an empty video
+                    $scope.mediaLinks.video.push({
+                        id:null, 
+                        title:"", 
+                        description:"", 
+                        type : "video", 
+                        codeUrl: "", 
+                        projectId: $scope.campaignId, 
+                        editing: false
+                    })
                 }
                 
                 
                 if(d.mediaLinks.image.length) {
                     $scope.mediaLinks.image = d.mediaLinks.image;
-                } else {
-                     $scope.mediaLinks.image.push({id:null, title:"", description:"", type : "image", code_url: "", projectId: $scope.campaignId, editing: false})
+                } else { //add an empty image
+                    $scope.mediaLinks.image.push({
+                        id: Utils.getUniqueId(),  //random unique id
+                        title:"", 
+                        description:"", 
+                        type : "image", 
+                        codeUrl: "", 
+                        projectId: $scope.campaignId, 
+                        editing: false
+                    })
                 }
                 
                 if(d.mediaLinks.audio.length) {
                     
                     $scope.mediaLinks.audio = d.mediaLinks.audio;
                 }else {
-                     $scope.mediaLinks.audio.push({id:null, title:"", description:"", type : "audio", code_url: "", projectId: $scope.campaignId, editing: false})
+                    $scope.mediaLinks.audio.push({
+                        id: null, 
+                        title:"", 
+                        description:"", 
+                        type : "audio", 
+                        codeUrl: "", 
+                        projectId: $scope.campaignId, 
+                        editing: false
+                    })
                 }
                 
                 
                 if(d.mediaLinks.pdf.length) {
                     $scope.mediaLinks.pdf = d.mediaLinks.pdf;
                 }else {
-                     $scope.mediaLinks.pdf.push({id:null, title:"", description:"", type : "pdf", code_url: "", projectId: $scope.campaignId, editing: false})
+                    $scope.mediaLinks.pdf.push({
+                        id: Utils.getUniqueId(), 
+                        title:"", 
+                        description:"", 
+                        type : "pdf", 
+                        codeUrl: "", 
+                        projectId: $scope.campaignId, 
+                        editing: false
+                    })
+                }
+                
+                $scope.fundThankyou = {
+                    thankyouMediaType: (d.thankyouMediaType) ? d.thankyouMediaType : 'video',
+                    thankyouVideoUrl: d.thankyouVideoUrl,
+                    thankyouImageUrl: d.thankyouImageUrl,
+                    newThankyouVideoUrl: d.thankyouVideoUrl, //??
+                    hasFocus: false
                 }
                 
                 //get a master copy
@@ -378,9 +447,53 @@ angular.module('app')
             $scope.editedLinkItem = link;
         }
         
+        $scope.removeLink = function(index) {
+            
+            if($scope.links.list[index].id != null) {
+                $http({
+                    method: 'POST',
+                    url: '/campaign/api',
+                    data: {
+                        method: 'campaign.removeLink',
+                        campaignId: $scope.campaignId,
+                        id: $scope.links.list[index].id
+                    }
+                }).success(function(response){
+                    if(response.error == 0) {
+                        $scope.links.list.splice(index, 1);
+                    }
+                }) 
+            }
+        }
+        
         $scope.doneLinkEditing = function(link){
             link.editing=false;
             $scope.editedLinkItem = null;
+        }
+        
+        //save links
+        $scope.saveLinks = function() {
+            $http({
+                method: 'POST',
+                url: '/campaign/api',
+                data: {
+                    method: 'campaign.saveLinks',
+                    campaignId: $scope.campaignId,
+                    data: {
+                        links: $scope.links
+                    }
+                }
+            }).success(function(response) {
+                if(response.error == 0) {
+                    var d = response.data.data;
+                    $scope.links.list = d.links;
+                
+                } else {
+                    console.log('--');
+                //$scope.error = response.error;
+                } 
+        
+            });
         }
         
         $scope.media = {};
@@ -392,12 +505,37 @@ angular.module('app')
         
         
         $scope.addMediaLink = function(type) {
-            var _id = new Date().getTime();
-            $scope.mediaLinks[type].push({id:_id, title:"", description:"", type : type, code_url: "", projectId: $scope.campaignId, editing: true});
+            var _id = Utils.getUniqueId();
+            $scope.mediaLinks[type].push({
+                id:_id, 
+                title:"", 
+                description:"", 
+                type : type, 
+                codeUrl: "", 
+                projectId: $scope.campaignId, 
+                editing: true
+            });
         }
         
         $scope.removeMediaLink = function(type, index) {
-            $scope.mediaLinks[type].splice(index,1);
+            var _item = $scope.mediaLinks[type][index];
+            if($scope.mediaLinks[type][index].id < 1000000000000 && $scope.mediaLinks[type][index].id != null) {
+                $http({
+                    method: 'POST',
+                    url: '/campaign/api',
+                    data: {
+                        method: 'campaign.removeMediaLink',
+                        campaignId: $scope.campaignId,
+                        id: _item.id
+                    }
+                }).success(function(response){
+                    if(response.error == 0) {
+                        $scope.mediaLinks[type].splice(index,1);
+                    }
+                })
+            } else {
+                $scope.mediaLinks[type].splice(index,1); //just delete from client object 
+            }
         }
         
         //medialink video editing
@@ -410,6 +548,68 @@ angular.module('app')
             $scope.mediaLinks[type][index].editing = false;
         }
         
+        //save Media Links
+        $scope.saveMediaLinks = function() {
+            $http({
+                method: 'POST',
+                url: '/campaign/api',
+                data: {
+                    method: 'campaign.saveMediaLinks',
+                    campaignId: $scope.campaignId,
+                    data: {
+                        mediaLinks: $scope.mediaLinks
+                    }
+                }
+            }).success(function(response) {
+                if(response.error == 0) {
+                    var d = response.data.data;
+                
+                } else {
+                    console.log('--');
+                //$scope.error = response.error;
+                } 
+        
+            });
+        }
+        
+        
+        //fund thankyou
+        $scope.getThankyouYoutubeVideoId = function(url){
+            if(!url) return;
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+            var match = url.match(regExp);
+            if (match&&match[7].length==11){
+                $scope.fundThankyou.newThankyouVideoUrl = '//www.youtube.com/embed/'+match[7]
+            }else{
+                $scope.fundThankyou.newThankyouVideoUrl = ''
+            }
+        }
+        
+        //save thankyou video 
+        $scope.saveThankyouVideo = function() {
+            //copy videoUrl
+            if($scope.fundThankyou.thankyouVideoUrl) {
+                $scope.fundThankyou.thankyouVideoUrl = $scope.fundThankyou.newThankyouVideoUrl
+            }
+            $http({
+                method: 'POST',
+                url: '/campaign/api',
+                data: {
+                    method: 'campaign.saveThankyouVideo',
+                    campaignId: $scope.campaignId,
+                    data: {
+                        fundThankyou: $scope.fundThankyou
+                    }
+                }
+            }).success(function(response) {
+                if(response.error == 0) {
+                    var d = response.data.data;
+                } else {
+                    console.log('--');
+                } 
+        
+            });
+        }
         
         
     })

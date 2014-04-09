@@ -122,7 +122,7 @@
 
                     <form class="form-campaigntribe" action="action">
 
-                        <h4 class="text-right">Turn social amplifer <input ng-model ="socialAmplifierStatus" name="socialAmplifierStatus" type="checkbox" class="red-highlight">{{}}</a></h4>
+                        <h4 class="text-right">Turn social amplifer <input ng-model ="socialAmplifierStatus" name="socialAmpliferStatus" type="checkbox" class="red-highlight">{{}}</a></h4>
                         <div ng-repeat="(index, amplifer) in socialAmplifers" class="social-amplifer">
 
                             <p>At <span class="amplifier-percent">{{amplifer.percent}}%</span> {{amplifer.title}}</p>	
@@ -212,7 +212,7 @@
                         </div>						
 
                         <div class="col-md-3 savewrapper">
-                            <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
+                            <button ng-click="saveTrackerCode()" type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
                         </div>
 
                     </form>
@@ -230,7 +230,7 @@
 
         <div class="col-md-3 col-md-offset-9 mainsavebtn">
 
-            <button type="button" class="btn btn-primary btn-lg btn-block savecontinuebutton">Save &amp; Continue
+            <button ng-click="save()" type="button" class="btn btn-primary btn-lg btn-block savecontinuebutton">Save &amp; Continue
                 <span>(Great!,You’re almost done)</span>
             </button>
 

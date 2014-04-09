@@ -33,10 +33,15 @@ class Campaign extends CFormModel {
      */
     public $mainLink;
     public $thankyouMediaType;
-    public $thankyouMediaUrl;
+    public $thankyouVideoUrl;
+    public $thankyouImageUrl;
     public $shareUrl;
+    
+
+    /*
+     * campaign status -> draft, live, expired, blocked?
+     */
     public $status;
-    public $socialAmplifierStatus;
     public $userId;
 
     /**
@@ -87,6 +92,18 @@ class Campaign extends CFormModel {
      *  
      */
     public $socialAmplifers;
+    public $socialAmplifierStatus;
+    public $trackerCode;
+
+    /**
+     * fund
+     * @param type $id
+     * @return null 
+     */
+    public $paymentType;
+    public $rememberMe;
+    public $promotionMethod;
+    public $toDoList;
 
     public function __construct($id = null) {
         if (!$id)
@@ -105,7 +122,7 @@ class Campaign extends CFormModel {
      * fetch Campaign
      */
     public function fetchCampaignAttributes() {
-        $attributes = array('title', 'shortSummary', 'country', 'city', 'flipImageUrl', 'shortUrl', 'category', 'goal', 'currency', 'projectFor', 'fundingType', 'daysRun', 'endDate', 'paymentDate', 'mediaType', 'videoUrl', 'imageUrl', 'pitchStory', 'mainLink', 'thankyouMediaType', 'thankyouMediaUrl', 'shareUrl', 'status', 'socialAmplifierStatus', 'userId');
+        $attributes = array('title', 'shortSummary', 'country', 'city', 'flipImageUrl', 'shortUrl', 'category', 'goal', 'currency', 'projectFor', 'fundingType', 'daysRun', 'endDate', 'paymentDate', 'mediaType', 'videoUrl', 'imageUrl', 'pitchStory', 'mainLink', 'thankyouMediaType', 'thankyouVideoUrl', 'thankyouImageUrl', 'shareUrl', 'status', 'socialAmplifierStatus', 'trackerCode', 'paymentType', 'rememberMe', 'promotionMethod', 'userId');
         $sql = "SELECT * FROM project where id = :CAMPAIGN_ID";
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues, 'queryRow');
@@ -148,7 +165,7 @@ class Campaign extends CFormModel {
     }
 
     public function fetchMediaLinks() {
-        $attributesLinks = array('id', 'title', 'description', 'type', 'code_url', 'projectId');
+        $attributesLinks = array('id', 'title', 'description', 'type', 'codeUrl', 'projectId');
         $sql = "SELECT * FROM media_links where project_id = :CAMPAIGN_ID";
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues);
@@ -348,7 +365,7 @@ class Campaign extends CFormModel {
     }
 
     /**
-     * Step 3
+     * Step 4
      */
     public function getStep4() {
         //if requested with id fetch from database
@@ -364,6 +381,29 @@ class Campaign extends CFormModel {
 
         //print_r($result);
         Ajax::success($result);
+    }
+
+    /**
+     * Step 5
+     */
+    public function getStep5() {
+        //if requested with id fetch from database
+        if ($this->validRequest()) {
+            $campaign = self::instance($_POST['campaignId']);
+            $result = array(
+                'config' => $this->getConfig(),
+                'user' => '',
+                'data' => $campaign
+            );
+            Ajax::success($result);
+        } else {
+            Ajax::error(array());
+        }
+
+
+
+        //print_r($result);
+        
     }
 
     /**
@@ -472,6 +512,14 @@ class Campaign extends CFormModel {
             Ajax::error($uploader->getError());
         }
     }
+    
+    public function fundThankyouUploadImage() {
+        $options = array(
+            'name' => 'fund_thankyou_' . $_POST['campaignId'] . md5(rand(1, 1000))
+        );
+        $uploadedImage = CUploadedFile::getInstanceByName('fundThankyouImage');
+        $this->uploadImage($uploadedImage, $options);
+    }
 
     public function uploadImage($uploadedImage, $options) {
         $uploader = new ImageUploader($uploadedImage, $options);
@@ -484,15 +532,26 @@ class Campaign extends CFormModel {
             Ajax::error($uploader->getError());
         }
     }
+    
+    
 
     private function getUrl($url) {
         return 'http://' . $_SERVER['HTTP_HOST'] . $url;
     }
 
     public function validRequest() {
+        $command = Yii::app()->db->createCommand();
+        //should have a campaign id
         if (isset($_POST['campaignId']) && $_POST['campaignId']) {
-            //if authenticate user 
-            return true;
+            //if valid campaing id and valid user and draft
+            $result = $command->select('id')
+                    ->from('project')
+                    ->where('id=:CAMPAIGN_ID', array(':CAMPAIGN_ID' => $_POST['campaignId']))
+                    ->queryRow();
+            if($result['id']) return true;
+            return false;
+
+            //return true;
         }
     }
 
@@ -550,6 +609,33 @@ class Campaign extends CFormModel {
         }
     }
 
+    public function saveCampaign() {
+        if ($this->validRequest()) {
+            $data = $_POST['data'];
+            $this->updateCampaign($data);
+            Ajax::success($result);
+        }
+    }
+
+    public function updateCampaign($data) {
+        $attributes = array('title', 'shortSummary', 'country', 'city', 'flipImageUrl', 'shortUrl', 'category', 'goal', 'currency', 'projectFor', 'fundingType', 'daysRun', 'endDate', 'paymentDate', 'mediaType', 'videoUrl', 'imageUrl', 'pitchStory', 'mainLink', 'thankyouMediaType', 'thankyouMediaUrl', 'thankyouVideoUrl', 'thankyouImageUrl', 'shareUrl', 'status', 'socialAmplifierStatus', 'trackerCode', 'paymentType', 'rememberMe', 'promotionMethod', 'userId');
+        /**
+         * look for only above attributes 
+         */
+        $_data = array();
+        foreach ($attributes as $attrib) {
+            if (array_key_exists($attrib, $data)) {
+                $col = Utils::fromCamelCase($attrib);
+                $_data[$col] = $data[$attrib]; //copy data
+            }
+        }
+        $columns = $_data;
+
+        $command = Yii::app()->db->createCommand();
+        $result = $command->update(
+                'project', $columns, 'id=:ID', array(':ID' => $_POST['campaignId']));
+    }
+
     public function saveReward() {
         if ($this->validRequest()) {
             $data = $_POST['data'];
@@ -563,8 +649,8 @@ class Campaign extends CFormModel {
                 'available' => $data['available'],
                 'estimated_delivery' => $data['estimatedDelivery'],
                 'description' => $data['description'],
-                'funders_shipping_address_required' => $data['fundersShippingAddressRequired'],
-                'project_id' => $data['projectId'],
+                'funders_shipping_address_required' => ($data['fundersShippingAddressRequired']) ? 1 : 0,
+                'project_id' => $_POST['campaignId'],
             );
 
             $command = Yii::app()->db->createCommand();
@@ -679,7 +765,7 @@ class Campaign extends CFormModel {
         }
     }
 
-    public function inviteTribes($data) {
+    public function inviteTribes($data, $ajax = true) {
         if ($this->validRequest()) {
             //update database
             $tribes = (trim($data['emails'])) ? $this->processMails($data, false) : $data['tribes'];
@@ -702,16 +788,18 @@ class Campaign extends CFormModel {
                 }
             }
 
-            Ajax::success(array('tribes' => array_values($tribes)));
+            if ($ajax === true) {
+                Ajax::success(array('tribes' => array_values($tribes)));
+            } else {
+                return array('tribes' => array_values($tribes));
+            }
         }
     }
 
-    public function saveAmplifers($data) {
-        print_r($data);
+    public function saveAmplifers($data, $ajax = true) {
         if ($this->validRequest()) {
             //update database
             $socialAmplifers = $data['socialAmplifers'];
-
             if ($socialAmplifers && is_array($socialAmplifers)) {
                 $command = Yii::app()->db->createCommand();
                 foreach ($socialAmplifers as $amplifer) {
@@ -727,8 +815,197 @@ class Campaign extends CFormModel {
                     );
                 }
             }
+            //update aplifer on status
+            $_data = array();
+            $_data['socialAmplifierStatus'] = $data['socialAmplifierStatus'];
+            $this->updateCampaign($_data);
 
+
+            if ($ajax === true) {
+                Ajax::success(array());
+            } else {
+                return true;
+            }
+        }
+    }
+
+    public function saveLinks($data, $ajax = true) {
+        if ($this->validRequest()) {
+            foreach ($data['links']['list'] as $link) {
+                //if not custom then update
+                //$link = $this->toUnderScore($link);
+                $_link = array();
+                if ($link['type'] == 'custom') {
+                    $_link[title] = $link['title'];
+                }
+
+
+                $_link[url] = $link['url'];
+                $_link[type] = $link['type'];
+                $_link[project_id] = $link['projectId'];
+
+                if ($link['type'] != 'custom') {
+                    //update
+                    //$_link['id'] = $link['id'];
+                    $this->updateLink($_link, $link['id']);
+                } else {
+                    if ($link['id'] != null) {
+                        //update
+                        $this->updateLink($_link, $link['id']);
+                    } else {
+                        //insert new 
+                        $this->insertLink($_link);
+                    }
+                }
+            }
+            if ($ajax === true) {
+                Ajax::success(array());
+            } else {
+                return true;
+            }
+        }
+    }
+
+    public function insertLink($link) {
+        $command = Yii::app()->db->createCommand();
+        $command->insert('links', $link);
+    }
+
+    public function updateLink($link, $id) {
+        $command = Yii::app()->db->createCommand();
+        $command->update('links', $link, 'id=:ID', array(':ID' => $id));
+    }
+
+    public function removeLink() {
+        if ($this->validRequest()) {
+            $data = $_POST['id'];
+            if ($_POST['id']) {
+                $command = Yii::app()->db->createCommand();
+                $r = $command->delete('links', 'id=:ID', array(':ID' => $_POST['id']));
+                Ajax::success(array());
+            }
+        }
+    }
+    
+    
+    /**
+     * Media Links
+     */
+    
+    private function filterMediaDBId($id) {
+        if(is_null($id) || strlen((string)$id) > 11 ) {
+            return null;
+        }
+        return $id;
+    }
+
+    public function saveMediaLinks($data, $ajax = true) {
+        $videos = $data['mediaLinks']['video'];
+        $music  = $data['mediaLinks']['audio'];
+        $images = $data['mediaLinks']['image'];
+        $pdf = $data['mediaLinks']['pdf'];
+        
+        $media = array($videos, $music, $images, $pdf);
+        $command = Yii::app()->db->createCommand();
+        foreach($media as $mGroup) {
+            if(is_array($mGroup)) { //array of vidoes or images or music or pdf...
+                
+                foreach($mGroup as $item){
+                    
+                    $_item = array();
+                    
+                    $_item['title'] = $item['title'];
+                    $_item['description'] = $item['description'];
+                    $_item['type'] = $item['type'];
+                    $_item['code_url'] = $item['codeUrl'];
+                    $_item['project_id'] = $_POST['campaignId'];
+                    //print_r($item);
+                    
+                    if(is_null($this->filterMediaDBId($item['id']))) {
+                        //insert
+                        print_r($_item);
+                        $command->insert('media_links', $_item);
+                    } else {
+                        //update
+                        $command->update('media_links', $_item, 'id=:ID', array(':ID' => $item['id']) );
+                    }
+                }
+            }
+        }
+        Ajax::success(array());
+    }
+    
+    public function removeMediaLink() {
+        if ($this->validRequest()) {
+            $data = $_POST['id'];
+            if ($_POST['id']) {
+                $command = Yii::app()->db->createCommand();
+                $r = $command->delete('media_links', 'id=:ID', array(':ID' => $_POST['id']));
+                Ajax::success(array());
+            }
+        }
+    }
+    
+    
+    public function saveThankyouVideo() {
+        if ($this->validRequest()) {
+            $data = $_POST['data']['fundThankyou'];
+            print_r($_POST);
+            $columns = array(
+                'thankyou_media_type' => $data['thankyouMediaType'],
+                'thankyou_image_url' => $data['thankyouImageUrl'],
+                'thankyou_video_url' => $data['thankyouVideoUrl'],
+            );
+            
+            print_r($columns);
+
+            $command = Yii::app()->db->createCommand();
+            $command->update(
+                    'project', $columns, 'id=:ID', array(':ID' => $_POST['campaignId']));
+        }
+    }
+    
+    
+    public function saveFund() {
+        if ($this->validRequest()) {
+            $data = $_POST['data'];
+            $data['paymentType'] = $data['paymentType'] ? 1 : 0;
+            $data['rememberMe'] = $data['rememberMe'] ? 1 : 0;
+            $this->updateCampaign($data);
             Ajax::success(array());
+        }
+    }
+
+    public function goLive() {
+        if ($this->validRequest()) {
+            $data = array('status' => 'live');
+            $this->updateCampaign($data);
+            Ajax::success(array());
+        }
+    }
+
+    public function saveStep4() {
+
+        if ($this->validRequest()) {
+            $data = $_POST['data'];
+
+            //save tribe
+            $this->inviteTribes($data, false);
+
+
+            //save amplifiers
+            $this->saveAmplifers($data, false);
+
+            //turn on/off ampllifier
+            $_data = array();
+            $_data['socialAmplifierStatus'] = ($data['socialAmplifierStatus']) ? 1 : 0;
+            $this->updateCampaign($_data);
+
+
+            //save tracker code
+            $_data = array();
+            $_data['trackerCode'] = $data['trackerCode'];
+            $this->updateCampaign($_data);
         }
     }
 

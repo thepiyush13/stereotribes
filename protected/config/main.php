@@ -62,6 +62,8 @@ return array(
                 '/campaign/<id:\d+>/step2' => '/campaign/step2',
                 '/campaign/<id:\d+>/step3' => '/campaign/step3',
                 '/campaign/<id:\d+>/step4' => '/campaign/step4',
+                '/campaign/<id:\d+>/step5' => '/campaign/step5',
+                '/login/fbconnect' => '/login/facebook/p/1',
                 
                 '/admin/feeds/profile/<provider_id:[a-zA-Z+_0-9.-]+>/<provider_name:[a-zA-Z+_0-9.-]+>/' => array('/admin/feeds/profile/'),
                 

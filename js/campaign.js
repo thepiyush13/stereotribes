@@ -24,9 +24,21 @@ Campaign = {
         jQuery('#awesomePicUrl').attr('src', json.data.picUrl);
         var scope = angular.element($("#step2")).scope();
         scope.$apply(function(){
-            scope.aweSomeCampaign.picUrl = json.data.picUrl;
+            scope.awesomeCampaign.imageUrl = json.data.picUrl;
         })
     },
+    
+    fundThankyouIframeLoad : function() {
+        var json = this.getFrameContent('#fundThankyouUploadIframe');
+        if(!json) return;
+    
+        jQuery('#thankyouPicUrl').attr('src', json.data.picUrl);
+        var scope = angular.element($("#step3")).scope();
+        scope.$apply(function(){
+            scope.fundThankyou.thankyouImageUrl = json.data.picUrl;
+        })
+    },
+    
     
     mediaLinkIframeUpload: function(e) {
         var json = this.getFrameContent('#mediaLinkIFrame_'+e);
@@ -36,11 +48,11 @@ Campaign = {
         var scope = angular.element($("#step3")).scope();
         scope.$apply(function(){
             $(scope.mediaLinks.image).each(function(key, o) {
-               console.log(e)
-               if('image_'+o.id == e ) {
-                   scope.mediaLinks.image[key].code_url = json.data.picUrl;
-                   console.log(o);
-               } 
+                console.log(e)
+                if('image_'+o.id == e ) {
+                    scope.mediaLinks.image[key].codeUrl = json.data.picUrl;
+                    console.log(o);
+                } 
             });
             scope.mediaLinks.image[0].picUrl = json.data.picUrl;
         })
@@ -60,3 +72,22 @@ Campaign = {
     
     
 }
+
+/** 
+     * Trigger flip image upload
+     */
+$('#flipImageUploadForm').on('change', function() {
+    $('#flipImageUploadForm').submit();
+});
+    
+    
+/** 
+     * Trigger campaign image upload
+     */
+$('#awesomeCampaignImage').on('change', function() {
+    $('#awesomeImageUploadForm').submit();
+});
+
+$('#fundThankyouImage').on('change', function() {
+    $('#fundThankyouUploadForm').submit();
+});

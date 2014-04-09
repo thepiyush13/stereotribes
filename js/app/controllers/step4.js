@@ -21,6 +21,7 @@ angular.module('app')
         }];
     
         $scope.shareUrl = '';
+        $scope.trackerCode = '';
         
         $http({
             method: 'POST',
@@ -45,7 +46,9 @@ angular.module('app')
                     $scope.socialAmplifers[i].postStatus = ($scope.socialAmplifers[i].postStatus==1) ? true: false;
                 }
                 
-                $scope.socialAmplifierStatus = (d.socialAmplifierStatus) ? 'd.socialAmplifierStatus' : 'off';
+                $scope.socialAmplifierStatus = (d.socialAmplifierStatus) ? true : false;
+                $scope.trackerCode = d.trackerCode;
+
 
             } else {
                 console.log('--');
@@ -53,7 +56,7 @@ angular.module('app')
             } 
         });
         
-        //valid emails
+        //valid emails, save emails to database
         $scope.validateEmails = function(p) {
             var method = (p == 'invite') ? 'campaign.inviteTribes' : 'campaign.processMails';
             console.log('validate   ')
@@ -112,7 +115,8 @@ angular.module('app')
                     method: 'campaign.saveAmplifers',
                     campaignId: $scope.campaignId,
                     data: {
-                        'socialAmplifers': $scope.socialAmplifers,
+                        socialAmplifers: $scope.socialAmplifers,
+                        socialAmplifierStatus: $scope.socialAmplifierStatus
                     }
                 }
             }).success(function(response) {
@@ -126,7 +130,62 @@ angular.module('app')
                         $scope.socialAmplifers[i].postStatus = ($scope.socialAmplifers[i].postStatus==1) ? true: false;
                     }
                 
-                    $scope.socialAmplifierStatus = (d.socialAmplifierStatus) ? 'd.socialAmplifierStatus' : 'off';
+                    $scope.socialAmplifierStatus = (d.socialAmplifierStatus) ? true : false;
+
+                } else {
+                        
+                } 
+            });
+        }
+        
+        
+        /**
+         * save tracker code
+         */
+        $scope.saveTrackerCode = function() {
+            
+            $http({
+                method: 'POST',
+                url: '/campaign/api',
+                data: {
+                    method: 'campaign.saveCampaign',
+                    campaignId: $scope.campaignId,
+                    data: {
+                        'trackerCode': $scope.trackerCode
+                    }
+                }
+            }).success(function(response) {
+                if(response.error == 0) {
+
+                } else {
+                        
+                } 
+            });
+        }
+        
+        
+        /**
+         * save tracker code
+         */
+        $scope.save = function() {
+            
+            $http({
+                method: 'POST',
+                url: '/campaign/api',
+                data: {
+                    method: 'campaign.saveStep4',
+                    campaignId: $scope.campaignId,
+                    data: {
+                        emails: $scope.emails,
+                        tribes: $scope.tribes,
+                        canEdit: $scope.canEdit,
+                        socialAmplifers: $scope.socialAmplifers,
+                        socialAmplifierStatus: $scope.socialAmplifierStatus,
+                        trackerCode: $scope.trackerCode
+                    }
+                }
+            }).success(function(response) {
+                if(response.error == 0) {
 
                 } else {
                         

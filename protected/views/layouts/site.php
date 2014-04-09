@@ -206,6 +206,7 @@
         <script src="/js/app/app.js"></script>
         <script src="/js/app/controllers.js"></script>
         <script src="/js/app/controllers/step4.js"></script>
+        <script src="/js/app/controllers/step5.js"></script>
 
         <script src="/js/app/models.js"></script>
         <script src="/js/app/services.js"></script>

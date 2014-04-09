@@ -83,6 +83,17 @@ class Config {
     }
     
     
+    /**
+     * Fees 
+     */
+    
+    public static function getFees() {
+        return array(
+            array('slab' => '', 'fees' => 100),
+        );
+    }
+    
+    
     
 }
 

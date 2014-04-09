@@ -58,6 +58,7 @@
                                             <label ng-hide="link.editing" ng-click="editLink(link);">{{link.title}}</label  >
                                             <input ng-show="link.editing" ng-model="link.title" ng-blur="doneLinkEditing(link)" ng-focus="link == editedLinkItem">
                                             <input ng-model="link.url" type="text" class="form-control">
+                                            <a ng-click="removeLink(index)" ng-show="link.type=='custom'">Delete</a>
                                         </div>
 
                                     </div>
@@ -72,7 +73,7 @@
                                 </div>
 
                                 <div class="col-md-2 savewrapper">
-                                    <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
+                                    <button ng-click="saveLinks()"type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
                                 </div>
 
                             </div>			                     
@@ -137,7 +138,7 @@
                                         <div class="col-md-6" >									
                                             <div class="form-group global-textbox">
                                                 <label for="playercode">Video player code</label>
-                                                <input ng-model="video.code_url" type="text" class="form-control" id="facebook">
+                                                <input ng-model="video.codeUrl" type="text" class="form-control" id="facebook">
                                             </div>
                                         </div>
 
@@ -246,7 +247,7 @@
                                         <div class="col-md-6">									
                                             <div class="form-group global-textbox">
                                                 <label for="playercode">Player code</label>
-                                                <input ng-model="music.code_url" type="text" class="form-control" id="facebook">
+                                                <input ng-model="music.codeUrl" type="text" class="form-control" id="facebook">
                                             </div>
                                         </div>
 
@@ -331,7 +332,7 @@
                         </div>
 
                         <div class="col-md-2 savewrapper">
-                            <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
+                            <button ng-click="saveMediaLinks()" type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
                         </div>
 
                     </form>
@@ -351,7 +352,7 @@
                     <h4>Images</h4>
                     <div>
                         <div ng-repeat="(index, image) in masterMediaLinks.image">
-                            <span style="display: inline-block; height: 100px; width: 100px; background-image: url('{{image.code_url}}'); background-repeat: no-repeat; background-position:  50% 0%; background-size: contain;"></span><span style="display: inline-block; vertical-align: top; margin-left: 10px; width: 50%;"> {{image.title}}</span>
+                            <span style="display: inline-block; height: 100px; width: 100px; background-image: url('{{image.codeUrl}}'); background-repeat: no-repeat; background-position:  50% 0%; background-size: contain;"></span><span style="display: inline-block; vertical-align: top; margin-left: 10px; width: 50%;"> {{image.title}}</span>
                         </div>
                     </div>
                     <h4>Music</h4>
@@ -387,42 +388,51 @@
                         should be short and playful. Perhaps, your group all wave and say thank you. 
                         Be creative and have fun!</p>  
 
-                    <form class="form-fundingvideo" action="action">
 
                         <div class="funding-video">
                             <div class="checkbox">
                                 <label>
-                                    <input type="radio" name="optionsRadios" id="radio_campaign_days" value="" checked=""> Add ‘thank you’ video (Youtube/Vimeo Link)
+                                    <input ng-model="fundThankyou.thankyouMediaType" type="radio" name="thankyouMediaType" value="video"> Add ‘thank you’ video (Youtube/Vimeo Link)
                                 </label>
                             </div>
                             <div class="form-group global-textbox">
-                                <input type="text" class="form-control" id="campaign_days">
+                                <input type="text" class="form-control" ng-model="fundThankyou.thankyouVideoUrl" ng-disabled="fundThankyou.videoOrImage =='image'" ng-focus="fundThankyou.hasFocus=true" ng-blur="getThankyouYoutubeVideoId(fundThankyou.thankyouVideoUrl)">
                             </div>
                         </div>
 
                         <div class="funding-image">
                             <div class="checkbox">
                                 <label>
-                                    <input type="radio" name="optionsRadios" id="radio_campaign_payment_date" value=""> Add image
+                                    <input ng-model="fundThankyou.thankyouMediaType" name="thankyouMediaType" type="radio" id="radio_campaign_payment_date" value="image"> Add image
                                 </label>
                             </div>
                             <div class="form-group global-textbox">
-                                <span class="btn btn-default btn-file">
-                                    + Add Image <input type="file">
-                                </span>
+                                <form method="POST" action="/campaign/upload" id="fundThankyouUploadForm" name="fundThankyouUploadForm" target="fundThankyouUploadIframe" enctype="multipart/form-data">
+                                    <span class="btn btn-default btn-file" ng-disabled="fundThankyou.videoOrImage =='video'">
+                                        + Add Image <input type="file" id="fundThankyouImage" name="fundThankyouImage" multiple="multiple" />
+                                    </span>
+                                    <span class="file-info">PNG, JPG or GIF 960x640 pixels</span>
+                                    <input type="hidden" name="canpaignId" value="<?php echo $_GET['id'] ?>" />
+                                    <input type="hidden" name="method" value ="campaign.fundThankyouUploadImage" />
+
+                                    <div class="ajax-loader"></div>
+                                </form>
+                                <iframe  onload ="Campaign.fundThankyouIframeLoad()" name="fundThankyouUploadIframe" id="fundThankyouUploadIframe" scrolling="yes" style="display: none;"></iframe>
                             </div>
                         </div>							
 
                         <div class="col-md-2 savewrapper">
-                            <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
+                            <button ng-click="saveThankyouVideo()" type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Save</button>
                         </div>
 
-                    </form>
 
                 </div><!-- Left Side wrapper ends -->
 
                 <div class="col-md-4"><!-- Right side wrapper starts-->
-
+                    <iframe ng-hide="fundThankyou.thankyouMediaType=='image'" class="pitchvideo" src="{{fundThankyou.newThankyouVideoUrl}}" frameborder="0" allowfullscreen=""></iframe>
+                    <div class="pitchimage" ng-hide="fundThankyou.thankyouMediaType=='video'">asdf
+                        <img id="thankyouPicUrl" src="{{fundThankyou.thankyouImageUrl}}" class="img-responsive">
+                    </div>
 
                 </div><!-- Right side wrapper ends -->
 

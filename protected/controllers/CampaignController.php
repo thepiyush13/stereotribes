@@ -27,6 +27,10 @@ class CampaignController extends Controller {
     public function actionStep4() {
         $this->render('step4');
     }
+    
+    public function actionStep5() {
+        $this->render('step5');
+    }
 
     public function actionWelcome() {
         $this->render('index');
@@ -60,9 +64,18 @@ class CampaignController extends Controller {
             'campaign.saveAwesomeCampaign',
             'campaign.saveReward',
             'campaign.deleteReward',
+            'campaign.saveLinks',
+            'campaign.saveMediaLinks',
+            'campaign.removeLink',
+            'campaign.removeMediaLink',
             'campaign.processMails',
             'campaign.inviteTribes',
             'campaign.saveAmplifers',
+            'campaign.saveCampaign',
+            'campaign.saveFund',
+            'campaign.saveThankyouVideo',
+            'campaign.goLive',
+            'campaign.saveStep4',
         );
 
         $result = '';
@@ -91,6 +104,7 @@ class CampaignController extends Controller {
             'campaign.uploadFlipImage',
             'campaign.uploadAwesomeCampaignImage',
             'campaign.uploadMediaLinkImage',
+            'campaign.fundThankyouUploadImage',
         );
 
         $result = '';

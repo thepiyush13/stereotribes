@@ -1,7 +1,6 @@
 <script>
 var $campaignId = <?php echo (int)$_GET['id'] ?>
 </script>
-
 <div class="container playcontainer" ng-app="app">
 
     <div id="step2" class="row" ng-controller="step2Ctrl" > <!-- Do not modify this div -->
@@ -479,6 +478,9 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
 
 
         </section>
+        <style>
+            .active {border: 1px solid #ccc;}
+        </style>
 
         <section class="block-wrapper  col-md-12">
             <form class="form-rewardscampaign" action="action"> 
@@ -621,7 +623,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                     <span>(Click one or more)</span>
 
                                     <ul class="rewardtype-catlist">
-                                        <li ng-repeat="type in config.rewardTypes" class="{{}}"><a ng-click="getSelectedRewardCategory(index, type.id)">{{type.name}}</a></li>
+                                        <li ng-repeat="type in config.rewardTypes" ng-class="{active: chkReward(index, type.id)}"><a ng-click="getSelectedRewardCategory(index, type.id)">{{type.name}}</a></li>
                                     </ul>
 
                                 </div>
