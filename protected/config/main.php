@@ -28,6 +28,8 @@ return array(
         'application.models.*',
         'application.components.*',
         'application.modules.admin.models.*',
+        'application.modules.admin.models.campaign.*',
+        'application.modules.admin.models.campaign.forms.*',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
@@ -64,7 +66,7 @@ return array(
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                '/register' => '/AppUser/create',
+                '/register' => '/Appuser/create',
             ),
         ),
         'db' => array(
