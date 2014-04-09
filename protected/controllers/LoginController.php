@@ -97,12 +97,14 @@ class LoginController extends Controller {
     /**
      * Login using facebook account
      */
-    public function actionFacebook() {
+    public function actionFacebook($email="",$id="") {
+        
         $userModel = new AppUser();
         $facebook = new Facebook(
                 array(
                     'appId' => Yii::app()->params->FB['APPID'],
                     'secret' => Yii::app()->params->FB['SECRET'],//"44aa19757944ba566e1f01c7d8bbca71",
+                    'state' => 'testcode',
                 ));
         
         // Get User ID
@@ -110,34 +112,44 @@ class LoginController extends Controller {
         if ($user) {
             try {
                 $user_profile = $facebook->api('/me');
-                //echo "<pre>", print_r($user_profile), "</pre>";exit;
+//                echo '<pre>', print_r($user_profile); exit;
                 if (!$userModel->ifUserExists($user_profile['email'])) {
+                    
                     $userModel->add($user_profile);
                 }
 
                 $model = new LoginForm();
                 $model->username = $user_profile['email'];
                 if ($model->loginByFacebook()) {
-//                    $roles = Yii::app()->user->getState('roles');
-//                    $modules = array('admin');
-//                    foreach ($modules as $module) {
-//                        if ($roles[$module]['role']) {
-//                            $this->redirect('/' . $module);
-//                            exit;
-//                        }
-//                    }
-                    $this->redirect('/');
+                    if(isset($_GET['app_data']) && $_GET['app_data'] == "test")
+                    {
+                        $this->redirect('/AppUser/Profile');
+                    }
+                    else if(isset ($_GET['app_data']) && $_GET['app_data'] == "id")
+                    {
+                        echo "hey inside id";
+                        die($user_profile['id']);
+                    }
+                    else
+                        $this->redirect('/');
                 }
             } catch (FacebookApiException $e) {
                 error_log($e);
                 $user = null;
             }
         }
+        if(!empty($email))
+            $app_data = "test";
+        else if(!empty ($id))
+            $app_data = "id";
+        else
+            $app_data = "";
+        
+            $params = array(
+                'scope' => 'email, read_stream, friends_likes, user_interests, user_likes',
+                'redirect_uri' => 'http://'.$_SERVER['HTTP_HOST'].'/login/facebook?app_data='.$app_data,
+            );
 
-        $params = array(
-            'scope' => 'email, read_stream, friends_likes, user_interests, user_likes',
-            'redirect_uri' => 'http://'.$_SERVER['HTTP_HOST'].'/login/facebook',
-        );
         // Login or logout url will be needed depending on current user state.
         if ($user) {
             $this->logoutUrl = $facebook->getLogoutUrl();
@@ -168,7 +180,7 @@ class LoginController extends Controller {
     
     public function actionSystemLogout() {
         Yii::app()->user->logout();
-        $this->redirect('/login');
+        $this->redirect('/');
     }
     
     public function fbLogout() {

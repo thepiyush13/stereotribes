@@ -79,7 +79,29 @@
 	          <li><a href="#">Something else here</a></li>
 	        </ul>
 	      </li>
+              <?php if(Yii::app()->user->isGuest) { ?>
 
+              <li>
+                  <a href="/login" class="love">Login</a>
+              </li>
+              <?php } else { ?>
+              <li>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <span class="belowtext"><?php echo Yii::app()->user->name; ?></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                        <a href="/Appuser/profile">Profile</a>
+                    </li>
+                    <li>
+                        <a href="/Appuser/changePassword">Reset Password</a>
+                    </li>
+                    <li>
+                        <a href="/login/logout">Logout</a>
+                    </li>
+	    </ul>
+              </li>
+              <?php } ?>
 	    </ul>
 
 	    <ul class="nav navbar-nav navbar-right">
