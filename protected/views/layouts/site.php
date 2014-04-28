@@ -21,7 +21,9 @@
         <link type="text/css" rel="stylesheet" href="/css/jquery-te-1.4.0.css">
 
         <!-- Custom CSS for this Template -->
+         <link rel="stylesheet" href="/css/category.css">
         <link rel="stylesheet" href="/css/stereotribes.css">
+       
         
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -32,7 +34,7 @@
 
     </head>
 
-    <body class="playpage">
+    <body class="arts">
 
         <!-- ==================== Main Navigation ====================== -->
 
@@ -47,7 +49,7 @@
                 <ul class="nav navbar-nav navbar-left">
 
                     <li class="dropdown">
-                        <a href="#">
+                        <a href="/campaign/create/">
                             <span class="play">Play</span>
                             <span class="belowtext">Create Campaigns</span>
                         </a>
@@ -93,7 +95,7 @@
                                         <ul>
                                             <li>
                                                 <span class="menuh">Play</span>
-                                                <a href="#">Create Campaigns</a>
+                                                <a href="/campaign/create/">Create Campaigns</a>
                                             </li>
                                             <li>
                                                 <span class="menuh">Find</span>

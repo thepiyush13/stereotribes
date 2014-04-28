@@ -3,7 +3,7 @@
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'default'));
 $dbName = 'stereotribes';
 $dbUser = 'root';
-$dbPassword = 'mysql';
+$dbPassword = '';
 if(APPLICATION_ENV == 'jump-dev') {
        $dbName = 'stereotribes';
        $dbUser = 'stereotribes';
@@ -57,6 +57,7 @@ return array(
             'rules' => array(
                 '' => '/site/index',
                 '/campaign/create' => '/campaign/create',
+                '/campaign/<id:\d+>' => '/campaign/index',
                 '/campaign/<id:\d+>/step1' => '/campaign/step1',
                 '/campaign/<id:\d+>/step2' => '/campaign/step2',
                 '/campaign/<id:\d+>/step3' => '/campaign/step3',

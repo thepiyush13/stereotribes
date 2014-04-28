@@ -1,0 +1,181 @@
+            
+            body.arts {
+                background: #ccc;
+            }
+            
+            body.arts:after {
+                position: absolute;
+                content: 'ARTS';
+                left: -4px;
+                top: 320px;
+                color: rgba(204, 12, 0, 0.80);
+                font-size: 78px;
+                font-family: 'lotregular';
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                
+            }
+                        
+            body.technology {
+                background: rgb(204, 12, 0);
+            }
+            
+            body.technology:before {
+                position: absolute;
+                content: 'TECHNOLOGY';
+                left: -4px;
+                top: 320px;
+                color: rgba(204, 12, 0, 0.80);
+                font-size: 78px;
+                font-family: 'lotregular';
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                
+            }
+                        
+            body.research {
+                background: rgb(204, 12, 0);
+            }
+            
+            body.research:before {
+                position: absolute;
+                content: 'RESEARCH';
+                left: -4px;
+                top: 320px;
+                color: rgba(204, 12, 0, 0.80);
+                font-size: 78px;
+                font-family: 'lotregular';
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                
+            }
+                        
+            body.commercial {
+                background: rgb(204, 12, 0);
+            }
+            
+            body.commercial:before {
+                position: absolute;
+                content: 'COMMERCIAL';
+                left: -4px;
+                top: 320px;
+                color: rgba(204, 12, 0, 0.80);
+                font-size: 78px;
+                font-family: 'lotregular';
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                
+            }
+                        
+            body.imaginative {
+                background: rgb(204, 12, 0);
+            }
+            
+            body.imaginative:before {
+                position: absolute;
+                content: 'IMAGINATIVE';
+                left: -4px;
+                top: 320px;
+                color: rgba(204, 12, 0, 0.80);
+                font-size: 78px;
+                font-family: 'lotregular';
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                
+            }
+                        
+            body.performance {
+                background: rgb(204, 12, 0);
+            }
+            
+            body.performance:before {
+                position: absolute;
+                content: 'PERFORMANCE';
+                left: -4px;
+                top: 320px;
+                color: rgba(204, 12, 0, 0.80);
+                font-size: 78px;
+                font-family: 'lotregular';
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                
+            }
+                        
+            body.film {
+                background: rgb(204, 12, 0);
+            }
+            
+            body.film:before {
+                position: absolute;
+                content: 'FILM';
+                left: -4px;
+                top: 320px;
+                color: rgba(204, 12, 0, 0.80);
+                font-size: 78px;
+                font-family: 'lotregular';
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                
+            }
+                        
+            body.games {
+                background: rgb(204, 12, 0);
+            }
+            
+            body.games:before {
+                position: absolute;
+                content: 'GAMES';
+                left: -4px;
+                top: 320px;
+                color: rgba(204, 12, 0, 0.80);
+                font-size: 78px;
+                font-family: 'lotregular';
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                
+            }
+                        
+            body.publishing {
+                background: rgb(204, 12, 0);
+            }
+            
+            body.publishing:before {
+                position: absolute;
+                content: 'PUBLISHING';
+                left: -4px;
+                top: 320px;
+                color: rgba(204, 12, 0, 0.80);
+                font-size: 78px;
+                font-family: 'lotregular';
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                
+            }
+            

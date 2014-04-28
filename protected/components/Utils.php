@@ -186,6 +186,17 @@ class Utils {
         return $er;
     }
 
+    public static function getErrorsMessages($errors) {
+        $er = array();
+
+        foreach ($errors as $field => $error) {
+            if (is_array($error) && count($error))
+                $er[] = $error[0];
+        }
+
+        return $er;
+    }
+
     public static function sanitizeTitle($title, $raw_title = '', $context = 'display') {
         $title = strip_tags($title);
         // Preserve escaped octets.
@@ -308,7 +319,7 @@ class Utils {
 
         return $new_array;
     }
-    
+
     /**
      * generate unique string
      * @param type $length
@@ -383,6 +394,14 @@ class Utils {
         } else {
             return "Just Now";
         }
+    }
+
+    /**
+     * campaign specific 
+     */
+    public static function percentage($val1, $val2, $precision) {
+        $res = round(($val1 / $val2) * 100, $precision);
+        return $res;
     }
 
 }

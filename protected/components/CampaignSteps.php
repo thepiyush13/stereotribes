@@ -1,21 +1,33 @@
 <?php
-class CampaignSteps extends CWidget
-{
-    public function run()
-    {
+
+class CampaignSteps extends CWidget {
+
+    public function run() {
         $action = Yii::app()->getController()->action->id;
-        if(!isset($_GET['id']) && $action !='create') {
-            echo "Redirect ...";
+        if (!isset($_GET['id']) && $action != 'create') {
+            Yii::app()->request->redirect('/');
         }
         $id = $_GET['id'];
-        
-        $step1Active = ($action == 'step1') ? ' active' : '';
-        $step2Active = ($action == 'step2') ? ' active' : '';
-        $step3Active = ($action == 'step3') ? ' active' : '';
-        $step4Active = ($action == 'step4') ? ' active' : '';
-        $step5Active = ($action == 'step5') ? ' active' : '';
-        
-        $steps =<<< EOD
+
+        /**
+         * check if campaign id is valid 
+         */
+        if ($id) {
+            $c = new Campaign($id);
+            if (!$c->id) {
+                Yii::app()->request->redirect('/');
+            }
+
+
+            // print_r($c);
+
+            $step1Active = ($action == 'step1') ? ' active' : '';
+            $step2Active = ($action == 'step2') ? ' active' : '';
+            $step3Active = ($action == 'step3') ? ' active' : '';
+            $step4Active = ($action == 'step4') ? ' active' : '';
+            $step5Active = ($action == 'step5') ? ' active' : '';
+
+            $steps = <<< EOD
             <div class="breadcrumb-wrapper">
 
                 <ol class="breadcrumb">
@@ -27,7 +39,24 @@ class CampaignSteps extends CWidget
                 </ol>   
             </div>
 EOD;
-        
-        echo $steps;
+
+            echo $steps;
+        } else { //create campaign
+            $steps = <<< EOD
+            <div class="breadcrumb-wrapper">
+
+                <ol class="breadcrumb">
+                    <li class="active"><a href="/campaign/create/"><span class="play-steps">1</span> get amped up</a></li>
+                    <li class=""><a><span class="play-steps">2</span> build campaign</a></a></li>
+                    <li class=""><a><span class="play-steps">3</span> stuff funders love</a></li>
+                    <li class=""><a><span class="play-steps">4</span> pump up the volume</a></li>
+                    <li class=""><a><span class="play-steps">5</span> amplify your passion</a></li>
+                </ol>   
+            </div>
+EOD;
+
+            echo $steps;
+        }
     }
+
 }

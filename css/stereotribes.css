@@ -810,12 +810,6 @@ video {
     border-left:1px solid #fff;
     border-right:1px solid #fff;
     border-bottom:2px solid #fff;
-/*
-    -webkit-transform: translateX(0px);
-   -moz-transform: translateX(0px);
-   -o-transform: translateX(0px);
-   -ms-transform: translateX(0px);
-   transform: translateX(0px);*/
 }
 
 .freewall .brick.col-xs-12 {
@@ -1175,12 +1169,6 @@ video {
 }
 .brick .mask {
    background-color: #000;
-   
-   /*-moz-transform: translateY(534px);
-   -o-transform: translateY(534px);
-   -ms-transform: translateY(534px)
-   webkit-transform: translateY(534px)
-   transform: translateY(534px);*/
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
    filter: alpha(opacity=0);
    opacity: 0;
@@ -1189,7 +1177,6 @@ video {
    -o-transition: all 0.8s linear;
    -ms-transition: all 0.8s linear;
    transition: all 0.8s linear;
-
    -webkit-backface-visibility: hidden;
    -webkit-transform-style: preserve-3d;
 }
@@ -1433,6 +1420,7 @@ video {
  */
 
 
+ 
 body.pages {
 	background: #874796;
 }
@@ -1442,7 +1430,9 @@ body.pages {
 	margin-bottom: 40px;
 }
 
-body.pages:before {
+
+
+/*body.pages:before {
 	position: absolute;
 	content: 'PERFORMANCE';
 	left: -233px;
@@ -1455,7 +1445,7 @@ body.pages:before {
 	-o-transform: rotate(-90deg);
 	-ms-transform: rotate(-90deg);
 	transform: rotate(-90deg);
-}
+}*/
 
 .pagecontainer .nav > li > a {
 	padding: 10px 15px;
@@ -1939,10 +1929,15 @@ body.pages:before {
 	border:1px solid #df0909; 
 	font-weight:bold; 
 	color: #FFFFFF;
+	display: table;
 	border-radius: 0;
 	background: #f62b2b;
-	padding: 5px 10px;
+	/*padding: 10px 40px 10px 70px;*/
 	text-transform: uppercase;
+}
+
+.amplifyblock .amplifybutton {
+	padding: 10px 40px 10px 115px;
 }
 
 .amplifybutton:hover,
@@ -1955,6 +1950,45 @@ body.pages:before {
 .amplifybutton:hover {
 	border:1px solid #b30808;
 	background-color: #e40a0a;
+}
+
+.savebutton {
+	border:1px solid #df0909; 
+	font-weight:bold; 
+	color: #FFFFFF;
+	display: table;
+	border-radius: 0;
+	background: #f62b2b;
+	padding: 10px;
+	text-transform: uppercase;
+}
+
+.savebutton:hover,
+.savebutton:active,
+.savebutton:focus {
+	border: 1px solid #f62b2b;
+	background-color: #f62b2b;	
+}
+
+.savebutton:hover {
+	border:1px solid #b30808;
+	background-color: #e40a0a;
+}
+
+.amp-text {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 24px;
+	line-height: 22px;
+}	
+
+.amp-icon {
+	background: url('../img/logo-mob.png') no-repeat;
+	background-size: 100%;
+	width: 45px;
+	height: 45px;
+	vertical-align: middle;
+	display: table-cell;
 }
 
 .quotewrap {
@@ -2775,12 +2809,10 @@ input[type="radio"] {
     cursor: pointer;
     display: inline-block;
     height: 17px;
-    margin-right: 10px;
+    margin-right: 15px;
     position: relative;
     width: 17px;
     -webkit-appearance: none;
-    top: -2px;
-    vertical-align: top;
 }
 input[type="radio"]:after {
     background-color: #444;
@@ -2951,11 +2983,6 @@ div.dp-popup td.disabled {
 	height: 230px;
 }
 
-.pitchimage {
-    width: 100%;
-    height: 235px;
-}
-
 .pitchstorytextarea {
 	resize: none;
 }
@@ -2971,7 +2998,6 @@ div.dp-popup td.disabled {
 .radiolabel-inline {
 	padding-left: 0;
 	font-weight: 500;
-        margin: 10px 0;
 	vertical-align: top;
 }
 
@@ -3267,7 +3293,28 @@ body.user-dashboard-backed {
 }
 
 .dashboardcontainer {
-	padding-bottom: 40px;
+	margin-bottom: 80px;
+}
+
+.dash-head-wrap {
+	padding: 25px 0;
+}
+
+.dash-author-wrap {
+	display: table;
+}
+
+.author-thumb {
+	width: 90px;
+	height: 90px;
+	vertical-align: middle;
+	border-radius: 100%;
+	display: table-cell;
+}
+
+.author-thumb > img {
+	border-radius: 100%;
+	border: 3px solid #fff;
 }
 
 .dash-header {
@@ -3276,6 +3323,9 @@ body.user-dashboard-backed {
 
 .dash-heading {
 	color: #fff;
+	vertical-align: middle;
+	display: table-cell;
+	padding-left: 20px;
 }
 
 .dash-edit > a {
@@ -3404,10 +3454,11 @@ body.user-dashboard-backed {
 
 .dash-public {
 	color: #000;
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: 700;
 	margin-bottom: 10px;
 	display: block;
+	text-decoration: underline;
 }
 
 .dash-public:hover {
@@ -3485,6 +3536,15 @@ body.user-dashboard-backed {
 	height: 40px;
 	color: #000;
 	font-size: 16px;
+	background: transparent;
+}
+
+.project-love {
+	background: url('../img/pilove.png') no-repeat;
+	background-size: 100%;
+	width: 323px;
+	height: 83px;
+	margin: 0 auto 60px;
 }
 
 .loved-heading {
@@ -3586,8 +3646,10 @@ body.user-dashboard-backed {
 }
 
 body.userdashboard {
-	background: #dcdcdc;
+	background: url('../img/wall1.jpg') no-repeat;
+	background-size: cover;
 }
+
 .project-title {
 	display: inline-block;
 	width: 375px;
@@ -3677,18 +3739,150 @@ body.userdashboard {
 	margin-right: 8px;
 }
 
+.footer-container {
+	background: rgba(0, 0, 0, 0.83);
+	display: table;
+	padding: 20px;
+	width: 100%;
+	margin-bottom: 20px;
+}
 
+.footer-container-height {
+	min-height: 290px;
+}
 
+.footer-section {
+	padding: 20px 0 100px 0;
+}
 
+.footer-section:before,
+.footer-section:after {
+	content: '';
+	display: table;
+	clear: both;
+}
 
+.footer-blocks {
+	display: table-cell;
+}
 
+.footer-lists {
+	list-style: none;
+	padding: 0;
+	line-height: 30px;
+}
 
+.footer-lists li > a {
+	color: #fff;
+}
 
+.footer-heading {
+	color: #fff;
+}
 
+.footer-social {
+	background: url('../img/social-sprite.png') no-repeat;
+	height: 30px;
+	padding-left: 40px;
+	display: inline-block;
+}
 
+.footer-facebook {
+	background-position: 0 0;
+}
 
+.footer-twitter {
+	background-position: 0 -34px;
+}
 
+.footer-instagram {
+	background-position: 0 -67px;
+}
 
+.footer-gplus {
+	background-position: 0 -99px;
+}
+
+.footer-vimeo {
+	background-position: 0 -131px;
+}
+
+.footer-youtube {
+	background-position: 0 -163px;
+}
+
+.footer-left {
+	padding: 0 10px 0 0;
+}
+
+.footer-right {
+	padding: 0 0 0 10px;
+}
+
+.owl-carousel {
+	width: 520px;
+}
+
+.owl-theme .owl-controls {
+	text-align: right;
+}
+
+.testimonial-header {
+	color: #fff;
+	font-size: 24px;
+	font-style: italic;
+}
+
+.blog-img {
+	width: 85px;
+}
+
+.footer-textbox {
+	position: relative;
+}
+
+.footer-textbox > input {
+	background: transparent;
+	display: inline-block;
+	width: 220px;
+}
+
+.footer-textbox > button {
+	background: transparent;
+	padding: 0;
+	line-height: 0;
+	position: absolute;
+	right: 120px;
+	top: -2px;
+}
+
+.footer-textbox > button > i {
+	font-size: 36px;
+	color: #eb2033;
+}
+
+.footer-copyright {
+	background: rgba(0, 0, 0, 0.83);
+	padding: 20px; 
+}
+
+.privacy-links > a {
+	color: #9d9d9d;
+}
+
+.privacy-links > a:after {
+	content: '|';
+	padding-left: 8px;
+}
+
+.privacy-links > a:last-child:after {
+	content: '';
+}
+
+.copyright {
+	color: #9d9d9d;
+	margin-bottom: 0;
+}
 
 
 

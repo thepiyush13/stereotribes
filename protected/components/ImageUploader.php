@@ -5,7 +5,7 @@
  */
 class ImageUploader {
 
-    const MAX_IMAGE_SIZE = 2048576;
+    const MAX_IMAGE_SIZE = 4194304;// 4MB; 2MB -> 2048576;
     const MIN_IMAGE_SIZE = 1;
     const DEFAULT_TARGET_PATH = 'campaign/';
     const DEFAULT_RELATIVE_PATH = '/uploads/';

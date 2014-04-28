@@ -6,6 +6,7 @@ class Tribe {
     public $token;
     public $canEdit;
     public $campaign_id;
+    public $location;
     
 }
 

@@ -36,7 +36,7 @@ class Campaign extends CFormModel {
     public $thankyouVideoUrl;
     public $thankyouImageUrl;
     public $shareUrl;
-    
+
 
     /*
      * campaign status -> draft, live, expired, blocked?
@@ -52,7 +52,7 @@ class Campaign extends CFormModel {
     /**
      * User object (campaign owner)
      */
-    public $user;
+    public $creator;
 
     /**
      * Stores rewards
@@ -105,17 +105,35 @@ class Campaign extends CFormModel {
     public $promotionMethod;
     public $toDoList;
 
+    /**
+     * fund stat
+     */
+    public $raised = 0;
+    public $backers = 0;
+
     public function __construct($id = null) {
         if (!$id)
             return null;
+        if(!$this->isValidCampaignId($id))
+            return;
         $this->id = $id;
         $this->fetchCampaignAttributes();
         $this->fetchRewards();
-//        $this->fetchUser();
+        //$this->fetchCreater();
         $this->fetchLinks();
         $this->fetchMediaLinks();
         $this->fetchTribes();
         $this->fetchSocialAmplifers();
+        
+    }
+    
+    public function isValidCampaignId($id) {
+        $sql = "SELECT * FROM project where id = :CAMPAIGN_ID";
+        $bindValues = array(':CAMPAIGN_ID' => $id);
+        $result = $this->fetch($sql, $bindValues, 'queryRow');
+        if($result)
+            return true;
+        return false;
     }
 
     /**
@@ -131,6 +149,8 @@ class Campaign extends CFormModel {
 
         //reset values;
         $this->shareUrl = $_SERVER['HTTP_HOST'] . '/tcampaign/' . $this->id . '/?share=' . $this->shareUrl;
+        $this->paymentDate = $this->paymentDate ? date_format(date_create_from_format('Y-m-d', $this->paymentDate), 'd/m/Y') : '';
+        $this->endDate = $this->endDate ? date_format(date_create_from_format('Y-m-d', $this->endDate), 'd/m/Y') : '';
     }
 
     public function fetchRewards() {
@@ -174,8 +194,9 @@ class Campaign extends CFormModel {
     }
 
     public function fetchTribes() {
-        $attributesTribe = array('id', 'email', 'name', 'canEdit', 'status', 'projectId');
+        $attributesTribe = array('id', 'email', 'name', 'location', 'canEdit', 'status', 'projectId');
         $sql = "SELECT * FROM tribes where project_id = :CAMPAIGN_ID";
+        $sql = "SELECT u.id as id, u.name as name, u.location as location, t.email as email FROM tribes t left join user u on (t.email = u.email) where t.project_id = :CAMPAIGN_ID";
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues);
         $map = $this->mapAttrsKey($attributesTribe);
@@ -189,6 +210,12 @@ class Campaign extends CFormModel {
         $result = $this->fetch($sql, $bindValues);
         $map = $this->mapAttrsKey($attributesLinks);
         $this->exchangeDataArray($result, $map, 'socialAmplifers', 'SocialAmplifier'); //data, property-field mapping, attribute, class
+    }
+    
+    public function fetchCreator() {
+        if($this->userId) {
+            $this->creator = new AppUser($this->userId);
+        }
     }
 
     public function fetch($sql = '', $bindValues, $method = 'queryAll') {
@@ -205,13 +232,13 @@ class Campaign extends CFormModel {
      * @return Camaign
      */
     public static function instance($id) {
-        if (!isset(self::$_instance)) {
-            self::$_instance = new self($id);
+        if (!isset(Campaign::$_instance)) {
+            self::$_instance = new Campaign($id);
         }
         return self::$_instance;
     }
 
-    private function getConfig() {
+    public function getConfig() {
         return array(
             'categories' => Config::getCategories(),
             'projectsFor' => Config::getCategories(),
@@ -310,6 +337,7 @@ class Campaign extends CFormModel {
      */
     public function getStep1() {
         //if requested with id fetch from database
+        $campaign = null;
         if (isset($_POST['campaignId']) && $_POST['campaignId']) {
             $campaign = self::instance($_POST['campaignId']);
         }
@@ -360,7 +388,6 @@ class Campaign extends CFormModel {
             'data' => $campaign
         );
 
-        //print_r($result);
         Ajax::success($result);
     }
 
@@ -379,7 +406,6 @@ class Campaign extends CFormModel {
             'data' => $campaign
         );
 
-        //print_r($result);
         Ajax::success($result);
     }
 
@@ -399,11 +425,6 @@ class Campaign extends CFormModel {
         } else {
             Ajax::error(array());
         }
-
-
-
-        //print_r($result);
-        
     }
 
     /**
@@ -414,10 +435,12 @@ class Campaign extends CFormModel {
         $validator->setAttributes($data);
         if ($validator->validate()) {
             $command = Yii::app()->db->createCommand();
+
             $result = $command->insert('project', $data);
+
             Ajax::success($result);
         } else {
-            Ajax::error($validator->getErrors());
+            Ajax::error(Utils::getErrorsMessages($validator->getErrors()));
         }
     }
 
@@ -433,14 +456,18 @@ class Campaign extends CFormModel {
             $columns = $data; //data from step 1
             if (isset($_POST['campaignId']) && $_POST['campaignId']) {
                 $columns = $this->toUnderScore($columns);
-                $command->update(
-                        'project', $columns, 'id = :ID', array(':ID' => $_POST['campaignId'])
+                $result = $command->update(
+                    'project', $columns, 'id = :ID', array(':ID' => $_POST['campaignId'])
                 );
+                $result = array();
+                $result['campaignId'] = $_POST['campaignId'];
+                sleep(3);
+                Ajax::success($result);
             } else {
                 $columns['shareUrl'] = Utils::generateRandomString(); //share with tribes  
                 $columns['status'] = 'draft';
                 $columns = $this->toUnderScore($columns);
-
+                
                 if ($command->insert('project', $columns)) {
                     $result = array();
                     $result['campaignId'] = Yii::app()->db->getLastInsertId();
@@ -453,7 +480,7 @@ class Campaign extends CFormModel {
                 }
             }
         } else {
-            Ajax::error($validator->getErrors());
+            Ajax::error(Utils::getErrorsMessages($validator->getErrors()));
         }
     }
 
@@ -461,7 +488,7 @@ class Campaign extends CFormModel {
      * Camel case to underscore
      * @param type $sectionName 
      */
-    private function toUnderScore($dataAr = array()) {
+    public function toUnderScore($dataAr = array()) {
         if (!is_array($dataAr))
             return;
         $_data = array();
@@ -512,7 +539,7 @@ class Campaign extends CFormModel {
             Ajax::error($uploader->getError());
         }
     }
-    
+
     public function fundThankyouUploadImage() {
         $options = array(
             'name' => 'fund_thankyou_' . $_POST['campaignId'] . md5(rand(1, 1000))
@@ -532,10 +559,8 @@ class Campaign extends CFormModel {
             Ajax::error($uploader->getError());
         }
     }
-    
-    
 
-    private function getUrl($url) {
+    public function getUrl($url) {
         return 'http://' . $_SERVER['HTTP_HOST'] . $url;
     }
 
@@ -548,7 +573,8 @@ class Campaign extends CFormModel {
                     ->from('project')
                     ->where('id=:CAMPAIGN_ID', array(':CAMPAIGN_ID' => $_POST['campaignId']))
                     ->queryRow();
-            if($result['id']) return true;
+            if ($result['id'])
+                return true;
             return false;
 
             //return true;
@@ -581,9 +607,10 @@ class Campaign extends CFormModel {
                 'goal' => $data['goal'],
                 'funding_type' => $data['fundingType'],
                 'days_run' => $data['campaignLength']['daysRun'],
-                'end_date' => ($data['campaignLength']['endDate']) ? $data['campaignLength']['endDate'] : null,
-                'payment_date' => ($data['campaignLength']['paymentDate']) ? $data['campaignLength']['paymentDate'] : null,
+                'end_date' => ($data['campaignLength']['endDate']) ? date_format(date_create_from_format('d/m/Y', $data['campaignLength']['endDate']), 'Y-m-d') : null,
+                'payment_date' => ($data['campaignLength']['paymentDate']) ? date_format(date_create_from_format('d/m/Y', $data['campaignLength']['paymentDate']), 'Y-m-d') : null,
             );
+            
 
             $command = Yii::app()->db->createCommand();
             $command->update(
@@ -617,7 +644,7 @@ class Campaign extends CFormModel {
         }
     }
 
-    public function updateCampaign($data) {
+    public function updateCampaign($data, $id = null) {
         $attributes = array('title', 'shortSummary', 'country', 'city', 'flipImageUrl', 'shortUrl', 'category', 'goal', 'currency', 'projectFor', 'fundingType', 'daysRun', 'endDate', 'paymentDate', 'mediaType', 'videoUrl', 'imageUrl', 'pitchStory', 'mainLink', 'thankyouMediaType', 'thankyouMediaUrl', 'thankyouVideoUrl', 'thankyouImageUrl', 'shareUrl', 'status', 'socialAmplifierStatus', 'trackerCode', 'paymentType', 'rememberMe', 'promotionMethod', 'userId');
         /**
          * look for only above attributes 
@@ -630,10 +657,12 @@ class Campaign extends CFormModel {
             }
         }
         $columns = $_data;
-
+        $campaignId = $id ? $id : $_POST['campaignId'];
+        if (!$campaignId)
+            return false;
         $command = Yii::app()->db->createCommand();
         $result = $command->update(
-                'project', $columns, 'id=:ID', array(':ID' => $_POST['campaignId']));
+                'project', $columns, 'id=:ID', array(':ID' => $campaignId));
     }
 
     public function saveReward() {
@@ -831,6 +860,9 @@ class Campaign extends CFormModel {
 
     public function saveLinks($data, $ajax = true) {
         if ($this->validRequest()) {
+            //update main link
+            $this->updateCampaign(array('mainLink' => $data['mainLink']));
+
             foreach ($data['links']['list'] as $link) {
                 //if not custom then update
                 //$link = $this->toUnderScore($link);
@@ -845,8 +877,6 @@ class Campaign extends CFormModel {
                 $_link[project_id] = $link['projectId'];
 
                 if ($link['type'] != 'custom') {
-                    //update
-                    //$_link['id'] = $link['id'];
                     $this->updateLink($_link, $link['id']);
                 } else {
                     if ($link['id'] != null) {
@@ -886,14 +916,12 @@ class Campaign extends CFormModel {
             }
         }
     }
-    
-    
+
     /**
      * Media Links
      */
-    
-    private function filterMediaDBId($id) {
-        if(is_null($id) || strlen((string)$id) > 11 ) {
+    public function filterMediaDBId($id) {
+        if (is_null($id) || strlen((string) $id) > 11) {
             return null;
         }
         return $id;
@@ -901,40 +929,37 @@ class Campaign extends CFormModel {
 
     public function saveMediaLinks($data, $ajax = true) {
         $videos = $data['mediaLinks']['video'];
-        $music  = $data['mediaLinks']['audio'];
+        $music = $data['mediaLinks']['audio'];
         $images = $data['mediaLinks']['image'];
         $pdf = $data['mediaLinks']['pdf'];
-        
+
         $media = array($videos, $music, $images, $pdf);
         $command = Yii::app()->db->createCommand();
-        foreach($media as $mGroup) {
-            if(is_array($mGroup)) { //array of vidoes or images or music or pdf...
-                
-                foreach($mGroup as $item){
-                    
+        foreach ($media as $mGroup) {
+            if (is_array($mGroup)) { //array of vidoes or images or music or pdf...
+                foreach ($mGroup as $item) {
+
                     $_item = array();
-                    
+
                     $_item['title'] = $item['title'];
                     $_item['description'] = $item['description'];
                     $_item['type'] = $item['type'];
                     $_item['code_url'] = $item['codeUrl'];
                     $_item['project_id'] = $_POST['campaignId'];
-                    //print_r($item);
-                    
-                    if(is_null($this->filterMediaDBId($item['id']))) {
+
+                    if (is_null($this->filterMediaDBId($item['id']))) {
                         //insert
-                        print_r($_item);
                         $command->insert('media_links', $_item);
                     } else {
                         //update
-                        $command->update('media_links', $_item, 'id=:ID', array(':ID' => $item['id']) );
+                        $command->update('media_links', $_item, 'id=:ID', array(':ID' => $item['id']));
                     }
                 }
             }
         }
         Ajax::success(array());
     }
-    
+
     public function removeMediaLink() {
         if ($this->validRequest()) {
             $data = $_POST['id'];
@@ -945,27 +970,23 @@ class Campaign extends CFormModel {
             }
         }
     }
-    
-    
+
     public function saveThankyouVideo() {
         if ($this->validRequest()) {
             $data = $_POST['data']['fundThankyou'];
-            print_r($_POST);
             $columns = array(
                 'thankyou_media_type' => $data['thankyouMediaType'],
                 'thankyou_image_url' => $data['thankyouImageUrl'],
                 'thankyou_video_url' => $data['thankyouVideoUrl'],
             );
-            
-            print_r($columns);
+
 
             $command = Yii::app()->db->createCommand();
             $command->update(
                     'project', $columns, 'id=:ID', array(':ID' => $_POST['campaignId']));
         }
     }
-    
-    
+
     public function saveFund() {
         if ($this->validRequest()) {
             $data = $_POST['data'];
@@ -1009,16 +1030,40 @@ class Campaign extends CFormModel {
         }
     }
 
+    public function xfetchRewards() {
+        $attributesRewards = array('id', 'serial', 'name', 'rewardTypes', 'fundAmount', 'available', 'estimatedDelivery', 'description', 'fundersShippingAddressRequired', 'projectId');
+
+        $sql = "SELECT * FROM reward where project_id = :CAMPAIGN_ID";
+        $bindValues = array(':CAMPAIGN_ID' => $this->id);
+        $result = $this->fetch($sql, $bindValues);
+
+        for ($i = 0; $i < count($result); $i++)
+            $result[$i]['reward_types'] = (trim($result[$i]['reward_types'])) ? explode(',', $result[$i]['reward_types']) : array();
+        $map = $this->mapAttrsKey($attributesRewards);
+        $this->exchangeDataArray($result, $map, 'rewards', 'Reward');
+    }
+
+    public function getFundStat() {
+        $command = Yii::app()->db->createCommand();
+
+        //fund raised
+        $sql = "SELECT sum(amount) as raised from user_fund_project where project_id=:CAMPAIGN_ID";
+        $bindValues = array(':CAMPAIGN_ID' => $this->id);
+
+        if ($result = $this->fetch($sql, $bindValues, 'queryRow')) {
+            $this->raised = $result['raised'];
+        }
+
+        //backed by number of users
+        $sql = "SELECT count(*) as backers from user_fund_project where project_id=:CAMPAIGN_ID";
+        if ($result = $this->fetch($sql, $bindValues, 'queryRow')) {
+            $this->backers = $result['backers'];
+        }
+    }
+
 }
 
-class AppUser {
 
-    private $id;
-    private $name;
-    private $email;
-    private $connects;
-
-}
 
 /*
 (id, name, dob, age, email, password, location, fbid=kalpit)

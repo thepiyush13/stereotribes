@@ -45,7 +45,7 @@
                                     <p>Place the url of your main website about you or your group</p>
 
                                     <div class="form-group global-textbox">
-                                        <input type="text" maxlength="50" class="form-control charcount" id="title-input">
+                                        <input ng-model="mainLink" type="text" maxlength="50" class="form-control charcount" id="title-input">
                                     </div>
 
                                 </div>

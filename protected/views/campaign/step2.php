@@ -1,6 +1,11 @@
 <script>
 var $campaignId = <?php echo (int)$_GET['id'] ?>
 </script>
+<style>
+    .rewardtype-catlist li.active {
+        border: 1px solid #fff;
+    }
+</style>
 <div class="container playcontainer" ng-app="app">
 
     <div id="step2" class="row" ng-controller="step2Ctrl" > <!-- Do not modify this div -->
@@ -188,17 +193,17 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
 
                                         <ul class="campain-info-wrap">
                                             <li>
-                                                <div>30</div>
+                                                <div>{{goalSettingDaysLeft()}}</div>
                                                 <div>Days left</div>
                                             </li>
 
                                             <li>
-                                                <div>110</div>
+                                                <div>0</div>
                                                 <div>Backers</div>
                                             </li>
 
                                             <li>
-                                                <div>&pound;4251</div>
+                                                <div>&pound;0</div>
                                                 <div>Pledge</div>
                                             </li>
                                             <li>
@@ -306,39 +311,38 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                         <div class="col-md-4">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input ng-model="goalSetting.campaignLengthType" type="radio" name="campaignLengthType" id="radio_campaign_days" value="run"> Days campaign runs
+                                                    <input ng-model="goalSettingcampaignLengthType" type="radio" name="campaignLengthType"  value="run"> Days campaign runs
                                                 </label>
                                             </div>
                                             <div class="form-group global-textbox">
-                                                <input ng-model="goalSetting.campaignLength.daysRun" ng-disabled ="goalSetting.campaignLengthType!='run'" name="campaignLengthRun" type="text" class="form-control" id="campaign_days" placeholder="Days">
+                                                <input ng-model="goalSetting.campaignLength.daysRun" ng-disabled ="goalSettingcampaignLengthType!='run'" name="campaignLengthRun" type="text" class="form-control" id="campaign_days" placeholder="Days">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input ng-model="goalSetting.campaignLengthType" type="radio" name="campaignLengthType" id="radio_campaign_end_date" value="endDate"> Campaign end date
+                                                    <input ng-model="goalSettingcampaignLengthType" type="radio" name="campaignLengthType" value="endDate"> Campaign end date
                                                 </label>
                                             </div>
                                             <div class="form-group global-textbox">
-                                                <input ng-model="goalSetting.campaignLength.endDate" ng-disabled ="goalSetting.campaignLengthType!='endDate'" name="CampaignLengthEndDate"  class="form-control" placeholder="Date" datepicker/>
+                                                <input ng-model="goalSetting.campaignLength.endDate" ng-disabled ="goalSettingcampaignLengthType!='endDate'" name="CampaignLengthEndDate"  class="form-control" placeholder="Date" datepicker/>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input ng-model="goalSetting.campaignLengthType" type="radio" name="campaignLengthType" id="radio_campaign_payment_date" value="paymentDate"> Date payment
+                                                    <input ng-model="goalSettingcampaignLengthType"  type="radio" name="campaignLengthType" value="paymentDate"> Date payment
                                                 </label>
                                             </div>
                                             <div class="form-group global-textbox">
-<!--                                                <input ng-model="goalSetting.campaignLength.paymentDate" name="CampaignLengtPaymentDate" id="date-picker" value="200" class="date-pick form-control" placeholder="Date" />-->
-                                                <input  type="text" ng-model="goalSetting.campaignLength.paymentDate" ng-disabled ="goalSetting.campaignLengthType!='paymentDate'" class="form-control" datepicker/>
+                                                <input  type="text" ng-model="goalSetting.campaignLength.paymentDate" ng-disabled ="goalSettingcampaignLengthType!='paymentDate'" class="form-control" datepicker/>
                                             </div>
                                         </div>
 
                                     </div>
-
+                                    
 
                                 </div><!-- /.camplength-wrapper-->
 
@@ -396,7 +400,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                         </label>
                                     </div>
                                     <div class="form-group global-textbox">
-                                        <input type="text" class="form-control" id="video-url" placeholder="Video URL" ng-model="awesomeCampaign.videoUrl" ng-disabled="awesomeCampaign.videoOrImage =='image'" ng-focus="awesomeCampaign.hasFocus=true" ng-blur="getYoutubeVideoId(awesomeCampaign.videoUrl)">
+                                        <input type="text" class="form-control" id="video-url" placeholder="Video URL" ng-model="awesomeCampaign.videoUrl" ng-disabled="awesomeCampaign.videoOrImage =='image'"  ng-blur="getYoutubeVideoId(awesomeCampaign.videoUrl)">
                                     </div>
 
                                 </div>
@@ -410,7 +414,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                     </div>
                                     <div class="form-group global-textbox" >
 
-                                        <form method="POST" action="/campaign/upload" id="awesomeImageUploadForm" name="awesomeImageUploadForm" target="awesomeImageUploadIframe" enctype="multipart/form-data">
+                                        <form class="img-uploader" method="POST" action="/campaign/upload" id="awesomeImageUploadForm" name="awesomeImageUploadForm" target="awesomeImageUploadIframe" enctype="multipart/form-data">
                                             <span class="btn btn-default btn-file" ng-disabled="awesomeCampaign.videoOrImage =='video'">
                                                 + Add Image <input type="file" id="awesomeCampaignImage" name="awesomeCampaignImage" multiple="multiple" />
                                             </span>
@@ -457,7 +461,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                             </div>	
 
                             <div class="col-md-2 savewrapper">
-                                <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">Preview</button>
+                                <a target="_blank" ng-href="/campaign/{{campaignId}}" class="btn btn-primary btn-lg btn-block amplifybutton">Preview</a>
                             </div>
 
                         </div><!-- Left side Pitch Story wrapper ends -->
@@ -478,10 +482,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
 
 
         </section>
-        <style>
-            .active {border: 1px solid #ccc;}
-        </style>
-
+        
         <section class="block-wrapper  col-md-12">
             <form class="form-rewardscampaign" action="action"> 
 
@@ -629,7 +630,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <button ng-click="saveReward(index)" type="button" class="btn btn-default">Save</button>
+                                    <button ng-click="saveReward(index)" type="button" class="btn amplifybutton"  style="float: left; width: 150px;">Save</button>
                                     <span class="remove-button" ng-click="removeReward(index)"><i class="removeicon icon-remove"></i>Remove reward</span>
                                 </div>
 
@@ -649,7 +650,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
 
                 </div>
                 <p></p>
-                <input type="button" ng-click="addReward()" value="Add Reward">
+                <input class="btn btn-default" type="button" ng-click="addReward()" value="Add Reward">
 
             </form>
 

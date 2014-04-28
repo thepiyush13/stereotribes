@@ -50,9 +50,9 @@
 	    <ul class="nav navbar-nav navbar-left nav-center">
 
 	      <li class="dropdown">
-	      	<a href="#">
+	      	<a href="/campaign/create/">
 		      	<span class="play">Play</span>
-		      	<span class="belowtext">Create Campaigns</span>
+		      	<span class="belowtext" ">Create Campaigns</span>
 	      	</a>
 	      </li>
 
@@ -129,7 +129,7 @@
                                 <ul>
                                         <li>
                                                 <span class="menuh">Play</span>
-                                                <a href="#">Create Campaigns</a>
+                                                <a href="/campaign/create/">Create Campaigns</a>
                                         </li>
                                         <li>
                                                 <span class="menuh">Find</span>

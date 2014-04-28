@@ -15,11 +15,11 @@ angular.module('app')
             flipImageUrl: ''
         }
         
+        $scope.goalSettingcampaignLengthType = 'run'
         $scope.goalSetting = {
             currency: 'adsfa',
             goal: 'asdf',
             fundingType: 'flexible',
-            campaignLengthType: 'paymentDate',
             campaignLength: {
                 'daysRun': '10', 
                 'endDate': '', 
@@ -39,6 +39,7 @@ angular.module('app')
                 alert(this.videoUrl);
             }
         }
+        $scope.dummy;
         
         //reward
         $scope.reward={}
@@ -81,11 +82,12 @@ angular.module('app')
                 $scope.designFlipBox.flipImageUrl = d.flipImageUrl;
                 
                 //goal settings
+                $scope.goalSettingcampaignLengthType = (d.fundingType =='fixed' || d.fundingType =='') ? '' : ((d.daysRun > 0) ? 'run' : (d.endDate) ? 'endDate' : 'paymentDate');
                 $scope.goalSetting = {
                     currency: d.currency,
                     goal: d.goal,
                     fundingType: (d.fundingType) ? d.fundingType : 'fixed',
-                    campaignLengthType: (d.fundingType =='fixed' || d.fundingType =='') ? '' : ((d.daysRun) ? 'run' : (d.endDate) ? 'endDate' : 'paymentDate'),
+                    
                     campaignLength: {
                         'daysRun': d.daysRun, 
                         'endDate': d.endDate, 
@@ -125,23 +127,26 @@ angular.module('app')
         });
         
         $scope.$watch('goalSetting.fundingType', function(){
-            if($scope.goalSetting.fundingType == 'flexible' && $scope.goalSetting.campaignLengthType == '' ) {
-                $scope.goalSetting.campaignLengthType = 'run';
+            if($scope.goalSetting.fundingType == 'flexible' && $scope.goalSettingcampaignLengthType == '' ) {
+                $scope.goalSettingcampaignLengthType = 'run';
             }
         })
         
-        $scope.$watch('awesomeCampaign.pitchStory', function(){
-            console.log('wat'+$scope.awesomeCampaign.pitchStory);
-        //            if($scope.awesomeCampaign.pitchStory == 'test' ) {
-        //            //$scope.goalSetting.campaignLengthType = 'run';
-        //            }
-        })
         
-        $scope.$watch('goalSetting.fundingType', function(){
-            if($scope.goalSetting.fundingType == 'flexible' && $scope.goalSetting.campaignLengthType == '' ) {
-                $scope.goalSetting.campaignLengthType = 'run';
+        /**
+         */
+        
+        $scope.goalSettingDaysLeft = function() {
+            if($scope.goalSetting.fundingType == 'flexible') {
+                if($scope.goalSettingcampaignLengthType == 'run') {
+                    return $scope.goalSetting.campaignLength.daysRun;
+                } else if($scope.goalSettingcampaignLengthType == 'endDate') {
+                    return $scope.goalSetting.campaignLength.endDate;
+                }
+                
             }
-        })
+            return '';
+        }
         
         $scope.charCount = function(s) {
             if(s) return s.length;
@@ -228,16 +233,16 @@ angular.module('app')
         //save goalsetting
         $scope.saveGoalSetting = function() {
             if($scope.fundingType == 'fixed') {
-                $scope.campaignLengthType = $scope.campaignLength.run = $scope.campaignLength.endDate = $scope.campaignLength.paymentDate = ''
+                $scope.goalSettingcampaignLengthType = $scope.campaignLength.run = $scope.campaignLength.endDate = $scope.campaignLength.paymentDate = ''
             } else {
-                if($scope.campaignLengthType == 'run') {
-                    $scope.campaignLength.endDate = $scope.campaignLength.paymentDate = '';
+                if($scope.goalSettingcampaignLengthType == 'run') {
+                    $scope.goalSetting.campaignLength.endDate = $scope.goalSetting.campaignLength.paymentDate = '';
                 }
-                if($scope.campaignLengthType == 'endDate') {
-                    $scope.campaignLength.daysRun = $scope.campaignLength.paymentDate = '';
+                if($scope.goalSettingcampaignLengthType == 'endDate') {
+                    $scope.goalSetting.campaignLength.daysRun = $scope.goalSetting.campaignLength.paymentDate = '';
                 }
-                if($scope.campaignLengthType == 'paymentDate') {
-                    $scope.campaignLength.daysRun = $scope.campaignLength.endDate = '';
+                if($scope.goalSettingcampaignLengthType == 'paymentDate') {
+                    $scope.goalSetting.campaignLength.daysRun = $scope.goalSetting.campaignLength.endDate = '';
                 }
             }
             
@@ -282,6 +287,10 @@ angular.module('app')
             });
             
             
+        }
+        
+        $scope.showPreview = function() {
+            window.location.href = '/campaign/'+$scope.campaignId;
         }
     })
     
@@ -418,6 +427,8 @@ angular.module('app')
                     hasFocus: false
                 }
                 
+                $scope.mainLink = d.mainLink;
+                
                 //get a master copy
                 $scope.masterMediaLinks = $scope.mediaLinks;
                 
@@ -480,7 +491,8 @@ angular.module('app')
                     method: 'campaign.saveLinks',
                     campaignId: $scope.campaignId,
                     data: {
-                        links: $scope.links
+                        links: $scope.links,
+                        mainLink: $scope.mainLink
                     }
                 }
             }).success(function(response) {
@@ -662,6 +674,7 @@ angular.module('app')
 
     .controller('Step1Ctrl', function($scope, $http, $window){
         //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+        $scope.error = 'None';
         $scope.campaignId = $window.$campaignId;
         $scope.config = {
         }
@@ -685,10 +698,13 @@ angular.module('app')
             console.log(response.error);
             if(response.error == 0) {
                 $scope.config = response.data.config;
-                $scope.createCampaign.category = response.data.data.category;
-                $scope.createCampaign.currency = response.data.data.currency;
-                $scope.createCampaign.goal = response.data.data.goal;
-                $scope.createCampaign.projectFor = response.data.data.projectFor;
+                if($scope.campaignId) {
+                    $scope.createCampaign.category = response.data.data.category;
+                    $scope.createCampaign.currency = response.data.data.currency;
+                    $scope.createCampaign.goal = response.data.data.goal;
+                    $scope.createCampaign.projectFor = response.data.data.projectFor;
+                    console.log($scope.createCampaign.category);
+                }
             } else {
                 console.log('--');
             //$scope.error = response.error;
@@ -697,16 +713,19 @@ angular.module('app')
         
         $scope.selectCategory = function(category) {
             if($scope.createCampaign.category == category) return;
-            //remove class from all categories
-            $('.play-categories').each(function(){
-                $(this).removeClass('active');
-            })
-            $('.color-'+category).addClass('active');
             $scope.createCampaign.category = category;
-            
+        }
+        
+        $scope.isSelected = function(c) {
+            if(c == $scope.createCampaign.category)
+                return 'active';
+            return '';
         }
         
         $scope.save = function() {
+            $('.step1-loader').css('display', 'inline-block');
+            
+            
             $http({
                 method: 'POST',
                 url: '/campaign/api',
@@ -718,11 +737,13 @@ angular.module('app')
             }).success(function(response) {
                 console.log(response.error);
                 if(response.error == 0) {
+                    $('.step1-loader').css('display', 'none');
                     window.location.href = '/campaign/'+response.data.campaignId+'/step2';
                     
                 } else {
-                    console.log('--');
-                //$scope.error = response.error;
+                    
+                    $('#error').html(response.error.join('<br>')).show();
+                    $('.step1-loader').css('display', 'none');
                 } 
             });
         }

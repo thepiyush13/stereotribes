@@ -1,6 +1,37 @@
 <script>
     var $campaignId = <?php echo (int) $_GET['id'] ?>
 </script>
+<style>
+    .active:before {
+        font-family: 'stereotribe';
+        content: "\e63e";
+        position: absolute;
+        /*color: #d6201f!important;*/
+        color: #ffffff!important;
+        top: 5px;
+        left: 90%;
+        margin-left: -18px;
+        color: #fff;
+        font-size: 34px;
+    }
+    .cat-wrap:hover {
+        cursor: pointer;
+    }
+
+    .error {
+        background-color: #f2dede; color: #9f0202; font-size: 16px;  margin-bottom: 15px; padding: 10px;
+        display: none;
+    }
+    
+    .step1-loader {
+        background: url(/img/loader.gif) no-repeat ;
+        display: inline-block;
+        /*height: 35px;*/
+        width: 50px;
+        float: right;
+        margin-top: 40px;
+    }
+</style>
 <div class="container playcontainer" ng-app="app">
 
     <div class="row">
@@ -27,41 +58,27 @@
         <form class="form-one" action="action" ng-controller="Step1Ctrl">  
 
             <section class="block-wrapper  col-md-12">
-                <h3 class="article-head">CHOOSE YOUR MUSIC+ CATEGORY</h3>
+                <div id="error" class="error">Error</div>
+                     <h3 class="article-head">CHOOSE YOUR MUSIC+ CATEGORY</h3>
 
-                <div class="row">
+                    <div class="row">
 
-                    <div class="col-md-9">
-                        <div class="cat-wrap col-md-12"><span class="play-categories musicplus-red">Music+</span></div>
-                        <div class="cat-wrap col-md-6" ng-repeat="c in config.categories"><span ng-click="selectCategory(c.id)" class="play-categories {{c.class}}">{{c.name}}</span></div>
-<!--                    <div class="cat-wrap col-md-12"><span class="play-categories musicplus-red">Music+</span></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-arts" href="#">Arts</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-technology" href="#">Technology</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-research" href="#">Research</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-commercial" href="#">Commercial</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-imaginative" href="#">Imaginative</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-performance" href="#">Performance</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-film" href="#">Film</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-games" href="#">Games</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-publishing" href="#">Publishing</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-production" href="#">Production</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-community" href="#">Community</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-education" href="#">Education</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-therapy" href="#">Therapy</a></div>
-                        <div class="cat-wrap col-md-6"><a class="play-categories color-fashion" href="#">Fashion</a></div>-->
+                        <div class="col-md-9">
+                            <div class="cat-wrap col-md-12"><span class="play-categories musicplus-red">Music+</span></div>
+                            <div class="cat-wrap col-md-6" ng-repeat="c in config.categories"><span ng-click="selectCategory(c.id)" class="play-categories {{c.class}} {{ isSelected(c.id) }}">{{c.name}}</span></div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <p>Heya! We’re here to help you create your campaign. Remember all campaigns on Stereotribes are somehow related to music. What type of music project is yours? Select the cateogory that most suits your campaign.</p>
+                            <p>Not sure if your project is suitable on Stereotribes? Take a 30 second pop quiz to find out.</p>
+
+                            <button type="button" class="btn btn-default quiz-button">Suitability Quiz?</button>
+
+                        </div>
 
                     </div>
-
-                    <div class="col-md-3">
-
-                        <p>Heya! We’re here to help you create your campaign. Remember all campaigns on Stereotribes are somehow related to music. What type of music project is yours? Select the cateogory that most suits your campaign.</p>
-                        <p>Not sure if your project is suitable on Stereotribes? Take a 30 second pop quiz to find out.</p>
-
-                        <button type="button" class="btn btn-default quiz-button">Suitability Quiz?</button>
-
-                    </div>
-
-                </div>
 
             </section>
 
@@ -112,8 +129,11 @@
 
                         <p>The funds you raise have to be assigned to a person or to your group. Pick the entity one that suits you the most. Don’t worry If you get stuck, just ask for <a class="sterio-link" href="#">Stereotribes support.</a></p>
 
-                        <button type="button" class="btn btn-default save-button" ng-click="save()">Save & Continue</button>
-
+                    </div>
+                    <div class="col-md-4 col-md-offset-8">
+                        
+                        <button style="float: right;" type="button" class="btn btn-default save-button" ng-click="save()">Save & Continue</button>
+                        <span class="step1-loader" style="display: none; height: 35px;"></span>
                     </div>
 
                 </div>

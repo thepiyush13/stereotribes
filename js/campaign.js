@@ -91,3 +91,7 @@ $('#awesomeCampaignImage').on('change', function() {
 $('#fundThankyouImage').on('change', function() {
     $('#fundThankyouUploadForm').submit();
 });
+
+$('.img-uploader').submit(function(event){
+    alert($(this).attr('id'));
+})
