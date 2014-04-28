@@ -40,7 +40,6 @@ class AppuserController extends Controller
 	public function actionCreate()
 	{
 		$model=new AppUser;
-
 		if(Yii::app()->request->isPostRequest)
 		{
 			$model->attributes=$_POST;
