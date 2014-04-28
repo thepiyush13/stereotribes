@@ -11,10 +11,10 @@ class LoginController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
+        
         $model = new LoginForm;
         // collect user input data
         if (Yii::app()->request->isPostRequest) {
-
             $model->attributes = $_POST;
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login()) {
@@ -80,6 +80,7 @@ class LoginController extends Controller {
      * Displays the login page
      */
     public function actionLogin() {
+        die('ok');
         $model = new LoginForm;
         
         // collect user input data

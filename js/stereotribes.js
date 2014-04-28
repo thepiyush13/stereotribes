@@ -99,15 +99,20 @@
          $(this).find('.bordercut').css('border-left-color', $(this).data('color'));
      });
 
-	// click event for touch devices
-  var width = $(window).width();
-  if (width < 1025){
+  	// click event for touch devices
+    var width = $(window).width();
+    if (width < 1025){
 
-     $('.brickhover').on('click',function(){
-      $(this).toggleClass('brickclick');
+       $('.brickhover').on('click',function(){
+        $(this).toggleClass('brickclick');
+      });
+
+    };
+
+    // Prevent search dropdown from closing
+    $('.menu-search').click(function(e) {
+        e.stopPropagation();
     });
-
-  }
 
 
  });

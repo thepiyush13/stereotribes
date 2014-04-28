@@ -1033,6 +1033,7 @@ class Campaign extends CFormModel {
     public function xfetchRewards() {
         $attributesRewards = array('id', 'serial', 'name', 'rewardTypes', 'fundAmount', 'available', 'estimatedDelivery', 'description', 'fundersShippingAddressRequired', 'projectId');
 
+
         $sql = "SELECT * FROM reward where project_id = :CAMPAIGN_ID";
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues);
@@ -1062,6 +1063,7 @@ class Campaign extends CFormModel {
     }
 
 }
+
 
 
 

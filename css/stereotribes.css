@@ -1932,6 +1932,7 @@ body.pages {
 	display: table;
 	border-radius: 0;
 	background: #f62b2b;
+
 	/*padding: 10px 40px 10px 70px;*/
 	text-transform: uppercase;
 }
@@ -3802,6 +3803,7 @@ body.userdashboard {
 .footer-gplus {
 	background-position: 0 -99px;
 }
+<<<<<<< Updated upstream
 
 .footer-vimeo {
 	background-position: 0 -131px;
@@ -3845,6 +3847,614 @@ body.userdashboard {
 	background: transparent;
 	display: inline-block;
 	width: 220px;
+=======
+
+.footer-vimeo {
+	background-position: 0 -131px;
+}
+
+.footer-youtube {
+	background-position: 0 -163px;
+}
+
+.footer-left {
+	padding: 0 10px 0 0;
+}
+
+.footer-right {
+	padding: 0 0 0 10px;
+}
+
+.owl-carousel {
+	width: 520px;
+}
+
+.owl-theme .owl-controls {
+	text-align: right;
+}
+
+.testimonial-header {
+	color: #fff;
+	font-size: 24px;
+	font-style: italic;
+}
+
+.blog-img {
+	width: 85px;
+}
+
+.footer-textbox {
+	position: relative;
+}
+
+.footer-textbox > input {
+	background: transparent;
+	display: inline-block;
+	width: 220px;
+}
+
+.footer-textbox > button {
+	background: transparent;
+	padding: 0;
+	line-height: 0;
+	position: absolute;
+	right: 120px;
+	top: -2px;
+}
+
+.footer-textbox > button > i {
+	font-size: 36px;
+	color: #eb2033;
+}
+
+.footer-copyright {
+	background: rgba(0, 0, 0, 0.83);
+	padding: 20px; 
+}
+
+.privacy-links > a {
+	color: #9d9d9d;
+}
+
+.privacy-links > a:after {
+	content: '|';
+	padding-left: 8px;
+}
+
+.privacy-links > a:last-child:after {
+	content: '';
+}
+
+.copyright {
+	color: #9d9d9d;
+	margin-bottom: 0;
+}
+
+
+/* Fund Campaign Steps */
+
+
+body.fund-steps {
+	background: #ebebeb;
+}
+
+.fund-step-container {
+	box-shadow: 0 0 12px #000;
+	margin-bottom: 60px;
+	background: #fff;
+	position: relative;
+}
+
+.fund-step-container:after {
+	content: url('../img/pagefold.png');
+	position: absolute;
+	bottom: -24px;
+	left: -22px;
+}
+
+.main-hero-section {
+	position: relative;
+}
+
+.main-hero-heading {
+	text-transform: uppercase;
+	position: absolute;
+	bottom: 0;
+	color: #fff;
+	right: 0;
+	left: 0;
+	text-align: center;
+}
+
+.fund-navigation {
+	display: table;
+	margin: 50px auto 20px;
+}
+
+.fund-links-title {
+	background: #d6201f;
+	color: #fff;
+	padding: 7px 110px 7px 10px;
+	font-size: 35px;
+	line-height: 35px;
+	text-transform: uppercase;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.fund-links-fix {
+	padding: 7px 145px 7px 10px;
+}
+
+.fund-links {
+	display: table-cell;
+	vertical-align: middle;
+	font-weight: bold;
+	color: #fff;
+	font-size: 20px;
+	text-transform: uppercase;
+	position: relative;
+}
+
+.fund-links:hover { 
+	text-decoration: none;
+	color: #ccc;
+}
+
+.links-support {
+	background: #9c9c9c;
+	padding: 7px 90px 7px 40px;
+}
+
+.links-support:before {
+	content: url('../img/menu-a1.png') no-repeat;
+	position: absolute;
+	left: -72px;
+	top: 0;
+}
+
+.links-support:after {
+	content: url('../img/menu-a2.png') no-repeat;
+	position: absolute;
+	right: -73px;
+	top: 0px;
+}
+
+.links-pay {
+	background: #818181;
+	padding: 7px 100px 7px 40px;
+}
+
+.links-pay:before {
+	content: url('../img/menu-b1.png') no-repeat;
+	position: absolute;
+	left: -73px;
+	top: 0;
+}
+
+.links-pay:after {
+	content: url('../img/menu-b2.png') no-repeat;
+	position: absolute;
+	right: -73px;
+	top: 0px;
+}
+
+.links-love {
+	background: #515151;
+	padding: 7px 30px 7px 40px;
+}
+
+.links-love:before {
+	content: url('../img/menu-c1.png') no-repeat;
+	position: absolute;
+	left: -73px;
+	top: 0;
+}
+
+.links-love:after {
+	content: url('../img/menu-c2.png') no-repeat;
+	position: absolute;
+	right: -72px;
+	top: 0px;
+}
+
+.links-heart {
+	display: inline-block;
+	padding: 0 0 0 20px;
+	font-size: 50px;
+	line-height: 36px;
+	color: #d6201f;
+}
+
+.fund-block-wrapper {
+	padding: 0 80px;
+	margin-bottom: 20px;
+}
+
+.fund-contribution {
+	margin: 0;
+}
+
+.fund-reward {
+	margin: 0;
+}
+
+.fund-block-inner {
+	padding: 15px;
+	font-size: 16px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.fund-block-inner .reward-block {
+	margin-bottom: 5px;
+	clear: both;
+	border-bottom: 2px solid #fff;
+}
+
+.fund-block-inner .reward-block:after,
+.fund-block-inner .reward-block:before {
+	clear: both;
+	display: table;
+	content: '';
+}
+
+.fund-block-inner .reward-currency {
+	font-size: 25px;
+	width: 100%;
+}
+
+.fund-block-inner .reward-amount {
+	font-size: 25px;
+	width: auto;
+}
+
+.fund-block-inner .reward-type {
+	float: left;
+	font-size: 25px;
+}
+
+.fund-block-inner .reward-amount {
+	float: right;
+}
+
+.fund-block-inner .reward-estimation {
+	font-size: 18px;
+	margin-top: 20px;
+}
+
+.fund-block-inner .reward-icon {
+	margin-top: 20px;
+	display: inline-block;
+}
+
+.fund-bottom-info {
+	font-size: 16px;
+}
+
+.icon-reward {
+	background: url('../img/cat-icons.png') no-repeat;
+	display: inline-block;
+	width: 45px;
+	height: 38px;
+}
+
+.icon-education {
+	background-position: -5px 0px;
+}
+
+.icon-friendly {
+	background-position: -61px 0px;
+}
+
+.icon-recognition {
+	background-position: -112px 0px;
+}
+
+.icon-swag {
+	background-position: -158px 0px;
+}
+
+.icon-digital {
+	background-position: -207px 0px;
+}
+
+.icon-experiences {
+	background-position: -252px 0px;
+}
+
+.icon-vip {
+	background-position: -305px 0px;
+}
+
+.icon-special {
+	background-position: -356px 0px;
+}
+
+.fund-complete-block {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background: rgba(255, 255, 255, 0.78);
+}
+
+.fund-complete-inner {
+	position: relative;
+}
+
+.fund-complete-title {
+	font-family: 'lotregular';
+	font-size: 60px;
+	color: #000;
+	margin: 87px 0;
+	position: relative;
+}
+
+.fund-complete-title:after {
+	content: url('../img/spike.png');
+	position: absolute;
+	top: -24px;
+	right: 200px;
+}
+
+.footer-bg {
+	background: url('../img/wall1.jpg') no-repeat fixed 0px -900px;
+	background-size: cover;
+}
+
+.thanks-heading {
+	font-size: 24px;
+	font-weight: 500;
+	margin-bottom: 0;
+}
+
+.thanksblock-heading {
+	font-size: 24px;
+	font-weight: 600;
+	margin-top: 0;
+}
+
+.thanks-subheading {
+	font-size: 20px;
+	font-weight: 500;
+	margin-top: 0;
+	color: #3c3c3c;
+}
+
+.payment-summary-list {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 50px;
+	line-height: 22px;
+}
+
+.payment-summary-list li {
+	font-size: 18px;
+	font-weight: 500;
+	color: #3c3c3c;
+}
+
+.hideme {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.make-contribution {
+	color: #000;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.fundjoin-img {
+	display: block;
+	margin: 20px auto 0;
+	width: 100px;
+	height: 100px;
+	box-shadow: -2px 3px 7px rgba(0, 0, 0, 0.8);
+}
+
+.fund-join-link {
+	color: #3c3c3c;
+	display: block;
+	text-decoration: underline;
+	font-size: 18px;
+	font-weight: 500;
+	margin: 20px auto 0;
+	text-align: center;
+}
+
+.chatbtn-wrp:before,
+.chatbtn-wrp:after {
+	display: table;
+	clear: both;
+	content: "";
+}
+
+.chatbtn-wrp {
+	margin-top: 20px;
+}
+
+.inputchatting-countwrap {
+	float: left;
+	display: inline-block;
+}
+
+.chatsendbutton {
+	float: right;
+	background: #6a6a6a;
+	border: none;
+	color: #fff;
+	padding: 2px 10px;
+	font-size: 18px;
+	display: inline-block;
+}
+
+.thanks-block-wrap {
+
+}
+
+.thanksblock {
+	min-height: 280px;
+	position: relative;
+	padding: 25px 60px;
+}
+
+.separatorline {
+	border-right: 3px solid #515151; 
+}
+
+.separatorbottom {
+	border-bottom: 3px solid #515151; 
+}
+
+.payment-values {
+	color: #000;
+}
+
+.thanksocial-wrapper {
+	text-align: center;
+}
+
+.thanksocial {
+	background: url('../img/thankssocial.png') no-repeat;
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+}
+
+.thanks-message {
+	background-position: -175px 2px;
+}
+
+.thanks-link {
+	background-position: -234px 2px;
+}
+
+.thanks-fb {
+	background-position: 3px 2px;
+}
+
+.thanks-twitter {
+	background-position: -57px 2px;
+}
+
+.thanks-gplus {
+	background-position: -117px 2px;
+}
+
+.related-fund-block {
+	margin-bottom: 30px;
+}
+
+a.thanks-heading {
+	color: #000;
+	text-decoration: underline;
+}
+
+.blog-wrapper {
+	margin: 40px 0 50px;
+}
+
+.fund-block-fix {
+	margin-bottom: 50px;
+}
+
+.active-fund {
+	background: #d6201f;
+	color: #fff;
+}
+
+.active-fund .paybtn {
+	display: block;
+}
+
+.paybtn {
+	position: relative;
+	background: #fff;
+	border: none;
+	color: #000;
+	font-size: 22px;
+	font-weight: 800;
+	padding: 5px 45px;
+	text-transform: uppercase;
+	float: right;
+	display: none;
+	margin-top: 20px;
+}
+
+.paybtn:after {
+	font-family: 'stereotribe';
+	content: '\e640';
+	position: absolute;
+	top: -18px;
+	right: -5px;
+	color: #000;
+	font-size: 55px;
+	font-weight: normal;
+}
+
+.paybtn:hover { 
+	color: #000;
+	text-decoration: none;
+}
+
+.fundstep2-heading {
+	background: url('../img/step2A.png');
+	background-size: 100%;
+	display: block;
+	width: 380px;
+	height: 84px;
+	margin: 0 auto;
+}
+
+.fundstep3-heading {
+	background: url('../img/step3A.png');
+	background-size: 100%;
+	display: block;
+	width: 380px;
+	height: 84px;
+	margin: 0 auto;
+}
+
+.fundstep2-formgroup div {
+	margin-bottom: 10px;
+}
+
+.nextbtn {
+	position: relative;
+	background: #eb2033;
+	border: none;
+	color: #fff;
+	font-size: 30px;
+	font-weight: 800;
+	padding: 5px 45px;
+	text-transform: uppercase;
+	margin-top: 20px;
+	height: 50px;
+	width: 100%;
+	display: block;
+	clear: both;
+	text-align: center;
+}
+
+.nextbtn:after {
+	font-family: 'stereotribe';
+	content: '\e640';
+	position: absolute;
+	top: -14px;
+	right: -5px;
+	color: #fff;
+	font-size: 55px;
+	font-weight: normal;
+}
+
+.nextbtn:hover, .nextbtn:hover:after { 
+	color: #000;
+	text-decoration: none;
 }
 
 .footer-textbox > button {

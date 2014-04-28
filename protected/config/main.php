@@ -1,19 +1,8 @@
 <?php
-// Define application environment
-defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'default'));
-$dbName = 'stereotribes';
-$dbUser = 'root';
-$dbPassword = '';
-if(APPLICATION_ENV == 'jump-dev') {
-       $dbName = 'stereotribes';
-       $dbUser = 'stereotribes';
-       $dbPassword = 'stereotribes';
 
 
-       $fbAppId = '231266650409136';
-       $fbSecret = 'f6aefdeb97323090980fc2f4e98bcf1a';
-}
-// uncomment the following to define a path alias
+require 'environment.php';
+
 
 // Yii::setPathOfAlias('local','path/to/local-folder');
 // This is the main Web application configuration. Any writable
@@ -26,6 +15,7 @@ return array(
     // autoloading model and component classes
     'import' => array(
         'application.models.*',
+        'application.models.forms.*',
         'application.components.*',
         'application.modules.admin.models.*',
         'application.modules.admin.models.campaign.*',
@@ -64,6 +54,11 @@ return array(
                 '/campaign/<id:\d+>/step4' => '/campaign/step4',
                 '/campaign/<id:\d+>/step5' => '/campaign/step5',
                 '/login/fbconnect' => '/login/facebook/p/1',
+                
+                //For fund raising
+                '/campaign/<pid:\d+>/contribute' => '/fundraise/contribute',
+                '/campaign/<pid:\d+>/contribute/payment' => '/fundraise/payment',
+                '/campaign/<pid:\d+>/contribute/share' => '/fundraise/share',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',

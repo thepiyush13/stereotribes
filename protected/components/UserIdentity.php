@@ -23,6 +23,7 @@ class UserIdentity extends CUserIdentity {
         
         //$user->roles = array('sales', 'admin');
         //echo '<pre>'.print_r($user, 1);exit;
+        
         if ($user === null)
             $this->errorCode = self::ERROR_USERNAME_INVALID;
         else if ($user->password !== md5($this->password))

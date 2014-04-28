@@ -267,11 +267,22 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.validity.min.js"></script>
     <script src="/js/video.js"></script>
     <script src="/js/waypoints.min.js"></script>
     <script src="/js/waypoints-sticky.min.js"></script>
     <script src="/js/freewall.js"></script>
     <script src="/js/stereotribes.js"></script>
+    <script src="/js/custom/utils.js"></script>
 
+    <script type="text/javascript">
+        $.validity.setup({ outputMode:"label" });
+    </script>
+    <style type="text/css">
+        label.error {
+            color: red;
+            font-weight: normal;
+        }
+    </style>
   </body>
   </html>
