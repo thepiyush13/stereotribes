@@ -2,7 +2,7 @@
 
 
 require 'environment.php';
-
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 
 // Yii::setPathOfAlias('local','path/to/local-folder');
 // This is the main Web application configuration. Any writable
@@ -22,6 +22,10 @@ return array(
         'application.modules.admin.models.campaign.forms.*',
     ),
     'modules' => array(
+        //for newsletter module
+        'newsletter',
+        'dashboard',
+        
         // uncomment the following to enable the Gii tool
 
         'gii' => array(
@@ -41,13 +45,18 @@ return array(
             // enable cookie-based authentication
             'allowAutoLogin' => true,
         ),
+        //bootstrap support for crud model
+         'bootstrap'=>array(
+            'class'=>'bootstrap.components.Bootstrap',
+        ),
         // uncomment the following to enable URLs in path-format
         'urlManager' => array(
             'urlFormat' => 'path',
+            'showScriptName'=>false,
             'rules' => array(
                 '' => '/site/index',
                 '/campaign/create' => '/campaign/create',
-                '/campaign/<id:\d+>' => '/campaign/index',
+                 'dashboard/<action:\w+>' => 'dashboard/default/<action>',     
                 '/campaign/<id:\d+>/step1' => '/campaign/step1',
                 '/campaign/<id:\d+>/step2' => '/campaign/step2',
                 '/campaign/<id:\d+>/step3' => '/campaign/step3',
