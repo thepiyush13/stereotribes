@@ -56,6 +56,7 @@ return array(
             'rules' => array(
                 '' => '/site/index',
                 '/campaign/create' => '/campaign/create',
+		'/campaign/<id:\d+>' => '/campaign/index',
                  'dashboard/<action:\w+>' => 'dashboard/default/<action>',     
                 '/campaign/<id:\d+>/step1' => '/campaign/step1',
                 '/campaign/<id:\d+>/step2' => '/campaign/step2',
