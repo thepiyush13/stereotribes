@@ -7,12 +7,12 @@
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'default'));
 $dbName = 'stereotribes';
 $dbUser = 'root';
-$dbPassword = 'password';
+$dbPassword = '';
 
 if(APPLICATION_ENV == 'jump-dev') {
        $dbName = 'stereotribes';
-       $dbUser = 'root';
-       $dbPassword = 'password';
+       $dbUser = 'stereotribes';
+       $dbPassword = 'stereotribes';
 
 
        $fbAppId = '231266650409136';
