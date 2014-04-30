@@ -176,7 +176,7 @@
     <div class="row">
                   <div class="col-lg-4">
                       <section class="panel">
-                          <div class="panel-body"><section class="panel">
+                          <div class="panel-body">
                           <header class="panel-heading">
                               MOST FUNDED PROJECTS
                           </header>
@@ -190,13 +190,12 @@
                                             array('name' => 'FUNDED','type' => 'raw','value' => '($data["funded"])' ),
                                             ),
                                     ));
-                             ?>
-                      </section></div>
+                             ?></div>
                       </section>
                   </div>
                   <div class="col-lg-4">
                       <section class="panel">
-                          <div class="panel-body"><section class="panel">
+                          <div class="panel-body">
                           <header class="panel-heading">
                               MOST FUNDED CATEGORIES
                           </header>
@@ -210,13 +209,12 @@
                                             array('name' => 'FUNDED','type' => 'raw','value' => '($data["funded"])' ),
                                             ),
                                     ));
-                             ?>
-                      </section></div>
+                             ?></div>
                       </section>
                   </div>
                   <div class="col-lg-4">
                       <section class="panel">
-                          <div class="panel-body"><section class="panel">
+                          <div class="panel-body">
                           <header class="panel-heading">
                              MOST POPULAR REWARD TYPES
                           </header>
@@ -231,7 +229,7 @@
                                             ),
                                     ));
                              ?>
-                      </section></div>
+                      </div>
                       </section>
                   </div>
         
@@ -242,7 +240,7 @@
     <div class="row">
                   <div class="col-lg-6">
                       <section class="panel">
-                          <div class="panel-body"><section class="panel">
+                          <div class="panel-body">
                           <header class="panel-heading">
                             TOP PROJECT LOCATIONS
                           </header>
@@ -257,12 +255,12 @@
                                             ),
                                     ));
                              ?>
-                      </section></div>
+                      </div>
                       </section>
                   </div>
                   <div class="col-lg-6">
                       <section class="panel">
-                          <div class="panel-body"><section class="panel">
+                          <div class="panel-body">
                           <header class="panel-heading">
                              TOP FUNDING LOCATION
                           </header>
@@ -277,7 +275,7 @@
                                             ),
                                     ));
                              ?>
-                      </section></div>
+                      </div>
                       </section>
                   </div>
               </div>
