@@ -1,12 +1,12 @@
 
-<section class=" wrapper site-min-height">
+<section class="site-min-height">
     <h1>Reporting</h1>
     <!--FIRST ROW-->
     <div class="row">
                   <div class="col-lg-4">
                       <section class="panel">
                           <div class="panel-body">
-                              <h1>£ <?php  echo $reportData['TOTAL_RAISED'] ;  ?></h1>
+                              <h1 class="dash-header">£ <?php  echo $reportData['TOTAL_RAISED'] ;  ?></h1>
                               
                           </div>
                           <div><footer class="pie-foot">TOTAL RAISED</footer></div>

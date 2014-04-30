@@ -243,3 +243,7 @@ div.custom-pager-ul ul li.selected a, div.custom-pager-ul ul li a:hover{
 .panel-body {
     text-align: center;
 }
+
+.dash-header {
+    margin-top: 0;
+}
