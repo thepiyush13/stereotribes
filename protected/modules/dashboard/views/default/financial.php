@@ -44,6 +44,8 @@
                       <section class="panel">
                           <div class="panel-body text-center">
                              <h3 class="rep-head">£ <?php  echo $reportData['FIXED_RASIED'] ;  ?></h3>
+                          </div>
+                          <div>
                              <footer class="well well-sm">FIXED RASIED</footer>
                           </div>
                       </section>
@@ -54,7 +56,9 @@
                       <section class="panel">
                           <div class="panel-body text-center">
                               <h3 class="rep-head">£ <?php  echo $reportData['FLEXIBLE_RAISED'] ;  ?></h3>
-                              <footer class="well h6">FLEXIBLE RAISED</footer>
+                          </div>
+                          <div>
+                             <footer class="well well-sm">FLEXIBLE RAISED</footer>
                           </div>
                       </section>
                   </div>
@@ -62,7 +66,9 @@
                       <section class="panel">
                           <div class="panel-body text-center">
                               <h3 class="rep-head">£ <?php  echo $reportData['SUCCESSFULLY_RAISED'] ;  ?></h3>
-                              <footer class="well ">SUCCESSFULLY RAISED</footer>
+                          </div>
+                          <div>
+                             <footer class="well well-sm">SUCCESSFULLY RAISED</footer>
                           </div>
                       </section>
                   </div>
@@ -70,7 +76,9 @@
                       <section class="panel">
                           <div class="panel-body text-center">
                               <h3 class="rep-head">£ <?php  echo (int)$reportData['UNSUCCESSFULLY_RAISED'] ;  ?></h3>
-                              <footer class="well ">UNSUCCESSFULLY RAISED</footer>
+                          </div>
+                          <div>
+                             <footer class="well well-sm">UNSUCCESSFULLY RAISED</footer>
                           </div>
                       </section>
                   </div>
@@ -78,7 +86,9 @@
                       <section class="panel">
                           <div class="panel-body text-center">
                               <h3 class="rep-head"><?php  echo (int)$reportData['SUCCESS_RATE'] ;  ?>%</h3>
-                              <footer class="well ">SUCCESS RATE</footer>
+                          </div>
+                          <div>
+                             <footer class="well well-sm">SUCCESS RATE</footer>
                           </div>
                       </section>
                   </div>
