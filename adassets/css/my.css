@@ -338,3 +338,7 @@ a.logo {
 .table {
     margin-bottom: 0;
 }
+
+.grid-view {
+    padding: 15px 0 0;
+}
