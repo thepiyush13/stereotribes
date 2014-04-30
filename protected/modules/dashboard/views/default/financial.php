@@ -104,11 +104,11 @@
                       <section class="panel">
                           <div class="panel-body">
                               
-                              <div class=""><h3><?php  echo $reportData['MONEY_PROJECT'][0]['0-1000'] ;  ?></h3><p>LESS THAN £1000 
+                              <div class="text-center border-bottom"><h3><?php  echo $reportData['MONEY_PROJECT'][0]['0-1000'] ;  ?></h3><p>LESS THAN £1000 
 </p></div>
-                               <div class=""><h3><?php  echo $reportData['MONEY_PROJECT'][0]['1000-10000'] ;  ?></h3><p>£1000-£10,000 
+                               <div class="text-center border-bottom"><h3><?php  echo $reportData['MONEY_PROJECT'][0]['1000-10000'] ;  ?></h3><p>£1000-£10,000 
 </p></div>
-                               <div class=""><h3><?php  echo $reportData['MONEY_PROJECT'][0]['10000-20000'] ;  ?></h3><p>£10,000-£20,000
+                               <div class="text-center border-bottom"><h3><?php  echo $reportData['MONEY_PROJECT'][0]['10000-20000'] ;  ?></h3><p>£10,000-£20,000
 </p></div>
                                          
                               </div>
@@ -117,11 +117,11 @@
                         <div class="col-lg-6">
                       <section class="panel">
                           <div class="panel-body">
-                               <div class=""><h3><?php  echo $reportData['MONEY_PROJECT'][0]['20000-100000'] ;  ?></h3><p>£20,000-£100,000 
+                               <div class="text-center border-bottom"><h3><?php  echo $reportData['MONEY_PROJECT'][0]['20000-100000'] ;  ?></h3><p>£20,000-£100,000 
 </p></div>
-                               <div class=""><h3><?php  echo $reportData['MONEY_PROJECT'][0]['100000+'] ;  ?></h3><p>£100,000+ 
+                               <div class="text-center border-bottom"><h3><?php  echo $reportData['MONEY_PROJECT'][0]['100000+'] ;  ?></h3><p>£100,000+ 
 </p></div>
-                               <div class=""><h3><?php  echo (int)$reportData['AVG_PLEDGE_AMOUNT'] ;  ?></h3><p>AVE. PLEDGE AMOUNT
+                               <div class="text-center border-bottom"><h3><?php  echo (int)$reportData['AVG_PLEDGE_AMOUNT'] ;  ?></h3><p>AVE. PLEDGE AMOUNT
 </p></div>
                               
                           </div>
