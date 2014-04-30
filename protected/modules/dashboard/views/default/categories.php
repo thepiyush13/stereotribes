@@ -22,7 +22,7 @@
 <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
-                          <header class="panel-heading">
+                          <header class="panel-heading padfix">
                               MUSIC+
 Home
 MUSIC+ CATEGORIES ORDER FROM MOST TO LEAST FUNDED (TOTAL)

@@ -321,6 +321,10 @@ a.logo {
     border: 1px solid #DDDDDD;
 }
 
+.padfix {
+    padding-left: 15px;
+}
+
 .panel-heading {
     font-weight: 800;
     padding-left: 0;
