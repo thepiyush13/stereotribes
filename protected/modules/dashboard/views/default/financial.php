@@ -6,7 +6,7 @@
                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h1>£ <?php  echo $reportData['TOTAL_RAISED'] ;  ?></h1>
+                              <h1 class="pane-header">£ <?php  echo $reportData['TOTAL_RAISED'] ;  ?></h1>
                               
                           </div>
                           <div><footer class="pie-foot">TOTAL RAISED</footer></div>
@@ -15,7 +15,7 @@
         <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h1>£ <?php  echo $reportData['STEREOTRIBES_REVENUE'] ;  ?></h1>
+                              <h1 class="pane-header">£ <?php  echo $reportData['STEREOTRIBES_REVENUE'] ;  ?></h1>
                               
                           </div>
                           <div><footer class="pie-foot">STEREOTRIBES REVENUE</footer></div>
@@ -23,7 +23,7 @@
                   </div>
                   <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body text-center"><h1><?php  echo $reportData['LIVE_FUNDED'] ;  ?>
+                          <div class="panel-body text-center"><h1 class="pane-header"><?php  echo $reportData['LIVE_FUNDED'] ;  ?>
 </h1>
                               </div>
                           <div><footer class="pie-foot">LIVE - FUNDED</footer></div>
@@ -31,8 +31,7 @@
                   </div>
                   <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body text-center"><h1><?php  echo (int)$reportData['AVG_CAMPAIGN_AMOUNT'] ;  ?>
-</h1>
+                          <div class="panel-body text-center"><h1 class="pane-header"><?php  echo (int)$reportData['AVG_CAMPAIGN_AMOUNT'] ;  ?></h1>
                               </div>
                           <div><footer class="pie-foot">AVG. CAMPAIGN AMOUNT</footer></div>
                       </section>
@@ -45,7 +44,7 @@
                       <section class="panel">
                           <div class="panel-body text-center">
                              <h3 class="rep-head">£ <?php  echo $reportData['FIXED_RASIED'] ;  ?></h3>
-                             <footer class="well ">FIXED RASIED</footer>
+                             <footer class="well well-sm">FIXED RASIED</footer>
                           </div>
                       </section>
                       
