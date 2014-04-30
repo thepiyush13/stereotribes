@@ -95,7 +95,7 @@
                           <div class="row">
                               <div class="col-lg-3">
                                   <section class="panel pane-bg">
-                                      <div class="panel-body">
+                                      <div class="panel-body text-center">
                                         <h3 class="data-head"><?php  echo $reportData['TOTAL_LAUNCHED'] ;  ?></h3>
                                         <div>
                                             <footer class="h5">Total Launched</footer>
@@ -105,7 +105,7 @@
                               </div>
                   <div class="col-lg-3">
                       <section class="panel pane-bg">
-                          <div class="panel-body"><h3 class="data-head"><?php  echo $reportData['UNSUCCESSFUL'] ;  ?>
+                          <div class="panel-body text-center"><h3 class="data-head"><?php  echo $reportData['UNSUCCESSFUL'] ;  ?>
 </h3>
                               <div><footer class="h5">Unsuccessful 
 </footer></div></div>
@@ -113,7 +113,7 @@
                   </div>
                   <div class="col-lg-3">
                       <section class="panel pane-bg">
-                          <div class="panel-body"><h3 class="data-head"><?php  echo $reportData['DRAFT'] ;  ?>
+                          <div class="panel-body text-center"><h3 class="data-head"><?php  echo $reportData['DRAFT'] ;  ?>
 </h3>
                               <div><footer class="h5">Draft 
 </footer></div></div>
@@ -121,7 +121,7 @@
                   </div>
                   <div class="col-lg-3">
                       <section class="panel pane-bg">
-                          <div class="panel-body"><h3 class="data-head"><?php  echo $reportData['FIXED'] ;  ?>
+                          <div class="panel-body text-center"><h3 class="data-head"><?php  echo $reportData['FIXED'] ;  ?>
 </h3>
                               <div><footer class="h5">Fixed 
 </footer></div></div>
@@ -133,7 +133,7 @@
                   <div class="row">
                   <div class="col-lg-3">
                       <section class="panel pane-bg">
-                          <div class="panel-body"><h3 class="data-head"><?php  echo $reportData['FLEXIBLE'] ;  ?>
+                          <div class="panel-body text-center"><h3 class="data-head"><?php  echo $reportData['FLEXIBLE'] ;  ?>
 </h3>
                               <div><footer class="h5">Flexible
 </footer></div></div>
@@ -142,7 +142,7 @@
                                   
                 <div class="col-lg-3">
                       <section class="panel pane-bg">
-                          <div class="panel-body"><h3 class="data-head"><?php  echo $reportData['NO_OF_MEMBERS'] ;  ?>
+                          <div class="panel-body text-center"><h3 class="data-head"><?php  echo $reportData['NO_OF_MEMBERS'] ;  ?>
 </h3>
                               <div><footer class="h5">No of Members
 </footer></div></div>
@@ -150,7 +150,7 @@
                   </div>
                   <div class="col-lg-3">
                       <section class="panel pane-bg">
-                          <div class="panel-body"><h3 class="data-head"><?php  echo $reportData['ACTIVE_MEMBERS'] ;  ?>
+                          <div class="panel-body text-center"><h3 class="data-head"><?php  echo $reportData['ACTIVE_MEMBERS'] ;  ?>
 </h3>
                               <div><footer class="h5">Active Members
                               </footer></div><small>(last 6 months login)
@@ -160,7 +160,7 @@
                   
                   <div class="col-lg-3">
                       <section class="panel pane-bg">
-                          <div class="panel-body"><h3 class="data-head"><?php  echo $reportData['NO_OF_ABANDONED_CART'] ;  ?></h3>
+                          <div class="panel-body text-center"><h3 class="data-head"><?php  echo $reportData['NO_OF_ABANDONED_CART'] ;  ?></h3>
                               <div><footer class="h5">No of Abandoned cart
 </footer></div></div>
                       </section>
