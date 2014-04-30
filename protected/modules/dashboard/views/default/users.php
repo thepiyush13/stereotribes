@@ -109,23 +109,22 @@
                       <section class="panel">
                           <div class="panel-body progress-panel">
                               <div class="task-progress">
-                                  <h1>USER AGE BAND
-</h1>
-                                  
+                                  <h1>USER AGE BAND</h1>                                  
+                              </div>  
+                              <div> 
+                                <?php  $this->widget('zii.widgets.grid.CGridView', array(
+                                                'dataProvider' => $reportData['AGE_BAND'],
+                                                 'itemsCssClass' => 'table table-striped table-bordered',
+                                                  'summaryText'=>'' ,
+                                                 'columns' => array(
+                                                array( 'header'=>'#','value'=>' ($row+1)'         ),
+                                                array('name' => 'AGE','type' => 'raw','value' => '($data["ageband"])' ),
+                                                array('name' => 'USER NO','type' => 'raw','value' => '($data["count"])' ),
+                                                ),
+                                        ));
+                                 ?>
                               </div>
-                             
                           </div>
-                         <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
-                                            'dataProvider' => $reportData['AGE_BAND'],
-                                             'itemsCssClass' => 'table table-striped table-bordered',
-                                              'summaryText'=>'' ,
-                                             'columns' => array(
-                                            array( 'header'=>'#','value'=>' ($row+1)'         ),
-                                            array('name' => 'AGE','type' => 'raw','value' => '($data["ageband"])' ),
-                                            array('name' => 'USER NO','type' => 'raw','value' => '($data["count"])' ),
-                                            ),
-                                    ));
-                             ?></div>
                       </section>
                       <!--work progress end-->
                   </div>
