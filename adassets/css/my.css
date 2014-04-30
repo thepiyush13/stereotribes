@@ -267,6 +267,14 @@ div.custom-pager-ul ul li.selected a, div.custom-pager-ul ul li a:hover{
     margin-top: 24px;
 }
 
+.search-menu {
+    margin-top: 8px
+}
+
+.log .top-nav ul.top-menu > li > a {
+    border: 0!important;
+}
+
 a.logo {
     background: url('../img/logo.png') no-repeat;
     text-indent: -9999px;
