@@ -40,35 +40,35 @@
     
     <!--SECOND ROW-->
     <div class="row block-two">
-                  <div class="col-lg-2">
+                  <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
                              <h3 class="rep-head">£ <?php  echo $reportData['FIXED_RASIED'] ;  ?></h3>
                           </div>
                           <div>
-                             <footer class="well weather-bg">FIXED RASIED</footer>
+                             <footer class="pie-foot">FIXED RASIED</footer>
                           </div>
                       </section>
                       
                   </div>
         
-                  <div class="col-lg-2">
+                  <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
                               <h3 class="rep-head">£ <?php  echo $reportData['FLEXIBLE_RAISED'] ;  ?></h3>
                           </div>
                           <div>
-                             <footer class="well weather-bg">FLEXIBLE RAISED</footer>
+                             <footer class="pie-foot">FLEXIBLE RAISED</footer>
                           </div>
                       </section>
                   </div>
-                  <div class="col-lg-2">
+                  <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
                               <h3 class="rep-head">£ <?php  echo $reportData['SUCCESSFULLY_RAISED'] ;  ?></h3>
                           </div>
                           <div>
-                             <footer class="well weather-bg">SUCCESSFULLY RAISED</footer>
+                             <footer class="pie-foot">SUCCESSFULLY RAISED</footer>
                           </div>
                       </section>
                   </div>
@@ -78,7 +78,7 @@
                               <h3 class="rep-head">£ <?php  echo (int)$reportData['UNSUCCESSFULLY_RAISED'] ;  ?></h3>
                           </div>
                           <div>
-                             <footer class="well weather-bg">UNSUCCESSFULLY RAISED</footer>
+                             <footer class="pie-foot">UNSUCCESSFULLY RAISED</footer>
                           </div>
                       </section>
                   </div>
@@ -88,7 +88,7 @@
                               <h3 class="rep-head"><?php  echo (int)$reportData['SUCCESS_RATE'] ;  ?>%</h3>
                           </div>
                           <div>
-                             <footer class="well weather-bg">SUCCESS RATE</footer>
+                             <footer class="pie-foot">SUCCESS RATE</footer>
                           </div>
                       </section>
                   </div>
