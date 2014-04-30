@@ -97,7 +97,8 @@
                           <div class="value">
                               <h2 class=" count4"><?php  echo $reportData['MALE_USERS'] ;  ?></h2>
                           </div>
-                          <p class="well well-sm">MALE USERS</p>
+                      </section>
+                      <p class="well well-sm">MALE USERS</p>
                   </div>
               </div>
     <!--THIRD ROW-->
