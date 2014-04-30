@@ -108,9 +108,9 @@
                       <!--work progress start-->
                       <section class="panel">
                           <div class="panel-body progress-panel">
-                              <div class="task-progress">
-                                  <h1>USER AGE BAND</h1>                                  
-                              </div>  
+                              <header class="panel-heading">
+                                  USER AGE BAND
+                              </header> 
                               <div> 
                                 <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                                 'dataProvider' => $reportData['AGE_BAND'],
