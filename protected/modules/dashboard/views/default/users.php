@@ -138,7 +138,7 @@
 </h1>        
                               </div>
                               
-                          </div>
+                         
                          <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                             'dataProvider' => $reportData['USER_ACTIVITY'],
                                              'itemsCssClass' => 'table table-striped table-bordered',
@@ -150,6 +150,7 @@
                                             ),
                                     ));
                              ?></div>
+                             </div>
                       </section>
                       <!--user info table end-->
                        <div class="row">
@@ -202,8 +203,6 @@ PROJECTS
                                   <h1>TOP 5 USERS WITH THE MOST SUCCESSFUL NO. OF PROJECTS
 </h1>
                               </div>
-                              
-                          </div>
                           <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                             'dataProvider' => $reportData['TOP_5_PROJECT_USERS'],
                                              'itemsCssClass' => 'table table-striped table-bordered',
@@ -215,7 +214,7 @@ PROJECTS
                                                  array('name' => 'PROJECT NO','type' => 'raw','value' => '($data["count"])' ),
                                             ),
                                     ));
-                             ?></div>
+                             ?></div></div>
                       </section>
                       <!--work progress end-->
                   </div>
@@ -230,7 +229,6 @@ PROJECTS
 </h1>
                                  
                               </div>
-                          </div>
                      <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                             'dataProvider' => $reportData['MOST_ACTIVE_USERS'],
                                              'itemsCssClass' => 'table table-striped table-bordered table-responsive',
@@ -242,7 +240,7 @@ PROJECTS
                          array('name' => 'LAST LOGIN','type' => 'raw','value' => 'Yii::app()->dateFormatter->format("d MMM y hh:mm a",strtotime($data["last_login"]))' ),
                                             ),
                                     ));
-                             ?></div>
+                             ?></div></div>
                       </section>
                       <!--user info table end-->
                       
@@ -263,8 +261,6 @@ PROJECTS
 </h1>
                                   
                               </div>
-                            
-                          </div>
                          <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                             'dataProvider' => $reportData['TOP_5_FUNDED_USERS'],
                                              'itemsCssClass' => 'table table-striped table-bordered',
@@ -276,7 +272,7 @@ PROJECTS
                                                  array('name' => 'FUNDED £','type' => 'raw','value' => '($data["amount"])' ),
                                             ),
                                     ));
-                             ?></div>
+                             ?></div></div>
                       </section>
                       <!--work progress end-->
                   </div>
@@ -291,8 +287,6 @@ PROJECTS
 </h1>
                                   
                               </div>
-                            
-                          </div>
                           <div class="custom-bar-chart">
                           <ul class="y-axis">
                              
@@ -326,13 +320,13 @@ PROJECTS
                               </div>
                           </div>
                           
-                      </div>
+                      </div></div>
                       </section>
                       <!--user info table end-->
                       
         
               </div>
-                  </div
+                  </div>
     
     <!--SIXTH ROW-->
     <div class="row">
@@ -346,8 +340,6 @@ PROJECTS
 </h1>
                       
                               </div>
-                            
-                          </div>
                           <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                             'dataProvider' => $reportData['USERS_BY_LOCATION'],
                                              'itemsCssClass' => 'table table-striped table-bordered USERS_BY_LOCATION',
@@ -358,7 +350,7 @@ PROJECTS
                                             array('name' => 'CITY','type' => 'raw','value' => '($data["location"])' ),
                                             ),
                                     ));
-                             ?></div>
+                             ?></div></div>
                       </section>
                       <!--work progress end-->
                   </div>
