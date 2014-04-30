@@ -180,12 +180,11 @@ SUPPORTED RAISED
     <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
-                          <div class="panel-body"><section class="panel">
+                          <div class="panel-body">
                           <header class="panel-heading">
                               <div id="RAIED_VS_DATE"></div>
                           </header>
-                          
-                      </section></div>
+                          </div>
                       </section>
                   </div>
                 
