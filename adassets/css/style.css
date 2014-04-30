@@ -2703,7 +2703,7 @@ ul.amounts li {
 }
 
 .dataTables_length label, .dataTables_filter label {
-    font-weight: 300;
+    font-weight: 700;
 }
 
 .dataTables_filter label {
@@ -2711,7 +2711,7 @@ ul.amounts li {
 }
 
 .dataTables_filter label input {
-    width: 75%;
+    width: 74%;
 }
 
 .border-top {
