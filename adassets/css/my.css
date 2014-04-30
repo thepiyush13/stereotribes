@@ -250,8 +250,12 @@ div.custom-pager-ul ul li.selected a, div.custom-pager-ul ul li a:hover{
 }
 
 .dash-header {
-    margin-top: 10px;
+    margin: 0 0 25px;
     text-transform: uppercase;
+}
+
+.tab-container {
+    margin-top: 0;
 }
 
 .pane-header {
