@@ -258,6 +258,16 @@ div.custom-pager-ul ul li.selected a, div.custom-pager-ul ul li a:hover{
     font-size: 52px;
 }
 
-.sidebar-toggle-box, a.logo {
+.sidebar-toggle-box {
     color: #fff;
 }
+
+a.logo {
+    background: url('../img/logo.png') no-repeat;
+    text-indent: -9999px;
+    background-size: 100%;
+    width: 340px;
+    height: 50px;
+}
+
+
