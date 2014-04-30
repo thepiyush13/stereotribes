@@ -297,3 +297,8 @@ a.logo {
     border-radius: 0 0 4px 4px;
     -webkit-border-radius: 0 0 4px 4px;
 }
+
+.panel-heading {
+    font-weight: 800;
+    padding-left: 0;
+}
