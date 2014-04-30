@@ -8,7 +8,9 @@
 
 <h1 class="dash-header">Home</h1>
   
-  <div class="home_dashboard row">
+  <div class="home_dashboard">
+	 
+   <div class="row">
 
       <div class="col-md-4">
         <a href="<?php echo Yii::app()->createUrl("/dashboard/reporting") ?>">
@@ -95,6 +97,8 @@ descriptions
             <p>Admin settings</p>        
           </button>
         </a>
-      </div> 
+      </div>         
+    
+    </div>
 
 </div>

@@ -370,6 +370,10 @@ a.logo {
     background: #fff;
 }
 
+.home_dashboard {
+    min-width: 1000px;
+}
+
 /* Blue Flat Button
 ==================================================*/
 .btn-xlarge{
