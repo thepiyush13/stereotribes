@@ -5,40 +5,7 @@
 //	$this->module->id,
 //);
 ?>
-<style>
-    /* Blue Flat Button
-==================================================*/
-.btn-xlarge{
-  position: relative;
-  vertical-align: center;
-  margin: 10px;
-  /*width: 100%;*/
-  height: 100x;
-  padding: 28px 28px;
-  font-size: 22px;
-  color: white;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  background: #050525;
-  border: 0;
-  border-bottom: 3px solid #9FE8EF;
-  cursor: pointer;
-  -webkit-box-shadow: inset 0 -3px #9FE8EF;
-  box-shadow: inset 0 -3px #9FE8EF;
-}
-.btn-xlarge:active {
-  top: 2px;
-  outline: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.btn-xlarge:hover {
-  background: #45E1E8;
-}
-.home_dashboard.p{
-    word-break: true;
-}
-</style>
+
 <h1 class="dash-header">Home</h1>
   
   <div class="home_dashboard">
