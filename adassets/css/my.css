@@ -251,6 +251,10 @@ div.custom-pager-ul ul li.selected a, div.custom-pager-ul ul li a:hover{
 
 /* Styles by Utpal */
 
+body {
+    background: #fff;
+}
+
 .stereo-bg {
     background: #eb2033;
     box-shadow: 0px 2px 5px #000;
@@ -258,6 +262,7 @@ div.custom-pager-ul ul li.selected a, div.custom-pager-ul ul li a:hover{
 
 .dash-header {
     font-family: 'lotregular';
+    color: #000;
     margin: 10px 0 25px;
     text-transform: uppercase;
     font-size: 45px;
@@ -312,6 +317,10 @@ a.logo {
     -webkit-border-radius: 0 0 4px 4px;
 }
 
+.panel {
+    border: 1px solid #DDDDDD;
+}
+
 .panel-heading {
     font-weight: 800;
     padding-left: 0;
@@ -351,4 +360,8 @@ a.logo {
 
 .table {
     margin-bottom: 0;
+}
+
+.tr.even {
+    background: #fff;
 }
