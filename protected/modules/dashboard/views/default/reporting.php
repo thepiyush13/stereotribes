@@ -91,16 +91,19 @@
                   </div>
                   <div class="col-lg-6">
                       <section class="panel">
-                          <div class="panel-body"><div class="row">
-                  <div class="col-lg-2">
-                      <section class="panel">
-                          <div class="panel-body"><h3><?php  echo $reportData['TOTAL_LAUNCHED'] ;  ?>
-</h3>
-                              <div><footer class="h5">Total Launched 
-</footer></div></div>
-                      </section>
-                  </div>
-                  <div class="col-lg-2">
+                          <div class="panel-body">
+                          <div class="row">
+                              <div class="col-lg-3">
+                                  <section class="panel">
+                                      <div class="panel-body">
+                                        <h3><?php  echo $reportData['TOTAL_LAUNCHED'] ;  ?></h3>
+                                        <div>
+                                            <footer class="h5">Total Launched</footer>
+                                        </div>
+                                      </div>
+                                  </section>
+                              </div>
+                  <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body"><h3><?php  echo $reportData['UNSUCCESSFUL'] ;  ?>
 </h3>
@@ -108,7 +111,7 @@
 </footer></div></div>
                       </section>
                   </div>
-                  <div class="col-lg-2">
+                  <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body"><h3><?php  echo $reportData['DRAFT'] ;  ?>
 </h3>
@@ -116,7 +119,7 @@
 </footer></div></div>
                       </section>
                   </div>
-                  <div class="col-lg-2">
+                  <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body"><h3><?php  echo $reportData['FIXED'] ;  ?>
 </h3>
@@ -124,7 +127,7 @@
 </footer></div></div>
                       </section>
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body"><h3><?php  echo $reportData['FLEXIBLE'] ;  ?>
 </h3>
@@ -133,13 +136,10 @@
                       </section>
                   </div>
                                   
-                 
-              </div>
-                              
-                              <div class="row">
+                
                                   
                                   
-                                   <div class="col-lg-4">
+                                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body"><h3><?php  echo $reportData['NO_OF_MEMBERS'] ;  ?>
 </h3>
@@ -147,7 +147,7 @@
 </footer></div></div>
                       </section>
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body"><h3><?php  echo $reportData['ACTIVE_MEMBERS'] ;  ?>
 </h3>
