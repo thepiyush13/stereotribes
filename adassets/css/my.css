@@ -301,6 +301,7 @@ a.logo {
 .panel-heading {
     font-weight: 800;
     padding-left: 0;
+    color: #eb2033;
 }
 
 .paginate_disabled_previous {
