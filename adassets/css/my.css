@@ -260,6 +260,7 @@ div.custom-pager-ul ul li.selected a, div.custom-pager-ul ul li a:hover{
 
 .sidebar-toggle-box {
     color: #fff;
+    margin-top: 24px;
 }
 
 a.logo {
@@ -268,6 +269,7 @@ a.logo {
     background-size: 100%;
     width: 340px;
     height: 50px;
+    margin: 0;
 }
 
 
