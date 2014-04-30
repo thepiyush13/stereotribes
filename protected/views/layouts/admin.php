@@ -47,15 +47,16 @@
                 <a href="/admin" class="logo" >STEREOTRIBES</a>
                 <!--logo end-->
                 <div class="top-nav pull-right">
-                    <ul class="nav top-menu">
+                    <ul class="nav top-menu pull-left">
                         <li>
                             <input type="text" class="form-control" placeholder="Search">
                         </li>
-                        
+                    </ul>
+                    <div class="pull-right"> 
                         <!-- user login dropdown start-->
                         <?php $this->widget('application.components.LoginBar');?>
-                        <!-- user login dropdown end -->
-                    </ul>
+                        <!-- user login dropdown end -->  
+                    </div>                  
                 </div>
             </header>
             <!--header end-->
