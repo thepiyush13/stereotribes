@@ -137,11 +137,11 @@
        <div class="col-lg-2">
                       <section class="panel">
                           <div class="panel-body">
-                               <div class=""><h3><?php  echo $reportData['FEATURED_RAISED'] ;  ?></h3><p>FEATURED RAISED 
+                               <div class="text-center border-bottom"><h3><?php  echo $reportData['FEATURED_RAISED'] ;  ?></h3><p>FEATURED RAISED 
 </p></div>
-                               <div class=""><h3><?php  echo $reportData['FEATURED_CAMPAIGNS'] ;  ?></h3><p>FEATURED CAMPAIGNS 
+                               <div class="text-center border-bottom"><h3><?php  echo $reportData['FEATURED_CAMPAIGNS'] ;  ?></h3><p>FEATURED CAMPAIGNS 
 </p></div>
-                               <div class=""><h3><?php  echo $reportData['FEATURED_SUCCESS_RATE'] ;  ?>% MORE</h3><p>FEATURED SUCCESS RATE 
+                               <div class="text-center border-bottom"><h3><?php  echo $reportData['FEATURED_SUCCESS_RATE'] ;  ?>% MORE</h3><p>FEATURED SUCCESS RATE 
 </p></div>
                               </div>
                       </section>
@@ -149,12 +149,12 @@
        <div class="col-lg-2">
                       <section class="panel">
                           <div class="panel-body">
-                              <div class=""><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>VIDEO OPT IN 
+                              <div class="text-center border-bottom"><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>VIDEO OPT IN 
 </p></div>
-                               <div class=""><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>COMPLETED VIDEO 
+                               <div class="text-center border-bottom"><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>COMPLETED VIDEO 
 PROJECTS  
 </p></div>
-                               <div class=""><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>VIDEO SUPPORTED
+                               <div class="text-center border-bottom"><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>VIDEO SUPPORTED
 RAISED
 </p></div>
                               </div>
@@ -163,12 +163,12 @@ RAISED
        <div class="col-lg-2">
                       <section class="panel">
                           <div class="panel-body">
-                               <div class=""><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>MARKETING OPT IN
+                               <div class="text-center border-bottom"><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>MARKETING OPT IN
 </p></div>
-                               <div class=""><h3>2524<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>MARKETING
+                               <div class="text-center border-bottom"><h3>2524<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>MARKETING
 SUPPORTED RAISED
 </p></div>
-                               <div class=""><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>Desc</p></div>
+                               <div class="text-center border-bottom"><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>Desc</p></div>
                               </div>
                       </section>
                   </div>

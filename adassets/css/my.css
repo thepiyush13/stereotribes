@@ -317,6 +317,10 @@ a.logo {
     border: 1px solid #DDDDDD;
 }
 
+.border-bottom {
+    border-bottom: 1px solid #DDDDDD;
+}
+
 .padfix {
     padding-left: 15px!important;
 }
