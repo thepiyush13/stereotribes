@@ -43,7 +43,7 @@
                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                             <h3 class="rep-head">£ <?php  echo $reportData['FIXED_RASIED'] ;  ?></h3>
+                             <h3 class="pane-header">£ <?php  echo $reportData['FIXED_RASIED'] ;  ?></h3>
                           </div>
                           <div>
                              <footer class="pie-foot">FIXED RASIED</footer>
@@ -55,7 +55,7 @@
                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h3 class="rep-head">£ <?php  echo $reportData['FLEXIBLE_RAISED'] ;  ?></h3>
+                              <h3 class="pane-header">£ <?php  echo $reportData['FLEXIBLE_RAISED'] ;  ?></h3>
                           </div>
                           <div>
                              <footer class="pie-foot">FLEXIBLE RAISED</footer>
@@ -65,7 +65,7 @@
                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h3 class="rep-head">£ <?php  echo $reportData['SUCCESSFULLY_RAISED'] ;  ?></h3>
+                              <h3 class="pane-header">£ <?php  echo $reportData['SUCCESSFULLY_RAISED'] ;  ?></h3>
                           </div>
                           <div>
                              <footer class="pie-foot">SUCCESSFULLY RAISED</footer>
@@ -75,7 +75,7 @@
                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h3 class="rep-head">£ <?php  echo (int)$reportData['UNSUCCESSFULLY_RAISED'] ;  ?></h3>
+                              <h3 class="pane-header">£ <?php  echo (int)$reportData['UNSUCCESSFULLY_RAISED'] ;  ?></h3>
                           </div>
                           <div>
                              <footer class="pie-foot">UNSUCCESSFULLY RAISED</footer>
@@ -85,7 +85,7 @@
               <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h3 class="rep-head"><?php  echo (int)$reportData['SUCCESS_RATE'] ;  ?>%</h3>
+                              <h3 class="pane-header"><?php  echo (int)$reportData['SUCCESS_RATE'] ;  ?>%</h3>
                           </div>
                           <div>
                              <footer class="pie-foot">SUCCESS RATE</footer>
