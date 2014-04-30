@@ -6,7 +6,7 @@
                   <div class="col-lg-4">
                       <section class="panel">
                           <div class="panel-body">
-                              <h1>£ <?php  echo $reportData['TOTAL_RAISED'] ;  ?></h1>
+                              <h1 class="pane-header">£ <?php  echo $reportData['TOTAL_RAISED'] ;  ?></h1>
                               
                           </div>
                           <div><footer class="pie-foot">TOTAL RAISED</footer></div>
@@ -14,7 +14,7 @@
                   </div>
                   <div class="col-lg-4">
                       <section class="panel">
-                          <div class="panel-body"><h1><?php  echo $reportData['SUCCESSFULLY_FUNDED_CAMPAIGNS'] ;  ?>
+                          <div class="panel-body"><h1 class="pane-header"><?php  echo $reportData['SUCCESSFULLY_FUNDED_CAMPAIGNS'] ;  ?>
 </h1>
                               </div>
                           <div><footer class="pie-foot">SUCCESSFULLY FUNDED CAMPAIGNS
@@ -23,7 +23,7 @@
                   </div>
                   <div class="col-lg-4">
                       <section class="panel">
-                          <div class="panel-body"><h1><?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?>
+                          <div class="panel-body"><h1 class="pane-header"><?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?>
 </h1>
                               </div>
                           <div><footer class="pie-foot">CAMPAIGNS LOVED
