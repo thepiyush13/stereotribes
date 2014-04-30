@@ -334,3 +334,7 @@ a.logo {
     box-shadow: 0 0 0 transparent;
     -webkit-box-shadow: 0 0 0 transparent;
 }
+
+.table {
+    margin-bottom: 0;
+}

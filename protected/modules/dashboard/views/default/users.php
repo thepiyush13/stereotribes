@@ -107,7 +107,7 @@
                   <div class="col-lg-8">
                       <!--work progress start-->
                       <section class="panel">
-                          <div class="panel-body progress-panel">
+                          <div class="panel-body">
                               <header class="panel-heading">
                                   USER AGE BAND
                               </header> 
@@ -196,7 +196,7 @@ PROJECTS
                   <div class="col-lg-8">
                       <!--work progress start-->
                       <section class="panel">
-                          <div class="panel-body progress-panel">
+                          <div class="panel-body">
                               <header class="panel-heading">
                                   TOP 5 USERS WITH THE MOST SUCCESSFUL NO. OF PROJECTS
                               </header>
@@ -249,7 +249,7 @@ PROJECTS
                   <div class="col-lg-8">
                       <!--work progress start-->
                       <section class="panel">
-                          <div class="panel-body progress-panel">
+                          <div class="panel-body">
                               <div class="task-progress">
                               <header class="panel-heading">
                                   TOP 5 USERS WHO FUNDED THE MOST
@@ -273,7 +273,7 @@ PROJECTS
          <div class="col-lg-4">
                       <!--user info table start-->
                       <section class="panel">
-                           <div class="panel-body progress-panel">
+                           <div class="panel-body">
                               <header class="panel-heading">
                                   FUNDERS VS CREATORS VS LOVERS
                               </header>
@@ -324,7 +324,7 @@ PROJECTS
                   <div class="col-lg-8">
                       <!--work progress start-->
                       <section class="panel">
-                          <div class="panel-body progress-panel">
+                          <div class="panel-body">
                               <header class="panel-heading">
                                   NO. OF USERS BY LOCATION (FROM HIGHEST TO LOWEST):
                               </header>
