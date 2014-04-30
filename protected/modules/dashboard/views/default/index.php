@@ -12,7 +12,7 @@
 	 
    <div class="row">
 
-      <div class="col-md-4">
+      <div class="col-md-4 box-bottom">
         <a href="<?php echo Yii::app()->createUrl("/dashboard/reporting") ?>">
           <button class="btn btn-xlarge">
             <i class="fa fa-bar-chart-o fa-5x" ></i><br/> 
@@ -22,7 +22,7 @@
         </a>
       </div>
       
-      <div class="col-md-4"> 
+      <div class="col-md-4 box-bottom"> 
         <a href="<?php echo Yii::app()->createUrl("/dashboard/users") ?>">
           <button class="btn btn-xlarge">
             <i class="fa fa-group fa-5x" ></i><br/> 
@@ -32,7 +32,7 @@
         </a>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 box-bottom">
         <a href="<?php echo Yii::app()->createUrl("/dashboard/projects") ?>">
           <button class="btn btn-xlarge">
             <i class="fa fa-bookmark fa-5x" ></i><br/> 
@@ -42,7 +42,7 @@
         </a>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 box-bottom">
         <a href="<?php echo Yii::app()->createUrl("/dashboard/categories") ?>">
           <button class="btn btn-xlarge">
             <i class="fa fa-bookmark fa-5x" ></i><br/> 
@@ -52,7 +52,7 @@
         </a>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 box-bottom">
         <a href="<?php echo Yii::app()->createUrl("/dashboard/financial") ?>">
           <button class="btn btn-xlarge">
             <i class="fa fa-bars fa-5x" ></i><br/> 
@@ -62,7 +62,7 @@
         </a>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 box-bottom">
         <a href="<?php echo Yii::app()->createUrl("/dashboard/tribes") ?>">
           <button class="btn btn-xlarge">
             <i class="fa fa-sitemap fa-5x" ></i><br/> 
@@ -89,7 +89,7 @@ descriptions
  </p>        
                     </button>-->
 
-      <div class="col-md-4">
+      <div class="col-md-4 box-bottom">
         <a href="#">
           <button class="btn btn-xlarge">
             <i class="fa fa-cog fa-5x" ></i><br/> 

@@ -374,6 +374,10 @@ a.logo {
     max-width: 1110px;
 }
 
+.box-bottom {
+    margin-bottom: 20px;
+}
+
 /* Blue Flat Button
 ==================================================*/
 .btn-xlarge{
