@@ -16,7 +16,7 @@
     <div class="row">
                   <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body">
+                          <div class="panel-body text-center">
                               <h1><?php  echo $reportData['TOTAL_MEMBERS'] ;  ?></h1>
                               
                           </div>
@@ -25,7 +25,7 @@
                   </div>
         <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body">
+                          <div class="panel-body text-center">
                               <h1><?php  echo $reportData['ACTIVE_USERS'] ;  ?></h1>
                           </div>
                           <div><footer class="pie-foot">ACTIVE USERS
@@ -34,7 +34,7 @@
                   </div>
         <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body">
+                          <div class="panel-body text-center">
                               <h1><?php  echo $reportData['PROJECT_CREATORS'] ;  ?></h1>
       
                           </div>
@@ -43,7 +43,7 @@
                   </div>
         <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body">
+                          <div class="panel-body text-center">
                               <h1><?php  echo $reportData['FUNDERS'] ;  ?></h1>
       
                           </div>
