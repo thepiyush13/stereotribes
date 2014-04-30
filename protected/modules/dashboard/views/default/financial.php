@@ -1,5 +1,5 @@
 
-<section class=" wrapper site-min-height">
+<section class="site-min-height">
     <h1 class="dash-header">Financial</h1>
     <!--FIRST ROW-->
     <div class="row">
