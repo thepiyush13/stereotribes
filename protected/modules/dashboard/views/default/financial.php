@@ -108,7 +108,7 @@
 </p></div>
                                <div class="text-center border-bottom"><h3><?php  echo $reportData['MONEY_PROJECT'][0]['1000-10000'] ;  ?></h3><p>£1000-£10,000 
 </p></div>
-                               <div class="text-center border-bottom"><h3><?php  echo $reportData['MONEY_PROJECT'][0]['10000-20000'] ;  ?></h3><p>£10,000-£20,000
+                               <div class="text-center"><h3><?php  echo $reportData['MONEY_PROJECT'][0]['10000-20000'] ;  ?></h3><p>£10,000-£20,000
 </p></div>
                                          
                               </div>
@@ -121,7 +121,7 @@
 </p></div>
                                <div class="text-center border-bottom"><h3><?php  echo $reportData['MONEY_PROJECT'][0]['100000+'] ;  ?></h3><p>£100,000+ 
 </p></div>
-                               <div class="text-center border-bottom"><h3><?php  echo (int)$reportData['AVG_PLEDGE_AMOUNT'] ;  ?></h3><p>AVE. PLEDGE AMOUNT
+                               <div class="text-center"><h3><?php  echo (int)$reportData['AVG_PLEDGE_AMOUNT'] ;  ?></h3><p>AVE. PLEDGE AMOUNT
 </p></div>
                               
                           </div>
@@ -141,7 +141,7 @@
 </p></div>
                                <div class="text-center border-bottom"><h3><?php  echo $reportData['FEATURED_CAMPAIGNS'] ;  ?></h3><p>FEATURED CAMPAIGNS 
 </p></div>
-                               <div class="text-center border-bottom"><h3><?php  echo $reportData['FEATURED_SUCCESS_RATE'] ;  ?>% MORE</h3><p>FEATURED SUCCESS RATE 
+                               <div class="text-center"><h3><?php  echo $reportData['FEATURED_SUCCESS_RATE'] ;  ?>% MORE</h3><p>FEATURED SUCCESS RATE 
 </p></div>
                               </div>
                       </section>
@@ -154,7 +154,7 @@
                                <div class="text-center border-bottom"><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>COMPLETED VIDEO 
 PROJECTS  
 </p></div>
-                               <div class="text-center border-bottom"><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>VIDEO SUPPORTED
+                               <div class="text-center"><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>VIDEO SUPPORTED
 RAISED
 </p></div>
                               </div>
@@ -168,7 +168,7 @@ RAISED
                                <div class="text-center border-bottom"><h3>2524<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>MARKETING
 SUPPORTED RAISED
 </p></div>
-                               <div class="text-center border-bottom"><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>Desc</p></div>
+                               <div class="text-center"><h3>2424<?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?></h3><p>Desc</p></div>
                               </div>
                       </section>
                   </div>
