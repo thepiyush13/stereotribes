@@ -46,10 +46,10 @@
                 <!--logo start-->
                 <a href="/admin" class="logo" >STEREOTRIBES</a>
                 <!--logo end-->
-                <div class="top-nav ">
-                    <ul class="nav pull-right top-menu">
+                <div class="top-nav pull-right">
+                    <ul class="nav top-menu">
                         <li>
-                            <input type="text" class="form-control search" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Search">
                         </li>
                         
                         <!-- user login dropdown start-->
