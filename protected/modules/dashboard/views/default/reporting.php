@@ -37,10 +37,10 @@
                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h3><?php  echo $reportData['TOTAL_BACKERS'] ;  ?>
+                              <h3 class="rep-head"><?php  echo $reportData['TOTAL_BACKERS'] ;  ?>
 </h3>
                              
-                          </div> <div><footer class="well weather-bg"><p>TOTAL BACKERS </p>
+                          </div> <div><footer class="well weather-bg">TOTAL BACKERS
 </footer></div>
                       </section>
                       
@@ -48,7 +48,7 @@
         
                   <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body text-center"><h3><?php  echo $reportData['REPEAT_BACKERS'] ;  ?>
+                          <div class="panel-body text-center"><h3 class="rep-head"><?php  echo $reportData['REPEAT_BACKERS'] ;  ?>
 </h3>
                               </div><div><footer class="well weather-bg">REPEAT BACKERS 
 </footer></div>
@@ -56,7 +56,7 @@
                   </div>
                   <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body text-center"><h3><?php  echo $reportData['TOTAL_PLEDGES'] ;  ?> 
+                          <div class="panel-body text-center"><h3 class="rep-head"><?php  echo $reportData['TOTAL_PLEDGES'] ;  ?> 
 </h3>
                               </div><div><footer class="well weather-bg">TOTALPLEDGES 
 </footer></div>
@@ -65,7 +65,7 @@
                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h3>£ <?php  echo (int)$reportData['AVERAGE_PLEDGE_VALUE'] ;  ?></h3>
+                              <h3 class="rep-head">£ <?php  echo (int)$reportData['AVERAGE_PLEDGE_VALUE'] ;  ?></h3>
                               </div><div><footer class="well weather-bg">AVERAGE PLEDGE VALUE</footer></div>
                       </section>
                   </div>
