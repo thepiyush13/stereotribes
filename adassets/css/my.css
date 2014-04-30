@@ -284,4 +284,7 @@ a.logo {
     margin: 0;
 }
 
-
+.pane-bg {
+    background: #F2F2F2;
+    border: 1px solid #DADADA;
+}
