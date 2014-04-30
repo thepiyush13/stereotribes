@@ -304,8 +304,8 @@ a.logo {
 }
 
 .paginate_disabled_previous {
-    background: rgba(235, 32, 51, 0.44);
-    cursor: default;
+    background: rgba(235, 32, 51, 0.44)!important;
+    cursor: default!important;
 }
 
 .dataTables_paginate > a {
