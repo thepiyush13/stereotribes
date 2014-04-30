@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'lotregular';
+    src: url('../../fonts/lot-webfont.eot');
+    src: url('../../fonts/lot-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/lot-webfont.woff') format('woff'),
+         url('../../fonts/lot-webfont.ttf') format('truetype'),
+         url('../../fonts/lot-webfont.svg#lotregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .add-package{
     border: 1px solid #ccc;
     background: #ffffff;
@@ -246,6 +257,7 @@ div.custom-pager-ul ul li.selected a, div.custom-pager-ul ul li a:hover{
 }
 
 .dash-header {
+    font-family: 'lotregular';
     margin: 10px 0 25px;
     text-transform: uppercase;
 }
