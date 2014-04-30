@@ -2690,7 +2690,7 @@ ul.amounts li {
 }
 
 .dataTables_info{
-    padding:0 15px;
+    padding: 15px 15px 15px 0;
 }
 
 .dataTables_filter {
@@ -4219,7 +4219,7 @@ td.details table tr td, .dataTable tr:last-child {
 }
 
 .adv-table .dataTables_info, .dataTables_paginate {
-    padding: 15px;
+    padding: 15px 0;
 }
 
 .adv-table .dataTables_length,.adv-table .dataTables_filter {
