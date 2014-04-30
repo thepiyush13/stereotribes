@@ -8,8 +8,9 @@
 //);
 ?>
 
-<h1>Users</h1>
-<section class=" wrapper site-min-height">
+<section class="site-min-height">
+
+<h1 class="dash-header">Users</h1>
     <!--FIRST ROW-->
     
     <div class="row">
