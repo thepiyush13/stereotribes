@@ -133,11 +133,9 @@
                       <!--user info table start-->
                       <section class="panel">
                           <div class="panel-body">
-                              <div class="task-progress">
-                                  <h1>USER ACTIVITY
-</h1>        
-                              </div>
-                              
+                              <header class="panel-heading">
+                                  USER ACTIVITY
+                              </header>
                          
                          <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                             'dataProvider' => $reportData['USER_ACTIVITY'],
@@ -199,10 +197,9 @@ PROJECTS
                       <!--work progress start-->
                       <section class="panel">
                           <div class="panel-body progress-panel">
-                              <div class="task-progress">
-                                  <h1>TOP 5 USERS WITH THE MOST SUCCESSFUL NO. OF PROJECTS
-</h1>
-                              </div>
+                              <header class="panel-heading">
+                                  TOP 5 USERS WITH THE MOST SUCCESSFUL NO. OF PROJECTS
+                              </header>
                           <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                             'dataProvider' => $reportData['TOP_5_PROJECT_USERS'],
                                              'itemsCssClass' => 'table table-striped table-bordered',
@@ -223,12 +220,9 @@ PROJECTS
                       <!--user info table start-->
                       <section class="panel">
                           <div class="panel-body">
-                              
-                              <div class="task-progress">
-                                  <h1>MOST ACTIVE USERS (MOST LOG INS)
-</h1>
-                                 
-                              </div>
+                              <header class="panel-heading">
+                                  MOST ACTIVE USERS (MOST LOG INS)
+                              </header>
                      <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                             'dataProvider' => $reportData['MOST_ACTIVE_USERS'],
                                              'itemsCssClass' => 'table table-striped table-bordered table-responsive',
@@ -257,10 +251,9 @@ PROJECTS
                       <section class="panel">
                           <div class="panel-body progress-panel">
                               <div class="task-progress">
-                                  <h1>TOP 5 USERS WHO FUNDED THE MOST
-</h1>
-                                  
-                              </div>
+                              <header class="panel-heading">
+                                  TOP 5 USERS WHO FUNDED THE MOST
+                              </header>
                          <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                             'dataProvider' => $reportData['TOP_5_FUNDED_USERS'],
                                              'itemsCssClass' => 'table table-striped table-bordered',
@@ -281,12 +274,9 @@ PROJECTS
                       <!--user info table start-->
                       <section class="panel">
                            <div class="panel-body progress-panel">
-                              <div class="task-progress">
-                                  <h1>FUNDERS VS CREATORS VS LOVERS
-
-</h1>
-                                  
-                              </div>
+                              <header class="panel-heading">
+                                  FUNDERS VS CREATORS VS LOVERS
+                              </header>
                           <div class="custom-bar-chart">
                           <ul class="y-axis">
                              
@@ -335,11 +325,9 @@ PROJECTS
                       <!--work progress start-->
                       <section class="panel">
                           <div class="panel-body progress-panel">
-                              <div class="task-progress">
-                                  <h1>NO. OF USERS BY LOCATION (FROM HIGHEST TO LOWEST):
-</h1>
-                      
-                              </div>
+                              <header class="panel-heading">
+                                  NO. OF USERS BY LOCATION (FROM HIGHEST TO LOWEST):
+                              </header>
                           <div> <?php  $this->widget('zii.widgets.grid.CGridView', array(
                                             'dataProvider' => $reportData['USERS_BY_LOCATION'],
                                              'itemsCssClass' => 'table table-striped table-bordered USERS_BY_LOCATION',
