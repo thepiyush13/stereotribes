@@ -1808,12 +1808,14 @@ ul.ft-link li a i {
 
 .weather-bg {
     background: #8175c7;
-    border-radius: 4px 4px 0 0;
-    -webkit-border-radius: 4px 4px 0 0;
+    border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
     color: #fff;
     text-align: center;
     font-size: 16px;
     font-weight: 300;
+    border: 0;
+    margin-bottom: 0;
 }
 
 .weather-bg i {
