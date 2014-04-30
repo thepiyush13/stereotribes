@@ -321,6 +321,8 @@ a.logo {
     background-color: rgba(235, 32, 51, 0.09);
 }
 
-.value .count {
+.value .count,
+.value .count2,
+.value .count3 {
     margin: 15px 0;
 }
