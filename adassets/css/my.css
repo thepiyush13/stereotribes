@@ -303,6 +303,11 @@ a.logo {
     padding-left: 0;
 }
 
+.paginate_disabled_previous {
+    background: rgba(235, 32, 51, 0.44);
+    cursor: default;
+}
+
 .dataTables_paginate > a {
     background: #eb2033;
     color: #fff;
@@ -310,11 +315,6 @@ a.logo {
     padding: 5px 10px;
     margin-right: 10px;
     display: inline-block;
-}
-
-.paginate_disabled_previous {
-    background: rgba(235, 32, 51, 0.44);
-    cursor: default;
 }
 
 
