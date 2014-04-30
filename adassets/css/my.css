@@ -292,3 +292,8 @@ a.logo {
 .rep-head {
     font-size: 26px;
 }
+
+.weather-bg {
+    border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+}
