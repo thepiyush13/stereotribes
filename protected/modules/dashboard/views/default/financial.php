@@ -44,42 +44,43 @@
                   <div class="col-lg-2">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h3>£ <?php  echo $reportData['FIXED_RASIED'] ;  ?>
-</h3>
-                             
-                          </div> <div><footer class="well ">FIXED RASIED
-</footer></div>
+                             <h3 class="rep-head">£ <?php  echo $reportData['FIXED_RASIED'] ;  ?></h3>
+                             <footer class="well ">FIXED RASIED</footer>
+                          </div>
                       </section>
                       
                   </div>
         
                   <div class="col-lg-2">
                       <section class="panel">
-                          <div class="panel-body text-center"><h3>£ <?php  echo $reportData['FLEXIBLE_RAISED'] ;  ?>
-</h3>
-                              </div><div><footer class="well h6">FLEXIBLE RAISED</footer></div>
+                          <div class="panel-body text-center">
+                              <h3 class="rep-head">£ <?php  echo $reportData['FLEXIBLE_RAISED'] ;  ?></h3>
+                              <footer class="well h6">FLEXIBLE RAISED</footer>
+                          </div>
                       </section>
                   </div>
                   <div class="col-lg-2">
                       <section class="panel">
-                          <div class="panel-body text-center"><h3>£ <?php  echo $reportData['SUCCESSFULLY_RAISED'] ;  ?> 
-</h3>
-                              </div><div><footer class="well ">SUCCESSFULLY RAISED
-</footer></div>
+                          <div class="panel-body text-center">
+                              <h3 class="rep-head">£ <?php  echo $reportData['SUCCESSFULLY_RAISED'] ;  ?></h3>
+                              <footer class="well ">SUCCESSFULLY RAISED</footer>
+                          </div>
                       </section>
                   </div>
                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h3>£ <?php  echo (int)$reportData['UNSUCCESSFULLY_RAISED'] ;  ?></h3>
-                              </div><div><footer class="well ">UNSUCCESSFULLY RAISED</footer></div>
+                              <h3 class="rep-head">£ <?php  echo (int)$reportData['UNSUCCESSFULLY_RAISED'] ;  ?></h3>
+                              <footer class="well ">UNSUCCESSFULLY RAISED</footer>
+                          </div>
                       </section>
                   </div>
-        <div class="col-lg-3">
+              <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h3> <?php  echo (int)$reportData['SUCCESS_RATE'] ;  ?>%</h3>
-                              </div><div><footer class="well ">SUCCESS RATE</footer></div>
+                              <h3 class="rep-head"><?php  echo (int)$reportData['SUCCESS_RATE'] ;  ?>%</h3>
+                              <footer class="well ">SUCCESS RATE</footer>
+                          </div>
                       </section>
                   </div>
               </div>
