@@ -62,13 +62,9 @@
                           </div>
                           <div class="value">
                               <h2 class="count"><?php  echo $reportData['USERS_THAT_LOVE_PROJECTS'] ;  ?></h2>
-                             
                           </div>
-                           <p class="well well-sm">USERS 
-THAT LOVE 
-PROJECTS 
-</p>
                       </section>
+                      <p class="well well-sm">USERS THAT LOVE PROJECTS</p>
                   </div>
                   <div class="col-lg-3 col-sm-6">
                       <section class="panel">
@@ -79,10 +75,8 @@ PROJECTS
                               <h2 class=" count2"><?php  echo $reportData['GHOST_ACCOUNTS'] ;  ?></h2>
                               
                           </div>
-                          <p class="well well-sm">GHOST 
-ACCOUNTS 
-</p>
                       </section>
+                      <p class="well well-sm">GHOST ACCOUNTS</p>
                   </div>
                   <div class="col-lg-3 col-sm-6">
                       <section class="panel">
@@ -91,12 +85,9 @@ ACCOUNTS
                           </div>
                           <div class="value">
                               <h2 class=" count3"><?php  echo $reportData['FEMALE_USERS'] ;  ?></h2>
-                              
                           </div>
-                          <p class="well well-sm">FEMALE 
-USERS 
-</p>
                       </section>
+                      <p class="well well-sm">FEMALE USERS</p>
                   </div>
                   <div class="col-lg-3 col-sm-6">
                       <section class="panel">
@@ -105,12 +96,8 @@ USERS
                           </div>
                           <div class="value">
                               <h2 class=" count4"><?php  echo $reportData['MALE_USERS'] ;  ?></h2>
-                             
                           </div>
-                           <p class="well well-sm">MALE
-USERS
-</p>
-                      </section>
+                          <p class="well well-sm">MALE USERS</p>
                   </div>
               </div>
     <!--THIRD ROW-->
