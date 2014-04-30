@@ -39,7 +39,7 @@
     word-break: true;
 }
 </style>
-<h1>Home</h1>
+<h1 class="dash-header">Home</h1>
 <div class="container home_dashboard">
 	<div class="row"><a href="<?php echo Yii::app()->createUrl("/dashboard/reporting") ?>" >
                       <button href="<?php echo Yii::app()->createUrl("/dashboard/reporting") ?>"  class="btn btn-xlarge" /><i class="fa fa-bar-chart-o fa-5x" ></i><br/> 

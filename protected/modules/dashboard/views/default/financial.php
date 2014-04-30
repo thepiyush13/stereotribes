@@ -1,6 +1,6 @@
 
 <section class=" wrapper site-min-height">
-    <h1>Financial</h1>
+    <h1 class="dash-header">Financial</h1>
     <!--FIRST ROW-->
     <div class="row">
                   <div class="col-lg-3">

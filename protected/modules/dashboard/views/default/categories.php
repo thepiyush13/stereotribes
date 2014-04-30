@@ -17,10 +17,9 @@
 </style>
 
 
-
-<h1>
-    Categories
-</h1><div class="row">
+<section class="site-min-height">
+<h1 class="dash-header">Categories</h1>
+<div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
