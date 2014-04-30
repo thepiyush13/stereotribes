@@ -154,7 +154,7 @@
                        <div class="row">
                   <div class="col-lg-6">
                       <section class="panel">
-                          <div class="panel-body"><h3>   <?php  
+                          <div class="panel-body text-center"><h3>   <?php  
                           if(isset($reportData['2_LAUNCHED_PROJECTS']) && $reportData['2_LAUNCHED_PROJECTS']!='') 
                              echo  $reportData['2_LAUNCHED_PROJECTS'];
                           else {
@@ -169,7 +169,7 @@ PROJECTS
                   </div>
                   <div class="col-lg-6">
                       <section class="panel">
-                          <div class="panel-body"><h3>
+                          <div class="panel-body text-center"><h3>
                               <?php  
                           if(isset($reportData['2_SUCCESS_PROJECTS']) && $reportData['2_SUCCESS_PROJECTS']!='') 
                              echo  $reportData['2_SUCCESS_PROJECTS'];
