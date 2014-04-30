@@ -14,7 +14,7 @@
                   </div>
                   <div class="col-lg-4">
                       <section class="panel">
-                          <div class="panel-body"><h1 class="pane-header"><?php  echo $reportData['SUCCESSFULLY_FUNDED_CAMPAIGNS'] ;  ?>
+                          <div class="panel-body text-center"><h1 class="pane-header"><?php  echo $reportData['SUCCESSFULLY_FUNDED_CAMPAIGNS'] ;  ?>
 </h1>
                               </div>
                           <div><footer class="pie-foot">SUCCESSFULLY FUNDED CAMPAIGNS
@@ -23,7 +23,7 @@
                   </div>
                   <div class="col-lg-4">
                       <section class="panel">
-                          <div class="panel-body"><h1 class="pane-header"><?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?>
+                          <div class="panel-body text-center"><h1 class="pane-header"><?php  echo $reportData['CAMPAIGNS_LOVED'] ;  ?>
 </h1>
                               </div>
                           <div><footer class="pie-foot">CAMPAIGNS LOVED
@@ -36,7 +36,7 @@
     <div class="row">
                   <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body">
+                          <div class="panel-body text-center">
                               <h3><?php  echo $reportData['TOTAL_BACKERS'] ;  ?>
 </h3>
                              
@@ -48,7 +48,7 @@
         
                   <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body"><h3><?php  echo $reportData['REPEAT_BACKERS'] ;  ?>
+                          <div class="panel-body text-center"><h3><?php  echo $reportData['REPEAT_BACKERS'] ;  ?>
 </h3>
                               </div><div><footer class="well weather-bg">REPEAT BACKERS 
 </footer></div>
@@ -56,7 +56,7 @@
                   </div>
                   <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body"><h3><?php  echo $reportData['TOTAL_PLEDGES'] ;  ?> 
+                          <div class="panel-body text-center"><h3><?php  echo $reportData['TOTAL_PLEDGES'] ;  ?> 
 </h3>
                               </div><div><footer class="well weather-bg">TOTALPLEDGES 
 </footer></div>
@@ -64,7 +64,7 @@
                   </div>
                   <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body">
+                          <div class="panel-body text-center">
                               <h3>£ <?php  echo (int)$reportData['AVERAGE_PLEDGE_VALUE'] ;  ?></h3>
                               </div><div><footer class="well weather-bg">AVERAGE PLEDGE VALUE</footer></div>
                       </section>
