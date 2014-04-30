@@ -17,7 +17,7 @@
                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h1 class="pane-header"><?php  echo $reportData['TOTAL_MEMBERS'] ;  ?></h1>
+                              <h1 class="rep-head"><?php  echo $reportData['TOTAL_MEMBERS'] ;  ?></h1>
                               
                           </div>
                           <div><footer class="pie-foot">TOTAL MEMBERS</footer></div>
@@ -26,7 +26,7 @@
         <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h1 class="pane-header"><?php  echo $reportData['ACTIVE_USERS'] ;  ?></h1>
+                              <h1 class="rep-head"><?php  echo $reportData['ACTIVE_USERS'] ;  ?></h1>
                           </div>
                           <div><footer class="pie-foot">ACTIVE USERS
                                   </footer></div>
@@ -35,7 +35,7 @@
         <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h1 class="pane-header"><?php  echo $reportData['PROJECT_CREATORS'] ;  ?></h1>
+                              <h1 class="rep-head"><?php  echo $reportData['PROJECT_CREATORS'] ;  ?></h1>
       
                           </div>
                           <div><footer class="pie-foot">PROJECT CREATORS</footer></div>
@@ -44,7 +44,7 @@
         <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body text-center">
-                              <h1 class="pane-header"><?php  echo $reportData['FUNDERS'] ;  ?></h1>
+                              <h1 class="rep-head"><?php  echo $reportData['FUNDERS'] ;  ?></h1>
       
                           </div>
                           <div><footer class="pie-foot">FUNDERS</footer></div>
