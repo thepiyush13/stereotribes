@@ -302,3 +302,7 @@ a.logo {
     font-weight: 800;
     padding-left: 0;
 }
+
+.dataTables_paginate > a {
+    
+}
