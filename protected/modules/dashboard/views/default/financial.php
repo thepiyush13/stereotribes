@@ -43,7 +43,7 @@
     <div class="row block-two">
                   <div class="col-lg-2">
                       <section class="panel">
-                          <div class="panel-body">
+                          <div class="panel-body text-center">
                               <h3>£ <?php  echo $reportData['FIXED_RASIED'] ;  ?>
 </h3>
                              
@@ -55,14 +55,14 @@
         
                   <div class="col-lg-2">
                       <section class="panel">
-                          <div class="panel-body"><h3>£ <?php  echo $reportData['FLEXIBLE_RAISED'] ;  ?>
+                          <div class="panel-body text-center"><h3>£ <?php  echo $reportData['FLEXIBLE_RAISED'] ;  ?>
 </h3>
                               </div><div><footer class="well h6">FLEXIBLE RAISED</footer></div>
                       </section>
                   </div>
                   <div class="col-lg-2">
                       <section class="panel">
-                          <div class="panel-body"><h3>£ <?php  echo $reportData['SUCCESSFULLY_RAISED'] ;  ?> 
+                          <div class="panel-body text-center"><h3>£ <?php  echo $reportData['SUCCESSFULLY_RAISED'] ;  ?> 
 </h3>
                               </div><div><footer class="well ">SUCCESSFULLY RAISED
 </footer></div>
@@ -70,14 +70,14 @@
                   </div>
                   <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body">
+                          <div class="panel-body text-center">
                               <h3>£ <?php  echo (int)$reportData['UNSUCCESSFULLY_RAISED'] ;  ?></h3>
                               </div><div><footer class="well ">UNSUCCESSFULLY RAISED</footer></div>
                       </section>
                   </div>
         <div class="col-lg-3">
                       <section class="panel">
-                          <div class="panel-body">
+                          <div class="panel-body text-center">
                               <h3> <?php  echo (int)$reportData['SUCCESS_RATE'] ;  ?>%</h3>
                               </div><div><footer class="well ">SUCCESS RATE</footer></div>
                       </section>
