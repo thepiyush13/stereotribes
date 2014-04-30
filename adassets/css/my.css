@@ -322,7 +322,7 @@ a.logo {
 }
 
 .padfix {
-    padding-left: 15px;
+    padding-left: 15px!important;
 }
 
 .panel-heading {
