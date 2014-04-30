@@ -127,6 +127,10 @@
 </footer></div></div>
                       </section>
                   </div>
+
+                  </div>
+
+                  <div class="row">
                   <div class="col-lg-3">
                       <section class="panel">
                           <div class="panel-body"><h3><?php  echo $reportData['FLEXIBLE'] ;  ?>
