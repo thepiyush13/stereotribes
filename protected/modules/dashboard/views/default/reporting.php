@@ -5,7 +5,7 @@
     <div class="row">
                   <div class="col-lg-4">
                       <section class="panel">
-                          <div class="panel-body">
+                          <div class="panel-body text-center">
                               <h1 class="pane-header">£ <?php  echo $reportData['TOTAL_RAISED'] ;  ?></h1>
                               
                           </div>
