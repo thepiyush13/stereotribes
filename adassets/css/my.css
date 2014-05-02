@@ -429,7 +429,7 @@ span a.paginate_button {
     cursor: pointer;
 }
 
-span a.paginate_button {
+span a.paginate_button.current {
     cursor: default;
     background: #fff;
     border: 1px solid #E4E1E1;
