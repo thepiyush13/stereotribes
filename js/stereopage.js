@@ -93,4 +93,9 @@
 
 	$('.pitchstorytextarea').jqte();
 
+	// Prevent search dropdown from closing
+    $('.menu-search').click(function(e) {
+        e.stopPropagation();
+    });
+
   });
