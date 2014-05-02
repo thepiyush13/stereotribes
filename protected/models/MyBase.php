@@ -15,6 +15,7 @@ class MyBase{
              $img_base_path = $theme_home_folder.'img/';
                      $desc = substr($data['desc'],0,300).'...';
             $template  = " <div class='brick brickhover large featured all' data-percent='{$data['percent']}%' data-color='#{$data['color']}'>
+                <a href='{$data['url']}' >
 		    	<div class='brickinner'>
 			    	<img src='{$img_base_path}{$data['img']}' alt='' class='img-responsive' />
 			    	<div class='fund-block-featured featuredfund'>
@@ -38,7 +39,7 @@ class MyBase{
 				    </div>
 			    </div>
 			    <div class='mask'>
-			    	<a href='#'>
+			    	<a href='{$data['url']}'>
 				        <span class='link-spanner'></span>
 				    </a>
 			   		<div class='maskheaderwrap'>
@@ -82,7 +83,7 @@ class MyBase{
 						</li>
 					</ul>
 	            </div>
-		    </div>";
+		   </a> </div>";
                                                         
                 return $template;
                                                         
@@ -152,7 +153,7 @@ class MyBase{
 			    </div>
 			   </div>
 			   <div class='mask'>
-			   		<a href='#'>
+			   		<a href='{$data['url']}'>
 				        <span class='link-spanner'></span>
 				    </a>
 			   		<div class='maskheaderwrap'>

@@ -112,15 +112,8 @@ class SiteController extends Controller
             
             $myModel = new MyBase;                          
             $page = (int)Yii::app()->request->getParam('page');
-            $number = 10;
-            if($page==0){
-                 $from  = 0;
-                $to = $number;
-            }
-            else{
-                $to  = $page*$number;
-                $from = $to-$number;
-            }
+            $url_base = '/campaign/';
+            
            
             //getting the block data 
              $projects  = $sorted_project =array();
@@ -145,58 +138,37 @@ class SiteController extends Controller
 //                 );
 //            }
             
-            //data creation from database
-            $sql = "Select 
-z.project_id,
-  x.title,
-  x.city as location,
-  y.name as category,
-  a.name as author,
-  x.short_summary as `desc`,
-  x.days_run as days,
-  x.image_url as img,
-  (case when (x.featured  = 1 ) then 'featured' else 'normal' end) as type,
-  y.color,
-  ROUND((SUM(z.amount)/x.goal)*100) as percent,
-  COUNT(distinct z.user_id) as backers,
-  SUM(z.amount) as pledge  
-  from project as x
-  left join category as y 
-  on x.category = y.category_id
-  left join user_fund_project as z 
-  on x.id = z.project_id
-  join user as a
-  on x.user_id = a.id
-  group by z.project_id
-  order by x.project_live_date desc limit $from,$to";
-            
-            $projects = Yii::app()->db->createCommand($sql)->queryAll();
-//                            die(print_r($projects));
-             $htm = "";
+             //get first block as featured 
+             $from = $page;
+             $to = $from+1;             
+             $sql = "Select z.project_id,concat('$url_base',z.project_id) as url,  x.title,  x.city as location,  y.name as category,  a.name as author,  x.short_summary as `desc`,  x.days_run as days,  x.image_url as img,  (case when (x.featured  = 1 ) then 'featured' else 'normal' end) as type,  y.color,  ROUND((SUM(z.amount)/x.goal)*100) as percent,  COUNT(distinct z.user_id) as backers,  SUM(z.amount) as pledge    from project as x  left join category as y   on x.category = y.category_id  left join user_fund_project as z   on x.id = z.project_id  join user as a  on x.user_id = a.id  where x.featured=1 group by z.project_id  order by x.project_live_date desc limit $from,$to";
              
-            //set single html block for each data 
-            foreach ($projects as $key => $project) {                
-                //get projects seperated by type
-               $sorted_project[$project['type']][] = $project;
-               
+             $projects['featured'] = Yii::app()->db->createCommand($sql)->queryAll();
+             //if no featured block include 1 additional normal block 
+                    $count  = empty($projects['featured']) ? 7 : 6;
+             //else include regular no of blocks
+             if($page==0){
+                 $from  = 0;
+                $to = $count;
             }
+            else{
+                $to  = $page*$count;
+                $from = $to-$count;
+            }
+             $sql = "Select z.project_id,concat('$url_base',z.project_id) as url,  x.title,  x.city as location,  y.name as category,  a.name as author,  x.short_summary as `desc`,  x.days_run as days,  x.image_url as img,  (case when (x.featured  = 1 ) then 'featured' else 'normal' end) as type,  y.color,  ROUND((SUM(z.amount)/x.goal)*100) as percent,  COUNT(distinct z.user_id) as backers,  SUM(z.amount) as pledge    from project as x  left join category as y   on x.category = y.category_id  left join user_fund_project as z   on x.id = z.project_id  join user as a  on x.user_id = a.id  where x.featured=0 group by z.project_id  order by x.project_live_date desc limit $from,$to";
+             $projects['normal'] = Yii::app()->db->createCommand($sql)->queryAll();
+             
+             //create html based on type 
+             $htm = "";
+                     if(!empty($projects['featured'])){
+                 $htm.=$myModel->get_featured_block($projects['featured'][0]);
+             }
+             
+             foreach ($projects['normal'] as $key => $normal_project) {                
+               $htm.=$myModel->get_normal_block($normal_project);               
+            }
+             
            
-            //now creating html template for the block
-            for($i=0;$i<1;$i++){
-                if(isset($sorted_project['featured'][$i])){    //appending featured block
-                    $htm.=$myModel->get_featured_block($sorted_project['featured'][$i]);
-                }
-                 if(isset($sorted_project['promo'][$i])){    //appending promo block
-                    $htm.=$myModel->get_promo_block($sorted_project['promo'][$i]);
-                }
-                for($j=(7*$i);$j<(7*$i+4);$j++){
-                     if(isset($sorted_project['normal'][$i+$j])){    //appending 7 normal block
-                               $htm.=$myModel->get_normal_block($sorted_project['normal'][$i+$j]);
-                            }
-                }
-                
-            }
-// echo '<pre>'.print_r($htm).'</pre>';
             
             $this->layout=false;
             echo ($htm);
