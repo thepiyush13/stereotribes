@@ -4494,7 +4494,9 @@ a.thanks-heading {
 	margin-bottom: 0;
 }
 
-
+.st-radio-hdn {
+	display: none;
+}
 
 
 
