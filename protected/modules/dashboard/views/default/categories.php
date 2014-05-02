@@ -29,7 +29,6 @@
                                   
                               <?php  foreach($reportData as $key=>$cat){  ?>
                               <!--UNIT START-->
-                              <tr><td></td></tr>
                               <tr>
                                   <td class="cat-td">
                                     <p class="cat"><?php   echo $cat['name']   ?></p>
