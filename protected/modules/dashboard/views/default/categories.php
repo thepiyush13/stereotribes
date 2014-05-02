@@ -41,7 +41,6 @@
                                     <p class="val"><?php  echo $cat_data[0]['value']   ?></p>
                                     <p class="text"><?php  echo  $cat_data[0]['field']    ?></p>
                                   </td>
-                                  <td></td>
                                   <?php  } ?>
                               </tr>
                               <!--UNIT END-->                          
