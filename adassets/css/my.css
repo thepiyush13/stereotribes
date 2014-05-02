@@ -416,6 +416,10 @@ a.logo {
     color: #eb2033;
 }
 
+.noborder {
+    border: 0;
+}
+
 
 /* Blue Flat Button
 ==================================================*/

@@ -22,7 +22,7 @@
 <div class="row">
                   <div class="col-lg-12">
                       <section class="">
-                          <header class="panel-heading">MUSIC+ Home MUSIC+ CATEGORIES ORDER FROM MOST TO LEAST FUNDED (TOTAL)</header>
+                          <header class="panel-heading noborder">MUSIC+ Home MUSIC+ CATEGORIES ORDER FROM MOST TO LEAST FUNDED (TOTAL)</header>
                           <table class="table">
                              
                               <tbody>
