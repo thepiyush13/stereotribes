@@ -7,6 +7,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
     }
     .rewardtype-catlist li.active > a {
         background: #bcbcbc;
+        color: #000;
     }
 </style>
 <div class="container playcontainer" ng-app="app">
