@@ -52,26 +52,43 @@
 	      <li class="dropdown">
 	      	<a href="/campaign/create/">
 		      	<span class="play">Play</span>
-		      	<span class="belowtext" ">Create Campaigns</span>
+		      	<span class="belowtext">Create Campaigns</span>
 	      	</a>
 	      </li>
 
 	      <li class="dropdown">
-	      	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	      		<span class="find">Find</span>
-			<span class="belowtext">Music Campaigns</span>
-	      	</a>
-	      	<ul class="dropdown-menu">
-	          <li><a href="#">About</a></li>
-	          <li><a href="#">Another action</a></li>
-	          <li><a href="#">Something else here</a></li>
-	        </ul>
-	      </li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="find">Find</span>
+                <span class="belowtext">Music Campaigns</span>
+            </a>
+            <div class="dropdown-menu">
+                <div class="row">
+                    <div class="container menublk">                         
+                        <div class="menucat-wrap col-md-12"><span class="menuplay-categories musicplusfont">Music+</span></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-arts" href="#">Arts</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-technology" href="#">Technology</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-research" href="#">Research</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-commercial" href="#">Commercial</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-imaginative" href="#">Imaginative</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-performance" href="#">Performance</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-film" href="#">Film</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-games" href="#">Games</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-publishing" href="#">Publishing</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-production" href="#">Production</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-community" href="#">Community</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-education" href="#">Education</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-therapy" href="#">Therapy</a></div>
+                        <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-fashion" href="#">Fashion</a></div>
+                        <div class="menucat-wrap col-md-6"><a class="menuplay-categories find-by-location" href="#">...Or find by location</a></div>
+                    </div>
+                </div>
+            </div>
+          </li>
 
 	      <li class="dropdown">
 	      	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="love">Love</span>
-                        <span class="belowtext">Tribal World</span>
+                <span class="love">Love</span>
+                <span class="belowtext">Tribal World</span>
 	      	</a>
 	      	<ul class="dropdown-menu">
 	          <li><a href="#">Tribes</a></li>
@@ -106,7 +123,16 @@
 
 	    <ul class="nav navbar-nav navbar-right">
 	      <li class="mobilehide"><a href="#"><i class="icon-share"></i></a></li>
-	      <li class="mobilehide"><a href="#"><i class="icon-search"></i></a></li>
+	      <li class="dropdown mobilehide">
+                <a a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-search"></i></a>
+                <div class="dropdown-menu">
+                        <div class="row">
+                                <div class="container menublk">
+                                        <input type="search" class="form-control menu-search" placeholder="Search...">
+                                </div>
+                        </div>
+                </div>
+            </li>
 	      <li class="mobilehide"><a href="#"><i class="icon-user"></i></a></li>
 	      <li class="dropdown usericon">
 	        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i></a>
