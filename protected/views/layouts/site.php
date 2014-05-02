@@ -78,7 +78,7 @@
             	                    <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-education" href="#">Education</a></div>
             	                    <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-therapy" href="#">Therapy</a></div>
             	                    <div class="menucat-wrap col-md-3"><a class="menuplay-categories color-fashion" href="#">Fashion</a></div>
-            	                    <div class="menucat-wrap col-md-6"><a class="menuplay-categories find-by-location" href="#">...Or find by location</a></div>
+                                    <div class="menucat-wrap col-md-6"><input type="search" class="menuplay-categories find-by-location" href="#"placeholder="...Or find by location" /></div>
             	                </div>
             	        	</div>
             	        </div>
