@@ -382,11 +382,21 @@ a.logo {
     margin-bottom: 0;
 }
 
+.text {
+    margin-bottom: 0;
+}
+
 .cat-td {
     border: 0;
     background: #eb2033;
     color: #fff;
 }
+
+.cat-data {
+    background: #f2f2f2;
+    border: 1px solid #E2E2E2;
+}
+
 
 /* Blue Flat Button
 ==================================================*/
