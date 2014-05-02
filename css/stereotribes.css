@@ -3031,6 +3031,7 @@ div.dp-popup td.disabled {
 
 .st-radio-hdn {
     opacity: 0;
+    display: none!important;
 }
 
 .rewardbuilder-wrapper .form-control {
@@ -4492,10 +4493,6 @@ a.thanks-heading {
 .copyright {
 	color: #9d9d9d;
 	margin-bottom: 0;
-}
-
-.st-radio-hdn {
-	display: none;
 }
 
 
