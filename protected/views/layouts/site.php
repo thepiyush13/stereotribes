@@ -100,7 +100,16 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="mobilehide"><a href="#"><i class="icon-share"></i></a></li>
-                    <li class="mobilehide"><a href="#"><i class="icon-search"></i></a></li>
+                    <li class="dropdown mobilehide">
+                        <a a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-search"></i></a>
+                        <div class="dropdown-menu">
+                                <div class="row">
+                                        <div class="container menublk">
+                                                <input type="search" class="form-control menu-search" placeholder="Search...">
+                                        </div>
+                                </div>
+                        </div>
+                    </li>
                     <li class="mobilehide"><a href="#"><i class="icon-user"></i></a></li>
                     <li class="dropdown usericon">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i></a>
