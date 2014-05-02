@@ -504,6 +504,7 @@
 
 .menuplay-categories:hover {
 	opacity: 0.8;
+	color: #fff;
 	text-decoration: none;
 }
 
@@ -512,10 +513,15 @@
 	font-style: italic;
 	padding: 3px 10px 2px;
 	width: 99%;
+	text-align: left;
 	text-transform: none;
 	background: transparent;
 	outline: none;
 }	
+
+.find-by-location:hover {
+	opacity: 1;
+}
 
 .dropdown-menu {
 	padding: 0;
