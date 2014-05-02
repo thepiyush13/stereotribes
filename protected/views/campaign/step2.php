@@ -502,14 +502,14 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                         </label>
                                     </div>
                                     <div class="col-md-2">
-                                        <div class="checkbox checkfix">
+                                        <div class="checkbox checkboxfix">
                                             <label>
                                                 <input ng-model="reward.rewardDisclaimer" type="radio" name="rewardDisclaimer" id="radio_reward_yes" value="yes" checked=""> Yes
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <div class="checkbox checkfix">
+                                        <div class="checkbox checkboxfix">
                                             <label>
                                                 <input ng-model="reward.rewardDisclaimer" type="radio" name="rewardDisclaimer" id="radio_reward_no" value="no" checked=""> No
                                             </label>
