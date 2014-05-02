@@ -399,7 +399,7 @@ a.logo {
 
 .val {
     padding: 2px;
-    border: 1px solid #C2C1C1;
+    border: 1px solid #C2C1C1!important;
     font-weight: 800;
     font-size: 20px;
     background: #f2f2f2;
