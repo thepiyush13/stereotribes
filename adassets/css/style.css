@@ -2713,7 +2713,8 @@ ul.amounts li {
 }
 
 .dataTables_filter label input {
-    width: 74%;
+    width: 72%;
+    margin-left: 10px;
 }
 
 .border-top {
