@@ -1095,6 +1095,7 @@ video {
 .fund-normal-title-block {
 	padding: 7px 10px;
 	background: #000;
+        height: 75px;
 }
 
 .mask .fund-normal-title-block {

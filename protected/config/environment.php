@@ -22,4 +22,9 @@ if(APPLICATION_ENV == 'jump-dev') {
        $dbUser = 'root';
        $dbPassword = 'mysql';
 }
+else if (APPLICATION_ENV == 'piyush') {
+       $dbName = 'stereotribes';
+       $dbUser = 'root';
+       $dbPassword = 'password';
+}
 

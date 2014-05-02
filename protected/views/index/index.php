@@ -9,9 +9,11 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
+        <h1>
         <?php
         echo "welcome to Readfiend";
         // put your code here
         ?>
+        </h1>
     </body>
 </html>

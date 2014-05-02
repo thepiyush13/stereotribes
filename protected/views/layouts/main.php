@@ -35,7 +35,7 @@
 
   </head>
 
-  <body>
+  <body class="home">
 	
   	<!-- ==================== Main Navigation ====================== -->
 
@@ -272,8 +272,10 @@
     <script src="/js/waypoints.min.js"></script>
     <script src="/js/waypoints-sticky.min.js"></script>
     <script src="/js/freewall.js"></script>
-    <script src="/js/stereotribes.js"></script>
+   
     <script src="/js/custom/utils.js"></script>
+    <script src="/js/init.js"></script>
+     <script src="/js/stereotribes.js"></script>
 
     <script type="text/javascript">
         $.validity.setup({ outputMode:"label" });

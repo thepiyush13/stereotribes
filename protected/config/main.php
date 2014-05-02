@@ -22,9 +22,12 @@ return array(
         'application.modules.admin.models.campaign.forms.*',
     ),
     'modules' => array(
-        //for newsletter module
+        //for custom modules
         'newsletter',
         'dashboard',
+         'payment' => array(
+            'defaultController' => 'paypal',
+        ),
         
         // uncomment the following to enable the Gii tool
 
