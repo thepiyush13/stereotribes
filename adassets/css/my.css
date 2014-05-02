@@ -407,6 +407,14 @@ a.logo {
     margin-top: 5px;
 }
 
+.news-icon {
+    margin-left: 5px;
+}
+
+.news-icon > i {
+    color: #eb2033;
+}
+
 
 /* Blue Flat Button
 ==================================================*/

@@ -118,10 +118,10 @@ $this->renderPartial('_search',array(
 		      'type'=>'raw',
                    'name'=>'actions',
 		       'value'=>'"
-		      <a href=\'javascript:void(0);\' onclick=\'renderView(".$data->id.")\'   class=\'btn btn-small view\'  ><i class=\'icon-eye-open\'></i></a>
-		      <a href=\'javascript:void(0);\' onclick=\'renderUpdateForm(".$data->id.")\'   class=\'btn btn-small view\'  ><i class=\'icon-pencil\'></i></a>
-		      <a href=\'javascript:void(0);\' onclick=\'delete_record(".$data->id.")\'   class=\'btn btn-small view\'  ><i class=\'icon-trash\'></i></a>
-                       <a href=\"'.Yii::app()->createUrl("/newsletter/manage/send").'/id/$data->id\"  class=\'btn btn-small view\'  ><i class=\'icon-envelope\'></i></a>
+		      <a href=\'javascript:void(0);\' onclick=\'renderView(".$data->id.")\'   class=\'btn btn-small view news-icon\'  ><i class=\'icon-eye-open\'></i></a>
+		      <a href=\'javascript:void(0);\' onclick=\'renderUpdateForm(".$data->id.")\'   class=\'btn btn-small view news-icon\'  ><i class=\'icon-pencil\'></i></a>
+		      <a href=\'javascript:void(0);\' onclick=\'delete_record(".$data->id.")\'   class=\'btn btn-small view news-icon\'  ><i class=\'icon-trash\'></i></a>
+                       <a href=\"'.Yii::app()->createUrl("/newsletter/manage/send").'/id/$data->id\"  class=\'btn btn-small view news-icon\'  ><i class=\'icon-envelope\'></i></a>
 		     "',
 		      'htmlOptions'=>array('style'=>'width:200px;')  
 		     ),
