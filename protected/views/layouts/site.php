@@ -34,7 +34,7 @@
 
     </head>
 
-    <body class="arts">
+    <body class="playpage">
 
         <!-- ==================== Main Navigation ====================== -->
 
