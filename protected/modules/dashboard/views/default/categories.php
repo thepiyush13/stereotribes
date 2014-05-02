@@ -21,7 +21,7 @@
 <h1 class="dash-header">Categories</h1>
 <div class="row">
                   <div class="col-lg-12">
-                      <section class="panel">
+                      <section class="">
                           <header class="panel-heading padfix">
                               MUSIC+
 Home
