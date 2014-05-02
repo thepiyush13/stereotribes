@@ -46,7 +46,7 @@
 
                 <a class="navbar-brand stereologo-mob" href="index.html">Stereotribes</a>		  
 
-                <ul class="nav navbar-nav navbar-left">
+                <ul class="nav navbar-nav navbar-left nav-center">
 
                     <li class="dropdown">
                         <a href="/campaign/create/">
