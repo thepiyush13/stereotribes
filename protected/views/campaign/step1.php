@@ -2,6 +2,9 @@
     var $campaignId = <?php echo (int) $_GET['id'] ?>
 </script>
 <style>
+    .active {
+        opacity: 0.8;
+    }
     .active:before {
         font-family: 'stereotribe';
         content: "\2713";
