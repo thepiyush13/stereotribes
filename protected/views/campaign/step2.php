@@ -2,10 +2,12 @@
 var $campaignId = <?php echo (int)$_GET['id'] ?>
 </script>
 <style>
+    .rewardtype-catlist li > a {
+        cursor: pointer;
+    }
     .rewardtype-catlist li.active > a {
         background: #bcbcbc;
         color: #000;
-        cursor: pointer;
     }
 </style>
 <div class="container playcontainer" ng-app="app">
