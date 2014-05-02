@@ -39,8 +39,7 @@ $('.search-form form').submit(function(){
 
 ?>
 
-<h1>Newsletters</h1>
-<hr/>
+<h1 class="dash-header">Newsletters</h1>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -41,22 +41,23 @@
     <body>
         <section id="container" class="">
             <!--header start-->
-            <header class="header white-bg"> <div class="sidebar-toggle-box">
+            <header class="header stereo-bg"> <div class="sidebar-toggle-box">
                     <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
                 </div>
                 <!--logo start-->
                 <a href="/admin" class="logo" >STEREOTRIBES</a>
                 <!--logo end-->
-                <div class="top-nav ">
-                    <ul class="nav pull-right top-menu">
+                <div class="top-nav pull-right">
+                    <ul class="nav pull-left top-menu search-menu">
                         <li>
-                            <input type="text" class="form-control search" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Search">
                         </li>
-                        
+                    </ul>
+                    <div class="pull-right log">
                         <!-- user login dropdown start-->
                         <?php $this->widget('application.components.LoginBar');?>
                         <!-- user login dropdown end -->
-                    </ul>
+                    </div>
                 </div>
             </header>
             <!--header end-->
