@@ -409,6 +409,7 @@ a.logo {
 
 .news-icon {
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .news-icon > i {
