@@ -378,6 +378,16 @@ a.logo {
     margin-bottom: 20px;
 }
 
+.cat {
+    margin-bottom: 0;
+}
+
+.cat-td {
+    border: 0;
+    background: #eb2033;
+    color: #fff;
+}
+
 /* Blue Flat Button
 ==================================================*/
 .btn-xlarge{

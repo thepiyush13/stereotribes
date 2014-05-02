@@ -35,7 +35,7 @@ MUSIC+ CATEGORIES ORDER FROM MOST TO LEAST FUNDED (TOTAL)
                                   <?php  foreach($reportData as $key=>$cat){  ?>
                                   <!--UNIT START-->
                                 <tr>
-                                  <td><p class="cat"><?php   echo $cat['name']   ?></p></td>                                  
+                                  <td class="cat-td"><p class="cat"><?php   echo $cat['name']   ?></p></td>                                  
                               </tr>  
                               <tr>
                                   <?php  foreach($cat['data'] as $k=>$cat_data){ ?>
