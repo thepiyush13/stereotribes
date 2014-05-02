@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="format-detection" content="telephone=no">
-        <meta name="description" content="Pefios Case Study">
+        <meta name="description" content="Stereo Tribes Case Study">
         <meta name="author" content="">
         <link rel="shortcut icon" href="favicon.ico">
 
