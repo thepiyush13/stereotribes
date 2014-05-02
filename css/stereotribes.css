@@ -514,6 +514,7 @@
 	width: 99%;
 	text-transform: none;
 	background: transparent;
+	outline: none;
 }	
 
 .dropdown-menu {
