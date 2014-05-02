@@ -429,6 +429,12 @@ span a.paginate_button {
     cursor: pointer;
 }
 
+span a.paginate_button {
+    cursor: default;
+    background: #fff;
+    border: 1px solid #E4E1E1;
+}
+
 
 /* Blue Flat Button
 ==================================================*/
