@@ -525,22 +525,22 @@
 
 .find-by-location::-webkit-input-placeholder {
    color: #fff;
-   text-align: center;
+   text-align: center!important;
 }
 
 .find-by-location:-moz-placeholder { /* Firefox 18- */
    color: #fff;
-   text-align: center;  
+   text-align: center!important;  
 }
 
 .find-by-location::-moz-placeholder {  /* Firefox 19+ */
    color: #fff;
-   text-align: center;  
+   text-align: center!important;  
 }
 
 .find-by-location:-ms-input-placeholder {  
    color: #fff;
-   text-align: center;  
+   text-align: center!important;  
 }
 
 .dropdown-menu {
