@@ -2,8 +2,12 @@
 var $campaignId = <?php echo (int)$_GET['id'] ?>
 </script>
 <style>
-    .rewardtype-catlist li.active {
-        border: 1px solid #fff;
+    .rewardtype-catlist li > a {
+        cursor: pointer;
+    }
+    .rewardtype-catlist li.active > a {
+        background: #bcbcbc;
+        color: #000;
     }
 </style>
 <div class="container playcontainer" ng-app="app">
@@ -268,7 +272,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
 
                                     <div class="col-md-5 fixedflexwrapper">
 
-                                        <label class="blue btn btn-primary btn-lg btn-block fixedflexbutton">
+                                        <label class="blue btn btn-primary btn-lg btn-block fixedflexbutton" ng-class="{fixedflexactivebutton: goalSetting.fundingType == 'fixed', fixedflexbutton: goalSetting.fundingType != 'fixed'}">
                                             <input ng-model="goalSetting.fundingType" class="st-radio-hdn" type="radio" name="fundingType" value="fixed"><span>Fixed</span>
                                         </label>
                                         <!--                                        <button type="button" class="btn btn-primary btn-lg btn-block fixedflexbutton">Fixed</button>-->
@@ -285,7 +289,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                     </div>
 
                                     <div class="col-md-5 fixedflexwrapper">
-                                        <label class="blue btn btn-primary btn-lg btn-block fixedflexbutton">
+                                        <label class="blue btn btn-primary btn-lg btn-block" ng-class="{fixedflexactivebutton: goalSetting.fundingType == 'flexible', fixedflexbutton: goalSetting.fundingType != 'flexible'}">
                                             <input ng-model="goalSetting.fundingType" class="st-radio-hdn" type="radio" name="fundingType" value="flexible"><span>Flexible</span>
                                         </label>
                                         <!--                                        <button type="button" class="btn btn-primary btn-lg btn-block fixedflexactivebutton">Flexible</button>-->
@@ -655,6 +659,14 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
             </form>
 
         </section>
+        
+        <div class="col-md-3 col-md-offset-9 mainsavebtn">
+             	
+            <button type="button" class="btn btn-primary btn-lg btn-block savecontinuebutton">Save &amp; Continue
+            <span>(Great!,You’re almost done)</span>
+            </button>
+
+         </div>
 
     </div>
 
