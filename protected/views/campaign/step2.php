@@ -659,6 +659,14 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
             </form>
 
         </section>
+        
+        <div class="col-md-3 col-md-offset-9 mainsavebtn">
+             	
+            <button type="button" class="btn btn-primary btn-lg btn-block savecontinuebutton">Save &amp; Continue
+            <span>(Great!,You’re almost done)</span>
+            </button>
+
+         </div>
 
     </div>
 
