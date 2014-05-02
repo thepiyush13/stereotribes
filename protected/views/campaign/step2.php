@@ -268,7 +268,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
 
                                     <div class="col-md-5 fixedflexwrapper">
 
-                                        <label class="blue btn btn-primary btn-lg btn-block fixedflexbutton">
+                                        <label class="blue btn btn-primary btn-lg btn-block fixedflexbutton" ng-class="{fixedflexactivebutton: goalSetting.fundingType == 'fixed', fixedflexbutton: goalSetting.fundingType != 'fixed'}">
                                             <input ng-model="goalSetting.fundingType" class="st-radio-hdn" type="radio" name="fundingType" value="fixed"><span>Fixed</span>
                                         </label>
                                         <!--                                        <button type="button" class="btn btn-primary btn-lg btn-block fixedflexbutton">Fixed</button>-->
@@ -285,7 +285,7 @@ var $campaignId = <?php echo (int)$_GET['id'] ?>
                                     </div>
 
                                     <div class="col-md-5 fixedflexwrapper">
-                                        <label class="blue btn btn-primary btn-lg btn-block fixedflexbutton">
+                                        <label class="blue btn btn-primary btn-lg btn-block" ng-class="{fixedflexactivebutton: goalSetting.fundingType == 'flexible', fixedflexbutton: goalSetting.fundingType != 'flexible'}">
                                             <input ng-model="goalSetting.fundingType" class="st-radio-hdn" type="radio" name="fundingType" value="flexible"><span>Flexible</span>
                                         </label>
                                         <!--                                        <button type="button" class="btn btn-primary btn-lg btn-block fixedflexactivebutton">Flexible</button>-->
