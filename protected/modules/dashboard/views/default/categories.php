@@ -32,21 +32,26 @@ MUSIC+ CATEGORIES ORDER FROM MOST TO LEAST FUNDED (TOTAL)
                              
                               <tbody>
                                   
-                                  <?php  foreach($reportData as $key=>$cat){  ?>
-                                  <!--UNIT START-->
-                                <tr>
-                                  <td class="cat-td"><p class="cat"><?php   echo $cat['name']   ?></p></td>                                  
-                              </tr>  
+                              <?php  foreach($reportData as $key=>$cat){  ?>
+                              <!--UNIT START-->
+                              <tr>
+                                  <td class="cat-td">
+                                    <p class="cat"><?php   echo $cat['name']   ?></p>
+                                  </td>                                  
+                              </tr> 
+
+                              <tr><td></td></tr>
+
                               <tr class="cat-data">
                                   <?php  foreach($cat['data'] as $k=>$cat_data){ ?>
-                                  <td><p class="val"><?php  echo $cat_data[0]['value']   ?></p><p class="text"><?php  echo  $cat_data[0]['field']    ?></p></td>
+                                  <td>
+                                    <p class="val"><?php  echo $cat_data[0]['value']   ?></p>
+                                    <p class="text"><?php  echo  $cat_data[0]['field']    ?></p>
+                                  </td>
                                   <?php  } ?>
                               </tr>
-                            
-                           <!--UNIT END-->
-                           
-                           
-                                  <?php   } ?>
+                              <!--UNIT END-->                          
+                              <?php   } ?>
                              
                               </tbody>
                           </table>
