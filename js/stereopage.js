@@ -98,4 +98,8 @@
         e.stopPropagation();
     });
 
+    $('.menuplay-categories').click(function(e) {
+        e.stopPropagation();
+    });
+
   });
