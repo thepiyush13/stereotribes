@@ -4,7 +4,7 @@
 <style>
     .active:before {
         font-family: 'stereotribe';
-        content: "\e63e";
+        content: "\2713";
         position: absolute;
         /*color: #d6201f!important;*/
         color: #ffffff!important;

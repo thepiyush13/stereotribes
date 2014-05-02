@@ -2479,6 +2479,7 @@ a.play-categories:hover {
 
 .price-dropdown {
 	width: 20%;
+	height: 35px;
 	padding: 5px;
 	font-size: 18px;
 	border: 1px solid #000;
