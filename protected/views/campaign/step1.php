@@ -118,7 +118,7 @@
 
                     <div class="col-md-9">
 
-                        <select class="price-dropdown" ng-model="createCampaign.projectFor">
+                        <select class="project-offer" ng-model="createCampaign.projectFor">
                             <option value="team">Team</option>
                             <option value="individual">Individual</option>
                         </select>         
