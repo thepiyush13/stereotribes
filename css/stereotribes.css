@@ -503,7 +503,7 @@
 }
 
 .menuplay-categories:hover {
-	color: #fff;
+	opacity: 0.8;
 	text-decoration: none;
 }
 
@@ -3100,7 +3100,7 @@ div.dp-popup td.disabled {
 .rewardtype-catlist li > a:hover {
 	text-decoration: none;
 	color: #000;
-	background: #bcbcbc;
+	background: #F1F0F0;
 }
 
 .remove-button {
