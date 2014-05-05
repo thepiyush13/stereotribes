@@ -331,7 +331,7 @@ a.logo {
     color: #494949;
 }
 
-.paginate_disabled_previous {
+.dataTables_paginate .disabled {
     background: rgba(235, 32, 51, 0.44)!important;
     cursor: default!important;
 }
