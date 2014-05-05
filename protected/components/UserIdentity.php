@@ -19,7 +19,7 @@ class UserIdentity extends CUserIdentity {
 
     //private $roles;
     public function authenticate() {
-        $user = AppUser::model()->findByAttributes(array('email' => $this->username));
+        $user = Appuser::model()->findByAttributes(array('email' => $this->username));
         
         //$user->roles = array('sales', 'admin');
         //echo '<pre>'.print_r($user, 1);exit;

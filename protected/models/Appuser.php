@@ -3,7 +3,7 @@
 /**
  * @author Kalpit Pandit <kalpit@inkoniq.com>
  */
-class AppUser extends CActiveRecord
+class Appuser extends CActiveRecord
 {
     public $confirm_password;
     public $oldpassword;
@@ -95,7 +95,7 @@ class AppUser extends CActiveRecord
             }
 
 
-	public static function model($className=__CLASS__)
+	 public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}

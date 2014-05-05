@@ -80,7 +80,7 @@ class LoginController extends Controller {
      * Displays the login page
      */
     public function actionLogin() {
-        die('ok');
+        
         $model = new LoginForm;
         
         // collect user input data
