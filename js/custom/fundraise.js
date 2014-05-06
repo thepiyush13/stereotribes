@@ -86,6 +86,32 @@ Fundraise = {
         }
     },
     
+    likeOrUnlikeProject : function(el) {
+        console.log("Here");
+        var id = $(el).attr('data-id');
+        if(!id) return;
+        
+        var action = ($(el).hasClass('liked')) ? 'unlike' : 'liked';
+        
+        $.ajax({
+            url: "/fundraise/likeOrUnlikeProject",
+            method: "POST",
+            dataType: "json",
+            data: {
+                projectId: id,
+                action : action
+            }
+        }).done(function(result){
+            if(result.status === 1) {
+                (result.like) ?  $(el).addClass('liked') : $(el).removeClass('liked'); 
+            }
+            
+        }).fail(function(jqXHR, textStatus){
+            
+        });
+        
+    },
+    
     bindEvents: function() {
         var self = this;
         $('#contribute-step1').on('click', function() {
@@ -96,8 +122,14 @@ Fundraise = {
             self.selectReward(this);
         });
         
+        $('.likeMe').on('click',function(){
+            self.likeOrUnlikeProject(this);
+        });
+        
         //Enable first fund block as default
-        $("div.fund-block-inner:first-child" ).click();
+        $("div.reward-available:first").click()
+        
+        $('body').removeClass('home');
     }
 
 

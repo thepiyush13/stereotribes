@@ -240,6 +240,16 @@
         <script src="/js/app/services.js"></script>
         <script src="/js/campaign.js"></script>
         <script src="/js/app/directives.js"></script>
-
+         <script src="/js/jquery.validity.min.js"></script>
+        
+        <script type="text/javascript">
+        $.validity.setup({ outputMode:"label" });
+        </script>
+        <style type="text/css">
+            label.error {
+                color: red;
+                font-weight: normal;
+            }
+        </style>
     </body>
 </html>
