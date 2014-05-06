@@ -43,8 +43,11 @@
 	        	<div class="project-love"></div>
 	        	
 	        	<div class="col-md-12">
-	        		<div class="form-group">
-					    <input type="text" class="form-control loved-search" id="search-criteria" placeholder="Search Loved Projects..."><input type="button" id="search" class="btn btn-primary" value="search"/><input type="button" id="reset" value="reset" class="btn btn-default"/>
+	        		<div class="form-group col-lg-10">
+					    <input type="text" class="form-control loved-search" id="search-criteria" placeholder="Search Loved Projects...">
+					</div>
+                            <div class="form-group col-lg-2">
+					    <input type="button" id="search" class="btn btn-default" value="search"/><input type="button" id="reset" value="X" class="btn btn-default"/>
 					</div>
 	        	</div>
 
@@ -98,7 +101,7 @@
 	        	</div>
 
 	        	<div class="col-md-12">
-		        	<ul class="pagination pagination-sm move-right">
+<!--		        	<ul class="pagination pagination-sm move-right">
 					  <li><a href="#">«</a></li>
 					  <li><a href="#">1</a></li>
 					  <li><a href="#">2</a></li>
@@ -106,7 +109,7 @@
 					  <li><a href="#">4</a></li>
 					  <li><a href="#">5</a></li>
 					  <li><a href="#">»</a></li>
-					</ul>
+					</ul>-->
 				</div>
 
 	        </section>     	

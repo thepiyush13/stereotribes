@@ -51,7 +51,7 @@
 	        				<p><?php  echo $project['short_summary']; ?></p>
 	        			</div>
 	        			<div class="dash-buttonwrap">
-	        				<a href="#" class="dash-public">Hide from public view</a>
+	        				
 		        			<div class="fund-normal-count-block" style="background-color: #<?php  echo $data['category_color'][$project['category']]; ?>;">
 								<div class="normal-count">
 									<span class="fund-count"><?php  echo $project['percent_funded']; ?>%</span>

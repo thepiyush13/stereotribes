@@ -16,7 +16,7 @@ class ProfileController extends Controller {
         
         //user created project list
         $data['user_autorized'] = $this->autorized_user($user_id);
-        $sub_query = $data['user_autorized']  ? '  1 ' : ' y.visible=0';
+        $sub_query = $data['user_autorized']  ? '  1 ' : ' y.visible=1';
         $data['backed_projects'] = Yii::app()->db->createCommand(' select x.*,y.id as order_id,y.visible from project as x join user_fund_project as y on x.id= y.project_id and y.user_id = ' . $user_id . ' and ' . $sub_query . ' group by x.id')->queryAll();
         
         //generate links
@@ -40,7 +40,7 @@ class ProfileController extends Controller {
         $data = $this->get_header($user_id);
 
         $data['user_details'] = Yii::app()->db->createCommand('SELECT * from user where id=' . $user_id)->queryAll();
-
+        $data['user_autorized'] = $this->autorized_user($user_id);
 
         //user created project list
 //              $data['comments'] = Yii::app()->db->createCommand(' select * from comments where user_id = '.$user_id)->queryAll();
@@ -133,6 +133,13 @@ class ProfileController extends Controller {
     public function actionHide() {
         $order_id = (int)$_GET['id'];
         $status = (int) $_GET['status'];
+         $url = $this->createUrl('profile/backed');
+        //check if user has permission
+        $owner = Yii::app()->db->createCommand('SELECT user_id from user_fund_project where id='.$order_id)->queryScalar();
+        if($this->autorized_user($owner)==FALSE){
+             $this->redirect($url);
+             return false;
+        }
         //set the status for this 
         $sql = 'UPDATE user_fund_project set visible = ' . $status.' where id='.$order_id;
         $result = Yii::app()->db->createCommand($sql)->execute();
@@ -142,16 +149,37 @@ class ProfileController extends Controller {
         } else {
             echo false;
         }
-                $url = $this->createUrl('profile/backed');
+       
+        $this->redirect($url);
+    }
+    
+    public function actionDelcomment() {
+        $comment_id = (int)$_GET['id']; 
+        $url = $this->createUrl('profile/comments');
+         $owner = Yii::app()->db->createCommand('SELECT userId from comments where id='.$comment_id)->queryScalar();
+        if($this->autorized_user($owner)==FALSE){
+             $this->redirect($url);
+             return false;
+        }
+        //set the status for this 
+        $sql = 'DELETE from comments where id='.$comment_id;
+        $result = Yii::app()->db->createCommand($sql)->execute();
+        $this->layout= false;
+        if (isset($result)) {
+            echo true;
+        } else {
+            echo false;
+        }
+        
         $this->redirect($url);
     }
 
     protected function create_links($user_id) {
         $links = array(
-            'backed' => $this->createUrl('profile/backed'),
-            'loved' => $this->createUrl('profile/loved'),
-            'created' => $this->createUrl('profile/created'),
-            'comments' => $this->createUrl('profile/comments'),
+            'backed' => $this->createUrl('profile/backed'.'?id='.$user_id),
+            'loved' => $this->createUrl('profile/loved'.'?id='.$user_id),
+            'created' => $this->createUrl('profile/created'.'?id='.$user_id),
+            'comments' => $this->createUrl('profile/comments'.'?id='.$user_id),
             'edit' => $this->createUrl('profile/edit', array('id' => $user_id)),
         );
         return $links;

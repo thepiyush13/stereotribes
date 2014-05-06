@@ -57,8 +57,9 @@
                                                 echo Yii::app()->dateFormatter->format("dd MMM yyyy", $comment['createDate']); ?></span>
 
 	        			</div>
-
-	        			<a href="#" class="comment-delete"><i class="icon-remove"></i>Delete Comment</a>
+<?php if($data['user_autorized']){ ?>
+	        			<a href='<?php  echo $this->createUrl("delcomment?id={$comment['commentId']}") ?>' class="comment-delete"><i class="icon-remove"></i>Delete Comment</a>
+                         <?php  } ?>
 
 	        		</div>
 
