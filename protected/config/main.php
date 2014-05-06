@@ -48,6 +48,16 @@ return array(
             // enable cookie-based authentication
             'allowAutoLogin' => true,
         ),
+        'Paypal' => array(
+			'class'=>'application.components.Paypal',
+			'apiUsername' => 'will2win4u_api1.gmail.com',
+			'apiPassword' => '1397543814',
+			'apiSignature' => 'Ai1PaghZh5FmBLCDCTQpwG8jB264A2YRl6ce9.u.RDrk-lnyeINacLf4',
+			'apiLive' => false,
+			
+			'returnUrl' => 'paypal/confirm/', //regardless of url management component
+			'cancelUrl' => 'paypal/cancel/', //regardless of url management component
+		),
         //bootstrap support for crud model
          'bootstrap'=>array(
             'class'=>'bootstrap.components.Bootstrap',

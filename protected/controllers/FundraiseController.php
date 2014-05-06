@@ -43,12 +43,12 @@ class FundraiseController extends Controller {
                 $ufp = new UserFundProject();
                 $ufp->user_id = Yii::app()->user->details->id;
                 $ufp->project_id = $_POST['projectId'];
-                $ufp->amount = amount;
+                $ufp->amount = $_POST['amount'];;
                 $ufp->timestamp = time();
                 $ufp->shipping_address = implode(",",$_POST['shippingAddress']);
                 $ufp->reward_id = $_POST['rewardId'];
                 $ufp->reward_received_status = 0;
-                $ufp->status = 'active';
+                $ufp->status = 'FAILED';
                 $ufp->save();
                 
                 $errors = $ufp->getErrors();

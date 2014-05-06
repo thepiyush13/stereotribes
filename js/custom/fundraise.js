@@ -32,7 +32,7 @@ Fundraise = {
             }
         }).done(function(result) {
             if (result.error === 0) {
-                window.location.href = "/campaign/" + result.data.project_id + "/contribute/payment";
+                window.location.href = "/paypal/buy?order_id=" + result.data.id ;
             } else {
                 console.log("ERROR >>", result);
             }
