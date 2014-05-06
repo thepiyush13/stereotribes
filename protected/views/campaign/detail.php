@@ -423,7 +423,9 @@ EOD;
                 </div>
 
                 <div class="tab-pane fade" id="comments">
-
+<?php $this->renderPartial('comment.views.comment.commentList', array(
+    'model'=>$model
+)); ?>
                 </div>
 
                 <div class="tab-pane fade" id="gallery">

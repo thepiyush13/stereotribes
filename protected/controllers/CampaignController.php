@@ -25,8 +25,9 @@ class CampaignController extends Controller {
             'user' => '',
             'data' => $campaign
         );
-
-        $this->render('detail', array('data' => $result['data'], 'config' => $result['config']));
+        //for comment module 
+         $model = Project::model()->findByAttributes(array( 'id'=> $_GET['id'] ));
+        $this->render('detail', array('data' => $result['data'], 'config' => $result['config'],'model'=>$model));
     }
 
     public function actionCreate() {

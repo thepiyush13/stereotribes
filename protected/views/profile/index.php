@@ -1,6 +1,5 @@
-<div class="container">
-
-        <div class="row">
+<?php // print_r($data) ?>
+<div class="row">
 
             <div class="col-md-6"><!-- Left Block -->
 
@@ -10,46 +9,46 @@
 
             	 	<div class="project-image-wrapper">
             	 		
-            	 		<img src="img/gaga.jpg" class="img-responsive">
+            	 		<img src="/img/gaga.jpg" class="img-responsive" />
 
             	 	</div>
 
             	 	<div class="project-container">
 
-            	 		<h2 class="project-title">Lady Gaga</h2>
+            	 		<h2 class="project-title"><?php  echo $data['user_details'][0]['name']; ?></h2>
 
     	 				<div class="project-social">	
-            				<a href="#" class="icons-reply"></a>
+<!--            				<a href="#" class="icons-reply"></a>
             				<a href="#" class="icons-message"></a>        					
-        					<a href="#" class="icons-heart"></a>
+        					<a href="#" class="icons-heart"></a>-->
         				</div>
 
         				<div class="project-location-block">								
     						<i class="icon-location"></i>
-    						<span class="project-location">London UK</span>
-    						<a href="#" class="project-website">My Website</a>
+    						<span class="project-location"><?php  echo $data['user_details'][0]['location']; ?></span>
+    						<a href="#" class="project-website"><?php  echo $data['user_details'][0]['name']; ?></a>
     					</div>
 
-    					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+    					<p><?php  echo $data['user_details'][0]['description']; ?></p>
 
             	 	</div>
 
             	</div>
 
             	<div class="col-md-12 profile-blocks">
-            	 	
+            	 	<?php foreach($data['user_projects'] as $key=>$project) { ?>
             	 	<div class="brick medium">
 
     			    	<div class="brickinner">
 
-    				    	<img src="img/gaga.jpg" alt="" class="img-responsive">
+    				    	<img src="/img/gaga.jpg" alt="" class="img-responsive">
 
     						<div class="fund-block-normal fund-block-normal-fix">
 
-    							<div class="fund-normal-count-block">
+    							<div class="fund-normal-count-block" style="background-color: #<?php  echo $data['category_color'][$project['category']]; ?>;">
 
-    								<div class="normal-count">
-    									<span class="fund-count">50%</span>
+    								<div class="normal-count" >
+                                                                <span class="fund-count"><?php  echo $project['percent_funded']; ?>%</span>
     									Funded
     								</div>
 
@@ -58,12 +57,12 @@
 
     					    	<div class="fund-normal-title-block fund-normal-fix">
     					    		
-    								<a href="#" id="fundlive-title" class="fund-normal-title normaltitle">Fund Title</a>
+    								<a href="#" id="fundlive-title" class="fund-normal-title normaltitle"><?php  echo $project['title']; ?></a>
 
     								<div class="fund-normal-location-block">
     									
     									<i class="icon-location"></i>
-    									<span class="fund-normal-location">London UK</span>
+    									<span class="fund-normal-location"><?php  echo $project['city']; ?></span>
 
     								</div>
 
@@ -74,6 +73,7 @@
     				    </div>				    
 
     			    </div>
+                    <?php  } ?>
 
             	 </div>
 
@@ -96,24 +96,24 @@
     			        	</div> 
 
     			        	<div class="col-md-5">
-    			        		<h3 class="dash-edit"><a href="#" class="text-right"><i class="icon-edit"></i> Edit Profile</a></h3>
+    			        		<h3 class="dash-edit"><a href="<?php  echo $data['links']['edit']; ?>" class="text-right"><i class="icon-edit"></i> Edit Profile</a></h3>
     			        	</div>      	
 
     		        	</div>
             	 		
     	        	 	<div class="col-md-6 project-dash">
-    		        		<a class="user-info-links" href="user-dashboard-backed.html">5<span>Backed</span></a> 
+    		        		<a class="user-info-links" href="<?php  echo $data['links']['backed']; ?>"><?php  echo (int)$data['backed']; ?><span>Backed</span></a> 
     		        	</div>
 
     		        	<div class="col-md-6 project-dash">
-    	        			<a class="user-info-links" href="user-dashboard-created.html">2<span>Created</span></a> 
+    	        			<a class="user-info-links" href="<?php  echo $data['links']['created']; ?>"><?php  echo (int)$data['created']; ?><span>Created</span></a> 
     	        		</div>
 
     	        		<div class="col-md-6 project-dash">
-    	        			<a class="user-info-links" href="user-dashboard-comments.html">55<span>Comments</span></a> 
+    	        			<a class="user-info-links" href="<?php  echo $data['links']['comments']; ?>"><?php  echo (int)$data['comments']; ?><span>Comments</span></a> 
     	        		</div>
     	        		<div class="col-md-6 project-dash">
-    	        			<a class="user-info-links" href="user-dashboard-loved.html">103<span>Loved</span></a> 
+    	        			<a class="user-info-links" href="<?php  echo $data['links']['loved']; ?>"><?php  echo (int)$data['loved']; ?><span>Loved</span></a> 
     	        		</div>
 
             	 	</div>
@@ -124,7 +124,7 @@
 
             	 	<div class="project-image-wrapper">
             	 		
-            	 		<img src="img/gaga.jpg" class="img-responsive">
+            	 		<img src="/img/gaga.jpg" class="img-responsive" />
 
             	 	</div>
 
@@ -140,7 +140,7 @@
 
             	 	<div class="project-image-wrapper">
             	 		
-            	 		<img src="img/gaga.jpg" class="img-responsive">
+            	 		<img src="/img/gaga.jpg" class="img-responsive" />
 
             	 	</div>
 
@@ -156,7 +156,7 @@
 
             	 	<div class="project-image-wrapper">
             	 		
-            	 		<img src="img/gaga.jpg" class="img-responsive">
+            	 		<img src="/img/gaga.jpg" class="img-responsive" />
 
             	 	</div>
 
@@ -172,7 +172,7 @@
 
             	 	<div class="project-image-wrapper">
             	 		
-            	 		<img src="img/gaga.jpg" class="img-responsive">
+            	 		<img src="/img/gaga.jpg" class="img-responsive" />
 
             	 	</div>
 
@@ -187,7 +187,5 @@
             </div>   	
 
         </div><!-- Right Block Ends -->
-
-    </div>
 
     </div>

@@ -113,7 +113,7 @@ class PaypalController extends Controller
 			}else{
 				//payment was completed successfully
                                                         ////redirect 
-                                                        $confirm_url = $this->createUrl('campaign/'.$transaction['project_id'].'/contribute/share/');
+                                                        $confirm_url = $this->createUrl('campaign/'.$transaction['project_id'].'/contribute/share/'.$transaction['id']);
                                                         //update payment status 
                                                          $sql = "update user_fund_project  set status='SUCCESS' where id=".$transaction['id'];
                                                         Yii::app()->db->createCommand($sql)->execute();

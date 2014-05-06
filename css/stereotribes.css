@@ -503,7 +503,6 @@
 }
 
 .menuplay-categories:hover {
-	opacity: 0.8;
 	color: #fff;
 	text-decoration: none;
 }
@@ -511,37 +510,8 @@
 .find-by-location {
 	border: 2px solid #fff;
 	font-style: italic;
-	padding: 3px 10px 2px;
-	width: 99%;
-	text-align: left;
-	text-transform: none;
-	background: transparent;
-	outline: none;
+	padding: 3px 20px 2px;
 }	
-
-.find-by-location:hover {
-	opacity: 1;
-}
-
-.find-by-location::-webkit-input-placeholder {
-   color: #fff;
-   text-align: center!important;
-}
-
-.find-by-location:-moz-placeholder { /* Firefox 18- */
-   color: #fff;
-   text-align: center!important;  
-}
-
-.find-by-location::-moz-placeholder {  /* Firefox 19+ */
-   color: #fff;
-   text-align: center!important;  
-}
-
-.find-by-location:-ms-input-placeholder {  
-   color: #fff;
-   text-align: center!important;  
-}
 
 .dropdown-menu {
 	padding: 0;
@@ -1125,7 +1095,6 @@ video {
 .fund-normal-title-block {
 	padding: 7px 10px;
 	background: #000;
-        height: 75px;
 }
 
 .mask .fund-normal-title-block {
@@ -1451,7 +1420,6 @@ video {
  */
 
 
- 
 body.pages {
 	background: #874796;
 }
@@ -1461,9 +1429,7 @@ body.pages {
 	margin-bottom: 40px;
 }
 
-
-
-/*body.pages:before {
+body.pages:before {
 	position: absolute;
 	content: 'PERFORMANCE';
 	left: -233px;
@@ -1476,7 +1442,7 @@ body.pages {
 	-o-transform: rotate(-90deg);
 	-ms-transform: rotate(-90deg);
 	transform: rotate(-90deg);
-}*/
+}
 
 .pagecontainer .nav > li > a {
 	padding: 10px 15px;
@@ -1963,8 +1929,7 @@ body.pages {
 	display: table;
 	border-radius: 0;
 	background: #f62b2b;
-
-	/*padding: 10px 40px 10px 70px;*/
+	padding: 10px 40px 10px 70px;
 	text-transform: uppercase;
 }
 
@@ -1993,6 +1958,10 @@ body.pages {
 	background: #f62b2b;
 	padding: 10px;
 	text-transform: uppercase;
+}
+
+.profilesave {
+	padding: 5px;
 }
 
 .savebutton:hover,
@@ -2510,11 +2479,18 @@ a.play-categories:hover {
 
 .price-dropdown {
 	width: 20%;
-	height: 35px;
 	padding: 5px;
 	font-size: 18px;
 	border: 1px solid #000;
 	border-right: 0;
+	outline: 0;
+}
+
+.gender-dropdown {
+	width: 100%;
+	padding: 2px;
+	font-size: 18px;
+	border: 1px solid #000;
 	outline: 0;
 }
 
@@ -2610,6 +2586,10 @@ a.play-categories:hover {
 	display: table-cell;
     vertical-align: middle;
     padding: 10px 10px 10px 0;
+}
+
+.article-inner-fix {
+	padding-bottom: 0; 
 }
 
 .global-textbox {
@@ -3013,7 +2993,7 @@ div.dp-popup td.disabled {
 
 .pitchvideo {
 	width: 100%;
-	max-height: 230px;
+	height: 230px;
 }
 
 .pitchstorytextarea {
@@ -3062,7 +3042,6 @@ div.dp-popup td.disabled {
 
 .st-radio-hdn {
     opacity: 0;
-    display: none!important;
 }
 
 .rewardbuilder-wrapper .form-control {
@@ -3130,7 +3109,7 @@ div.dp-popup td.disabled {
 .rewardtype-catlist li > a:hover {
 	text-decoration: none;
 	color: #000;
-	background: #F1F0F0;
+	background: #bcbcbc;
 }
 
 .remove-button {
@@ -3151,6 +3130,14 @@ div.dp-popup td.disabled {
 }
 
 .socialLinkWrap label {
+	font-size: 16px;
+}
+
+.profileLinkWrap {
+	margin: 0;
+}
+
+.profileLinkWrap label {
 	font-size: 16px;
 }
 
@@ -3334,6 +3321,13 @@ body.user-dashboard-backed {
 	padding: 25px 0;
 }
 
+.dash-head-wrap:before,
+.dash-head-wrap:after {
+	clear: both;
+	display: table-cell;
+	content: '';
+}
+
 .dash-author-wrap {
 	display: table;
 }
@@ -3362,6 +3356,10 @@ body.user-dashboard-backed {
 	padding-left: 20px;
 }
 
+.dash-edit {
+	margin-top: 5px;
+}
+
 .dash-edit > a {
 	color: #fff;
 }
@@ -3369,6 +3367,11 @@ body.user-dashboard-backed {
 .dash-edit > a:hover {
 	color: #ccc;
 	text-decoration: none;
+}
+
+.edit-desc {
+	color: #000;
+	text-decoration: underline;
 }
 
 .dash-edit > a > i {
@@ -3659,6 +3662,27 @@ body.user-dashboard-backed {
 	clear: both;
 }
 
+.color-black {
+	color: #000;
+	font-size: 30px;
+	padding-left: 0;
+	text-transform: uppercase;
+}
+
+.edit-dashboard-wrapper {
+	background: #fff; 
+	display: block;
+	min-height: 375px;
+	padding-bottom: 15px;
+}
+
+.edit-dashboard-wrapper:before,
+.edit-dashboard-wrapper:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
 .project-dash {
 	margin: 20px 0;
 }
@@ -3667,6 +3691,7 @@ body.user-dashboard-backed {
 	padding: 0 20px 10px 20px;
 	background: #fff;
 	position: relative;
+	min-height: 282px;
 }
 
 .project-container:before {
@@ -3684,11 +3709,36 @@ body.userdashboard {
 	background-size: cover;
 }
 
+.project-image-wrapper {
+	position: relative;
+}
+
 .project-title {
 	display: inline-block;
 	width: 375px;
 	margin-bottom: 5px;
 	text-transform: uppercase;
+}
+
+.project-tedit {
+	width: 400px;
+}
+
+.edit-profile-image {
+	background: rgba(255, 255, 255, 0.7);
+	width: 100%;
+	height: 102%;
+	position: absolute;
+	top: 0;
+	text-align: center;
+	display: table;
+	padding: 146px 0;
+}
+
+.edit-profile-link {
+	color: #000;
+	text-decoration: underline;
+	font-size: 30px;
 }
 
 .project-social {
@@ -3835,50 +3885,6 @@ body.userdashboard {
 
 .footer-gplus {
 	background-position: 0 -99px;
-}
-
-.footer-vimeo {
-	background-position: 0 -131px;
-}
-
-.footer-youtube {
-	background-position: 0 -163px;
-}
-
-.footer-left {
-	padding: 0 10px 0 0;
-}
-
-.footer-right {
-	padding: 0 0 0 10px;
-}
-
-.owl-carousel {
-	width: 520px;
-}
-
-.owl-theme .owl-controls {
-	text-align: right;
-}
-
-.testimonial-header {
-	color: #fff;
-	font-size: 24px;
-	font-style: italic;
-}
-
-.blog-img {
-	width: 85px;
-}
-
-.footer-textbox {
-	position: relative;
-}
-
-.footer-textbox > input {
-	background: transparent;
-	display: inline-block;
-	width: 220px;
 }
 
 .footer-vimeo {
@@ -4489,46 +4495,13 @@ a.thanks-heading {
 	text-decoration: none;
 }
 
-.footer-textbox > button {
-	background: transparent;
-	padding: 0;
-	line-height: 0;
-	position: absolute;
-	right: 120px;
-	top: -2px;
-}
 
-.footer-textbox > button > i {
-	font-size: 36px;
-	color: #eb2033;
-}
 
-.footer-copyright {
-	background: rgba(0, 0, 0, 0.83);
-	padding: 20px; 
-}
 
-.privacy-links > a {
-	color: #9d9d9d;
-}
 
-.privacy-links > a:after {
-	content: '|';
-	padding-left: 8px;
-}
 
-.privacy-links > a:last-child:after {
-	content: '';
-}
 
-.copyright {
-	color: #9d9d9d;
-	margin-bottom: 0;
-}
 
-.checkboxfix {
-	margin: 0;
-}
 
 
 
@@ -6267,4 +6240,3 @@ a.thanks-heading {
 		display: block;
 	}
 }
- 

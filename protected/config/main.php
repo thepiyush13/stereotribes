@@ -28,6 +28,28 @@ return array(
          'payment' => array(
             'defaultController' => 'paypal',
         ),
+        //start comment module 
+            
+            'comment'=>array(
+            'class'=>'ext.comment-module.CommentModule',
+            'commentableModels'=>array(
+                // define commentable Models here (key is an alias that must be lower case, value is the model class name)
+                'post'=>'Project'
+            ),
+            // set this to the class name of the model that represents your users
+            'userModelClass'=>'User',
+            // set this to the username attribute of User model class
+            'userNameAttribute'=>'name',
+            // set this to the email attribute of User model class
+            'userEmailAttribute'=>'email',
+            // you can set controller filters that will be added to the comment controller {@see CController::filters()}
+//          'controllerFilters'=>array(),
+            // you can set accessRules that will be added to the comment controller {@see CController::accessRules()}
+//          'controllerAccessRules'=>array(),
+            // you can extend comment class and use your extended one, set path alias here
+//          'commentModelClass'=>'comment.models.Comment',
+        ),
+            //end comment module
         
         // uncomment the following to enable the Gii tool
 
