@@ -30,16 +30,23 @@ $cs->registerScriptFile('/js/custom/fundraise.js', CClientScript::POS_END);
 
         </section>
 
-        <section class="col-md-12 fund-block-wrapper">
+        <section class="col-md-12 fund-block-wrapper rewards-block-wrapper">
             
             
-        <?php foreach ($campaign->rewards as $reward) { ?>
+        <?php 
+            foreach ($campaign->rewards as $reward) { 
+                $available = $reward->available;
+                if($rewardSold[$reward->id]) {
+                    $available -= $rewardSold[$reward->id];
+                }
+                $classAvail = ($available == 0) ? 'reward-not-avaialble' : 'reward-available';
+            ?>
 
-            <div class="fund-block-inner color-dark"><!--  Fund block starts-->
+            <div class="fund-block-inner color-dark <?php echo $classAvail; ?>"><!--  Fund block starts-->
                 <div class="reward-currency">£<?php echo $reward->fundAmount; ?></div>
                 <div class="reward-block">
                     <div class="reward-type"><?php echo $reward->name; ?></div>
-                    <div class="reward-amount"><?php echo $reward->available; ?></div>
+                    <div class="reward-amount"><?php echo $available; ?></div>
                 </div>
                 <p><?php echo $reward->description;?></p>
                 <div class="reward-estimation">
@@ -59,7 +66,7 @@ $cs->registerScriptFile('/js/custom/fundraise.js', CClientScript::POS_END);
                 </div>
                  <a href="#" class="paybtn" data-toggle="modal" data-target="#fundstep2">Pay</a>
                  
-                <?php if($reward->available == 0) { ?>
+                <?php if($available == 0) { ?>
                 <div class="fund-complete-block">
                      <div class="fund-complete-title">Fully Amped</div>
                 </div>

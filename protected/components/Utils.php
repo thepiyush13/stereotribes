@@ -403,5 +403,14 @@ class Utils {
         $res = round(($val1 / $val2) * 100, $precision);
         return $res;
     }
+    
+    
+    public static function getDateInterval($d1, $d2) {
+        $date1 = new DateTime($d1);
+        $date2 = new DateTime($d2);
+        $diff =  $date2->diff($date1);
+        return $diff;
+        
+    }
 
 }

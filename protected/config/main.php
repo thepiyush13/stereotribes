@@ -1,6 +1,5 @@
 <?php
 
-
 require 'environment.php';
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 
@@ -91,7 +90,7 @@ return array(
             'rules' => array(
                 '' => '/site/index',
                 '/campaign/create' => '/campaign/create',
-		'/campaign/<id:\d+>' => '/campaign/index',
+                '/campaign/<id:\d+>' => '/campaign/index',
                  'dashboard/<action:\w+>' => 'dashboard/default/<action>',     
                 '/campaign/<id:\d+>/step1' => '/campaign/step1',
                 '/campaign/<id:\d+>/step2' => '/campaign/step2',
@@ -103,7 +102,7 @@ return array(
                 //For fund raising
                 '/campaign/<pid:\d+>/contribute' => '/fundraise/contribute',
                 '/campaign/<pid:\d+>/contribute/payment' => '/fundraise/payment',
-                '/campaign/<pid:\d+>/contribute/share' => '/fundraise/share',
+                '/campaign/<pid:\d+>/contribute/share/<ufid:\d>' => '/fundraise/share',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
