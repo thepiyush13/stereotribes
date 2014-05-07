@@ -5,10 +5,11 @@ $cs->registerScriptFile('/js/custom/fundraise.js', CClientScript::POS_END);
 ?>
 <div class="container fund-step-container">
     <div class="row">
+        
         <section class="main-hero-section">
             <?php if($fundingInfo['thankyou_image_url']) { ?>
             <img src="<?php echo $fundingInfo['thankyou_image_url']; ?>" class="img-responsive" />
-            <?php } else { ?>
+            <?php } else if( $fundingInfo['thankyou_video_url']){ ?>
             <iframe class="thankyou-video" src="<?php echo $fundingInfo['thankyou_video_url']; ?>" frameborder="0" allowfullscreen></iframe>
             <?php } ?>
         </section>
