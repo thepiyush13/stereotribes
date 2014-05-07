@@ -43,7 +43,7 @@ echo '</pre>';
                     <div class="videowrapper">
 
                         <iframe src="<?php echo $data['videoUrl'] ?>" frameborder="0" allowfullscreen></iframe>
-<img src="/img/gaga.jpg" class="img-responsive" />
+<img src="/img/<?php echo $data['image_url'] ?>" class="img-responsive" /> 
                     </div>
 
                     <section class="block-three">
