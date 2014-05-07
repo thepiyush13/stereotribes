@@ -54,7 +54,7 @@ class FundraiseController extends Controller {
             $form->setAttributes($_POST);
             if ($form->validate()) {
                 $ufp = new UserFundProject();
-                $ufp->user_id = Yii::app()->user->details->id;
+                $ufp->user_id = Yii::app()->user->getId();
                 $ufp->project_id = $_POST['projectId'];
                 $ufp->amount = $_POST['amount'];
                 $ufp->timestamp = time();
@@ -62,6 +62,8 @@ class FundraiseController extends Controller {
                 $ufp->reward_id = $_POST['rewardId'];
                 $ufp->reward_received_status = 0;
                 $ufp->status = 'FAILED';
+                
+                //print_r($ufp->attributes);exit;
                 $ufp->save();
 
                 $errors = $ufp->getErrors();
