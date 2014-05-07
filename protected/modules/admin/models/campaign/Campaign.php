@@ -104,6 +104,7 @@ class Campaign extends CFormModel {
     public $rememberMe;
     public $promotionMethod;
     public $toDoList;
+    public $image_url;
 
     /**
      * fund stat
@@ -140,7 +141,7 @@ class Campaign extends CFormModel {
      * fetch Campaign
      */
     public function fetchCampaignAttributes() {
-        $attributes = array('title', 'shortSummary', 'country', 'city', 'flipImageUrl', 'shortUrl', 'category', 'goal', 'currency', 'projectFor', 'fundingType', 'daysRun', 'endDate', 'paymentDate', 'mediaType', 'videoUrl', 'imageUrl', 'pitchStory', 'mainLink', 'thankyouMediaType', 'thankyouVideoUrl', 'thankyouImageUrl', 'shareUrl', 'status', 'socialAmplifierStatus', 'trackerCode', 'paymentType', 'rememberMe', 'promotionMethod', 'userId');
+        $attributes = array('title', 'shortSummary', 'country', 'city', 'flipImageUrl', 'shortUrl', 'category', 'goal', 'currency', 'projectFor', 'fundingType', 'daysRun', 'endDate', 'paymentDate', 'mediaType', 'videoUrl', 'imageUrl', 'pitchStory', 'mainLink', 'thankyouMediaType', 'thankyouVideoUrl', 'thankyouImageUrl', 'shareUrl', 'status', 'socialAmplifierStatus', 'trackerCode', 'paymentType', 'rememberMe', 'promotionMethod', 'userId','image_url');
         $sql = "SELECT * FROM project where id = :CAMPAIGN_ID";
         $bindValues = array(':CAMPAIGN_ID' => $this->id);
         $result = $this->fetch($sql, $bindValues, 'queryRow');
