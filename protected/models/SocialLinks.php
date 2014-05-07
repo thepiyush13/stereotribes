@@ -73,5 +73,19 @@ class SocialLinks {
         $share_url = self::$lkd_url . "/shareArticle?mini=true&url={$url}&title={$encoded_title}&summary={$encoded_desc}";
         return $share_url;
     }
+    
+    
+    
+    /**
+     * Retunrns mail to link
+     * @param string $email
+     * @param string $subject
+     * @param string $body
+     * @return string
+     */
+    public static function get_mail_to_link($email = "admin@stereotribes.com",$subject,$body) {
+        
+        return  "mailto:{$email}?subject={$subject}&body={$body}";
+    }
 
 }

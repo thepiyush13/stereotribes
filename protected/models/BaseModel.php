@@ -30,7 +30,7 @@ class BaseModel extends CActiveRecord {
                     ->insert($table, $data);
     }
     
-    public function selectData($sql="", $bindValues = array(),$method = 'queryAll') {
+    public function fetch($sql="", $bindValues = array(),$method = 'queryAll') {
         return Yii::app()->db
                     ->createCommand($sql)
                     ->bindValues($bindValues)

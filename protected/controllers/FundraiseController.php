@@ -56,7 +56,7 @@ class FundraiseController extends Controller {
                 $ufp = new UserFundProject();
                 $ufp->user_id = Yii::app()->user->details->id;
                 $ufp->project_id = $_POST['projectId'];
-                $ufp->amount = $_POST['amount'];;
+                $ufp->amount = $_POST['amount'];
                 $ufp->timestamp = time();
                 $ufp->shipping_address = implode(",", $_POST['shippingAddress']);
                 $ufp->reward_id = $_POST['rewardId'];
@@ -85,7 +85,7 @@ class FundraiseController extends Controller {
         $totalFund = $ufp->getToalFund($pid);
         $relatedProjects = $ufp->getRelatedProjects($pid);
 
-        // echo "<pre>",print_r($relatedProjects);exit;
+        // echo "<pre>",print_r($fundingInfo);exit;
         $this->render('share', array(
             'fundingInfo' => $fundingInfo,
             'totalFund' => $totalFund,
@@ -97,39 +97,62 @@ class FundraiseController extends Controller {
         if (Yii::app()->request->isAjaxRequest) {
             $pid = $_POST['projectId'];
             $action = $_POST['action'];
-            
-            if ($pid && is_numeric($pid)) {
-                $project = Project::model()->findByPk($pid);
-                if ($project) {
-                    if ($action === 'like') {
-                        $ulp = new UserLoveProject();
-                        $ulp->setAttributes(array(
-                            'user_id' => Yii::app()->user->details->id,
-                            'project_id' => $pid
-                        ));
-                        
-                        if(!$ulp->save()) Ajax::error($ulp->getErrors());
-                        
-                    } else {
-                        $ulp = Project::model()->find(array(
-                            'condition'=>array('projectId=:PROJECTID','user_id=:USERID'),
-                            'params'=>array(':PROJECTID'=>$pid,':USERID' => Yii::app()->user->details->id),
-                        ));
-                        
-                        if(!$ulp) Ajax::error("Row not found");
-                        
-                        $delete = Project::model()->deleteByPk($ulp->id);
-                        if(!$delete)  Ajax::error('delete failed');
-                    }
-                    
-                    //Send success response
-                    Ajax::success($action);
-                    
-                } else {
-                    Ajax::error("Project not found");
-                }
+
+            if (!$pid && !is_numeric($pid)) {
+                Ajax::error("Invalid parameters");
             }
+
+            $project = Project::model()->findByPk($pid);
+            if (!$project) {
+                Ajax::error("Project not found");
+            }
+
+            $ulp = UserLoveProject::model()->find(array(
+                'condition' => 'project_id=:PROJECTID AND user_id=:USERID',
+                'params' => array(':PROJECTID' => $pid, ':USERID' => Yii::app()->user->details->id),
+            ));
+            
+            if ($ulp) {
+                (!$ulp->delete()) 
+                    ? Ajax::error('delete failed')
+                    : Ajax::success('unliked');
+            } else {
+                $model = new UserLoveProject();
+                $model->user_id = Yii::app()->user->details->id;
+                $model->project_id = $pid;
+                $model->timestamp = date('Y-m-d');
+                
+                
+                if (!$model->save()) {
+                    Ajax::error($model->getErrors());
+                }
+                
+                Ajax::success('liked');
+            }
+
         }
+    }
+    
+    
+    public function sendChat() {
+        if (Yii::app()->request->isAjaxRequest) {
+            
+            $text = $_POST['text'];
+            if(!$text) {
+                Ajax::error("Content can't be null");
+            }
+            
+            $mailQ = new MailQueue();
+            $add = $mailQ->add('support@steriotribes.com',"Chat message",$text);
+            
+            if($add) {
+                Ajax::success('added');
+            }
+            
+            Ajax::error($mailQ->getErrors());
+            
+        }
+        
     }
 
 }

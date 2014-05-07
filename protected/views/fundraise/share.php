@@ -1,3 +1,7 @@
+<?php
+$cs = Yii::app()->getClientScript();
+$cs->registerScriptFile('/js/custom/fundraise.js', CClientScript::POS_END);
+?>
 <div class="container fund-step-container">
     <div class="row">
         <section class="main-hero-section">
@@ -19,18 +23,31 @@
             <span class="icon-heart links-heart"></span>
         </nav>            
 
+            <?php 
+                $url = 'http://stereotribes.jumpcatch.com/campaign/'.$fundingInfo['project_id'];
+                $title = $fundingInfo['name'];
+                $desc = $fundingInfo['short_summary'];
+                $fbShareUrl = SocialLinks::get_fb_share_link($url, $title, $desc);
+
+                $tweetUrl = SocialLinks::get_twt_share_link($desc);
+                $gplusShare = SocialLinks::get_gplus_share_link($url, $desc);
+                $mailTo = SocialLinks::get_mail_to_link('admin@stereotribes.com', $title, $desc);
+                
+            ?>
         <section class="col-md-12 fund-block-wrapper fund-block-fix">
+            
             <div class="col-md-6 thanksblock separatorline separatorbottom">
                 <h1 class="thanksblock-heading red-highlight">SHARE YOUR PASSION!</h1>
                 <h3 class="thanks-subheading">Amplify the campaign by<br> sharing it everyway possible!</h3>
                 <div class="thanksocial-wrapper">
-                    <a class="thanksocial thanks-message" href="#"></a>
-                    <a class="thanksocial thanks-link" href="#"></a>
+                    <a class="thanksocial thanks-message" href="<?php echo $mailTo; ?>"></a>
+                    <a class="thanksocial thanks-link" href="<?php echo $url; ?>"></a>
                 </div>
                 <div class="thanksocial-wrapper">
-                    <a class="thanksocial thanks-fb" href="#"></a>
-                    <a class="thanksocial thanks-twitter" href="#"></a>
-                    <a class="thanksocial thanks-gplus" href="#"></a>
+                    
+                    <a class="thanksocial thanks-fb" href="<?php echo $fbShareUrl; ?>"></a>
+                    <a class="thanksocial thanks-twitter" href="<?php echo $tweetUrl; ?>"></a>
+                    <a class="thanksocial thanks-gplus" href="<?php echo $gplusShare; ?>"></a>
                 </div>
             </div>
 
@@ -59,10 +76,11 @@
                 <h3 class="thanks-subheading">The campaign team would<br>
                     love to hear from you!</h3>
                 <div class="form-group global-textarea">
-                    <textarea type="text" maxlength="180" class="form-control charcount" id="title-input" autocomplete="off"></textarea>
+                    <textarea type="text" maxlength="180" id="chatText" class="form-control charcount" id="title-input" autocomplete="off"></textarea>
                     <div class="chatbtn-wrp">
                         <div class="inputchatting-countwrap"><span class="inputcount">0</span> of 500</div>
-                        <button class="chatsendbutton">Send</button>
+                        <button class="chatsendbutton" id="chatsendbutton">Send</button>
+                        
                     </div>
                 </div>
             </div>
@@ -181,6 +199,20 @@
     </div>
 
 </div>
+
+<style>
+    
+.thankyou-video {
+    width:100%;
+    height:715px;
+}
+
+.liked {
+    color: #d6201f !important;
+}
+</style>
+
+
 
 
 
