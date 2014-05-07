@@ -52,7 +52,7 @@ foreach ($navs as $group => $nav) {
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a  href="/admin/dashboard/" class="<?php echo $dashboardActive ?>">
+                    <a  href="/dashboard/" class="<?php echo $dashboardActive ?>">
                         <i class="icon-dashboard"></i>
                         <span>Dashboard</span>
                     </a>

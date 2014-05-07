@@ -84,6 +84,9 @@ class ProfileController extends Controller {
         $data = $result = array();
         //user id passed or not 
         $user_id = isset($_GET['id']) ? $_GET['id'] : Yii::app()->user->getId();
+        if(!$user_id){
+            $this->redirect(array('/login'));
+        }
         $data['user_id'] = $user_id;
         //get data 
         $data = $this->get_header($user_id);
@@ -126,8 +129,42 @@ class ProfileController extends Controller {
         ));
     }
 
-    public function actionEdit() {
-        $this->render('edit');
+    public function actionEdit($id) {
+        
+        //if user has no permission then redirect 
+        
+        if( $this->autorized_user($id)==false){
+             $this->redirect(array('/profile?id='.$id));
+        }
+                                    $model=Mainuser::model()->findByPk($id);
+                                    $old_file = $model->profile_image;
+
+		if(isset($_POST['Mainuser']))
+		{
+			$model->attributes=$_POST['Mainuser'];
+                       
+                        $uploadedFile=CUploadedFile::getInstance($model,'profile_image');
+                         if(isset($uploadedFile)){
+                              $fileName = "{$id}-{$uploadedFile}";  // random number + file name
+                              $uploadedFile->saveAs(Yii::app()->basePath.'/../uploads/profile/'.$fileName);
+                              $model->profile_image = $fileName;
+                              
+                        }else{
+                            $model->profile_image =$old_file;
+                        }
+                      
+                        if($model->save()){
+                            
+                          
+                            $this->redirect(array('profile/edit/'.$id));
+                        }
+                       
+			
+		}
+
+		$this->render('edit',array(
+			'model'=>$model,
+		));
     }
 
     public function actionHide() {

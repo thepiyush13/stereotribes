@@ -89,7 +89,7 @@ descriptions
  </p>        
                     </button>-->
 
-      <div class="col-md-4 box-bottom">
+<!--      <div class="col-md-4 box-bottom">
         <a href="#">
           <button class="btn btn-xlarge">
             <i class="fa fa-cog fa-5x" ></i><br/> 
@@ -97,7 +97,7 @@ descriptions
             <p>Admin settings</p>        
           </button>
         </a>
-      </div>         
+      </div>         -->
     
     </div>
 

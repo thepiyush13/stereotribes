@@ -210,10 +210,12 @@ EOD;
                                 <div class="article-content">
 
                                     <div class="col-md-6 amplifyblock">
+                                        <a href='<?php  echo "/campaign/{$data['id']}/contribute" ?>'>
                                         <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">
                                             <span class="amp-text">Amplify<br> Project</span>
                                             <span class="amp-icon"></span>
                                         </button>
+                                        </a>
                                     </div>
 
                                     <div class="col-md-6">
@@ -501,10 +503,12 @@ EOD;
 
                 <div class="amplifyblock">
 
-                    <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">
-                        <span class="amp-text">Amplify<br> Project</span>
-                        <span class="amp-icon"></span>
-                    </button>
+                    <a href='<?php  echo "/campaign/{$data['id']}/contribute" ?>'>
+                                        <button type="button" class="btn btn-primary btn-lg btn-block amplifybutton">
+                                            <span class="amp-text">Amplify<br> Project</span>
+                                            <span class="amp-icon"></span>
+                                        </button>
+                                        </a>
 
                     <p>FUND THIS PROJECT AND WIN <br> 2 VIP TICKETS TO BESTIVAL 2014*</p>
 

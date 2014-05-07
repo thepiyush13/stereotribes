@@ -52,9 +52,38 @@ foreach ($navs as $group => $nav) {
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a  href="/admin/dashboard/" class="<?php echo $dashboardActive ?>">
+                    <a  href="/dashboard/" class="<?php echo $dashboardActive ?>">
                         <i class="icon-dashboard"></i>
                         <span>Dashboard</span>
+                    </a>
+                      <a  href="/dashboard/reporting" class="<?php echo $dashboardActive ?>">
+                        <i class="icon-dashboard"></i>
+                        <span>reporting</span>
+                    </a>
+                      <a  href="/dashboard/users" class="<?php echo $dashboardActive ?>">
+                        <i class="icon-dashboard"></i>
+                        <span>users</span>
+                    </a>
+                      <a  href="/dashboard/projects" class="<?php echo $dashboardActive ?>">
+                        <i class="icon-dashboard"></i>
+                        <span>projects</span>
+                    </a>
+                      <a  href="/dashboard/categories" class="<?php echo $dashboardActive ?>">
+                        <i class="icon-dashboard"></i>
+                        <span>categories</span>
+                    </a>
+                      <a  href="/dashboard/financial" class="<?php echo $dashboardActive ?>">
+                        <i class="icon-dashboard"></i>
+                        <span>financial</span>
+                    </a>
+                     <a  href="/dashboard/tribes" class="<?php echo $dashboardActive ?>">
+                        <i class="icon-dashboard"></i>
+                        <span>tribes</span>
+                    </a>
+                    
+                     <a  href="/newsletter/" class="<?php echo $dashboardActive ?>">
+                        <i class="icon-dashboard"></i>
+                        <span>Newsletter</span>
                     </a>
                 </li>
             </ul>
