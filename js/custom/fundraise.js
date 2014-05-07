@@ -113,25 +113,24 @@ Fundraise = {
         $.validity.clear();
         
         $.validity.start();
-        $('#chatText').require();
-        
+        $('#chatText').require("Message can't be blank").maxLength(500);
         var res = $.validity.end();
-        if(!res.valid) {
-            return;
-        }
+        if(!res.valid)  return;
         
-        var text = $('#chatText').val();
         
         $.ajax({
             url: "/fundraise/sendChat",
             method: "POST",
             dataType: "json",
             data: {
-                content: text,
+                content: $('#chatText').val(),
             }
         }).done(function(result) {
            if(result.error === 0) {
-               $('#chatText').after('<label class="error">Thank you! .We will get back to you soon.</label>');       
+               $('#chatText').after('<label class="error">Thank you! .We will get back to you soon.</label>');
+               $('#chatText').next('label.error').fadeOut(5000,function(){
+                   $('#chatText').val("");
+               });
            }
            
         }).fail(function(jqXHR, textStatus) {

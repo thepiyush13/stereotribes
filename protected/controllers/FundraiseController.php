@@ -118,10 +118,9 @@ class FundraiseController extends Controller {
                     : Ajax::success('unliked');
             } else {
                 $model = new UserLoveProject();
-                $model->user_id = Yii::app()->user->details->id;
+                $model->user_id = Yii::app()->user->getId();
                 $model->project_id = $pid;
                 $model->timestamp = date('Y-m-d');
-                
                 
                 if (!$model->save()) {
                     Ajax::error($model->getErrors());
@@ -134,10 +133,10 @@ class FundraiseController extends Controller {
     }
     
     
-    public function sendChat() {
+    public function actionSendChat() {
         if (Yii::app()->request->isAjaxRequest) {
             
-            $text = $_POST['text'];
+            $text = $_POST['content'];
             if(!$text) {
                 Ajax::error("Content can't be null");
             }
