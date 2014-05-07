@@ -6,6 +6,7 @@
 
 $(document).ready(function(){
     //call init function and process ajax data to grid
+    
     pathArray = window.location.href.split( '/' );
 protocol = pathArray[0];
 host = pathArray[2];

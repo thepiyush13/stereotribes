@@ -42,9 +42,9 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
 
-                <a class="navbar-brand stereologo" href="index.html">Stereotribes</a>
+                <a class="navbar-brand stereologo" href="/">Stereotribes</a>
 
-                <a class="navbar-brand stereologo-mob" href="index.html">Stereotribes</a>		  
+                <a class="navbar-brand stereologo-mob" href="/">Stereotribes</a>		  
 
                 <ul class="nav navbar-nav navbar-left nav-center">
 
@@ -110,7 +110,7 @@
                                 </div>
                         </div>
                     </li>
-                    <li class="mobilehide"><a href="#"><i class="icon-user"></i></a></li>
+                    <li class="mobilehide"><a href="/profile"><i class="icon-user"></i></a></li>
                     <li class="dropdown usericon">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i></a>
                         <div class="dropdown-menu menuanimate">
@@ -235,13 +235,13 @@
         <script src="/js/app/controllers.js"></script>
         <script src="/js/app/controllers/step4.js"></script>
         <script src="/js/app/controllers/step5.js"></script>
-
+<!--<script src="/js/freewall.js"></script>-->
         <script src="/js/app/models.js"></script>
         <script src="/js/app/services.js"></script>
         <script src="/js/campaign.js"></script>
         <script src="/js/app/directives.js"></script>
          <script src="/js/jquery.validity.min.js"></script>
-        
+        <!--<script src="/js/init.js"></script>-->
         <script type="text/javascript">
         $.validity.setup({ outputMode:"label" });
         </script>

@@ -4495,8 +4495,47 @@ a.thanks-heading {
 	text-decoration: none;
 }
 
+.project-add-media {
+	background: #fff;
+}
 
+.upload-media-wrap {
+	list-style: none;
+	padding: 0px 0px 20px 15px;
+}
 
+.upload-media-wrap li {
+	display: inline-block;
+	margin-right: 50px;
+}
+
+.upload-media-wrap li > a {
+	color: #000;
+	text-transform: uppercase;
+	font-size: 22px;
+	font-weight: 600;
+	padding: 0 0 0 30px;
+}
+
+.up-cam {
+	background-position: 0px 5px;
+}
+
+.up-video {
+	background-position: 0px 3px;
+}
+
+.up-music {
+	background-position: 0px 5px;
+}
+
+.btnfilefix {
+	overflow: visible!important;
+}
+
+.upload-head {
+	margin-top: 0;
+}
 
 
 
@@ -6240,3 +6279,4 @@ a.thanks-heading {
 		display: block;
 	}
 }
+ 

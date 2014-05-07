@@ -40,9 +40,9 @@
 	  <!-- Brand and toggle get grouped for better mobile display -->
 	  <div class="navbar-header">
 
-	    <a class="navbar-brand stereologo" href="index.html">Stereotribes</a>
+	    <a class="navbar-brand stereologo" href="/">Stereotribes</a>
 
-	    <a class="navbar-brand stereologo-mob" href="index.html">Stereotribes</a>		  
+	    <a class="navbar-brand stereologo-mob" href="/">Stereotribes</a>		  
 
 	    <ul class="nav navbar-nav navbar-left nav-center">
 
@@ -117,7 +117,7 @@
 	      </li>
 
 	      <li class="mobilehide">
-	      	<a href="#"><i class="icon-user"></i></a>
+	      	<a href="/profile"><i class="icon-user"></i></a>
 	      </li>
 	      
 	      <li class="dropdown usericon">
@@ -136,7 +136,7 @@
                                     <a href="#"><i class="icon-search"></i> Search</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="icon-user"></i> sign in</a>
+                                    <a href="/profile"><i class="icon-user"></i> sign in</a>
                                 </li>
                             </ul>
                         </div>

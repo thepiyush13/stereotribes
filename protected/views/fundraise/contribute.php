@@ -1,6 +1,7 @@
  
 <?php
 $cs = Yii::app()->getClientScript();
+$cs->registerScriptFile('/js/custom/utils.js', CClientScript::POS_END);
 $cs->registerScriptFile('/js/custom/fundraise.js', CClientScript::POS_END);
 ?>
 

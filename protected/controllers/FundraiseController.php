@@ -17,6 +17,10 @@ class FundraiseController extends Controller {
         //Setting the selected reward
         $selectedReward = null;
         $rewardIds = array();
+        if(!$campaign->rewards){
+            $this->redirect('/');
+            return ;
+        }
         foreach ($campaign->rewards as $reward) {
             if ($reward->id == $rewardId) {
                 $selectedReward = $reward;

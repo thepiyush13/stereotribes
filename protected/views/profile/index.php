@@ -9,7 +9,8 @@
 
             	 	<div class="project-image-wrapper">
             	 		
-            	 		<img src="/img/gaga.jpg" class="img-responsive" />
+            	 		<img src="<?php  echo Yii::app()->request->baseUrl.'/uploads/profile/'.$data['user_details'][0]['profile_image'] ?>" class="img-responsive" />
+                                  <?php // echo CHtml::image(Yii::app()->request->baseUrl.'/uploads/profile/'.$model->profile_image,"profile_image",array("class"=>'img-responsive')); ?> 
 
             	 	</div>
 
@@ -57,7 +58,7 @@
 
     					    	<div class="fund-normal-title-block fund-normal-fix">
     					    		
-    								<a href="#" id="fundlive-title" class="fund-normal-title normaltitle"><?php  echo $project['title']; ?></a>
+    								<a href="/campaign/<?php  echo $project['id']?>" id="fundlive-title" class="fund-normal-title normaltitle"><?php  echo $project['title']; ?></a>
 
     								<div class="fund-normal-location-block">
     									
