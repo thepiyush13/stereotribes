@@ -124,7 +124,7 @@
 	    <ul class="nav navbar-nav navbar-right">
 	      <li class="dropdown mobilehide">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-join"></i></a>
-                  <div class="dropdown-menu">
+                  <div class="dropdown-menu joinblock">
                       <div class="row">
                           <div class="container menublk">
                               
@@ -133,12 +133,12 @@
                               </div>
                               
                               <div class="col-md-6">
-                                  <div class="col-md-2 join-icons"><i class="icon-facebook"></i></div>
-                                  <div class="col-md-2 join-icons"><i class="icon-twitter"></i></div>
-                                  <div class="col-md-2 join-icons"><i class="icon-instagram"></i></div>
-                                  <div class="col-md-2 join-icons"><i class="icon-vimeo2"></i></div>
-                                  <div class="col-md-2 join-icons"><i class="icon-googleplus"></i></div>
-                                  <div class="col-md-2 join-icons"><i class="icon-youtube-play"></i></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-facebook"></i></a></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-twitter"></i></a></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-instagram"></i></a></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-vimeo2"></i></a></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-googleplus"></i></a></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-youtube-play"></i></a></div>
                               </div>
                               
                           </div>

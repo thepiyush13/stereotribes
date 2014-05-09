@@ -4545,11 +4545,23 @@ a.thanks-heading {
     height: 32px;
 }
 
-.join-icons > i {
+.joinblock {
+    padding: 30px 0 10px;
+}
+
+.join-icons > a {
+    text-decoration: none;
+}
+
+.join-icons > a > i {
     font-size: 40px;
     border: 2px solid #fff;
     border-radius: 100%;
     padding: 10px;
+}
+
+.join-icons > a > i:hover {
+    color: #e41616;
 }
 
 
