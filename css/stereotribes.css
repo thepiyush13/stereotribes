@@ -4545,7 +4545,9 @@ a.thanks-heading {
     height: 32px;
 }
 
-
+.join-icon > i {
+    font-size: 20px;
+}
 
 
 
