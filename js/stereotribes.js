@@ -103,7 +103,7 @@
     var width = $(window).width();
     if (width < 1025){
 
-       $('.brickhover').on('click',function(){
+      $('.brickhover').on('click',function(){
         $(this).toggleClass('brickclick');
       });
 
@@ -115,6 +115,10 @@
     });
 
     $('.menuplay-categories').click(function(e) {
+        e.stopPropagation();
+    });
+    
+    $('.join-icons > a > i').click(function(e) {
         e.stopPropagation();
     });
 
