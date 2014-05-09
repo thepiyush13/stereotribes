@@ -137,7 +137,7 @@
                                   <div class="col-md-2 join-icons"><i class="icon-twitter"></i></div>
                                   <div class="col-md-2 join-icons"><i class="icon-instagram"></i></div>
                                   <div class="col-md-2 join-icons"><i class="icon-vimeo2"></i></div>
-                                  <div class="col-md-2 join-icons"><i class="googleplus"></i></div>
+                                  <div class="col-md-2 join-icons"><i class="icon-googleplus"></i></div>
                                   <div class="col-md-2 join-icons"><i class="icon-youtube-play"></i></div>
                               </div>
                               
