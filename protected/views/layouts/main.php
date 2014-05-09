@@ -132,7 +132,7 @@
                                   <img src="/img/join-tribes.png" class="img-responsive" />
                               </div>
                               
-                              <div class="col-md-6">
+                              <div class="col-md-6 joinsocial-block">
                                   <div class="col-md-2 join-icons"><a href="#"><i class="icon-facebook"></i></a></div>
                                   <div class="col-md-2 join-icons"><a href="#"><i class="icon-twitter"></i></a></div>
                                   <div class="col-md-2 join-icons"><a href="#"><i class="icon-instagram"></i></a></div>

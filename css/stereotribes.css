@@ -4549,8 +4549,13 @@ a.thanks-heading {
     padding: 30px 0 10px;
 }
 
+.joinsocial-block {
+    padding: 14px 0;
+}
+
 .join-icons > a {
     text-decoration: none;
+    color: #fff;
 }
 
 .join-icons > a > i {
@@ -4562,6 +4567,7 @@ a.thanks-heading {
 
 .join-icons > a > i:hover {
     color: #e41616;
+    border-color: #e41616;
 }
 
 
