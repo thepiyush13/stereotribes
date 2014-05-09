@@ -122,7 +122,7 @@
 	    </ul>
 
 	    <ul class="nav navbar-nav navbar-right">
-	      <li class="mobilehide">
+	      <li class="dropdown mobilehide">
                   <a href="#"><i class="icon-join"></i></a>
                   <div class="dropdown-menu">
                       <div class="row">
