@@ -99,7 +99,7 @@
 	    <ul class="nav navbar-nav navbar-right">
 
 	      <li class="mobilehide">
-	      	<a href="#"><i class="icon-share"></i></a>
+	      	<a href="#"><i class="icon-join"></i></a>
 	      </li>
 
 	      <li class="dropdown mobilehide">
