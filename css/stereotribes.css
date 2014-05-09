@@ -4546,7 +4546,10 @@ a.thanks-heading {
 }
 
 .join-icons > i {
-    font-size: 50px;
+    font-size: 40px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    padding: 10px;
 }
 
 
