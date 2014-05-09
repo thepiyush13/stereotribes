@@ -4537,6 +4537,16 @@ a.thanks-heading {
 	margin-top: 0;
 }
 
+.icon-join {
+    background: url('../img/join.png') no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    width:32px;
+    height: 32px;
+}
+
+
+
 
 
 

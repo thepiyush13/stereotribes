@@ -122,7 +122,7 @@
 	    </ul>
 
 	    <ul class="nav navbar-nav navbar-right">
-	      <li class="mobilehide"><a href="#"><i class="icon-share"></i></a></li>
+	      <li class="mobilehide"><a href="#"><i class="icon-join"></i></a></li>
 	      <li class="dropdown mobilehide">
                 <a a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-search"></i></a>
                 <div class="dropdown-menu">
