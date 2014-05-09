@@ -101,5 +101,9 @@
     $('.menuplay-categories').click(function(e) {
         e.stopPropagation();
     });
+    
+    $('.join-icons > a > i').click(function(e) {
+        e.stopPropagation();
+    });
 
   });

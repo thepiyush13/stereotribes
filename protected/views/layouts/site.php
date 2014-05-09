@@ -99,7 +99,29 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="mobilehide"><a href="#"><i class="icon-join"></i></a></li>
+                    <li class="dropdown mobilehide">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-join"></i></a>
+                  <div class="dropdown-menu joinblock">
+                      <div class="row">
+                          <div class="container menublk">
+                              
+                              <div class="col-md-6">
+                                  <img src="/img/join-tribes.png" class="img-responsive" />
+                              </div>
+                              
+                              <div class="col-md-6 joinsocial-block">
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-facebook"></i></a></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-twitter"></i></a></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-instagram"></i></a></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-vimeo2"></i></a></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-googleplus"></i></a></div>
+                                  <div class="col-md-2 join-icons"><a href="#"><i class="icon-youtube-play"></i></a></div>
+                              </div>
+                              
+                          </div>
+                      </div>
+                  </div>
+              </li>
                     <li class="dropdown mobilehide">
                         <a a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-search"></i></a>
                         <div class="dropdown-menu">
