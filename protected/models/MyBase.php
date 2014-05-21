@@ -127,7 +127,7 @@ class MyBase{
         
         public function get_normal_block($data){
              $theme_home_folder = Yii::app()->baseUrl;
-             $img_base_path = $theme_home_folder.'img/';
+             $img_base_path = $theme_home_folder.'/img/';
              $desc = substr($data['desc'],0,150);
             $template  = "  <div class='brick brickhover medium new all' data-percent='49%' data-color='#{$data['color']}'>
 				
