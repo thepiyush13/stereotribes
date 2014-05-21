@@ -101,6 +101,11 @@ class FundraiseController extends Controller {
 
     public function actionLikeOrUnlikeProject() {
         if (Yii::app()->request->isAjaxRequest) {
+            
+            if(Yii::app()->user->isGuest ){
+                 Ajax::success("guest");                 
+            }
+            
             $pid = $_POST['projectId'];
             $action = $_POST['action'];
 

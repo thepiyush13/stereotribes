@@ -212,7 +212,7 @@ function delete_record(id)
     url: '<?php echo Yii::app()->createAbsoluteUrl("/newsletter/manage/delete"); ?>',
    data:data,
 success:function(data){
-                 if(data=="true")
+                 if(data)
                   {
                      $('#newsletter-view-modal').modal('hide');
                      $.fn.yiiGridView.update('newsletter-grid', {
@@ -220,11 +220,11 @@ success:function(data){
                          });
                  
                   } 
-                 else
-                   alert("deletion failed");
+//                 else
+//                   alert("deletion failed");
               },
    error: function(data) { // if error occured
-           alert(JSON.stringify(data)); 
+//           alert(JSON.stringify(data)); 
          alert("Error occured.please try again");
        //  alert(data);
     },

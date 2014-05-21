@@ -20,16 +20,19 @@ return array(
         'application.modules.admin.models.*',
         'application.modules.admin.models.campaign.*',
         'application.modules.admin.models.campaign.forms.*',
+      
     ),
     'modules' => array(
         //for custom modules
         'newsletter',
         'dashboard',
+        'pages',
          'payment' => array(
             'defaultController' => 'paypal',
         ),
-        //start comment module 
-            
+       
+//        //start comment module 
+//            
             'comment'=>array(
             'class'=>'ext.comment-module.CommentModule',
             'commentableModels'=>array(
@@ -49,6 +52,7 @@ return array(
             // you can extend comment class and use your extended one, set path alias here
 //          'commentModelClass'=>'comment.models.Comment',
         ),
+        
             //end comment module
         
         // uncomment the following to enable the Gii tool
@@ -93,6 +97,9 @@ return array(
                 '/campaign/create' => '/campaign/create',
                 '/campaign/<id:\d+>' => '/campaign/index',
                  'dashboard/<action:\w+>' => 'dashboard/default/<action>',     
+                 '/category/<id:\d+>/' => '/category/index/',   
+                '/pages/<id:\d+>/' => '/pages/manage/show/',   
+               
                 '/campaign/<id:\d+>/step1' => '/campaign/step1',
                 '/campaign/<id:\d+>/step2' => '/campaign/step2',
                 '/campaign/<id:\d+>/step3' => '/campaign/step3',
@@ -108,6 +115,9 @@ return array(
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 '/register' => '/Appuser/create',
+                
+                //for pages 
+                
             ),
         ),
         'db' => array(

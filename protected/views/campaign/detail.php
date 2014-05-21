@@ -31,7 +31,7 @@ echo '</pre>';
                 <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
                 <li><a href="#updates" data-toggle="tab">Updates/<span>5</span></a></li>
                 <li><a href="#comments" data-toggle="tab">Comments/<span>39</span></a></li>
-                <li><a href="#gallery" data-toggle="tab">Gallery/<span>16</span></a></li>
+<!--                <li><a href="#gallery" data-toggle="tab">Gallery/<span>16</span></a></li>-->
                 <li><a href="#media" data-toggle="tab">Media</a></li>
             </ul>
 
@@ -320,6 +320,13 @@ EOD;
                 </div>
 
                 <div class="tab-pane fade" id="updates">
+                    <?php // $this->widget('SensorarioCommentsWidget', array('thread'=>'100')); 
+                    
+//                    $this->widget('application.modules.comments.widgets.ECommentsListWidget', array(
+//    'model' => $model,
+//));
+                    ?>
+                   
 
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#allupdates" data-toggle="tab">All Updates</a></li>
@@ -425,17 +432,23 @@ EOD;
                 </div>
 
                 <div class="tab-pane fade" id="comments">
-<?php $this->renderPartial('comment.views.comment.commentList', array(
-    'model'=>$model
-)); ?>
+<?php 
+$this->renderPartial('comment.views.comment.commentList', array(    'model'=>$model )); 
+?>
                 </div>
 
-                <div class="tab-pane fade" id="gallery">
+<!--                <div class="tab-pane fade" id="gallery">
 
-                </div>
+                </div>-->
 
                 <div class="tab-pane fade" id="media">
+<?php
+$base_url = Yii::app()->getBaseUrl(true).'/img/' ;
 
+echo '<a href="'.$base_url.$model->image_url.'"> <img src="'.$base_url.$model->image_url.'" class="img-thumbnail " style="width:200px;height:200px" /></a>';
+
+
+?>
                 </div>
 
             </div>
