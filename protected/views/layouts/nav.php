@@ -141,15 +141,18 @@ Yii::app()->clientScript->registerScript('id', $js);
 
               <li>
                   <a href="/login" class="love">Login</a>
+                  
               </li>
               <?php } else { ?>
               <li>
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                           <span class="belowtext"><?php echo Yii::app()->user->name; ?></span>
+                          
                   </a>
+                 
                   <ul class="dropdown-menu">
                     <li>
-                        <a href="/Appuser/profile">Profile</a>
+                        <a href="/profile">Profile</a>
                     </li>
                     <li>
                         <a href="/Appuser/changePassword">Reset Password</a>
@@ -158,6 +161,12 @@ Yii::app()->clientScript->registerScript('id', $js);
                         <a href="/login/logout">Logout</a>
                     </li>
 	    </ul>
+              </li>
+              <li>
+                   <a href="/dashboard" class="dropdown-toggle" >
+                          
+                          <span class="belowtext">Dashboard</span>
+                  </a>
               </li>
               <?php } ?>
 	    </ul>

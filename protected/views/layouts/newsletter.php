@@ -41,9 +41,7 @@
     <body>
         <section id="container" class="">
             <!--header start-->
-            <header class="header stereo-bg"> <div class="sidebar-toggle-box">
-                    <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
-                </div>
+           <?php  $this->renderPartial('//layouts/admin_nav') ; ?> 
                 <!--logo start-->
                 <a href="/admin" class="logo" >STEREOTRIBES</a>
                 <!--logo end-->

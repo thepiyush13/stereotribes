@@ -27,8 +27,15 @@ class CampaignController extends Controller {
         );
         //for comment module 
          $model = Project::model()->findByAttributes(array( 'id'=> $_GET['id'] ));
-         
-        $this->render('detail', array('data' => $result['data'], 'config' => $result['config'],'model'=>$model));
+         $updates_view = new CActiveDataProvider('Updates', array( 
+    'criteria'=>  array(
+       'condition'=>'projectId = "'.$id.'"'
+ )));
+         $updates = new Updates;
+        $this->render('detail', array('data' => $result['data'], 'config' => $result['config'],'model'=>$model,
+            'updates'=>$updates,
+            'updates_view'=>$updates_view    
+                ));
     }
 
     public function actionCreate() {

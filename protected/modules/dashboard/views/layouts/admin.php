@@ -85,6 +85,11 @@ foreach ($navs as $group => $nav) {
                         <i class="icon-dashboard"></i>
                         <span>Newsletter</span>
                     </a>
+                    
+                     <a  href="/pages/" class="<?php echo $dashboardActive ?>">
+                        <i class="icon-dashboard"></i>
+                        <span>Pages</span>
+                    </a>
                 </li>
             </ul>
             <!-- sidebar menu end-->

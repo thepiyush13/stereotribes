@@ -15,7 +15,10 @@
             </span>
         </span>
         <span class="ext-comment-options">
-            <?php if (!Yii::app()->user->isGuest && (Yii::app()->user->id == $data->userId)) {
+            <?php 
+//            $is_owner = MyBase::is_project_creator($model->id, Yii::app()->user->getId());
+//            die($model->id);
+            if ((!Yii::app()->user->isGuest && (Yii::app()->user->getId() == $data->userId))  ) {
                 echo CHtml::ajaxLink('delete', array('/comment/comment/delete', 'id'=>$data->id), array(
                     'success'=>'function(){ $("#ext-comment-'.$data->id.'").remove(); }',
                     'type'=>'POST',
@@ -32,14 +35,15 @@
                 ));
             }
             /* adds edit link to post if is not admin's post so they can still edit it */
-                              elseif ( true /*Yii::app()->getModule('user')->isAdmin()*/) {
+             /*                 elseif ( true ) {
                 echo CHtml::ajaxLink('edit', array('/comment/comment/update', 'id'=>$data->id), array(
                     'replace'=>'#ext-comment-'.$data->id,
                     'type'=>'GET',
                 ), array(
                     'id'=>'ext-comment-edit-'.$data->id,
                 ));
-            }?>
+            } */
+            ?>
         </span>
     </div>
     <div class="commentspacer">
@@ -179,7 +183,7 @@ opacity:0.7;
  
 #comments a:link {
 font: #fff;
-color: #ffffff !important;
+color: rgb(89, 127, 207) !important;
 }
 #comments a:visited {
 text-decoration: none;

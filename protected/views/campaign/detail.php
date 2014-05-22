@@ -320,23 +320,64 @@ EOD;
                 </div>
 
                 <div class="tab-pane fade" id="updates">
-                    <?php // $this->widget('SensorarioCommentsWidget', array('thread'=>'100')); 
+                   <?php 
+//                   $this->widget('zii.widgets.CListView', array(
+//	'dataProvider'=>$updates,
+//	'itemView'=>'application.views.updates._view',
+//)); ?>
                     
-//                    $this->widget('application.modules.comments.widgets.ECommentsListWidget', array(
-//    'model' => $model,
-//));
+                    <?php 
+                    //finding if user is project creator - show this form only if he is owner of the project 
+                    $is_owner = MyBase::is_project_creator($model->id, Yii::app()->user->getId());
+                    if($is_owner){
+                    $this->renderPartial('application.views.updates._form', array('model'=>$updates,'project_id'=>$model->id)); 
+                    }
+                    
                     ?>
                    
+                    
+                    
+                    
 
-                    <ul class="nav nav-tabs">
+<!--                    <ul class="nav nav-tabs">
                         <li class="active"><a href="#allupdates" data-toggle="tab">All Updates</a></li>
                         <li><a href="#campupdates" data-toggle="tab">Campaign Announcements Only</a></li>
-                    </ul>
+                    </ul>-->
 
+                    
+                    
                     <!-- Tab panes -->
                     <div class="tab-content">
+                        
+                        <?php
+                        $updates_array = $updates_view->getData();
+                        foreach ($updates_array as $key => $value) {  ?>
+                        
+                            <div class="announcement">
+                                <!--<img src="/img/dp.jpg" width="60" height="60">-->
+                                <div class="activity-name">
 
-                        <div class="tab-pane fade in active" id="allupdates">
+                                    <b>Update : <?php  echo $value->title ;?></b> on <span><?php    echo Yii::app()->dateFormatter->format("dd MMM yyyy hh:mm:a",$value->createDate); ?></span>
+                                    
+                                   <p><?php  echo $value->message ;?></p>
+                                   <?php  if($is_owner){ ?>
+                                   <p><a href="/updates/delete?id=<?php  echo $value->id ;?>&project=<?php  echo $model->id ;?>">Delete</a></p>
+                                   <?php  } ?>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                        <?php
+                        
+                        }
+                        
+                        ?>
+                        
+                        
+                        
+
+<!--                        <div class="tab-pane fade in active" id="allupdates">
 
                             <div class="announcement">
                                 <img src="/img/dp.jpg" width="60" height="60">
@@ -389,7 +430,7 @@ EOD;
                                 </div>
                             </div>
 
-                        </div>
+                        </div>-->
 
                         <div class="tab-pane fade" id="campupdates">
 
@@ -445,7 +486,7 @@ $this->renderPartial('comment.views.comment.commentList', array(    'model'=>$mo
 <?php
 $base_url = Yii::app()->getBaseUrl(true).'/img/' ;
 
-echo '<a href="'.$base_url.$model->image_url.'"> <img src="'.$base_url.$model->image_url.'" class="img-thumbnail " style="width:200px;height:200px" /></a>';
+echo '<div class="row"> <a href="'.$base_url.$model->image_url.'"> <img src="'.$base_url.$model->image_url.'" class="img-thumbnail " style="width:200px;height:200px" /></a></div>';
 
 
 ?>

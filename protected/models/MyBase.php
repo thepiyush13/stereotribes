@@ -203,5 +203,19 @@ class MyBase{
                                                         
                                                         
         }
+        
+        public static function is_project_creator($project_id,$user_id){
+            if(!$project_id || !$user_id){
+                return FALSE;
+            }
+            $sql = 'SELECT COUNT(*) as count from project where user_id='.$user_id.' and id='.$project_id;
+            $result =  Yii::app()->db->createCommand($sql)->queryScalar();
+            
+            if($result>0){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+        }
 }
 ?>
