@@ -4616,6 +4616,47 @@ a.thanks-heading {
 	z-index: 7;
 }
 
+/* New */
+
+.stereosection {
+	z-index: 2;
+}
+
+#stereosection-1 {
+	background: url('../img/home-parallax-1.jpg') center 0 no-repeat fixed;
+	height: 250px;
+	width: 100%;
+	position: relative;
+}
+
+#stereosection-2 {
+	background: url('../img/home-parallax-2.jpg') center 0 no-repeat fixed;
+	height: 250px;
+	width: 100%;
+	position: relative; 
+}
+
+#stereosection-4 {
+	background: url('../img/home-parallax-4.jpg') center 0 no-repeat fixed;
+	height: 250px;
+	width: 100%;
+	position: relative; 
+}
+
+#stereosection-6 {
+	background: url('../img/home-parallax-6.jpg') center 0 no-repeat fixed;
+	height: 250px;
+	width: 100%;
+	position: relative; 
+}
+
+.amplify-passion-section{
+	text-align: center;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.60);
+	position: relative;
+	z-index: 7;
+}
+
 .amplify-passion-heading {
 	font-family: 'Maven Pro', sans-serif;
 	font-size: 90px;
@@ -4624,6 +4665,153 @@ a.thanks-heading {
 	text-transform: uppercase;
 	letter-spacing: -5px;
 }
+
+.amplify-passion-subheading {
+	font-family: 'Maven Pro', sans-serif;
+	font-size: 26px;
+	font-weight: 600;
+	letter-spacing: -1px;
+	color: #181818;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.amplify-passion-subheading > a {
+	color: #d6201f;
+}
+
+.amplify-passion-subheading > a > i {
+	font-size: 22px;
+}
+
+.passion-video {
+	width: 100%;
+	min-height: 758px;
+	margin-bottom: 10px;
+}
+
+.we-tribes-section {
+	background: url('../img/home-parallax-3.jpg') center 0 no-repeat fixed;
+	width: 100%;
+	position: relative; 
+	padding: 50px 0;
+	margin-bottom: 20px;
+}
+
+.stereo-text-container {
+	width: 80%;
+}
+
+.stereo-container-1{
+	border-right: 2px solid #fff;
+}
+
+.stereo-container-2 {
+	padding-left: 80px;
+}
+
+.stereo-text-para {
+	font-size: 22px;
+	color: #fff;
+	font-weight: 500;
+	line-height: 26px;
+	margin-top: 20px;
+}
+
+.weoffermore-section {
+	background: url('../img/home-parallax-5.jpg') center 0 no-repeat fixed;
+	width: 100%;
+	position: relative; 
+	padding: 60px 0;
+	margin-bottom: 20px;
+}
+
+.offer-links-wrap {
+	text-align: center;
+	margin: 50px 0;
+}
+
+.offer-links {
+	color: #000;
+	background: #fff;
+	font-size: 24px;
+	font-weight: 800;
+	margin: 30px 0;
+	display: inline;
+	padding: 5px 5px;
+	line-height: 30px;
+	box-shadow: 10px 0 0 #fff, -10px 0 0 #fff;
+}
+
+.offer-links:hover {
+	color: #fff;
+	background: #e10f29;
+	box-shadow: 10px 0 0 #e10f29, -10px 0 0 #e10f29;
+	text-decoration: none;
+}
+
+.get-started-block {
+	text-align: center;
+	color: #fff;
+}
+
+.get-started-section {
+	background: url('../img/home-parallax-7.jpg') center 0 no-repeat fixed;
+	width: 100%;
+	position: relative; 
+	padding: 50px 0;
+	margin-bottom: 20px;
+}
+
+.get-start-circle {
+	width: 200px;
+	height: 200px;
+	background: #fff;
+	color: #000;
+	font-family: 'lotregular';
+	display: block;
+	margin: 0 auto;
+	font-size: 56px;
+	line-height: 204px;
+	border-radius: 100%;
+	box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.78);
+}
+
+.get-start-circle:hover {
+	text-decoration: none;
+	color: #fff;
+	background: #de1e34;
+}
+
+.get-start-head {
+	font-weight: 800;
+	font-size: 24px;
+	text-shadow: 0px 1px 1px #000;
+}
+
+.get-started-link {
+	color: #fff;
+	font-size: 18px;
+	font-weight: 600;
+	background: #262626;
+	padding: 10px 30px;
+	display: inline-block;
+}
+
+.get-started-link:hover {
+	text-decoration: none;
+	color: #fff;
+	background: #de1e34;
+}
+
+.footer-main-wrapper {
+	background: url('../img/home-parallax-8.jpg') center 0 no-repeat fixed;
+	width: 100%;
+	position: relative; 
+	padding: 200px 0 0;
+	z-index: 2;
+}
+
 
 .amplify-passion-subheading {
 	font-family: 'Maven Pro', sans-serif;

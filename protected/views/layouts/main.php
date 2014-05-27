@@ -18,6 +18,9 @@
     <!-- Custom CSS for this Template -->
     <link rel="stylesheet" href="/css/animate.css">
 
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/owl.theme.css">
+
     <!-- Custom CSS for this Template -->
     <link rel="stylesheet" href="/css/stereotribes.css">
 
@@ -62,11 +65,24 @@
     <script src="/js/waypoints.min.js"></script>
     <script src="/js/waypoints-sticky.min.js"></script>
     <script src="/js/freewall.js"></script>
-   
+    <script src="/js/skrollr.js"></script>
     <script src="/js/custom/utils.js"></script>
     <script src="/js/typeahead.bundle.js"></script>
     <script src="/js/init.js"></script>
-     <script src="/js/stereotribes.js"></script>
+    <script src="/js/stereotribes.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $("#owl-demo").owlCarousel({
+              navigation : false,
+              slideSpeed : 300,
+              paginationSpeed : 400,
+              singleItem : true,
+              items : 1,
+              autoPlay: true
+          });
+        });
+    </script>
 
     <script type="text/javascript">
         $.validity.setup({ outputMode:"label" });
