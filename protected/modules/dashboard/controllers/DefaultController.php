@@ -357,7 +357,7 @@ HAVING COUNT(*) > 1 ");
                    
                     $result['FLEXIBLE_RAISED'] = $flexible_project_total;
                     $result['SUCCESSFULLY_RAISED'] = $this->query("  select SUM(y.amount) from project as x   join user_fund_project as y    on x.id= y.user_id   where x.project_status = 'success' and y.status='success' ");
-                    $result['UNSUCCESSFULLY_RAISED'] = $this->query("  select SUM(y.amount) from project as x   join user_fund_project as y    on x.id= y.user_id   where x.project_status = 'success' and y.status='success' ");
+                    $result['UNSUCCESSFULLY_RAISED'] = $this->query("  select SUM(y.amount) from project as x   join user_fund_project as y    on x.id= y.user_id   where x.project_status = 'success' and y.status!='success' ");
                     $total_projects_goal  =   $this->query("  SELECT SUM(goal) FROM project  ");
                     $total_money_raised = $fixed_project_total+$flexible_project_total;
                     $result['SUCCESS_RATE'] = (int)( ($total_money_raised)/($total_projects_goal )*100);
