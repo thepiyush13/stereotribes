@@ -45,39 +45,7 @@
 <!--	 ==================== Video Section ====================== 
 
 	
-    <video id="bgvid" autoplay loop preload="none" poster="/img/video-poster.jpg" data-setup="{}">
-	  <source src="/videos/st.webm" type="video/webm">
-	  <source src="/videos/st.mp4" type="video/mp4">
-      <source src="/videos/st.ogv" type="video/ogg">
-      <source src="/videos/st.ogg" type="video/ogg">
-      <source src="/videos/st.mov" type="video/mov">
-	</video>
-	<div class="video-poster"></div>
-
-	<div class="main-wrapper">
-
-		 ==================== Secondary Navigation ====================== 
-
-	    <nav id="secondary-nav" class="secondary-nav" role="navigation">
-
-	    	<div class="container">
-
-	    		<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 text-center secnav">
-
-				    <ul id="sec-navigation" class="navigate">
-					    <li id="all" class="active" data-filter=".all">All</li>
-					    <li id="new" data-filter=".new">New</li>
-					    <li id="featured" class="mobhide" data-filter=".featured">Featured</li>
-					    <li id="popular" data-filter=".popular">Popular</li>
-					    <li id="endingSoon" data-filter=".endingSoon">Ending Soon</li>
-					    <li id="staffPicks" class="mobhide" data-filter=".staffPicks">Staff Picks</li>
-				    </ul>
-
-				</div>   
-
-			</div>-->
-
-		<!--</nav>-->
+   
             
                      
             <?php echo $content ?>
@@ -96,6 +64,7 @@
     <script src="/js/freewall.js"></script>
    
     <script src="/js/custom/utils.js"></script>
+    <script src="/js/typeahead.bundle.js"></script>
     <script src="/js/init.js"></script>
      <script src="/js/stereotribes.js"></script>
 
