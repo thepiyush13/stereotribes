@@ -30,21 +30,7 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-            $myModel = new MyBase;
-             $url_base = '/campaign/';
-             $count = 7;
-             $htm = '';
-            $sql = "Select z.project_id,concat('$url_base',z.project_id) as url,  x.title,  x.city as location,  y.name as category,  a.name as author,  x.short_summary as `desc`,  x.days_run as days,  x.image_url as img,  (case when (x.featured  = 1 ) then 'featured' else 'normal' end) as type,  y.color,  ROUND((SUM(z.amount)/x.goal)*100) as percent,  COUNT(distinct z.user_id) as backers,  SUM(z.amount) as pledge    from project as x  left join category as y   on x.category = y.category_id  left join user_fund_project as z   on x.id = z.project_id  join user as a  on x.user_id = a.id  where x.featured=1 group by z.project_id  order by x.project_live_date desc limit 0,$count";
-            
-             $projects = Yii::app()->db->createCommand($sql)->queryAll();
-             $first_project = $projects[0];
-             unset($projects[0]);
-             $rest_projects = $projects;
              
-             $htm.=$myModel->get_featured_block($first_project);
-             foreach ($rest_projects as $key => $normal_project) {                
-               $htm.=$myModel->get_normal_block($normal_project);               
-            }   
 		$this->render('home',array('projects_html'=>$htm));
 	}
         
@@ -186,6 +172,65 @@ class SiteController extends Controller
              foreach ($projects['normal'] as $key => $normal_project) {                
                $htm.=$myModel->get_normal_block($normal_project);               
             }
+             
+           
+            
+            $this->layout=false;
+            echo ($htm);
+            Yii::app()->end(); 
+           return true;
+            
+            //send back as html
+            
+            
+        }
+        
+         public function actionGethome($width){
+            
+           $myModel = new MyBase;
+             $url_base = '/campaign/';
+             
+             //get screen details 
+             switch ($width) {
+                case 600:
+                    $count = 8;
+                    break;
+                 case 568:
+                    $count = 8;
+                    break;
+                 case 800:
+                    $count = 8;
+                    break;
+                 case 768:
+                    $count = 8;
+                    break;
+                 case 1280:
+                    $count = 8;
+                    break;
+                case 1920:
+                    $count = 7;
+                    break;
+                case 1080:
+                    $count = 8;
+                    break;
+                default:
+                    $count = 7;
+                    break;
+            }
+             
+             
+             $htm = '';
+            $sql = "Select z.project_id,concat('$url_base',z.project_id) as url,  x.title,  x.city as location,  y.name as category,  a.name as author,  x.short_summary as `desc`,  x.days_run as days,  x.image_url as img,  (case when (x.featured  = 1 ) then 'featured' else 'normal' end) as type,  y.color,  ROUND((SUM(z.amount)/x.goal)*100) as percent,  COUNT(distinct z.user_id) as backers,  SUM(z.amount) as pledge    from project as x  left join category as y   on x.category = y.category_id  left join user_fund_project as z   on x.id = z.project_id  join user as a  on x.user_id = a.id  where x.featured=1 group by z.project_id  order by x.project_live_date desc limit 0,$count";
+            
+             $projects = Yii::app()->db->createCommand($sql)->queryAll();
+             $first_project = $projects[0];
+             unset($projects[0]);
+             $rest_projects = $projects;
+             
+             $htm.=$myModel->get_featured_block($first_project);
+             foreach ($rest_projects as $key => $normal_project) {                
+               $htm.=$myModel->get_normal_block($normal_project);               
+            }  
              
            
             

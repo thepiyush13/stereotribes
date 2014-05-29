@@ -50,8 +50,8 @@
 
 		<!-- ==================== Site Contents Section ====================== -->
 
-		<div class="freewall" >
-<?php echo $projects_html ;?>
+		<div class="freewall"  id="main_grid_content" >
+<?php // echo $projects_html ;?>
 		  
 		</div>
 		<!--freewall end-->
@@ -483,5 +483,5 @@
 		  </div>
 		</div>	
 	</div>
-
+<script src="/js/home.js"></script>
 	<!-- ==================== Footer Ends ====================== -->

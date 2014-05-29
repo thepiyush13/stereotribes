@@ -62,7 +62,7 @@ class Mainuser extends CActiveRecord
             array('password, repeat_password', 'length', 'min'=>6, 'max'=>40),
                     array('profile_image', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true,'on'=>'update'),
             array('password', 'compare', 'compareAttribute'=>'repeat_password'),
-                    array('id, name, email, gender, dob, description, fb_token, location, fbid, login_type, status, last_login', 'safe'),
+                    array('id, name, email, gender, dob, description, fb_token,media, location, fbid, login_type, status, last_login', 'safe'),
                     array('main_url, facebook_link, soundcloud_link, twitter_link, bandcamp_link, youtube_link, myspace_link, vimeo_link, linkedin_link', 'length', 'max'=>255),
 			array('id, name, email, password, gender, dob, description, fb_token, location, fbid, login_type, status, last_login', 'safe', 'on'=>'search'),
 		);

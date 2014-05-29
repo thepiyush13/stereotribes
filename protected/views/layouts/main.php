@@ -68,7 +68,7 @@
     <script src="/js/skrollr.js"></script>
     <script src="/js/custom/utils.js"></script>
     <script src="/js/typeahead.bundle.js"></script>
-    <script src="/js/init.js"></script>
+    
     <script src="/js/stereotribes.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script type="text/javascript">

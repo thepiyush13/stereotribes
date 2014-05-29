@@ -121,67 +121,87 @@
 
             	 </div>
 
-            	 <div class="col-md-6 profile-blocks">
+                    <!--start media block-->
+                    <div class="col-md-12 profile-blocks">
+
+                    <div class="project-add-media">
+
+                        <div class="dash-head-wrap">
+
+                            <div class="col-md-7">
+                                <h2 class="dash-heading color-black">Add Media</h2>
+                            </div>         
+
+                        </div>
+
+                        <ul class="upload-media-wrap">
+
+                            <li>
+                                <a class="icons-cam up-cam" href="#" data-dismiss="modal" data-toggle="modal" data-target="#addimage">Image</a>
+                            </li>
+
+                            <li>
+                                <a class="icons-video up-video" href="#" data-dismiss="modal" data-toggle="modal" data-target="#addvideo">Video</a>
+                            </li>
+
+                            <li>
+                                <a class="icons-music up-music" href="#" data-dismiss="modal" data-toggle="modal" data-target="#addaudio">Audio</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+                    <!--end media block-->
+                    <?php  $media  =  json_decode($data['user_details'][0]['media'],true); ?>
+            	 <div class="col-md-12 profile-blocks">
 
             	 	<div class="project-image-wrapper">
             	 		
-            	 		<img src="/img/gaga.jpg" class="img-responsive" />
+            	 		<img src="<?php  echo $media['IMAGE']; ?>" class="img-responsive " />
 
             	 	</div>
 
-            	 	<div class="project-profile">
+<!--            	 	<div class="project-profile">
 
             	 		<label>"Here is a photo of me at a festival"</label>
 
-            	 	</div>
+            	 	</div>-->
 
             	 </div>  
 
-            	 <div class="col-md-6 profile-blocks">
+            	 
+
+            	<div class="col-md-12 profile-blocks">
 
             	 	<div class="project-image-wrapper">
             	 		
-            	 		<img src="/img/gaga.jpg" class="img-responsive" />
+            	 		<?php  echo $media['VIDEO']; ?>
 
             	 	</div>
 
-            	 	<div class="project-profile">
+<!--            	 	<div class="project-profile">
 
             	 		<label>"Here is a photo of me at a festival"</label>
 
-            	 	</div>
+            	 	</div>-->
 
             	 </div> 
 
-            	<div class="col-md-6 profile-blocks">
+            	 <div class="col-md-12 profile-blocks">
 
             	 	<div class="project-image-wrapper">
             	 		
-            	 		<img src="/img/gaga.jpg" class="img-responsive" />
+            	 		<?php  echo $media['AUDIO']; ?>
 
             	 	</div>
 
-            	 	<div class="project-profile">
+<!--            	 	<div class="project-profile">
 
             	 		<label>"Here is a photo of me at a festival"</label>
 
-            	 	</div>
-
-            	 </div> 
-
-            	 <div class="col-md-6 profile-blocks">
-
-            	 	<div class="project-image-wrapper">
-            	 		
-            	 		<img src="/img/gaga.jpg" class="img-responsive" />
-
-            	 	</div>
-
-            	 	<div class="project-profile">
-
-            	 		<label>"Here is a photo of me at a festival"</label>
-
-            	 	</div>
+            	 	</div>-->
 
             	 </div>
 
@@ -190,3 +210,82 @@
         </div><!-- Right Block Ends -->
 
     </div>
+
+
+<!-- Add Image Modal -->
+<?php
+
+$user_id = Yii::app()->user->getId();
+?>
+
+    <div class="modal fade" id="addimage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h1 class="upload-head">Add Image</h1>
+          </div>
+          <div class="modal-body">
+            <form class="" action="/profile/media/id/<?php echo $user_id ?>"  method="POST" > 
+              <div class="form-group fundstep2-formgroup">                
+                <input  class="form-control charcount col-md-12" name="file_image"  type="text" value=""  placeholder='Image link here....'>
+              </div>
+                <div><br/><br/><br/></div>
+              <input type="submit"  class="nextbtn" value='Save'/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Video Modal -->
+
+    <div class="modal fade" id="addvideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h1 class="upload-head">Add Video</h1>
+          </div>
+          <div class="modal-body">
+            <form class="" action="/profile/media/id/<?php echo $user_id ?>"  method="POST"> 
+              <div class="form-group fundstep2-formgroup">                
+                
+                <textarea class="form-control charcount col-md-12" name="file_video"  placeholder='Video embed code here....'></textarea>
+              </div>
+                <div><br/><br/><br/></div>
+              <input type="submit"  class="nextbtn" value='Save'/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Audio Modal -->
+
+    <div class="modal fade" id="addaudio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h1 class="upload-head">Add Audio</h1>
+          </div>
+          <div class="modal-body">
+            <form class="" action="/profile/media/id/<?php echo $user_id ?>" method="POST"> 
+              <div class="form-group fundstep2-formgroup">                
+                
+                <textarea class="form-control charcount col-md-12" name="file_audio"  placeholder='Audio embed code here....' ></textarea>
+              </div>
+                <div><br/><br/><br/></div>
+              <input type="submit"  class="nextbtn" value='Save'/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<style>
+    .col-md-12 iframe{
+        width: 100%;
+        
+    }
+ </style>

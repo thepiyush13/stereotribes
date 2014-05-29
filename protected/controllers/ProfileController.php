@@ -258,6 +258,48 @@ class ProfileController extends Controller {
             return false;
         }
     }
+    
+    public function actionMedia($id) {
+        
+//        die($id);
+        if( $this->autorized_user($id)==false){
+             $this->redirect(array('/profile'));
+        }
+        $model=Mainuser::model()->findByPk($id);
+        $old_media = json_decode($model->media,true);
+        if(empty($old_media)){
+           $old_media =  array(
+               'IMAGE'=>'',
+               'VIDEO'=>'',
+               'AUDIO'=>'',
+           );    
+        }
+                
+        if(isset($_POST['file_image'])  ){
+            $file_image = $_POST['file_image'];            
+            $old_media['IMAGE'] = $file_image;
+            
+        }
+        
+        if(isset($_POST['file_video'])  ){
+            $file_video = $_POST['file_video'];             
+            $old_media['VIDEO'] = $file_video;
+            
+        }
+        
+        if(isset($_POST['file_audio'])  ){
+            $file_audio = $_POST['file_audio'];
+            $old_media['AUDIO'] = $file_audio;
+            
+        }
+        
+        $model->media = json_encode($old_media);
+        if($model->save()){
+            $this->redirect(array('/profile'));
+        }
+        $this->redirect(array('/profile'));
+        
+    }
 
     // Uncomment the following methods and override them if needed
     /*
