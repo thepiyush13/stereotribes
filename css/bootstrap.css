@@ -814,11 +814,17 @@ pre code {
   .container {
     width: 750px;
   }
+  .footer-wrap-container {
+    width: 100%;
+  }
 }
 
 @media (min-width: 992px) {
   .container {
     width: 970px;
+  }
+  .footer-wrap-container {
+    width: 100%;
   }
 }
 

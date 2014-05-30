@@ -29,7 +29,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'message'); ?>
-		<?php echo $form->textArea($model,'message',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'message',array('rows'=>6, 'cols'=>50 , 'id'=>'html_text_box')); ?>
 		<?php echo $form->error($model,'message'); ?>
 	</div>
 

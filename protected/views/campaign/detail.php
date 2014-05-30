@@ -29,8 +29,8 @@ echo '</pre>';
             <!-- Nav tabs -->
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-                <li><a href="#updates" data-toggle="tab">Updates/<span>5</span></a></li>
-                <li><a href="#comments" data-toggle="tab">Comments/<span>39</span></a></li>
+                <li><a href="#updates" data-toggle="tab">Updates/<span><?php  echo count($updates_view->getData());  ?></span></a></li>
+                <li><a href="#comments" data-toggle="tab">Comments</a></li>
 <!--                <li><a href="#gallery" data-toggle="tab">Gallery/<span>16</span></a></li>-->
                 <li><a href="#media" data-toggle="tab">Media</a></li>
             </ul>
@@ -662,3 +662,44 @@ EOD;
     </div>
 
 </div>
+
+<?php  
+  $baseUrl = Yii::app()->baseUrl; 
+  $cs = Yii::app()->getClientScript();
+  $cs->registerScriptFile('http://tinymce.cachefly.net/4.0/tinymce.min.js');
+//  $cs->registerCssFile($baseUrl.'/css/yourcss.css');
+  
+  $js = <<< EOD
+  $(document).ready(function() {
+          //js code here
+         start_tinymce('html_text_box');   
+//          alert('sdsd');
+        });
+          
+         function start_tinymce(element_id){
+        
+        if (typeof(tinyMCE) != "undefined") {
+  if (tinyMCE.activeEditor == null || tinyMCE.activeEditor.isHidden() != false) {
+    tinyMCE.editors=[]; // remove any existing references
+  }
+}
+            $(document).off('focusin.modal');
+         tinymce.init({
+    selector: "textarea#"+element_id,
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste "
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+
+ }); 
+    }      
+
+EOD;
+    
+Yii::app()->clientScript->registerScript('test', $js);
+?>
+    
+
+<!--<link rel="stylesheet" type="text/css" href="http://www.sceditor.com/minified/themes/default.min.css" />-->

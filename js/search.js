@@ -16,7 +16,12 @@ var url =  'http://' + host;
     var type = $('#type').val();
     var keyword = $('#keyword').val();
     var qstring  = '?page=0&type='+type+'&keyword='+keyword;
-    $.get( url+qstring, function( data ) {  $( "#main_grid_content" ).append( data ).fadeIn('slow'); init(); $('.freewall .brick').css('visibility', 'visible');$('.brick .mask').css('display', 'block');});
+    $.get( url+qstring, function(  data ) {  if(data.replace(/\s/g,"") == ""){
+            
+            data = '<p>Sorry ! No results found</p>';
+            $('#load_more_blocks').hide();
+    }
+        $( "#main_grid_content" ).append( data ).fadeIn('slow'); init(); $('.freewall .brick').css('visibility', 'visible');$('.brick .mask').css('display', 'block');});
 data = '';
 
  $('#load_more_blocks').click(function(){
@@ -24,7 +29,11 @@ data = '';
          var type = $('#type').val();
     var keyword = $('#keyword').val();
     var qstring  = '?page='+page_no+'&type='+type+'&keyword='+keyword;
-        $.get( url+qstring, function( data ) {  $( "#main_grid_content" ).append( data ).fadeIn('slow'); init(); $('.freewall .brick').css('visibility', 'visible');$('.brick .mask').css('display', 'block'); });
+        $.get( url+qstring, function( data ) {  if(data.replace(/\s/g,"") == ""){
+            
+//            data = '<p> No more results found</p>';
+            $('#load_more_blocks').hide();
+    } $( "#main_grid_content" ).append( data ).fadeIn('slow'); init(); $('.freewall .brick').css('visibility', 'visible');$('.brick .mask').css('display', 'block'); });
         data = '';
         page_no = parseInt(page_no)+1;
         var page_no = $('#page_number').attr('value',page_no);

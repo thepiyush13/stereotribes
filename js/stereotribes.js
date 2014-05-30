@@ -17,45 +17,51 @@
       $('.freewall .brick').css('visibility', 'visible');
       $('.brick .mask').css('display', 'block');
 
-      $window = $(window);
+      var winwidth = $(window).width();
+
+      if (winwidth >= 640) {
+
+        $window = $(window);
+                  
+        $('section[data-type="background"]').each(function(){
+          var $bgobj = $(this); // assigning the object
+                        
+            $(window).scroll(function() {
+                        
+                // Scroll the background at var speed
+                // the yPos is a negative value because we're scrolling it UP!                
+                var yPos = -($window.scrollTop() / $bgobj.data('speed')); 
                 
-      $('section[data-type="background"]').each(function(){
-        var $bgobj = $(this); // assigning the object
-                      
-          $(window).scroll(function() {
-                      
-              // Scroll the background at var speed
-              // the yPos is a negative value because we're scrolling it UP!                
-              var yPos = -($window.scrollTop() / $bgobj.data('speed')); 
-              
-              // Put together our final background position
-              var coords = 'center '+ yPos + 'px';
+                // Put together our final background position
+                var coords = 'center '+ yPos + 'px';
 
-              // Move the background
-              $bgobj.css({ backgroundPosition: coords });
-      
-          }); // window scroll Ends
+                // Move the background
+                $bgobj.css({ backgroundPosition: coords });
+        
+            }); // window scroll Ends
 
-      });
+        });
 
-      $('footer[data-type="background"]').each(function(){
-        var $bgobj = $(this); // assigning the object
-                      
-          $(window).scroll(function() {
-                      
-              // Scroll the background at var speed
-              // the yPos is a negative value because we're scrolling it UP!                
-              var yPos = -($window.scrollTop() / $bgobj.data('speed')); 
-              
-              // Put together our final background position
-              var coords = 'center '+ yPos + 'px';
+        $('footer[data-type="background"]').each(function(){
+          var $bgobj = $(this); // assigning the object
+                        
+            $(window).scroll(function() {
+                        
+                // Scroll the background at var speed
+                // the yPos is a negative value because we're scrolling it UP!                
+                var yPos = -($window.scrollTop() / $bgobj.data('speed')); 
+                
+                // Put together our final background position
+                var coords = 'center '+ yPos + 'px';
 
-              // Move the background
-              $bgobj.css({ backgroundPosition: coords });
-      
-          }); // window scroll Ends
+                // Move the background
+                $bgobj.css({ backgroundPosition: coords });
+        
+            }); // window scroll Ends
 
-      });
+        });
+
+      };
 
       /* 
        * Create HTML5 elements for IE's sake
@@ -63,6 +69,7 @@
 
       document.createElement("article");
       document.createElement("section");
+
      /* 
       *
       * Function for video section height
@@ -70,13 +77,19 @@
       */
 
      var windowHeight = $(window).height();
-
+     
+     if (winwidth >= 720) {
+        $('.passion-video').css('height', windowHeight + 100);
+     };
      $('body.home').css('padding-top', windowHeight);
 
      $('#bgvid').css('min-height', windowHeight);
 
      $(window).resize(function() {
          var windowHeight = $(window).height();
+         if (winwidth >= 720) {
+            $('.passion-video').css('height', windowHeight + 100);
+         };
          $('body.home').css('padding-top', windowHeight);
          $('#bgvid').css('min-height', windowHeight);
      });
@@ -148,27 +161,16 @@
 
   	// click event for touch devices
     var width = $(window).width();
-    if (width < 1025){
-
+    if (width < 1025) {
       $('.brickhover').on('click',function(){
-        $(this).toggleClass('brickclick');
+          $(this).toggleClass('brickclick');
       });
-
     };
 
     // Prevent search dropdown from closing
     $('.menu-search').click(function(e) {
         e.stopPropagation();
     });
-
-    $('.menuplay-categories').click(function(e) {
-        e.stopPropagation();
-    });
-    
-    $('.join-icons > a > i').click(function(e) {
-        e.stopPropagation();
-    });
-
 
  });
 

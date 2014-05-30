@@ -93,17 +93,4 @@
 
 	$('.pitchstorytextarea').jqte();
 
-	// Prevent search dropdown from closing
-    $('.menu-search').click(function(e) {
-        e.stopPropagation();
-    });
-
-    $('.menuplay-categories').click(function(e) {
-        e.stopPropagation();
-    });
-    
-    $('.join-icons > a > i').click(function(e) {
-        e.stopPropagation();
-    });
-
   });
